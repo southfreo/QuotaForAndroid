@@ -1,0 +1,88 @@
+
+<quotaxml version="1">
+	<provider id="757" pgid="757" name="Virgin Broadband" type="AUS ISP" cookie="virginbroadband.com.au" icon="11" parsemethod="xml" providerurl="http://my.virginbroadband.com.au" version="1.3" author="Nick Wilton/SouthFreo" description="Please ensure you can access your usage via the website">
+		<model>
+			<datassource>
+				<url id="10" http="http://my.virginbroadband.com.au/selfservice/SelfService/SelfService.nocache.js" message="Connecting."/>
+				<url id="20" http="http://my.virginbroadband.com.au/selfservice/SelfService/--DK_CACHE--.cache.html" message="Connecting.."/>
+				<url id="30" http="http://my.virginbroadband.com.au/selfservice/SelfService/rpc/loginService" headers="Content-Type||text/x-gwt-rpc; charset=utf-8||X-GWT-Permutation||--DK_CACHE--||Referer||http://my.virginbroadband.com.au/selfservice/SelfService/--DK_CACHE--.cache.html||X-GWT-Module-Base||http://my.virginbroadband.com.au/selfservice/SelfService/" post="6|0|7|http://my.virginbroadband.com.au/selfservice/SelfService/|--DK_payloadID--|au.com.iseek.visp.web.selfservice.client.rpc.LoginService|authenticate|au.com.iseek.visp.web.selfservice.client.beans.LoginDetails/--DK_logonMethodId--|--DS_PARAM2--|--DS_PARAM_I_1--|1|2|3|4|1|5|5|0|0|0|0|6|0|0|0|7|0|0|" message="Login"/>
+				<url id="40" http="http://my.virginbroadband.com.au/selfservice/SelfService/rpc/usageService" headers="Content-Type||text/x-gwt-rpc; charset=utf-8||X-GWT-Permutation||--DK_CACHE--||Referer||http://my.virginbroadband.com.au/selfservice/SelfService/--DK_CACHE--.cache.html||X-GWT-Module-Base||http://my.virginbroadband.com.au/selfservice/SelfService/" post="6|0|4|http://my.virginbroadband.com.au/selfservice/SelfService/|--DK_2payloadID--|au.com.iseek.visp.web.selfservice.client.rpc.UsageService|getUsage|1|2|3|4|0|" message="Getting Usage"/>
+				<XXurl is="40" http="file:///Users/kevinbruton/Documents/iPhone/Quota/providers/test/vbb/Nick.usage.txt" message="Test"/>
+			</datassource>
+			<datakeys>
+				<key id="10" name="--DK_CACHE--" type="string" src="url" srcid="10" extract="regex">
+					<find><![CDATA[Sb='(.*?)']]></find>
+					<pos>1</pos>
+				</key>
+				<key id="20" name="--DK_2payloadID--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[Lmb='(.*?)']]></find>
+					<pos>1</pos>
+				</key>
+				<key id="30" name="--DK_payloadID--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[\$lb='(.*?)']]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_logonMethodId--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[(?si)au.com.iseek.visp.web.selfservice.client.beans.LoginDetails/(.*?)']]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_serviceName--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[(?si)service_name","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="60" name="--DK_topcred--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[downloads_unit","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="70" name="--DK_downloads--" type="number" src="url" srcid="40" parseformat="MB" default="0" outputtype="7" extract="regex">
+					<find><![CDATA[downloads","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="80" name="--DK_uploads--" type="number" src="url" srcid="40" parseformat="MB" default="0" outputtype="7" extract="regex">
+					<find><![CDATA[uploads","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="90" name="--DK_start--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[formatted_start_date","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="100" name="--DK_end--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[formatted_start_date","(.*?)","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="110" name="--DK_usage--" type="number" src="url" srcid="40" parseformat="MB" outputtype="7" extract="expression">
+					<find><![CDATA[--DK_downloads_I_-- + --DK_uploads_I_-- ]]></find>
+				</key>
+				<key id="120" name="--DK_speed--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[speed","(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="130" name="--DK_uperror--" type="string" src="url" srcid="30" extract="regex" condition="100">
+					<find><![CDATA["ERROR"]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="140" name="--DK_USAGE--" type="number" src="url" parseformat="MB" srcid="10" extract="regex" removechars="," outputtype="7">
+					<find><![CDATA[new_usage_content">(.*?)/]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_uperror--" action="fail" ap1="Did not login, Check username/password"/>
+			</conditions>
+		</model>
+		<view paramgroup="757">
+			<summarypanel type="pbars">
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+				<Progress id="1" name="Usage" value="--DK_USAGE_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="7"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Plan" value="--DK_serviceName--" showonempty="false"/>
+				<extra id="2" type="text" name="Remaining Topup" value="--DK_topcred--" showonempty="false"/>
+				<extra id="3" type="text" name="Period" value="--DK_start-- until --DK_end--" showonempty="false"/>
+				<extra id="4" type="text" name="Speed" value="--DK_speed--" showonempty="false"/>
+				<extra id="5" type="text" name="Downloads" value="--DK_downloads--" showonempty="false"/>
+				<extra id="6" type="text" name="Uploads" value="--DK_uploads--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

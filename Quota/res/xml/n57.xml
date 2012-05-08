@@ -1,0 +1,27 @@
+<quotaxml version="1">
+<provider id="57" name="QLD Go Card" pgid="60" dtype="2" type="AUS Travel" cookie="seqits.com.au" parsemethod="xml" secure="false" icon="go" providerurl="https://www.seqits.com.au/webtix/" version="1.1" description="Check your GoCard Balance">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.seqits.com.au/webtix/welcome/welcome.do" post="cardOps=Display&amp;cardNum=--DS_PARAM1--&amp;pass=--DS_PARAM2--" message="Connecting"/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[(?i)Unable to retrieve <b><i>go</i></b>]]></find>
+					<pos>0</pos>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="10" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)<th>Card Balance</th>.*?<td>\$(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="60" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="$--DK_BAL--" bal2name="" bal2value="" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

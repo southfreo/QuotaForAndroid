@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.1
+Dex-Location: classes.dex
+Created-By: 14.2-b01 (Sun Microsystems Inc.) + dx 1.2
+Main-Class: org.mozilla.javascript.tools.shell.Main
+

@@ -1,0 +1,35 @@
+<quotaxml version="1">
+<provider id="1530" pgid="1530" dtype="2" name="VIC Breeze" type="AUS Travel" cookie="breeze.com.au" parsemethod="xml" secure="false" icon="breeze" providerurl="https://etolling2.breeze.com.au/Login-Services/Login.aspx" version="1.2" description="Check your Breeze balance">
+		<model>
+			<datassource>
+				<url id="1" http="https://etolling2.breeze.com.au/Login-Services/Login.aspx" message="Connecting.."/>
+				<url id="10" http="https://etolling2.breeze.com.au/Login-Services/Login.aspx" post="__VIEWSTATEENCRYPTED=&amp;__EVENTTARGET=ctl00%24contentPlaceHolder%24ucLogin%24btnLogin&amp;ctl00%24contentPlaceHolder%24ucLogin%24txtEmailOrAddress=--DS_PARAM1--&amp;ctl00%24contentPlaceHolder%24ucLogin%24txtPin=--DS_PARAM3--&amp;__VIEWSTATE=--DK_VS--&amp;__EVENTVALIDATION=--DK_EV--" message="Login"/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="2" name="--DK_EV--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="10" extract="regex">
+					<find><![CDATA[(?s)Account Balance is:.*?AccountBalance">(.*?)</span>]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1530" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance" bal1value="$--DK_BAL--" bal2name="" bal2value="" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

@@ -1,0 +1,101 @@
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser
+END
+ConstantNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/ConstantNode.java
+END
+BinaryOperator.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/BinaryOperator.java
+END
+UnaryNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/UnaryNode.java
+END
+MathParser.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/MathParser.java
+END
+DataValue.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/DataValue.java
+END
+UnaryOperator.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/UnaryOperator.java
+END
+EvaluationNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/EvaluationNode.java
+END
+DefaultOperators.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/DefaultOperators.java
+END
+Variable.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/Variable.java
+END
+MathParserException.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/MathParserException.java
+END
+EvaluationTree.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/EvaluationTree.java
+END
+Constant.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/Constant.java
+END
+BinaryNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/BinaryNode.java
+END
+VariableNode.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/VariableNode.java
+END
+Operator.java
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/Operator.java
+END
+MathParserTester.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/smplmathparse/!svn/ver/33/trunk/src/net/smplmathparser/MathParserTester.java
+END

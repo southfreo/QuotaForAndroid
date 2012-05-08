@@ -1,0 +1,93 @@
+<quotaxml version="1">
+   <provider id="1606" pgid="12" name="TPG Broadband" parsemethod="xml" providerurl="http://tpg.com.au" type="AUS ISP" cookie="tpg" version="1.1" icon="7" description="Displays uploads + downloads combined for newer TPG plans">
+		<model>
+			<datassource>
+				<url id="10" http="https://cyberstore.tpg.com.au/your_account/index.php" post="check_username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;Submit=GO%21" message="Logging In.."/>
+				<url id="30" http="https://cyberstore.tpg.com.au/your_account/index.php?function=checkaccountusage" message="Getting Usage"/>
+				
+				<XXurl id="30" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/tpg/Combined200GB.html" message="Test #1"/>
+			</datassource>
+			<datakeys>
+				
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)Invalid username]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="30" name="--DK_BILLING--" type="string" extract="regex" src="url" srcid="20">
+					<find><![CDATA[Current Billing Period:*?</b>(.*?)<BR]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="110" name="--DK_PEAKUSED--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" removechars="," parseformat="MB" subkey="111" outputtype="7">
+					<find><![CDATA[Peak Total used:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="111" name="--DK_PEAKUSED--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" removechars="," parseformat="MB" subkey="112" outputtype="7">
+					<find><![CDATA[Total used:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="112" name="--DK_PEAKUSED--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" removechars="," parseformat="MB" subkey="113"  outputtype="7">
+					<find><![CDATA[Peak Download.*?used:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="113" name="--DK_PEAKUSED--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" removechars="," parseformat="MB" default="0"  outputtype="7">
+					<find><![CDATA[Downloads.*?used:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+
+				<key id="120" name="--DK_OFFPEAKUSED--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" removechars="," parseformat="MB" subkey="121"  outputtype="7">
+					<find><![CDATA[Off-Peak Total used:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="121" name="--DK_OFFPEAKUSED--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" removechars="," parseformat="MB" default="0" outputtype="7">
+					<find><![CDATA[Off-Peak Downloads used:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="125" name="--DK_extras--" type="string" src="url" srcid="30" extract="regex" prefix="&lt;html&gt;&lt;div" postfix="&lt;/html&gt;" condition="5">
+					<find><![CDATA[(?si)<table><tr><td valign=top>.*?<a]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<!-- Extras -->
+				
+				<key id="50" name="--DK_plan--" type="string" src="url" trimspace="true" srcid="30" extract="regex" condition="100">
+					<find><![CDATA[Package Type:</b>(.*?)</t]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="51" name="--DK_CREDIT--" type="number" src="url" srcid="30" extract="regex" removechars="$||," outputtype="1" outputformat="$%.2f">
+					<find><![CDATA[Account Balance:.*?</b>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+			</datakeys>
+			<conditions>
+				<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Invalid username or password"/>
+			</conditions>
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak" value="--DK_PEAKUSED_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Off-Peak" value="--DK_OFFPEAKUSED_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="7"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="file" name="Detailed Usage" value="Tap to Display"/>
+				<extra id="2" type="text" name="Plan" value="--DK_plan--"/>
+				<extra id="3" type="text" name="Account Balance" value="--DK_CREDIT--"/>
+				<extra id="4" type="text" name="Cap Remaining" value="--DK_CAPREM--"/>
+				<extra id="5" type="text" name="Data Remaining" value="--DK_DATAR--"/>
+			</extrapanel>
+		</view>
+	</provider>
+	
+</quotaxml>

@@ -1,0 +1,72 @@
+<quotaxml version="1">
+<provider id="1623" pgid="12" name="Grapevine/Transact" icon="network_blue" providerurl="http://www.grapevine.com.au/" parsemethod="xml" type="AUS ISP" cookie="grapevine" version="1.0" description="Please ensure you can access your usage from provider link">
+		<model>
+			<datassource>
+				<url id="1"  http="https://portal.grapevine.com.au/polar/login/login.aspx" message="Connecting.."/>
+				<url id="10" http="https://portal.grapevine.com.au/polar/login/login.aspx" headers="Referer||https://portal.grapevine.com.au/polar/login/login.aspx" post="__EVENTTARGET=&amp;__EVENTARGUMENT=&amp;__VIEWSTATEENCRYPTED=&amp;__VIEWSTATE=--DK_VS--&amp;__EVENTVALIDATION=--DK_EV--&amp;ctl00%24ContentPlaceHolder1%24vcLoginForm%24textUserName=--DS_PARAM1--&amp;ctl00%24ContentPlaceHolder1%24vcLoginForm%24textPassword=--DS_PARAM2--&amp;ctl00%24ContentPlaceHolder1%24vcLoginForm%24Submit1=Login&amp;ctl00%24ContentPlaceHolder1%24vcLoginForm%24vcDomain=grapevine.com.au" message="Logging In"/>
+				<url id="20" http="https://portal.grapevine.com.au/polar/service/servicesummary.aspx" message="Service Summary"/>
+				<url id="30" http="https://portal.grapevine.com.au--DK_SERVICE--" message="Getting Usage"/>
+			</datassource>
+			
+			<datakeys><!-- Viewstate -->
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- EV -->
+				<key id="10" name="--DK_EV--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+
+				<key id="10" name="--DK_LOGIN--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[Invalid username or password]]></find>
+					<pos>0</pos>
+				</key>
+
+
+				<key id="10" name="--DK_SERVICE--" type="string" escape="false" src="url" srcid="20" extract="regex">
+					<find><![CDATA[<td.*?<a href="(.*?)".*?onesimus.*?</td>]]></find>
+					<pos>1</pos>
+				</key>
+				                
+				<key id="20" name="--DK_OFFUP--" type="number" trimspace="true" src="url" srcid="30" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?si)ctl00_ContentPlaceHolder1_ACCESS_vcAccessUsageChart_Total.*?<td.*?<td.*?<nobr>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="30" name="--DK_OFFDOWN--" type="number" trimspace="true" src="url" srcid="30" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?si)ctl00_ContentPlaceHolder1_ACCESS_vcAccessUsageChart_Total.*?<td.*?<td.*?<td.*?<nobr>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="40" name="--DK_PEAKUP--" type="number" trimspace="true" src="url" srcid="30" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?si)ctl00_ContentPlaceHolder1_ACCESS_vcAccessUsageChart_Total.*?<td.*?<td.*?<td.*?<td.*?<nobr>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="50" name="--DK_PEAKDOWN--" type="number" trimspace="true" src="url" srcid="30" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?si)ctl00_ContentPlaceHolder1_ACCESS_vcAccessUsageChart_Total.*?<td.*?<td.*?<td.*?<td.*?<td.*?<nobr>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+
+
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_LOGIN--" action="fail" ap1="Incorrect username/password, check settings"/>
+			</conditions>
+		</model>
+		<view paramgroup="12">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak" value="--DK_PEAKDOWN_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="6"/>
+				<Progress id="2" name="OffPeak" value="--DK_OFFDOWN_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Peak Uploads" value="--DK_PEAKUP--" showonempty="false"/>
+				<extra id="2" type="text" name="Offpeak Uploads" value="--DK_OFFUP--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

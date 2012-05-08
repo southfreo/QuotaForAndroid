@@ -1,0 +1,31 @@
+<quotaxml version="1">
+		
+	<provider id="700" dtype="2" pgid="1500" name="MyNetFone VOIP" type="AUS Mobile" cookie="mynetfone.com.au" icon="mnf" parsemethod="xml" providerurl="https://www.mynetfone.com.au" version="1.1" description="Please ensure you can access your usage via the mynetphone.com.au site">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.mynetfone.com.au/portal/myaccount/HomePageAuthenticate!execute.action" post="username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;x=33&amp;y=15" message="Logging In.."/>
+				<url id="20" http="https://www.mynetfone.com.au/portal/myaccount/AccountSummary.action" message="Getting Balance"/>
+			</datassource>
+			<datakeys>
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)Your Username or Password is invalid]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="21" name="--DK_BALANCE--" type="number" src="url" srcid="20" outputformat="$%.2f" outputtype="1" extract="regex">
+					<find><![CDATA[(?s)Balance.*?<td>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Invalid username or password"/>
+			</conditions>
+		</model>
+		<view  displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance" bal1value="--DK_BALANCE--" bal2name="" bal2value="" src="" date="" headings="Date|Description|Amt" description="(--COL6--)      - Details:(--COL8--)" descriptionformat="" amount="(--COL10--)" amountformat="noblank"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

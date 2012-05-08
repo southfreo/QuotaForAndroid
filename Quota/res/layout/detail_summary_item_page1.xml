@@ -1,0 +1,149 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="200dp"
+		      android:background="@layout/roundlightgray"
+		      android:padding="4dp"
+              android:orientation="vertical" >
+
+<!--  Peak -->              
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+	android:background="@layout/customshape"
+    android:padding="10dp"
+    
+    >
+    
+ 	<TextView android:id="@+id/plabel" 
+              android:layout_width="200dp" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:lines="1"
+              android:textStyle="bold"
+              android:textSize="14dp"
+              android:gravity="left"
+              android:textColor="#FFFFFFFF"/>
+
+ 	<TextView android:id="@+id/pvalue" 
+              android:layout_width="150dp" 
+              android:lines="1"
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+              android:textSize="14dp"
+              android:textColor="#FFFFFFFF"
+              android:gravity="right"
+              android:layout_alignParentRight="true"
+              android:layout_toRightOf="@+id/plabel"
+              />
+              
+    <com.southfreo.quota.widgets.TextProgressBar android:progress="0" 
+    	android:layout_height="30dp" 
+    	android:id="@+id/bar_1_gray" 
+    	style="?android:attr/progressBarStyleHorizontal" 
+    	android:layout_width="fill_parent"
+    	android:layout_below="@id/plabel"
+		android:visibility="gone"
+		android:progressDrawable="@layout/gray_progress"
+     	android:max="100"/> 
+              
+    <com.southfreo.quota.widgets.TextProgressBar android:progress="0" 
+    	android:layout_height="30dp" 
+    	android:id="@+id/bar_1_red" 
+    	style="?android:attr/progressBarStyleHorizontal" 
+    	android:layout_width="fill_parent"
+    	android:layout_below="@id/plabel"
+		android:visibility="gone"
+		android:progressDrawable="@layout/red_progress"
+     	android:max="100"/> 
+
+</RelativeLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+              
+<!--  Off-Peak -->              
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+	android:background="@layout/customshape"
+    android:padding="10dp"
+    >
+    
+ 	<TextView android:id="@+id/plabel2" 
+              android:layout_width="200dp" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+              android:textSize="14dp"
+              android:gravity="left"
+              android:textColor="#FFFFFFFF"/>
+
+ 	<TextView android:id="@+id/pvalue2" 
+              android:layout_width="150dp" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+              android:textSize="14dp"
+              android:textColor="#FFFFFFFF"
+              android:gravity="right"
+              android:layout_alignParentRight="true"
+              android:layout_toRightOf="@+id/plabel2"
+              />
+              
+    <com.southfreo.quota.widgets.TextProgressBar android:progress="0" 
+    	android:layout_height="30dp" 
+    	android:id="@+id/bar_2_gray" 
+    	style="?android:attr/progressBarStyleHorizontal" 
+    	android:layout_width="fill_parent"
+    	android:layout_below="@id/plabel2"
+		android:visibility="gone"
+		android:progressDrawable="@layout/gray_progress"
+     	android:max="100"/> 
+              
+    <com.southfreo.quota.widgets.TextProgressBar android:progress="0" 
+    	android:layout_height="30dp" 
+    	android:id="@+id/bar_2_red" 
+    	style="?android:attr/progressBarStyleHorizontal" 
+    	android:layout_width="fill_parent"
+    	android:layout_below="@id/plabel2"
+		android:visibility="gone"
+		android:progressDrawable="@layout/red_progress"
+     	android:max="100"/> 
+     	         
+
+
+</RelativeLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+
+<!--  Expiry -->              
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+	android:background="@layout/customshape"
+    android:padding="10dp"
+    >
+              
+              
+    <com.southfreo.quota.widgets.TextProgressBar 
+    	android:progress="0" 
+    	android:layout_height="30dp" 
+    	android:id="@+id/bar_3_blue" 
+    	style="?android:attr/progressBarStyleHorizontal" 
+    	android:progressDrawable="@layout/blue_progress"
+    	android:layout_width="fill_parent"
+    	android:layout_below="@id/plabel2"
+     	android:max="100"/>          
+
+
+</RelativeLayout>
+</LinearLayout>
+
+

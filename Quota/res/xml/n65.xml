@@ -1,0 +1,40 @@
+<quotaxml version="1">
+<provider id="65" dtype="2" pgid="65" name="Google AdSense" type="ALL Statistics" cookie="google.com" parsemethod="xml" secure="false" icon="google" providerurl="https://www.google.com" version="1.0" description="Access your Google Adsense Account">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.google.com/accounts/Login" message="Connect"/>
+				<url id="2" http="https://www.google.com/accounts/LoginAuth" post="dsh=--DK_DSH--&amp;GALX=--DK_GALX--&amp;Email=--DS_PARAM1--&amp;Passwd=--DS_PARAM2--&amp;signIn=Sign+in&amp;asts=" message="Login"/>
+				<url id="3" http="https://www.google.com/accounts/ServiceLogin?service=adsense&amp;rm=hide&amp;alwf=true&amp;passive=true&amp;continue=https%3A%2F%2Fwww.google.com%2Fadsense%2Flogin-box-gaiaauth&amp;followup=https%3A%2F%2Fwww.google.com%2Fadsense%2Flogin-box-gaiaauth" message="Login"/><!-- Analytics Page -->
+				<url id="10" http="https://www.google.com/adsense/report/overview?timePeriod=--DS_PARAM3--" message="Stats"/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_DSH--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="dsh"]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="1" name="--DK_GALX--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="GALX"]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- Login Issue -->
+				<key id="40" name="--DK_badlogin--" type="string" src="url" srcid="2" extract="regex" trimspace="true" condition="1">
+					<find><![CDATA[(?i)The username or password you entered is incorrect]]></find>
+					<pos>0</pos>
+				</key><!--Data-->
+				<key id="10" name="--DK_earn--" type="string" src="url" srcid="10" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Total estimated earnings.*?nowrap>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="65" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Earnings:" bal1value="--DK_earn--" bal2name="" bal2value="" headings="" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

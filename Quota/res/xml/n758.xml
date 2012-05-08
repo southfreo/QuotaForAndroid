@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quotaxml version="1.0">
+	<provider id="758" type="AUS Mobile" pgid="758" name="Optus Postpay" parsemethod="xml" version="1.1" icon="1" description="Optus Postpay provider which adds options to add Social Internet to Data charges" secure="no" cookie="optus.com.au" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl="">
+        <model>
+            <datassource>
+                <url id="2" http="https://my.optus.com.au/signon/Optus/login_ext.sec" post="SMENC=ISO-8859-1&amp;SMLOCALE=US-EN&amp;target=HTTPS%3A%2F%2Fmy.optus.com.au%2Fweb%2Foscportal.portal%3F_nfpb%3Dtrue%26_pageLabel%3Dmyaccount%26site%3Dpersonal&amp;smauthreason=0&amp;smagentname=Hp78kFUMHCYddNe1TJmGKxT57SuEDCMoLqqOzRBGImr20%2Btxe1ylGUCySYZ%2FCvHj&amp;postpreservationdata=&amp;USER=--DS_PARAM1--&amp;PASSWORD=--DS_PARAM2--" message="Logging in"/>
+                <url id="3" http="https://my.optus.com.au--DK_UPAGE--" message="Getting Usage"/>
+                <url id="4" http="https://my.optus.com.au--DK_DPAGE--" message="Getting Detail"/>
+                
+                <XXurl id="4" http="file:///Users/kevinbruton/Documents/iPhone/Quota/providers/test/OptusPostpay/social.html" message="Testing.." />
+            </datassource>
+
+            <datakeys>
+				<key id="20" name="--DK_UPAGE--" type="string" trimhtml="true" src="url" srcid="2" extract="regex">
+					<find><![CDATA[(?si)--DS_PARAM4--.*?account_usage.*?<a href="(.*?)">View usage]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="30" name="--DK_DPAGE--" type="string" trimhtml="true" src="url" srcid="3" extract="regex" condition="2">
+					<find><![CDATA[href="(/web/oscportal.portal.*?)">--DS_PARAM4--<]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<!-- Grab Individual Charges -->
+               <key id="31" name="--DK_sms--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f"  default="0" extract="regex" removechars="$||," condition="10">
+                    <find><![CDATA[SMS - Text Messaging</td>.*?yellow1">(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+               <key id="32" name="--DK_smsint--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f"  default="0" extract="regex" removechars="$||," condition="11">
+                    <find><![CDATA[>SMS-Text Messaging Int'l</td>.*?"yellow1">(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+               <key id="32" name="--DK_other--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f"  default="0" extract="regex" removechars="$||," condition="12">
+                    <find><![CDATA[Other</td>.*?yellow1">(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+               <key id="32" name="--DK_mms--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f"  default="0" extract="regex" removechars="$||,">
+                    <find><![CDATA[MMS - Multimedia Messaging</td>.*?yellow1">(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+               <key id="32" name="--DK_mobile--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f"  default="0" extract="regex" removechars="$||,">
+                    <find><![CDATA[Mobile Call Charges</td>.*?yellow1">(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+ 
+                <key id="33" name="--DK_Total--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f" extract="regex" removechars="$||,">
+                    <find><![CDATA[Total \(excludes GST\).*?">(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+               
+               	<key id="100" name="--DK_TGST--" type="number" src="key" srcid="40" outputtype="1" outputformat="$%.2f"   extract="expression">
+				   <find><![CDATA[--DK_sms_I_-- + --DK_smsint_I_-- + --DK_other_I_-- + --DK_mms_I_-- + --DK_mobile_I_-- * 1.1]]></find>				
+				</key>
+				
+
+				<!-- Data Charges -->
+				<key id="21" name="--DK_datasocial--" type="number" src="url" srcid="4" parseformat="MB" default="0" outputtype="7" extract="regex" condition="13">
+					<find><![CDATA[Social Internet</td>.*?>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="22" name="--DK_datamobile--" type="number" src="url" srcid="4" parseformat="MB" default="0" outputtype="7" extract="regex">
+					<find><![CDATA[Data - Mobile Internet</td>.*?>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="23" name="--DK_datausage--" type="number" src="url" srcid="4" parseformat="MB" outputtype="7" extract="expression">
+			       <find><![CDATA[--DK_datamobile_I_-- + --DK_datasocial_I_--]]></find>				
+				</key>
+
+				
+               <key id="40" name="--DK_Cap--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f" extract="regex" removechars="$||,">
+                    <find><![CDATA[;For.*? you get up to.*?(.*?) \(]]></find>
+ 					<pos>1</pos>
+               </key>
+
+
+               <key id="40" name="--DK_Datalimit--" type="number" src="url" srcid="4"  outputtype="1" outputformat="$%.2f" extract="regex" removechars="$||,">
+                    <find><![CDATA[of cap value.*?and(.*)MB]]></find>
+ 					<pos>1</pos>
+               </key>
+ 
+               <key id="40" name="--DK_ExpiryDate--" type="date" parseformat="dd/MM/yyyy" src="url" srcid="4"  extract="regex" >
+                    <find><![CDATA[(?si)Date From:.*toDate".*?value="(.*?)"]]></find>
+ 					<pos>1</pos>
+               </key>
+				
+               <key id="45" name="--DK_Number--" type="string" src="url" srcid="4"  removehtml="true" extract="regex" >
+                    <find><![CDATA[(?si)Service Number:.*?<strong>(.*?)</strong]]></find>
+ 					<pos>1</pos>
+               </key>
+
+               <key id="45" name="--DK_Plan--" type="string" src="url" srcid="4"  removehtml="true" extract="regex" >
+                    <find><![CDATA[(?si)Plan:.*?<strong>(.*?)</strong]]></find>
+ 					<pos>1</pos>
+               </key>
+				
+				<key id="100" name="--DK_USAGE_TABLE--" type="string" src="url" srcid="4" extract="htmltable">
+					<find><![CDATA[(?si)<table class="usagesummary".*?>(.*?)</table>]]></find>
+					<start><![CDATA[(?si)<tr.*?>(.*?)</tr>]]></start>
+					<end><![CDATA[(?si)<td.*?>(.*?)</td>]]></end>
+				</key>
+				
+				<key id="150" name="--DK_extras--" type="string" src="url" srcid="4" removechars="&lt;img src=&quot;/avolent/billerName/images/en/standard/schemeA/descending.gif&quot;&gt;||&lt;img src=&quot;/avolent/billerName/images/en/standard/schemeA/horizontal.gif&quot;&gt;" extract="simple" condition="5">
+					<find><![CDATA[<strong>Usage Summary]]></find>
+					<start><![CDATA[</strong>]]></start>
+					<end><![CDATA[Amounts shown are:<br>]]></end>
+				</key>
+				
+            </datakeys>
+            <conditions>
+                <condition id="10" operator="if_param_matches" p1="10" p2="No" action="expr" ap1="0"/>
+                <condition id="11" operator="if_param_matches" p1="11" p2="No" action="expr" ap1="0"/>
+                <condition id="12" operator="if_param_matches" p1="12" p2="No" action="expr" ap1="0"/>
+                <condition id="13" operator="if_param_matches" p1="13" p2="No" action="expr" ap1="0"/>
+           
+                <condition id="2" operator="is_key_empty" p1="--DK_UPAGE--" action="fail" ap1="Service not found, check settings."/>
+				<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+            </conditions>
+        </model>
+        
+        <view>
+ 			<summarypanel type="pbars">
+				<Progress id="1" name="Data" value="--DK_datausage_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="6"/>
+				<Progress id="2" name="Charges" value="--DK_TGST_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			
+			<extrapanel>
+				<extra id="1" type="text" name="Service" value="--DK_Number--" showonempty="false"/>
+				<extra id="1" type="text" name="Plan" value="--DK_Plan--" showonempty="true"/>
+			</extrapanel>
+			
+        </view>
+    </provider>
+</quotaxml>

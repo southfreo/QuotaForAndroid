@@ -1,0 +1,2607 @@
+com.android.vending.billing.IMarketBillingService -> com.a.a.a.a:
+    android.os.Bundle sendBillingRequest(android.os.Bundle) -> a
+com.android.vending.billing.IMarketBillingService$Stub -> com.a.a.a.c:
+    com.android.vending.billing.IMarketBillingService asInterface(android.os.IBinder) -> a
+    boolean onTransact(int,android.os.Parcel,android.os.Parcel,int) -> onTransact
+com.android.vending.billing.IMarketBillingService$Stub$Proxy -> com.a.a.a.b:
+    android.os.IBinder mRemote -> a
+    android.os.IBinder asBinder() -> asBinder
+    android.os.Bundle sendBillingRequest(android.os.Bundle) -> a
+com.dropbox.client.Authenticator -> com.dropbox.client.h:
+    java.lang.String consumer_key -> a
+    java.lang.String consumer_secret -> b
+    java.lang.String request_token_url -> e
+    java.lang.String access_token_url -> f
+    java.lang.String authorization_url -> g
+    oauth.signpost.OAuthConsumer consumer -> c
+    oauth.signpost.OAuthProvider provider -> h
+    java.util.Map config -> d
+    boolean $assertionsDisabled -> i
+    void sign(org.apache.http.HttpRequest) -> a
+    java.lang.String getTokenKey() -> a
+    java.lang.String getTokenSecret() -> b
+com.dropbox.client.DropboxAPI -> com.dropbox.client.a:
+    com.dropbox.client.DropboxClient mClient -> a
+    com.dropbox.client.DropboxAPI$Config mConfig -> b
+    com.dropbox.client.DropboxClient getClient(java.util.Map,com.dropbox.client.Authenticator) -> a
+    com.dropbox.client.DropboxAPI$Config getConfig$24d43a56() -> a
+    com.dropbox.client.DropboxAPI$Config authenticateToken(java.lang.String,java.lang.String,com.dropbox.client.DropboxAPI$Config) -> a
+    com.dropbox.client.DropboxAPI$Config authenticate(com.dropbox.client.DropboxAPI$Config,java.lang.String,java.lang.String) -> a
+    void deauthenticate() -> b
+    boolean isAuthenticated() -> c
+    com.dropbox.client.DropboxAPI$Account accountInfo() -> d
+    com.dropbox.client.DropboxAPI$FileDownload getFileStream$2f1f5115(java.lang.String,java.lang.String) -> a
+    int putFile(java.lang.String,java.lang.String,java.io.File) -> a
+    boolean delete(java.lang.String,java.lang.String) -> b
+    void access$100(java.util.Map,java.lang.String,java.lang.String) -> a
+    long access$300(java.util.Map,java.lang.String) -> a
+com.dropbox.client.DropboxAPI$Account -> com.dropbox.client.d:
+    java.lang.String country -> e
+    java.lang.String displayName -> c
+    long quotaQuota -> f
+    long quotaNormal -> g
+    long quotaShared -> h
+    long uid -> i
+    java.lang.String email -> d
+    com.dropbox.client.DropboxAPI this$0 -> j
+com.dropbox.client.DropboxAPI$Config -> com.dropbox.client.c:
+    java.lang.String consumerKey -> c
+    java.lang.String consumerSecret -> d
+    java.lang.String server -> e
+    java.lang.String contentServer -> f
+    int port -> g
+    java.lang.String accessTokenKey -> h
+    java.lang.String accessTokenSecret -> i
+    int authStatus -> j
+    java.lang.String authDetail -> k
+    com.dropbox.client.DropboxAPI this$0 -> l
+    java.util.Map toMap() -> a
+com.dropbox.client.DropboxAPI$DropboxReturn -> com.dropbox.client.b:
+    int httpCode -> a
+    java.lang.String httpReason -> b
+    boolean hasError -> c
+    com.dropbox.client.DropboxAPI this$0 -> d
+    java.util.Map getBody(java.util.Map) -> a
+com.dropbox.client.DropboxAPI$FileDownload -> com.dropbox.client.j:
+    java.io.InputStream is -> c
+    org.apache.http.HttpEntity entity -> d
+    java.lang.String mimeType -> e
+    java.lang.String etag -> f
+    long length -> g
+    com.dropbox.client.DropboxAPI this$0 -> h
+com.dropbox.client.DropboxClient -> com.dropbox.client.e:
+    com.dropbox.client.Authenticator auth -> c
+    java.lang.String api_host -> d
+    java.lang.String content_host -> e
+    int port -> f
+    boolean $assertionsDisabled -> g
+    java.util.Map accountInfo$567ee382() -> a
+    java.util.Map fileDelete$7630e888(java.lang.String,java.lang.String) -> a
+    org.apache.http.HttpResponse getFileWithVersion(java.lang.String,java.lang.String,java.lang.String) -> a
+    org.apache.http.HttpResponse putFile(java.lang.String,java.lang.String,java.io.File) -> a
+com.dropbox.client.DropboxClient$1 -> com.dropbox.client.g:
+    com.dropbox.client.DropboxClient this$0 -> a
+    java.lang.String getFilename() -> d
+com.dropbox.client.DropboxException -> com.dropbox.client.DropboxException:
+    long serialVersionUID -> serialVersionUID
+com.dropbox.client.RESTUtility -> com.dropbox.client.f:
+    java.lang.String defaultProtocol -> a
+    java.lang.String secureProtocol -> b
+    int BUFFER_SIZE -> c
+    org.apache.http.params.HttpParams sParams -> d
+    org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager sManager -> e
+    boolean $assertionsDisabled -> f
+    java.lang.String secureProtocol() -> b
+    org.apache.http.client.HttpClient getClient() -> c
+    java.lang.String urlencode(java.lang.Object[]) -> a
+    java.lang.Object parseAsJSON(org.apache.http.HttpResponse) -> a
+    java.lang.String buildFullURL(java.lang.String,java.lang.String,int,java.lang.String) -> a
+    java.lang.String buildURL(java.lang.String,int,java.lang.Object[]) -> a
+    java.lang.Object request$98d02cb(java.lang.String,java.lang.String,java.lang.String,int,java.lang.String,java.lang.Object[],com.dropbox.client.Authenticator) -> a
+com.dropbox.client.TrustedAuthenticator -> com.dropbox.client.i:
+    java.lang.String api_host -> e
+    int port -> f
+    boolean $assertionsDisabled -> g
+    boolean retrieveTrustedAccessToken(java.lang.String,java.lang.String) -> a
+com.google.gdata.util.common.base.PercentEscaper -> com.b.a.a.a.a.b:
+    char[] URI_ESCAPED_SPACE -> a
+    char[] UPPER_HEX_DIGITS -> b
+    boolean plusForSpace -> c
+    boolean[] safeOctets -> d
+    boolean[] createSafeOctets(java.lang.String) -> b
+    int nextEscapeIndex(java.lang.CharSequence,int,int) -> a
+    java.lang.String escape(java.lang.String) -> a
+    char[] escape(int) -> a
+com.google.gdata.util.common.base.UnicodeEscaper -> com.b.a.a.a.a.a:
+    java.lang.ThreadLocal DEST_TL -> a
+    char[] escape(int) -> a
+    int nextEscapeIndex(java.lang.CharSequence,int,int) -> a
+    java.lang.String escape(java.lang.String) -> a
+    java.lang.String escapeSlow(java.lang.String,int) -> a
+    int codePointAt(java.lang.CharSequence,int,int) -> b
+    char[] growBuffer(char[],int,int) -> a
+com.google.gdata.util.common.base.UnicodeEscaper$2 -> com.b.a.a.a.a.c:
+    java.lang.Object initialValue() -> initialValue
+com.markupartist.android.widget.ActionBar -> com.markupartist.android.widget.ActionBar:
+    android.view.LayoutInflater mInflater -> a
+    android.widget.RelativeLayout mBarView -> b
+    android.widget.ImageView mLogoView -> c
+    android.view.View mBackIndicator -> d
+    android.widget.TextView mTitleView -> e
+    android.widget.LinearLayout mActionsView -> f
+    android.widget.ImageButton mHomeBtn -> g
+    android.widget.RelativeLayout mHomeLayout -> h
+    android.widget.ProgressBar mProgress -> i
+    void setHomeAction(com.markupartist.android.widget.ActionBar$Action) -> a
+    void setDisplayHomeAsUpEnabled$1385ff() -> a
+    void setTitle(java.lang.CharSequence) -> a
+    void setProgressBarVisibility(int) -> a
+    void onClick(android.view.View) -> onClick
+    void addAction(com.markupartist.android.widget.ActionBar$Action) -> b
+com.markupartist.android.widget.ActionBar$AbstractAction -> com.markupartist.android.widget.ActionBar$AbstractAction:
+    int mDrawable -> a
+    int getDrawable() -> b
+com.markupartist.android.widget.ActionBar$Action -> com.markupartist.android.widget.ActionBar$Action:
+    int getDrawable() -> b
+    void performAction$3c7ec8c3() -> a
+com.markupartist.android.widget.ActionBar$ActionList -> com.markupartist.android.widget.ActionBar$ActionList:
+com.markupartist.android.widget.ActionBar$ClickAction -> com.markupartist.android.widget.ActionBar$ClickAction:
+    android.content.Context mContext -> a
+    android.view.View$OnClickListener mClicker -> b
+    void performAction$3c7ec8c3() -> a
+com.markupartist.android.widget.ActionBar$DialogAction -> com.markupartist.android.widget.ActionBar$DialogAction:
+    java.lang.String mDialog -> a
+    android.content.Context mContext -> b
+    void performAction$3c7ec8c3() -> a
+com.markupartist.android.widget.ActionBar$IntentAction -> com.markupartist.android.widget.ActionBar$IntentAction:
+    android.content.Context mContext -> a
+    android.content.Intent mIntent -> b
+    void performAction$3c7ec8c3() -> a
+com.markupartist.android.widget.ActionBar$IntentBack -> com.markupartist.android.widget.ActionBar$IntentBack:
+    android.content.Context mContext -> a
+    android.app.Activity mActivity -> b
+    void performAction$3c7ec8c3() -> a
+com.markupartist.android.widget.ScrollingTextView -> com.markupartist.android.widget.ScrollingTextView:
+    void onFocusChanged(boolean,int,android.graphics.Rect) -> onFocusChanged
+    void onWindowFocusChanged(boolean) -> onWindowFocusChanged
+    boolean isFocused() -> isFocused
+com.markupartist.android.widget.actionbar.R -> com.markupartist.android.widget.a.b:
+com.markupartist.android.widget.actionbar.R$styleable -> com.markupartist.android.widget.a.a:
+    int[] ActionBar -> a
+com.southfreo.quota.Dropbox.DownloadFile -> com.southfreo.quota.Dropbox.l:
+    java.io.File downloadfile -> a
+    com.southfreo.quota.Dropbox.DropboxController mDropboxSample -> b
+    com.dropbox.client.DropboxAPI api -> c
+    java.lang.String dbfile -> d
+    boolean downloadDropboxFile(java.lang.String,java.io.File) -> a
+    java.lang.Integer doInBackground$9ecd34e() -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.southfreo.quota.Dropbox.DropboxController -> com.southfreo.quota.Dropbox.DropboxController:
+    com.dropbox.client.DropboxAPI api -> a
+    boolean mLoggedIn -> b
+    android.widget.EditText mLoginEmail -> c
+    android.widget.EditText mLoginPassword -> d
+    android.widget.Button mSubmit -> e
+    android.widget.Button mUpload -> f
+    android.widget.Button mDownload -> g
+    android.app.ProgressDialog mProgressBar -> h
+    android.widget.LinearLayout mLoginPanel -> i
+    android.widget.LinearLayout mLoggedInPanel -> j
+    android.widget.ImageView mLogo -> k
+    android.widget.TextView txtLastBackup -> l
+    android.widget.TextView txtUser -> m
+    android.widget.TextView txtNumAccounts -> n
+    com.dropbox.client.DropboxAPI$Config mConfig -> o
+    void UpdateBackup() -> a
+    void DownloadComplete() -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    com.dropbox.client.DropboxAPI getAPI() -> c
+    void setLoggedIn(boolean) -> a
+    void showToast(java.lang.String) -> a
+    void getAccountInfo() -> e
+    void displayAccountInfo(com.dropbox.client.DropboxAPI$Account) -> a
+    com.dropbox.client.DropboxAPI$Config getConfig() -> f
+    void setConfig(com.dropbox.client.DropboxAPI$Config) -> a
+    java.lang.String[] getKeys() -> g
+    void clearKeys() -> d
+    boolean access$0(com.southfreo.quota.Dropbox.DropboxController) -> a
+    com.dropbox.client.DropboxAPI access$1(com.southfreo.quota.Dropbox.DropboxController) -> b
+    void access$2(com.southfreo.quota.Dropbox.DropboxController) -> c
+    void access$3(com.southfreo.quota.Dropbox.DropboxController) -> d
+    void access$4(com.southfreo.quota.Dropbox.DropboxController,android.app.ProgressDialog) -> a
+    android.app.ProgressDialog access$5(com.southfreo.quota.Dropbox.DropboxController) -> e
+com.southfreo.quota.Dropbox.DropboxController$1 -> com.southfreo.quota.Dropbox.g:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.content.DialogInterface,int,boolean) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$2 -> com.southfreo.quota.Dropbox.h:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$3 -> com.southfreo.quota.Dropbox.i:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$4 -> com.southfreo.quota.Dropbox.c:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$5 -> com.southfreo.quota.Dropbox.d:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$6 -> com.southfreo.quota.Dropbox.e:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$6$1 -> com.southfreo.quota.Dropbox.b:
+    com.southfreo.quota.Dropbox.DropboxController$6 this$1 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$6$2 -> com.southfreo.quota.Dropbox.a:
+    com.southfreo.quota.Dropbox.DropboxController$6 this$1 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.Dropbox.DropboxController$7 -> com.southfreo.quota.Dropbox.f:
+    com.southfreo.quota.Dropbox.DropboxController this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.Dropbox.LoginAsyncTask -> com.southfreo.quota.Dropbox.j:
+    java.lang.String mUser -> a
+    java.lang.String mPassword -> b
+    java.lang.String mErrorMessage -> c
+    com.southfreo.quota.Dropbox.DropboxController mDropboxSample -> d
+    com.dropbox.client.DropboxAPI$Config mConfig -> e
+    com.dropbox.client.DropboxAPI$Account mAccount -> f
+    java.lang.Integer doInBackground$9ecd34e() -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.southfreo.quota.Dropbox.UploadFile -> com.southfreo.quota.Dropbox.k:
+    java.io.File uploadfile -> a
+    com.southfreo.quota.Dropbox.DropboxController mDropboxSample -> b
+    com.dropbox.client.DropboxAPI api -> c
+    java.lang.Integer doInBackground$9ecd34e() -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+com.southfreo.quota.activities.AppSettingsConfigure -> com.southfreo.quota.activities.AppSettingsConfigure:
+    com.southfreo.quota.widgets.ListPreferenceValueNoParam updateTime -> b
+    com.southfreo.quota.widgets.ListPreferenceValueNoParam pinExpiry -> c
+    android.preference.CheckBoxPreference disableService -> d
+    android.preference.CheckBoxPreference wifiOnly -> e
+    android.preference.PreferenceScreen pinScreen -> f
+    android.preference.PreferenceScreen dropBoxScreen -> g
+    long THIRTY_SECONDS -> h
+    long ONE_MINUTE -> a
+    long FIVE_MINUTES -> i
+    long TEN_MINUTES -> j
+    java.lang.String[] updateTitles -> k
+    long[] updateValues -> l
+    java.lang.String[] pin_updateTitles -> m
+    long[] pin_updateValues -> n
+    android.content.Intent createIntent(android.content.Context) -> a
+    java.lang.String pin_periodToString(long) -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void access$0(com.southfreo.quota.activities.AppSettingsConfigure,java.lang.String) -> a
+com.southfreo.quota.activities.AppSettingsConfigure$1 -> com.southfreo.quota.activities.ak:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    void unzipComplete(boolean) -> a
+com.southfreo.quota.activities.AppSettingsConfigure$10 -> com.southfreo.quota.activities.b:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$11 -> com.southfreo.quota.activities.a:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$2 -> com.southfreo.quota.activities.al:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    com.southfreo.quota.utils.UnZip$UnZipEvent val$ue -> b
+    java.lang.String val$des -> c
+    void downloadComplete(boolean,java.lang.String) -> a
+com.southfreo.quota.activities.AppSettingsConfigure$3 -> com.southfreo.quota.activities.ai:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$4 -> com.southfreo.quota.activities.aj:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$5 -> com.southfreo.quota.activities.ag:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$6 -> com.southfreo.quota.activities.ah:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$7 -> com.southfreo.quota.activities.ae:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$8 -> com.southfreo.quota.activities.af:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$9 -> com.southfreo.quota.activities.ad:
+    com.southfreo.quota.activities.AppSettingsConfigure this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.AppSettingsConfigure$9$1 -> com.southfreo.quota.activities.ac:
+    com.southfreo.quota.activities.AppSettingsConfigure$9 this$1 -> a
+    android.widget.EditText val$input -> b
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.activities.ChooseProviderActivity -> com.southfreo.quota.activities.ChooseProviderActivity:
+    java.lang.String CHOSEN_PROVIDER_CODE -> a
+    boolean scrolling -> b
+    java.util.ArrayList selectedProviders -> c
+    java.lang.String currentType -> d
+    com.southfreo.quota.model.Provider selectedProvider -> e
+    kankan.wheel.widget.WheelView whlptypes -> f
+    kankan.wheel.widget.WheelView whlproviders -> g
+    android.widget.Button butOK -> h
+    android.widget.Button butCancel -> i
+    com.southfreo.quota.control.ProviderManager pm -> j
+    com.southfreo.quota.control.UIManager ui -> k
+    boolean addScreen -> l
+    android.widget.TextView pname -> m
+    android.widget.TextView desc -> n
+    android.widget.TextView version -> o
+    void onResume() -> onResume
+    void onPause() -> onPause
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void updateProviderDetail(int) -> a
+    void updateProviders(int,boolean,int) -> a
+    java.util.ArrayList access$0(com.southfreo.quota.activities.ChooseProviderActivity) -> a
+    com.southfreo.quota.control.UIManager access$1(com.southfreo.quota.activities.ChooseProviderActivity) -> b
+    com.southfreo.quota.control.ProviderManager access$2(com.southfreo.quota.activities.ChooseProviderActivity) -> c
+    com.southfreo.quota.model.Provider access$3(com.southfreo.quota.activities.ChooseProviderActivity) -> d
+    boolean access$4(com.southfreo.quota.activities.ChooseProviderActivity) -> e
+    boolean access$5(com.southfreo.quota.activities.ChooseProviderActivity) -> f
+    void access$6$71f6c52e(com.southfreo.quota.activities.ChooseProviderActivity,int) -> a
+    void access$7(com.southfreo.quota.activities.ChooseProviderActivity,boolean) -> a
+    kankan.wheel.widget.WheelView access$8(com.southfreo.quota.activities.ChooseProviderActivity) -> g
+    void access$9(com.southfreo.quota.activities.ChooseProviderActivity,int) -> b
+com.southfreo.quota.activities.ChooseProviderActivity$1 -> com.southfreo.quota.activities.o:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.activities.ChooseProviderActivity$2 -> com.southfreo.quota.activities.q:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.activities.ChooseProviderActivity$3 -> com.southfreo.quota.activities.p:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    void onChanged$38d22c4c(int) -> a
+com.southfreo.quota.activities.ChooseProviderActivity$4 -> com.southfreo.quota.activities.n:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    void onScrollingStarted$16b3c7ac() -> a
+    void onScrollingFinished$16b3c7ac() -> b
+com.southfreo.quota.activities.ChooseProviderActivity$5 -> com.southfreo.quota.activities.m:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    void onChanged$38d22c4c(int) -> a
+com.southfreo.quota.activities.ChooseProviderActivity$providerAdapter -> com.southfreo.quota.activities.l:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    android.view.View getItem(int,android.view.View,android.view.ViewGroup) -> a
+    int getItemsCount() -> a
+    java.lang.CharSequence getItemText(int) -> a
+com.southfreo.quota.activities.ChooseProviderActivity$typesAdapter -> com.southfreo.quota.activities.u:
+    com.southfreo.quota.activities.ChooseProviderActivity this$0 -> a
+    int getItemsCount() -> a
+    java.lang.CharSequence getItemText(int) -> a
+com.southfreo.quota.activities.DetailActivity -> com.southfreo.quota.activities.DetailActivity:
+    com.markupartist.android.widget.ActionBar actionBar -> b
+    android.widget.TextView headerLabel -> c
+    android.widget.TextView headersubLabel -> d
+    android.widget.ImageView providerLogo -> e
+    android.widget.TextView errormessage -> f
+    android.widget.LinearLayout detailContent -> g
+    android.widget.LinearLayout errorContent -> h
+    com.southfreo.quota.control.SlotManager sm -> i
+    com.southfreo.quota.control.ProviderManager pm -> j
+    com.southfreo.quota.control.UIManager ui -> k
+    com.southfreo.quota.model.Provider thisProvider -> a
+    void updateProviderStatus(java.lang.String) -> a
+    void onResume() -> onResume
+    void onPause() -> onPause
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    void inProgress(boolean) -> a
+    void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    void showErrorMessage(java.lang.String) -> b
+    void RefreshProvider() -> b
+    android.content.Intent CreateDetailScreen(android.content.Context,int) -> a
+    void onCreate(android.os.Bundle,int) -> a
+    void updateUI$2b53183d(java.lang.Object) -> a
+    void update(java.util.Observable,java.lang.Object) -> update
+    void updateDetail() -> a
+com.southfreo.quota.activities.DetailActivity$1 -> com.southfreo.quota.activities.h:
+    com.southfreo.quota.activities.DetailActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.activities.DetailActivity$2 -> com.southfreo.quota.activities.i:
+    com.southfreo.quota.activities.DetailActivity this$0 -> a
+    java.util.Observable val$observable -> b
+    java.lang.Object val$data -> c
+    void run() -> run
+com.southfreo.quota.activities.DetailActivity_Account -> com.southfreo.quota.activities.DetailActivity_Account:
+    android.widget.TextView textLine1 -> b
+    android.widget.TextView textLine2 -> c
+    android.widget.RelativeLayout rssView -> d
+    android.widget.RelativeLayout summaryView -> e
+    android.widget.ListView rssTable -> f
+    android.widget.RelativeLayout extraTable -> g
+    android.widget.GridView gridview -> h
+    void updateDetail() -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    android.widget.ListView access$0(com.southfreo.quota.activities.DetailActivity_Account) -> a
+com.southfreo.quota.activities.DetailActivity_Account$1 -> com.southfreo.quota.activities.w:
+    com.southfreo.quota.activities.DetailActivity_Account this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.southfreo.quota.activities.DetailActivity_Account$2 -> com.southfreo.quota.activities.v:
+    com.southfreo.quota.activities.DetailActivity_Account this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.southfreo.quota.activities.DetailActivity_Account$accountAdapter -> com.southfreo.quota.activities.c:
+    android.view.LayoutInflater mInflater -> a
+    android.content.Context context -> b
+    java.util.ArrayList items -> c
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    android.widget.Filter getFilter() -> getFilter
+    long getItemId(int) -> getItemId
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+com.southfreo.quota.activities.DetailActivity_Account$accountAdapter$ViewHolder -> com.southfreo.quota.activities.am:
+    android.widget.TextView col1 -> a
+    android.widget.TextView col2 -> b
+    android.widget.TextView col3 -> c
+com.southfreo.quota.activities.DetailActivity_Account$rssAdapter -> com.southfreo.quota.activities.x:
+    android.view.LayoutInflater mInflater -> a
+    android.content.Context context -> b
+    java.util.ArrayList items -> c
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    android.widget.Filter getFilter() -> getFilter
+    long getItemId(int) -> getItemId
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+com.southfreo.quota.activities.DetailActivity_Account$rssAdapter$ViewHolder -> com.southfreo.quota.activities.g:
+    android.widget.TextView textLine -> a
+    android.widget.TextView bodyText -> b
+com.southfreo.quota.activities.DetailActivity_ISP -> com.southfreo.quota.activities.DetailActivity_ISP:
+    android.view.GestureDetector gestureDetector -> b
+    android.view.animation.Animation slideLeftIn -> c
+    android.view.animation.Animation slideLeftOut -> d
+    android.view.animation.Animation slideRightIn -> e
+    android.view.animation.Animation slideRightOut -> f
+    android.widget.ViewFlipper viewFlipper -> g
+    com.southfreo.quota.widgets.PageControl pageControl -> h
+    com.southfreo.quota.widgets.TextProgressBar expiryp1 -> i
+    android.widget.TextView expiryp2_1 -> j
+    android.widget.TextView expiryp2_2 -> k
+    android.widget.TextView peakLabel -> l
+    android.widget.TextView peakValue -> m
+    android.widget.TextView offpeakLabel -> n
+    android.widget.TextView offpeakValue -> o
+    android.widget.TextView peakLable2 -> p
+    android.widget.TextView peakValue2 -> q
+    android.widget.TextView offpeakLable2 -> r
+    android.widget.TextView offpeakValue2 -> s
+    com.southfreo.quota.widgets.TextProgressBar peakBar_gray -> t
+    com.southfreo.quota.widgets.TextProgressBar peakBar_red -> u
+    com.southfreo.quota.widgets.TextProgressBar offpeakBar_gray -> v
+    com.southfreo.quota.widgets.TextProgressBar offpeakBar_red -> w
+    android.widget.GridView gridview -> x
+    com.southfreo.quota.model.extraTableAdapter edAdapt -> y
+    void setupProgress(com.southfreo.quota.model.kbProgressBar,int) -> a
+    void updateDetail() -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    android.widget.ViewFlipper access$0(com.southfreo.quota.activities.DetailActivity_ISP) -> a
+    android.view.animation.Animation access$1(com.southfreo.quota.activities.DetailActivity_ISP) -> b
+    android.view.animation.Animation access$2(com.southfreo.quota.activities.DetailActivity_ISP) -> c
+    com.southfreo.quota.widgets.PageControl access$3(com.southfreo.quota.activities.DetailActivity_ISP) -> d
+    android.view.animation.Animation access$4(com.southfreo.quota.activities.DetailActivity_ISP) -> e
+    android.view.animation.Animation access$5(com.southfreo.quota.activities.DetailActivity_ISP) -> f
+    android.view.GestureDetector access$6(com.southfreo.quota.activities.DetailActivity_ISP) -> g
+com.southfreo.quota.activities.DetailActivity_ISP$1 -> com.southfreo.quota.activities.ab:
+    com.southfreo.quota.activities.DetailActivity_ISP this$0 -> a
+    boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+com.southfreo.quota.activities.DetailActivity_ISP$MyGestureDetector -> com.southfreo.quota.activities.e:
+    com.southfreo.quota.activities.DetailActivity_ISP this$0 -> a
+    boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float) -> onFling
+com.southfreo.quota.activities.PinEntry -> com.southfreo.quota.activities.PinEntry:
+    int MODE_CREATE -> a
+    int MODE_VALIDATE -> b
+    int MODE_CHANGE -> c
+    java.lang.String MODE_OP -> d
+    int SUBMODE_ENTERPIN -> e
+    int SUBMODE_VALIDATEPIN -> f
+    int SUBMODE_CONFIRMNEW -> g
+    android.widget.Button butOK -> h
+    android.widget.EditText pinTxt -> i
+    int pinmode -> j
+    int pin_submode -> k
+    android.widget.TextView header -> l
+    java.lang.String cpin -> m
+    android.view.inputmethod.InputMethodManager mgr -> n
+    void onCreate(android.os.Bundle) -> onCreate
+    void CheckPin() -> a
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onResume() -> onResume
+com.southfreo.quota.activities.PinEntry$1 -> com.southfreo.quota.activities.k:
+    com.southfreo.quota.activities.PinEntry this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.activities.PinEntry$2 -> com.southfreo.quota.activities.j:
+    com.southfreo.quota.activities.PinEntry this$0 -> a
+    boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
+com.southfreo.quota.activities.ProviderSettings -> com.southfreo.quota.activities.ProviderSettings:
+    android.preference.PreferenceScreen root -> a
+    boolean addscreen -> b
+    com.southfreo.quota.widgets.IconPreference providerPref -> c
+    android.preference.PreferenceCategory dynamicCat -> d
+    android.preference.PreferenceCategory dynamicCatOptional -> e
+    android.preference.PreferenceScreen intentProviderLink -> f
+    android.preference.PreferenceScreen intentSupportLink -> g
+    com.southfreo.quota.widgets.TextParamValidate displayName -> h
+    android.preference.CheckBoxPreference autoUpdate -> i
+    com.southfreo.quota.model.Provider currentEditProvider -> j
+    com.southfreo.quota.model.paramgroup editingparameters -> k
+    android.preference.PreferenceCategory alertCat -> l
+    com.southfreo.quota.control.SlotManager sm -> m
+    com.southfreo.quota.control.ProviderManager pm -> n
+    com.southfreo.quota.control.UIManager ui -> o
+    android.preference.CheckBoxPreference idealAlert -> p
+    com.southfreo.quota.widgets.TextParamValidate p1Alert -> q
+    com.southfreo.quota.widgets.TextParamValidate p2Alert -> r
+    android.content.Intent createIntent(android.content.Context) -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    void onPause() -> onPause
+    void setGeneralPref$2fdd7e4d(android.preference.DialogPreference,com.southfreo.quota.model.parameter) -> a
+    void saveNetwork() -> a
+    void updateProviderSettings(int) -> a
+    void CancelBacktoSummary() -> b
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    void access$0(com.southfreo.quota.activities.ProviderSettings) -> a
+com.southfreo.quota.activities.ProviderSettings$1 -> com.southfreo.quota.activities.aa:
+    com.southfreo.quota.activities.ProviderSettings this$0 -> a
+    boolean onPreferenceClick(android.preference.Preference) -> onPreferenceClick
+com.southfreo.quota.activities.ProviderSettings$2 -> com.southfreo.quota.activities.z:
+    com.southfreo.quota.activities.ProviderSettings this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.activities.ProviderSettings$3 -> com.southfreo.quota.activities.y:
+    com.southfreo.quota.activities.ProviderSettings this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.activities.SummaryActivity -> com.southfreo.quota.activities.SummaryActivity:
+    com.southfreo.quota.activities.SummaryActivity$EfficientAdapter adap -> a
+    java.lang.String GOTO_NEXT -> b
+    com.southfreo.quota.control.ProviderManager pm -> c
+    com.southfreo.quota.control.SlotManager sm -> d
+    com.markupartist.android.widget.ActionBar actionBar -> e
+    com.southfreo.quota.control.UIManager ui -> f
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo) -> onCreateContextMenu
+    boolean onContextItemSelected(android.view.MenuItem) -> onContextItemSelected
+    android.content.Intent createIntent(android.content.Context) -> a
+    void showDetail(int) -> a
+    void onListItemClick(android.widget.ListView,android.view.View,int,long) -> onListItemClick
+    void onPause() -> onPause
+    void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    void inProgress(boolean) -> a
+    void UpdateTitle() -> a
+    void updateUI$2b53183d(java.lang.Object) -> a
+    void update(java.util.Observable,java.lang.Object) -> update
+    void access$0(com.southfreo.quota.activities.SummaryActivity) -> a
+com.southfreo.quota.activities.SummaryActivity$1 -> com.southfreo.quota.activities.t:
+    com.southfreo.quota.activities.SummaryActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.activities.SummaryActivity$2 -> com.southfreo.quota.activities.s:
+    com.southfreo.quota.activities.SummaryActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.southfreo.quota.activities.SummaryActivity$3 -> com.southfreo.quota.activities.r:
+    com.southfreo.quota.activities.SummaryActivity this$0 -> a
+    java.util.Observable val$observable -> b
+    java.lang.Object val$data -> c
+    void run() -> run
+com.southfreo.quota.activities.SummaryActivity$EfficientAdapter -> com.southfreo.quota.activities.f:
+    android.view.LayoutInflater mInflater -> a
+    android.content.Context context -> b
+    com.southfreo.quota.control.ProviderManager pm -> c
+    com.southfreo.quota.control.SlotManager sm -> d
+    com.southfreo.quota.control.UIManager ui -> e
+    void setupProgress(com.southfreo.quota.model.kbProgressBar,com.southfreo.quota.activities.SummaryActivity$EfficientAdapter$ViewHolder,int) -> a
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    android.widget.Filter getFilter() -> getFilter
+    long getItemId(int) -> getItemId
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+com.southfreo.quota.activities.SummaryActivity$EfficientAdapter$ViewHolder -> com.southfreo.quota.activities.d:
+    android.widget.TextView textLine -> a
+    android.widget.TextView textLine2 -> b
+    android.widget.ImageView iconLine -> c
+    android.widget.LinearLayout summarypanel -> d
+    com.southfreo.quota.widgets.TextProgressBar p1red -> e
+    com.southfreo.quota.widgets.TextProgressBar p1gray -> f
+    com.southfreo.quota.widgets.TextProgressBar p2red -> g
+    com.southfreo.quota.widgets.TextProgressBar p2gray -> h
+    android.widget.TextView summaryText -> i
+com.southfreo.quota.activities.SummaryWidgetConfigure -> com.southfreo.quota.activities.SummaryWidgetConfigure:
+    com.southfreo.quota.control.SlotManager sm -> a
+    com.southfreo.quota.widgets.ListPreferenceValueNoParam listPref -> b
+    com.southfreo.quota.widgets.ListPreferenceValueNoParam dispPref -> c
+    com.southfreo.quota.widgets.ListPreferenceValueNoParam backPref -> d
+    int appWidgetId -> e
+    java.lang.String[] displayTitles -> f
+    java.lang.String[] backgroundChoice -> g
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+com.southfreo.quota.billing.Billing -> com.southfreo.quota.billing.Billing:
+    com.southfreo.quota.billing.Billing$BillingPurchaseObserver mDungeonsPurchaseObserver -> a
+    android.os.Handler mHandler -> b
+    com.southfreo.quota.billing.BillingService mBillingService -> c
+    android.widget.Button mBuyButton -> d
+    android.widget.Button mCancelButton -> e
+    com.southfreo.quota.billing.PurchaseDatabase mPurchaseDatabase -> f
+    java.lang.String mPayloadContents -> g
+    com.southfreo.quota.billing.Billing$CatalogEntry[] CATALOG -> h
+    java.lang.String mItemName -> i
+    java.lang.String mSku -> j
+    void onCreate(android.os.Bundle) -> onCreate
+    void onStart() -> onStart
+    void onStop() -> onStop
+    void onDestroy() -> onDestroy
+    android.app.Dialog onCreateDialog(int) -> onCreateDialog
+    android.app.Dialog createDialog(int,int) -> a
+    void onClick(android.view.View) -> onClick
+    void access$0(com.southfreo.quota.billing.Billing) -> a
+    void access$1(com.southfreo.quota.billing.Billing,android.content.Context,java.lang.String,java.lang.String) -> a
+    void access$2(com.southfreo.quota.billing.Billing,android.content.Context,java.lang.String,java.lang.String) -> b
+com.southfreo.quota.billing.Billing$1 -> com.southfreo.quota.billing.b:
+    com.southfreo.quota.billing.Billing this$0 -> a
+    android.net.Uri val$helpUri -> b
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.billing.Billing$2 -> com.southfreo.quota.billing.d:
+    com.southfreo.quota.billing.Billing this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.billing.Billing$3 -> com.southfreo.quota.billing.e:
+    com.southfreo.quota.billing.Billing this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.billing.Billing$BillingPurchaseObserver -> com.southfreo.quota.billing.c:
+    com.southfreo.quota.billing.Billing this$0 -> a
+    void onBillingSupported(boolean) -> a
+    void onPurchaseStateChange$75164cf8(com.southfreo.quota.billing.Consts$PurchaseState) -> a
+    void onRestoreTransactionsResponse$4ea787c2(com.southfreo.quota.billing.Consts$ResponseCode) -> a
+com.southfreo.quota.billing.Billing$CatalogEntry -> com.southfreo.quota.billing.o:
+    java.lang.String sku -> a
+    int nameId -> b
+    com.southfreo.quota.billing.Billing$Managed managed -> c
+com.southfreo.quota.billing.Billing$Managed -> com.southfreo.quota.billing.Billing$Managed:
+    com.southfreo.quota.billing.Billing$Managed MANAGED -> a
+    com.southfreo.quota.billing.Billing$Managed UNMANAGED -> b
+    com.southfreo.quota.billing.Billing$Managed[] ENUM$VALUES -> c
+    com.southfreo.quota.billing.Billing$Managed[] values() -> values
+    com.southfreo.quota.billing.Billing$Managed valueOf(java.lang.String) -> valueOf
+com.southfreo.quota.billing.BillingReceiver -> com.southfreo.quota.billing.BillingReceiver:
+    void onReceive(android.content.Context,android.content.Intent) -> onReceive
+com.southfreo.quota.billing.BillingService -> com.southfreo.quota.billing.BillingService:
+    com.android.vending.billing.IMarketBillingService mService -> a
+    java.util.LinkedList mPendingRequests -> b
+    java.util.HashMap mSentRequests -> c
+    void setContext(android.content.Context) -> a
+    android.os.IBinder onBind(android.content.Intent) -> onBind
+    void onStart(android.content.Intent,int) -> onStart
+    boolean bindToMarketBillingService() -> h
+    boolean checkBillingSupported() -> a
+    boolean requestPurchase(java.lang.String,java.lang.String) -> a
+    boolean restoreTransactions() -> b
+    boolean confirmNotifications(int,java.lang.String[]) -> a
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+    void unbind() -> c
+    boolean access$0(com.southfreo.quota.billing.BillingService) -> a
+    java.util.LinkedList access$1() -> d
+    com.android.vending.billing.IMarketBillingService access$2() -> e
+    java.util.HashMap access$3() -> f
+    void access$4$78d40d3f() -> g
+com.southfreo.quota.billing.BillingService$BillingRequest -> com.southfreo.quota.billing.m:
+    int mStartId -> a
+    long mRequestId -> b
+    com.southfreo.quota.billing.BillingService this$0 -> c
+    int getStartId() -> b
+    boolean runRequest() -> c
+    boolean runIfConnected() -> d
+    void onRemoteException(android.os.RemoteException) -> a
+    long run() -> a
+    void responseCodeReceived(com.southfreo.quota.billing.Consts$ResponseCode) -> a
+    android.os.Bundle makeRequestBundle(java.lang.String) -> a
+    void logResponseCode$5dc9c75(android.os.Bundle) -> a
+com.southfreo.quota.billing.BillingService$CheckBillingSupported -> com.southfreo.quota.billing.k:
+    com.southfreo.quota.billing.BillingService this$0 -> a
+    long run() -> a
+com.southfreo.quota.billing.BillingService$ConfirmNotifications -> com.southfreo.quota.billing.p:
+    java.lang.String[] mNotifyIds -> a
+    com.southfreo.quota.billing.BillingService this$0 -> b
+    long run() -> a
+com.southfreo.quota.billing.BillingService$GetPurchaseInformation -> com.southfreo.quota.billing.q:
+    long mNonce -> a
+    java.lang.String[] mNotifyIds -> b
+    com.southfreo.quota.billing.BillingService this$0 -> c
+    long run() -> a
+    void onRemoteException(android.os.RemoteException) -> a
+com.southfreo.quota.billing.BillingService$RequestPurchase -> com.southfreo.quota.billing.j:
+    java.lang.String mProductId -> a
+    java.lang.String mDeveloperPayload -> b
+    com.southfreo.quota.billing.BillingService this$0 -> c
+    long run() -> a
+    void responseCodeReceived(com.southfreo.quota.billing.Consts$ResponseCode) -> a
+com.southfreo.quota.billing.BillingService$RestoreTransactions -> com.southfreo.quota.billing.g:
+    long mNonce -> a
+    com.southfreo.quota.billing.BillingService this$0 -> b
+    long run() -> a
+    void onRemoteException(android.os.RemoteException) -> a
+    void responseCodeReceived(com.southfreo.quota.billing.Consts$ResponseCode) -> a
+com.southfreo.quota.billing.Consts -> com.southfreo.quota.billing.Consts:
+    long BILLING_RESPONSE_INVALID_REQUEST_ID -> a
+com.southfreo.quota.billing.Consts$PurchaseState -> com.southfreo.quota.billing.Consts$PurchaseState:
+    com.southfreo.quota.billing.Consts$PurchaseState PURCHASED -> a
+    com.southfreo.quota.billing.Consts$PurchaseState CANCELED -> c
+    com.southfreo.quota.billing.Consts$PurchaseState REFUNDED -> b
+    com.southfreo.quota.billing.Consts$PurchaseState[] ENUM$VALUES -> d
+    com.southfreo.quota.billing.Consts$PurchaseState valueOf(int) -> a
+    com.southfreo.quota.billing.Consts$PurchaseState[] values() -> values
+    com.southfreo.quota.billing.Consts$PurchaseState valueOf(java.lang.String) -> valueOf
+com.southfreo.quota.billing.Consts$ResponseCode -> com.southfreo.quota.billing.Consts$ResponseCode:
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_OK -> a
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_USER_CANCELED -> c
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_SERVICE_UNAVAILABLE -> d
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_BILLING_UNAVAILABLE -> e
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_ITEM_UNAVAILABLE -> f
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_DEVELOPER_ERROR -> g
+    com.southfreo.quota.billing.Consts$ResponseCode RESULT_ERROR -> b
+    com.southfreo.quota.billing.Consts$ResponseCode[] ENUM$VALUES -> h
+    com.southfreo.quota.billing.Consts$ResponseCode valueOf(int) -> a
+    com.southfreo.quota.billing.Consts$ResponseCode[] values() -> values
+    com.southfreo.quota.billing.Consts$ResponseCode valueOf(java.lang.String) -> valueOf
+com.southfreo.quota.billing.PurchaseDatabase -> com.southfreo.quota.billing.f:
+    java.lang.String[] HISTORY_COLUMNS -> a
+    java.lang.String[] PURCHASED_COLUMNS -> b
+    android.database.sqlite.SQLiteDatabase mDb -> c
+    com.southfreo.quota.billing.PurchaseDatabase$DatabaseHelper mDatabaseHelper -> d
+    void close() -> a
+    java.lang.String xorTxt(java.lang.String,java.lang.String) -> a
+    java.lang.String pidxor(java.lang.String) -> a
+    int updatePurchase(java.lang.String,java.lang.String,com.southfreo.quota.billing.Consts$PurchaseState,long,java.lang.String) -> a
+    java.lang.String uk() -> b
+    boolean up001() -> c
+    boolean peDateOfToday(java.lang.String) -> b
+com.southfreo.quota.billing.PurchaseDatabase$DatabaseHelper -> com.southfreo.quota.billing.r:
+    com.southfreo.quota.billing.PurchaseDatabase this$0 -> a
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+    void createPurchaseTable(android.database.sqlite.SQLiteDatabase) -> a
+com.southfreo.quota.billing.PurchaseObserver -> com.southfreo.quota.billing.a:
+    android.app.Activity mActivity -> a
+    android.os.Handler mHandler -> b
+    java.lang.reflect.Method mStartIntentSender -> c
+    java.lang.Object[] mStartIntentSenderArgs -> d
+    java.lang.Class[] START_INTENT_SENDER_SIG -> e
+    void onBillingSupported(boolean) -> a
+    void onPurchaseStateChange$75164cf8(com.southfreo.quota.billing.Consts$PurchaseState) -> a
+    void onRestoreTransactionsResponse$4ea787c2(com.southfreo.quota.billing.Consts$ResponseCode) -> a
+    void startBuyPageActivity(android.app.PendingIntent,android.content.Intent) -> a
+    void postPurchaseStateChange(com.southfreo.quota.billing.Consts$PurchaseState,java.lang.String,int,long,java.lang.String) -> a
+com.southfreo.quota.billing.PurchaseObserver$1 -> com.southfreo.quota.billing.l:
+    com.southfreo.quota.billing.PurchaseObserver this$0 -> a
+    com.southfreo.quota.billing.Consts$PurchaseState val$purchaseState -> b
+    java.lang.String val$itemId -> c
+    int val$quantity -> d
+    long val$purchaseTime -> e
+    java.lang.String val$developerPayload -> f
+    void run() -> run
+com.southfreo.quota.billing.ResponseHandler -> com.southfreo.quota.billing.s:
+    com.southfreo.quota.billing.PurchaseObserver sPurchaseObserver -> a
+    void register(com.southfreo.quota.billing.PurchaseObserver) -> a
+    void unregister$e32d2d8() -> a
+    void checkBillingSupportedResponse(boolean) -> a
+    void buyPageIntentResponse(android.app.PendingIntent,android.content.Intent) -> a
+    void responseCodeReceived$1d254680$4ea787c2(com.southfreo.quota.billing.Consts$ResponseCode) -> a
+    com.southfreo.quota.billing.PurchaseObserver access$0() -> b
+com.southfreo.quota.billing.ResponseHandler$1 -> com.southfreo.quota.billing.i:
+    android.content.Context val$context -> a
+    java.lang.String val$orderId -> b
+    java.lang.String val$productId -> c
+    com.southfreo.quota.billing.Consts$PurchaseState val$purchaseState -> d
+    long val$purchaseTime -> e
+    java.lang.String val$developerPayload -> f
+    void run() -> run
+com.southfreo.quota.billing.Security -> com.southfreo.quota.billing.n:
+    java.security.SecureRandom RANDOM -> a
+    java.util.HashSet sKnownNonces -> b
+    long generateNonce() -> a
+    void removeNonce(long) -> a
+    java.util.ArrayList verifyPurchase(java.lang.String,java.lang.String) -> a
+    java.security.PublicKey generatePublicKey(java.lang.String) -> a
+    boolean verify(java.security.PublicKey,java.lang.String,java.lang.String) -> a
+com.southfreo.quota.billing.Security$VerifiedPurchase -> com.southfreo.quota.billing.h:
+    com.southfreo.quota.billing.Consts$PurchaseState purchaseState -> a
+    java.lang.String notificationId -> b
+    java.lang.String productId -> c
+    java.lang.String orderId -> d
+    long purchaseTime -> e
+    java.lang.String developerPayload -> f
+com.southfreo.quota.billing.util.Base64 -> com.southfreo.quota.billing.util.a:
+    byte[] ALPHABET -> a
+    byte[] WEBSAFE_ALPHABET -> b
+    byte[] DECODABET -> c
+    byte[] WEBSAFE_DECODABET -> d
+    boolean $assertionsDisabled -> e
+    int decode4to3$355785af(byte[],byte[],int,byte[]) -> a
+    byte[] decode(java.lang.String) -> a
+com.southfreo.quota.billing.util.Base64DecoderException -> com.southfreo.quota.billing.util.Base64DecoderException:
+    long serialVersionUID -> serialVersionUID
+com.southfreo.quota.control.ApplictionObject -> com.southfreo.quota.control.ApplictionObject:
+    com.southfreo.quota.control.QuotaService mQuotaService -> c
+    com.southfreo.quota.billing.PurchaseDatabase mPurchaseDatabase -> a
+    android.content.ServiceConnection mConnection -> d
+    com.southfreo.quota.control.ProviderManager pm -> b
+    com.southfreo.quota.control.SlotManager sm -> e
+    com.southfreo.quota.control.UIManager ui -> f
+    com.southfreo.quota.control.CacheManager cm -> g
+    boolean mIsBound -> h
+    void startQuotaService() -> e
+    void restartUpdate() -> a
+    void pauseService() -> b
+    void unpauseService() -> c
+    void stopService() -> d
+    void onCreate() -> onCreate
+    void onTerminate() -> onTerminate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onLowMemory() -> onLowMemory
+    void access$0(com.southfreo.quota.control.ApplictionObject,com.southfreo.quota.control.QuotaService) -> a
+    com.southfreo.quota.control.QuotaService access$1(com.southfreo.quota.control.ApplictionObject) -> a
+com.southfreo.quota.control.ApplictionObject$1 -> com.southfreo.quota.control.c:
+    com.southfreo.quota.control.ApplictionObject this$0 -> a
+    void onServiceConnected(android.content.ComponentName,android.os.IBinder) -> onServiceConnected
+    void onServiceDisconnected(android.content.ComponentName) -> onServiceDisconnected
+com.southfreo.quota.control.CacheManager -> com.southfreo.quota.control.r:
+    com.southfreo.quota.control.CacheManager INSTANCE -> a
+    java.io.File filesDir -> b
+    java.io.File cacheDir -> c
+    com.southfreo.quota.control.CacheManager getInstance() -> a
+    void WriteCachedProviderData(com.southfreo.quota.model.Provider) -> a
+    java.lang.String UsageFile(com.southfreo.quota.model.Provider) -> b
+    java.lang.String DebugFile(com.southfreo.quota.model.Provider) -> c
+    void WriteDebugLog(com.southfreo.quota.model.Provider,java.lang.String,boolean) -> a
+    void WriteCachedusageData$505a376d(java.lang.String,java.lang.String,int) -> a
+    java.lang.String copyToSDCard(java.lang.String,java.lang.String) -> a
+    void ReadCachedProviderData(com.southfreo.quota.model.Provider) -> d
+    void InitCache(android.app.Application) -> a
+    java.lang.String CacheDir(java.lang.String,int) -> a
+    java.lang.String FilesDir(java.lang.String,int) -> b
+    java.lang.String FilesDir(java.lang.String) -> c
+    java.lang.String SettingsPath(int,java.lang.String) -> a
+    java.lang.String CachePath(int,java.lang.String) -> b
+    java.lang.String CachePath(java.lang.String) -> a
+    java.lang.String UserPath() -> b
+    java.lang.String UserUpdateFile(java.lang.String) -> b
+    boolean hasUserPacks() -> c
+    void RemoveUserPacks() -> d
+    java.io.File getNetStatsFile() -> f
+    java.util.Hashtable getStatsDict() -> e
+    void writeStatsDict(java.util.Hashtable) -> a
+    void RemoveCache(int) -> a
+com.southfreo.quota.control.ProviderManager -> com.southfreo.quota.control.d:
+    com.southfreo.quota.control.ProviderManager INSTANCE -> j
+    java.lang.String xmlLoadMsg -> a
+    java.util.HashMap types -> b
+    java.util.ArrayList paramgroups -> k
+    java.lang.String[] typesArray -> c
+    java.util.ArrayList q_pendingupdates -> l
+    int q_pendingcount -> d
+    int q_activecount -> e
+    int q_maxconnections -> m
+    java.util.ArrayList q_activeupdates -> n
+    boolean providersloaded -> o
+    java.util.Date lastAlertMessageTime -> p
+    int edit_provider_id -> f
+    com.southfreo.quota.model.Provider edit_provider_object -> g
+    int edit_provider_slot -> h
+    com.southfreo.quota.control.QuotaService mQuotaService -> i
+    com.southfreo.quota.control.ProviderManager getInstance() -> a
+    void createTypesAndSort() -> b
+    void ResetProvider(com.southfreo.quota.model.Provider,int) -> a
+    void Queue_RemoveActive(com.southfreo.quota.model.Provider) -> e
+    void pingWidgets() -> c
+    void notifyUpdate(int,com.southfreo.quota.model.Provider) -> a
+    void Queue_ProcessingPending() -> e
+    void NotifyProblem(com.southfreo.quota.model.Provider,java.lang.String,java.lang.String) -> a
+    void FinishLoadingSuccess(com.southfreo.quota.model.Provider) -> a
+    void FinishLoadingFailure(com.southfreo.quota.model.Provider) -> b
+    void Queue_ScheduleUpdate(com.southfreo.quota.model.Provider) -> c
+    java.util.ArrayList getProvidersForKeyCreate(java.lang.String) -> b
+    com.southfreo.quota.model.paramgroup GetParameterGroupByID(int) -> a
+    com.southfreo.quota.model.Provider getProviderDefinition(int) -> b
+    com.southfreo.quota.model.paramgroup ProcessParamGroup(com.southfreo.quota.xml.TagNode) -> a
+    void ProcessProviderSummaryPanel(com.southfreo.quota.model.Provider,com.southfreo.quota.xml.TagNode) -> a
+    void ProcessProviderAccountSummary(com.southfreo.quota.model.Provider,com.southfreo.quota.xml.TagNode) -> b
+    void ProcessProviderExtraPanel(com.southfreo.quota.model.Provider,com.southfreo.quota.xml.TagNode) -> c
+    void ProcessProviderBody(com.southfreo.quota.model.Provider,com.southfreo.quota.xml.TagNode) -> d
+    com.southfreo.quota.model.Provider ProcessProvider(com.southfreo.quota.xml.TagNode,boolean) -> a
+    boolean reloadProvider(com.southfreo.quota.model.Provider) -> d
+    boolean LoadProvidersFromResource$3f44cee8(android.content.Context,int,boolean) -> a
+    boolean LoadProvidersFromFile$53ec41f9(java.lang.String,boolean) -> a
+    boolean LoadUserPacks(java.lang.String) -> a
+    boolean LoadProviders(org.xmlpull.v1.XmlPullParser,boolean,boolean,boolean,int) -> a
+    com.southfreo.quota.model.Provider CreateProvider$68ba2d31() -> d
+    void access$0(com.southfreo.quota.control.ProviderManager,com.southfreo.quota.model.Provider) -> a
+    void access$1(com.southfreo.quota.control.ProviderManager,int,com.southfreo.quota.model.Provider) -> a
+com.southfreo.quota.control.ProviderManager$NotifyUpdate -> com.southfreo.quota.control.h:
+    com.southfreo.quota.model.Provider p -> a
+    int msg -> b
+    com.southfreo.quota.control.ProviderManager this$0 -> c
+com.southfreo.quota.control.ProviderManager$asyncUpdateProvider -> com.southfreo.quota.control.p:
+    com.southfreo.quota.model.Provider myP -> a
+    com.southfreo.quota.control.ProviderManager this$0 -> b
+    void onPreExecute() -> onPreExecute
+    void updateMsg() -> a
+    void askQuestion() -> b
+    java.lang.String doInBackground(com.southfreo.quota.model.Provider[]) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+com.southfreo.quota.control.ProviderParser -> com.southfreo.quota.control.n:
+    java.lang.String newline -> a
+    void DebugLogStart(com.southfreo.quota.model.Provider) -> a
+    void DebugLogLog(com.southfreo.quota.model.Provider,java.lang.String) -> a
+    void threemobile(com.southfreo.quota.model.Provider) -> b
+    void waitForAnswer(com.southfreo.quota.model.Provider) -> j
+    void internodeUpdater(com.southfreo.quota.model.Provider,com.southfreo.quota.control.ProviderManager$asyncUpdateProvider) -> a
+    boolean VirginLogin(org.apache.http.impl.client.DefaultHttpClient,com.southfreo.quota.model.Provider) -> a
+    void virginPostpay(com.southfreo.quota.model.Provider) -> c
+    void dodoISP(com.southfreo.quota.model.Provider) -> d
+    double OctValue(java.lang.String) -> a
+    void amNet(com.southfreo.quota.model.Provider) -> e
+    void aaNet(com.southfreo.quota.model.Provider) -> f
+    void westNet(com.southfreo.quota.model.Provider) -> g
+    void Netspace(com.southfreo.quota.model.Provider) -> h
+    void iiNetUpdate(com.southfreo.quota.model.Provider) -> i
+com.southfreo.quota.control.QuotaService -> com.southfreo.quota.control.QuotaService:
+    com.southfreo.quota.control.ProviderManager pm -> a
+    com.southfreo.quota.control.SlotManager sm -> b
+    java.util.Timer timer -> c
+    long DELAY_INTERVAL -> d
+    android.app.NotificationManager mNotificationManager -> e
+    android.os.Handler handler -> f
+    boolean paused -> g
+    boolean wifionly -> h
+    android.os.Handler toastHandler -> i
+    android.os.IBinder mBinder -> j
+    android.os.IBinder onBind(android.content.Intent) -> onBind
+    void pauseService() -> a
+    void unPauseService() -> b
+    void NotifyProblemProvider(int,java.lang.String,java.lang.String,java.lang.String) -> a
+    void startUpdateTimer() -> f
+    void stopTimer() -> c
+    void restartService() -> d
+    void startMyService$3802a6f6() -> e
+    void onCreate() -> onCreate
+    void onDestroy() -> onDestroy
+    void onStart(android.content.Intent,int) -> onStart
+    boolean access$0(com.southfreo.quota.control.QuotaService) -> a
+    boolean access$1(com.southfreo.quota.control.QuotaService) -> b
+    android.os.Handler access$2(com.southfreo.quota.control.QuotaService) -> c
+com.southfreo.quota.control.QuotaService$1 -> com.southfreo.quota.control.f:
+    com.southfreo.quota.control.QuotaService this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.southfreo.quota.control.QuotaService$LocalBinder -> com.southfreo.quota.control.o:
+    com.southfreo.quota.control.QuotaService this$0 -> a
+com.southfreo.quota.control.QuotaService$MyTimerTask -> com.southfreo.quota.control.b:
+    java.lang.Runnable runnable -> b
+    com.southfreo.quota.control.QuotaService this$0 -> a
+    void run() -> run
+com.southfreo.quota.control.QuotaService$MyTimerTask$1 -> com.southfreo.quota.control.e:
+    com.southfreo.quota.control.QuotaService$MyTimerTask this$1 -> a
+    void run() -> run
+com.southfreo.quota.control.SlotManager -> com.southfreo.quota.control.q:
+    com.southfreo.quota.control.SlotManager INSTANCE -> m
+    com.southfreo.quota.model.Provider currentProvider -> n
+    int currentSlot -> a
+    java.util.ArrayList slotArray -> b
+    android.app.Application myapp -> c
+    android.content.SharedPreferences preferences -> d
+    java.lang.String pinCode -> e
+    java.util.Date lastpinCheck -> f
+    long pinexpiryseconds -> g
+    java.lang.String DB_lastBackup -> h
+    java.lang.String DB_lastUser -> i
+    java.lang.String DB_noaccounts -> j
+    byte[] desKeyData -> o
+    java.lang.String errmsg -> p
+    java.lang.String[] restoreNames -> k
+    boolean[] restoreSelected -> l
+    org.json.JSONObject restoreObject -> q
+    void InitPreferences() -> a
+    boolean hasPin() -> b
+    void DropBoxUpdateBackup(java.lang.String,java.lang.String,java.lang.String) -> a
+    boolean showPinScreen() -> c
+    void SavePinExpiry(long) -> a
+    void SavePin(java.lang.String) -> a
+    java.lang.String[] ProviderNames() -> d
+    boolean restoreSlotsProviderArray(java.io.File) -> a
+    java.lang.String restoreSlotsAsJson64() -> e
+    java.lang.String slotsAsJson64() -> f
+    void InitLoadSlots() -> g
+    int NoSlots() -> h
+    com.southfreo.quota.model.Provider getSlot(int) -> a
+    int nextSlot() -> i
+    void saveAllSlots() -> l
+    com.southfreo.quota.model.Provider addSlot() -> j
+    void deleteSlotSaveAll(int) -> b
+    void deleteSlotmemory(int) -> c
+    java.lang.String providerFile(int) -> d
+    int getNoSavedSlots() -> m
+    void updateNoSavedSlots() -> n
+    javax.crypto.Cipher getCode(boolean) -> a
+    boolean saveSlot(int,boolean) -> a
+    com.southfreo.quota.model.Provider loadSlot(int) -> e
+    com.southfreo.quota.control.SlotManager getInstance() -> k
+com.southfreo.quota.control.UIManager -> com.southfreo.quota.control.g:
+    boolean isUnlocked -> a
+    com.southfreo.quota.control.ApplictionObject myapp -> b
+    com.southfreo.quota.control.UIManager INSTANCE -> c
+    boolean isHoneyComb -> d
+    java.lang.String AppName() -> a
+    void deletePurchases(android.content.Context) -> a
+    boolean CheckPerformanceFull() -> b
+    com.southfreo.quota.control.UIManager getInstance() -> c
+    java.lang.String getVersion(android.content.Context) -> b
+    void checkValid() -> d
+    void showProviderChoice(com.southfreo.quota.model.Provider,android.content.Context,java.lang.String[]) -> a
+    void openWebsite$5ffc00fd(java.lang.String) -> a
+    void showWelcomeMessage(boolean,android.content.Context) -> a
+    void ToastLong(java.lang.String) -> b
+    void ToastShort(java.lang.String) -> c
+    int getDipSize(int) -> a
+    void MsgBoxInfo(android.content.Context,java.lang.String,java.lang.String) -> a
+    int getIconIdentifier(java.lang.String) -> d
+    android.graphics.Bitmap getBitMapforIcon(java.lang.String) -> e
+    void setIconForProviderFile(android.widget.ImageView,java.lang.String) -> a
+    void setIconForProvider(android.widget.ImageView,com.southfreo.quota.model.Provider,int) -> a
+com.southfreo.quota.control.UIManager$1 -> com.southfreo.quota.control.i:
+    com.southfreo.quota.control.UIManager this$0 -> a
+    com.southfreo.quota.model.Provider val$p -> b
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.control.UIManager$2 -> com.southfreo.quota.control.k:
+    com.southfreo.quota.control.UIManager this$0 -> a
+    com.southfreo.quota.model.Provider val$p -> b
+    void onCancel(android.content.DialogInterface) -> onCancel
+com.southfreo.quota.control.UIManager$3 -> com.southfreo.quota.control.j:
+    com.southfreo.quota.control.UIManager this$0 -> a
+    android.content.SharedPreferences val$preferences -> b
+    java.lang.String val$current -> c
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.control.UIManager$4 -> com.southfreo.quota.control.m:
+    com.southfreo.quota.control.UIManager this$0 -> a
+    android.content.Context val$c -> b
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.control.UIManager$5 -> com.southfreo.quota.control.l:
+    com.southfreo.quota.control.UIManager this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.control.XMLProviderParser -> com.southfreo.quota.control.a:
+    java.lang.String DynamicStringBV(com.southfreo.quota.model.Provider,java.lang.String,java.lang.String) -> a
+    void ProcessURL(com.southfreo.quota.model.Provider,com.southfreo.quota.model.urlinfo,org.apache.http.impl.client.DefaultHttpClient) -> a
+    void waitForAnswer(com.southfreo.quota.model.Provider) -> a
+    boolean ProcessAction(com.southfreo.quota.model.Provider,com.southfreo.quota.model.condition,com.southfreo.quota.model.datakey,com.southfreo.quota.model.datasource,com.southfreo.quota.control.ProviderManager$asyncUpdateProvider) -> a
+    boolean ProcessConditionOperator(com.southfreo.quota.model.Provider,com.southfreo.quota.model.condition,com.southfreo.quota.model.datakey,com.southfreo.quota.model.datasource,com.southfreo.quota.control.ProviderManager$asyncUpdateProvider) -> b
+    boolean ProcessConditionForKey(com.southfreo.quota.model.Provider,com.southfreo.quota.model.datakey,java.lang.String,com.southfreo.quota.model.datasource,com.southfreo.quota.control.ProviderManager$asyncUpdateProvider) -> a
+    java.lang.String getDataSourceSourceDataString(com.southfreo.quota.model.datasource) -> a
+    void srcExtractAddKey(com.southfreo.quota.model.Provider,com.southfreo.quota.model.datakey,com.southfreo.quota.model.datasource) -> a
+    boolean ProcessKey(com.southfreo.quota.model.Provider,java.lang.String,int,com.southfreo.quota.model.datasource,boolean,com.southfreo.quota.control.ProviderManager$asyncUpdateProvider) -> a
+    void xmlProgressBar(com.southfreo.quota.model.Provider,com.southfreo.quota.model.kbProgressBar) -> a
+    java.lang.String getCol(java.util.ArrayList,int) -> a
+    java.lang.String replaceColumnGroups(java.util.ArrayList,java.lang.String,java.lang.String) -> a
+    java.lang.String getCols(java.util.ArrayList,java.lang.String[],java.lang.String) -> a
+    void xmlExtras(com.southfreo.quota.model.Provider) -> b
+    void xmlBalance(com.southfreo.quota.model.Provider) -> c
+    void DebugLogLog(com.southfreo.quota.model.Provider,java.lang.String) -> a
+    void DumpDataKeys(com.southfreo.quota.model.Provider) -> d
+    void ProcessProvider(com.southfreo.quota.model.Provider,com.southfreo.quota.control.ProviderManager$asyncUpdateProvider) -> a
+com.southfreo.quota.model.Provider -> com.southfreo.quota.model.Provider:
+    long serialVersionUID -> serialVersionUID
+    int PROVIDER_NOTSETUP -> n
+    int method_code -> a
+    int method_xml -> b
+    int method_codeparser -> c
+    int URL_CACHEINTERVAL -> d
+    int provider_status_idle -> e
+    int provider_status_loading -> f
+    int provider_status_parsing -> g
+    int kDisplayType_ISPMOBILE -> h
+    int kDisplayType_WEATHER -> o
+    int kDisplayType_ACCOUNT -> i
+    int kDisplayType_PHOTO -> p
+    int kDisplayType_UNUSED -> q
+    int fail_authentication -> j
+    int fail_parser -> r
+    int fail_connection -> k
+    int fail_nousagereturned -> l
+    int fail_internalerror -> m
+    int fail_incorrectsetup -> s
+    int fail_accountissue -> t
+    int fail_xmlerror -> u
+    int fail_xmlparsing -> v
+    int fail_nocachedata -> w
+    int fail_noconnection -> x
+    int disk_isp -> disk_isp
+    java.lang.String disk_planname -> disk_planname
+    boolean disk_manualrefresh -> disk_manualrefresh
+    com.southfreo.quota.model.paramgroup disk_parameters -> disk_parameters
+    java.util.Hashtable disk_alerts -> disk_alerts
+    java.lang.String supportUrl -> supportUrl
+    java.lang.String providerUrl -> providerUrl
+    boolean debugprovider -> debugprovider
+    int paramgroupid -> paramgroupid
+    int disk_display_type -> disk_display_type
+    int parse_method -> parse_method
+    java.lang.String providerName -> providerName
+    java.lang.String providertype -> providertype
+    java.lang.String xmlVersion -> xmlVersion
+    java.lang.String xmlAuthor -> xmlAuthor
+    java.lang.String xmlDescription -> xmlDescription
+    int cacheseconds -> cacheseconds
+    java.lang.String icon -> icon
+    boolean secure -> secure
+    com.southfreo.quota.model.Provider provider_definition -> provider_definition
+    double cacheage -> cacheage
+    java.util.Date cacheFileDate -> cacheFileDate
+    int loadstatus -> loadstatus
+    boolean loadsuccess -> loadsuccess
+    java.lang.String loadmsg -> loadmsg
+    int failurereason -> failurereason
+    java.lang.String loaderrormsg -> loaderrormsg
+    int slotnumber -> slotnumber
+    boolean isvalid -> isvalid
+    com.southfreo.quota.model.cycle current_cycle -> current_cycle
+    java.lang.String xmlCookie -> xmlCookie
+    java.util.ArrayList progress -> progress
+    java.util.ArrayList extras -> extras
+    com.southfreo.quota.model.account accountdata -> accountdata
+    int currentURL -> currentURL
+    java.util.ArrayList urls -> urls
+    java.util.ArrayList datakeys -> datakeys
+    java.util.ArrayList conditions -> conditions
+    boolean questioninProgress -> questioninProgress
+    boolean questionAnswered -> questionAnswered
+    int questionanswer -> questionanswer
+    java.lang.String[] questionchoices -> questionchoices
+    int loadedFrom -> loadedFrom
+    int widgetid -> widgetid
+    boolean hasData() -> a
+    boolean notSetup() -> b
+    java.lang.String AccountSummaryText() -> c
+    void Reset() -> d
+    com.southfreo.quota.model.datakey getDataKeyForID(int) -> a
+    com.southfreo.quota.model.datakey getDataKeyForName(java.lang.String) -> a
+    com.southfreo.quota.model.condition getConditionForID(java.lang.String) -> b
+    java.lang.String ExtraInfo() -> e
+    java.lang.String lastUpdatedWidget() -> f
+    java.lang.String lastUpdated() -> g
+    com.southfreo.quota.model.kbProgressBar pbar1() -> h
+    com.southfreo.quota.model.kbProgressBar pbar2() -> i
+    boolean p1OverIdeal() -> j
+    java.lang.String percMsg(com.southfreo.quota.model.kbProgressBar,int) -> a
+    java.lang.String p1OverPercent(int) -> b
+    java.lang.String p2OverPercent(int) -> c
+    void setPrepayMoney(java.lang.String,java.lang.String,double,double) -> a
+    void setPrepayDataOnly3Mob(java.lang.String,java.lang.String,double,double) -> b
+    void setProgressPeak(int,double,double) -> a
+    void setProgressPeakStart(java.lang.String,double,double) -> a
+    void setProgressPeak(java.lang.String,double,double) -> b
+    void setPostpayPeakOffPeak(int,double,double,double,double) -> a
+    void setProgressPeakOffPeak(int,double,double,double,double) -> b
+    boolean p2OverIdeal() -> k
+    java.lang.String getFailureCode() -> l
+    void clearURLs(boolean) -> a
+    void clearProgress() -> m
+    void clearDataKeys() -> n
+    void clearExtras() -> o
+    com.southfreo.quota.model.parameter getParameterByID(int) -> d
+    void addExtra(int,java.lang.String,java.lang.String) -> a
+    int CacheSeconds() -> p
+    boolean hasCacheExpired() -> q
+    boolean hasExtras() -> r
+    void writeCachedData(java.io.ObjectOutputStream) -> a
+    com.southfreo.quota.model.Provider readCachedData(java.io.ObjectInputStream) -> a
+    void writeObject(java.io.ObjectOutputStream) -> writeObject
+    void readObject(java.io.ObjectInputStream) -> readObject
+    org.json.JSONObject toJSON() -> s
+    int compareTo(java.lang.Object) -> compareTo
+com.southfreo.quota.model.account -> com.southfreo.quota.model.account:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String bal1name -> bal1name
+    java.lang.String bal1value -> bal1value
+    java.lang.String showChange -> showChange
+    java.lang.String bal2name -> bal2name
+    java.lang.String bal2value -> bal2value
+    double changePercent -> changePercent
+    double changeNumber -> changeNumber
+    boolean hidesummary -> hidesummary
+    java.util.ArrayList rssData -> rssData
+    java.util.ArrayList transactions -> transactions
+    java.lang.String rssTitleKey -> rssTitleKey
+    java.lang.String rssDescKey -> rssDescKey
+    java.lang.String rssTimeKey -> rssTimeKey
+    java.lang.String rssLinkKey -> rssLinkKey
+    java.lang.String rssImageKey -> rssImageKey
+    java.lang.String srcData -> srcData
+    java.lang.String dateColumn -> dateColumn
+    java.lang.String descriptionColumn -> descriptionColumn
+    java.lang.String amountColumn -> amountColumn
+    java.lang.String headings -> headings
+    java.lang.String descriptionformat -> descriptionformat
+    java.lang.String amountformat -> amountformat
+    java.lang.String dateformat -> dateformat
+    boolean isRssFeed() -> a
+com.southfreo.quota.model.accountlines -> com.southfreo.quota.model.accountlines:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String date -> date
+    java.lang.String description -> description
+    java.lang.String amount -> amount
+com.southfreo.quota.model.condition -> com.southfreo.quota.model.a:
+    java.lang.String xmlid -> a
+    java.lang.String p1 -> b
+    java.lang.String p2 -> c
+    java.lang.String p3 -> d
+    java.lang.String operator -> e
+    java.lang.String action -> f
+    java.lang.String ap1 -> g
+    java.lang.String ap2 -> h
+    java.lang.String ap3 -> i
+    java.lang.String when -> j
+com.southfreo.quota.model.cycle -> com.southfreo.quota.model.cycle:
+    long serialVersionUID -> serialVersionUID
+    int typecycle -> typecycle
+    boolean hasstart -> hasstart
+    boolean includeend -> includeend
+    java.util.Date startDate -> startDate
+    java.util.Date endDate -> endDate
+    java.util.Date nextPeriodDate -> nextPeriodDate
+    int startday -> startday
+    int dayssofar -> dayssofar
+    int daysremaining -> daysremaining
+    int totaldays -> totaldays
+    double dayspercentage -> dayspercentage
+    int pid -> pid
+    java.lang.String srcStartDate -> srcStartDate
+    java.lang.String srcEndDate -> srcEndDate
+    java.lang.String srcStartDay -> srcStartDay
+    void initWithDates(java.util.Date,java.util.Date,boolean) -> a
+    void initWithEndOnly(java.lang.String,java.lang.String) -> a
+    void initWithEndDate(java.lang.String,java.lang.String) -> b
+    void initWithAnniversaryDay(int) -> a
+    java.lang.String getCycleText() -> a
+com.southfreo.quota.model.datakey -> com.southfreo.quota.model.e:
+    int myid -> a
+    java.lang.String name -> b
+    java.lang.String type -> c
+    java.lang.String src -> d
+    int srcid -> e
+    java.lang.String find -> f
+    java.lang.String start -> g
+    java.lang.String end -> h
+    java.lang.String _text -> i
+    java.lang.String extract -> j
+    java.lang.String format -> k
+    java.lang.String defaultval -> l
+    java.lang.String prefix -> m
+    java.lang.String postfix -> n
+    int outputtype -> o
+    java.lang.String outputformat -> p
+    java.util.Date dateval -> B
+    java.lang.String condition -> q
+    int subkey -> r
+    java.util.ArrayList strArray -> s
+    int pos -> t
+    double dvalue -> u
+    boolean trimspace -> v
+    boolean removehtml -> w
+    boolean escape -> x
+    boolean javascript -> y
+    java.lang.String removechars -> z
+    java.lang.String replacechars -> A
+    java.lang.String InternalText() -> a
+    java.lang.String OutputText() -> b
+    void setTextValue(java.lang.String) -> a
+    java.lang.String toString() -> toString
+com.southfreo.quota.model.datasource -> com.southfreo.quota.model.d:
+    int type -> a
+    java.lang.Object object -> b
+    java.lang.String text -> c
+com.southfreo.quota.model.extraTableAdapter -> com.southfreo.quota.model.b:
+    android.content.Context context -> b
+    java.util.ArrayList mData -> a
+    int getCount() -> getCount
+    java.lang.Object getItem(int) -> getItem
+    long getItemId(int) -> getItemId
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.southfreo.quota.model.extradata -> com.southfreo.quota.model.extradata:
+    long serialVersionUID -> serialVersionUID
+    int section -> section
+    int type -> type
+    java.lang.String name -> name
+    java.lang.String value -> value
+    java.lang.String nameFormat -> nameFormat
+    java.lang.String valueFormat -> valueFormat
+    java.lang.String src -> src
+    int order -> order
+    boolean showwhenempty -> showwhenempty
+com.southfreo.quota.model.kbProgressBar -> com.southfreo.quota.model.kbProgressBar:
+    long serialVersionUID -> serialVersionUID
+    int pid -> pid
+    int type -> type
+    java.lang.String name -> name
+    java.lang.String percentage_msg -> percentage_msg
+    java.lang.String val_msg -> val_msg
+    double percentage -> percentage
+    double ideal -> ideal
+    boolean used -> used
+    double value_max -> value_max
+    double value_value -> value_value
+    double value_used -> value_used
+    double value_remains -> value_remains
+    double value_pcent -> value_pcent
+    double value_used_perday -> value_used_perday
+    double value_remain_perday -> value_remain_perday
+    java.lang.String srcValue -> srcValue
+    java.lang.String srcMaxValue -> srcMaxValue
+    int outtype -> outtype
+    java.lang.String outformat -> outformat
+    com.southfreo.quota.model.cycle cycle_usage -> cycle_usage
+    java.lang.String stat1 -> stat1
+    java.lang.String stat2 -> stat2
+    java.lang.String stat1long -> stat1long
+    java.lang.String RemainTxt -> RemainTxt
+    java.lang.String UsedTxt -> UsedTxt
+    boolean overIdeal() -> a
+    void UpdateValues() -> b
+com.southfreo.quota.model.parameter -> com.southfreo.quota.model.parameter:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String TAG -> TAG
+    int pid -> pid
+    java.lang.String Name -> Name
+    java.lang.String ExtraInfo -> ExtraInfo
+    java.lang.String Value -> Value
+    java.lang.String defaultvalue -> defaultvalue
+    java.lang.Object refobject -> refobject
+    java.lang.String[] CurrentSelectedValues -> CurrentSelectedValues
+    double numberval -> numberval
+    com.southfreo.quota.model.parameter currentparameter -> currentparameter
+    java.util.Date DateValue -> DateValue
+    java.lang.String description -> description
+    java.lang.String valid -> valid
+    java.lang.String[] ListValues -> ListValues
+    java.lang.String icon -> icon
+    java.lang.String formatString -> formatString
+    java.util.Hashtable DictValues -> DictValues
+    java.lang.String blankmsg -> blankmsg
+    int type -> type
+    java.lang.Boolean optional -> optional
+    int startrange -> startrange
+    int endrange -> endrange
+    boolean confirmexistingvalue -> confirmexistingvalue
+    boolean passesvalidation -> passesvalidation
+    boolean escape -> escape
+    boolean isSecure() -> a
+    boolean isNumber() -> g
+    boolean isText() -> h
+    boolean isDate() -> i
+    void reset() -> b
+    void copyState(com.southfreo.quota.model.parameter) -> a
+    boolean isBlank() -> c
+    void setNumberString(java.lang.String) -> b
+    void setTextValue(java.lang.String) -> a
+    void checkDefault() -> d
+    boolean isSelectedVal(int) -> a
+    java.lang.String CurrentValueAsInternalString() -> e
+    java.lang.String CurrentValueAsFormattedString() -> f
+com.southfreo.quota.model.paramgroup -> com.southfreo.quota.model.paramgroup:
+    long serialVersionUID -> serialVersionUID
+    int pid -> pid
+    java.lang.String name -> name
+    java.lang.String description -> description
+    java.util.ArrayList params -> params
+    java.lang.String invalidmsg -> invalidmsg
+    com.southfreo.quota.model.parameter getParameterByID(int) -> a
+    void copyState(com.southfreo.quota.model.paramgroup) -> a
+    void copyStateCheck(com.southfreo.quota.model.paramgroup) -> b
+    void ResetValues() -> a
+    boolean paramExists(int) -> b
+com.southfreo.quota.model.rssItem -> com.southfreo.quota.model.rssItem:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String title -> title
+    java.lang.String description -> description
+    java.lang.String link -> link
+    java.lang.String time -> time
+    java.lang.String imageURL -> imageURL
+    java.util.Date internalTime -> internalTime
+com.southfreo.quota.model.urlinfo -> com.southfreo.quota.model.c:
+    java.lang.String urlstring -> a
+    java.lang.String urlalternate -> b
+    java.lang.String postalternate -> c
+    java.lang.String postdata -> d
+    java.lang.String returndata -> e
+    java.lang.String msg -> f
+    java.lang.String type -> g
+    int attempt -> h
+    java.lang.String username -> i
+    java.lang.String password -> j
+    java.lang.String headers -> k
+    int myid -> l
+    int timeout -> m
+com.southfreo.quota.smplmathparser.BinaryNode -> com.southfreo.quota.smplmathparser.BinaryNode:
+    long serialVersionUID -> serialVersionUID
+    com.southfreo.quota.smplmathparser.BinaryOperator operator -> operator
+    com.southfreo.quota.smplmathparser.EvaluationNode parameter1 -> parameter1
+    com.southfreo.quota.smplmathparser.EvaluationNode parameter2 -> parameter2
+    double evaluate() -> a
+com.southfreo.quota.smplmathparser.BinaryOperator -> com.southfreo.quota.smplmathparser.BinaryOperator:
+    long serialVersionUID -> serialVersionUID
+    boolean alsoUnary -> alsoUnary
+    char operatorChar -> operatorChar
+    double evaluate(double,double) -> a
+    char getOperatorChar() -> a
+    boolean isAlsoUnary() -> c
+com.southfreo.quota.smplmathparser.Constant -> com.southfreo.quota.smplmathparser.Constant:
+    long serialVersionUID -> serialVersionUID
+    double value -> value
+    double getValue() -> a
+com.southfreo.quota.smplmathparser.ConstantNode -> com.southfreo.quota.smplmathparser.ConstantNode:
+    long serialVersionUID -> serialVersionUID
+    com.southfreo.quota.smplmathparser.Constant value -> value
+    double evaluate() -> a
+com.southfreo.quota.smplmathparser.DataValue -> com.southfreo.quota.smplmathparser.DataValue:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String name -> name
+    java.lang.String getName() -> b
+com.southfreo.quota.smplmathparser.DefaultOperators -> com.southfreo.quota.smplmathparser.a:
+com.southfreo.quota.smplmathparser.DefaultOperators$1 -> com.southfreo.quota.smplmathparser.DefaultOperators$1:
+    double evaluate(double,double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$10 -> com.southfreo.quota.smplmathparser.DefaultOperators$10:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$11 -> com.southfreo.quota.smplmathparser.DefaultOperators$11:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$12 -> com.southfreo.quota.smplmathparser.DefaultOperators$12:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$13 -> com.southfreo.quota.smplmathparser.DefaultOperators$13:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$14 -> com.southfreo.quota.smplmathparser.DefaultOperators$14:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$15 -> com.southfreo.quota.smplmathparser.DefaultOperators$15:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$16 -> com.southfreo.quota.smplmathparser.DefaultOperators$16:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$17 -> com.southfreo.quota.smplmathparser.DefaultOperators$17:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$18 -> com.southfreo.quota.smplmathparser.DefaultOperators$18:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$19 -> com.southfreo.quota.smplmathparser.DefaultOperators$19:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$2 -> com.southfreo.quota.smplmathparser.DefaultOperators$2:
+    double evaluate(double,double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$20 -> com.southfreo.quota.smplmathparser.DefaultOperators$20:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$21 -> com.southfreo.quota.smplmathparser.DefaultOperators$21:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$22 -> com.southfreo.quota.smplmathparser.DefaultOperators$22:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$23 -> com.southfreo.quota.smplmathparser.DefaultOperators$23:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$3 -> com.southfreo.quota.smplmathparser.DefaultOperators$3:
+    double evaluate(double,double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$4 -> com.southfreo.quota.smplmathparser.DefaultOperators$4:
+    double evaluate(double,double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$5 -> com.southfreo.quota.smplmathparser.DefaultOperators$5:
+    double evaluate(double,double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$6 -> com.southfreo.quota.smplmathparser.DefaultOperators$6:
+    double evaluate(double,double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$7 -> com.southfreo.quota.smplmathparser.DefaultOperators$7:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$8 -> com.southfreo.quota.smplmathparser.DefaultOperators$8:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.DefaultOperators$9 -> com.southfreo.quota.smplmathparser.DefaultOperators$9:
+    double evaluate(double) -> a
+com.southfreo.quota.smplmathparser.EvaluationNode -> com.southfreo.quota.smplmathparser.EvaluationNode:
+    long serialVersionUID -> serialVersionUID
+    boolean constant -> constant
+    double evaluate() -> a
+com.southfreo.quota.smplmathparser.EvaluationTree -> com.southfreo.quota.smplmathparser.EvaluationTree:
+    long serialVersionUID -> serialVersionUID
+    java.util.Map binaryOperators -> binaryOperators
+    java.util.Map constants -> constants
+    double constantValue -> constantValue
+    com.southfreo.quota.smplmathparser.EvaluationNode root -> root
+    java.util.Map unaryOperators -> unaryOperators
+    java.util.Map variables -> variables
+    double evaluate() -> a
+    boolean isConstant() -> b
+    com.southfreo.quota.smplmathparser.EvaluationNode parse(java.lang.String) -> a
+com.southfreo.quota.smplmathparser.MathParser -> com.southfreo.quota.smplmathparser.MathParser:
+    long serialVersionUID -> serialVersionUID
+    java.util.Map defaultBinaryOperators -> defaultBinaryOperators
+    java.util.Map defaultConstants -> defaultConstants
+    java.util.Map defaultUnaryOperators -> defaultUnaryOperators
+    boolean isNumeric(java.lang.String) -> a
+    void addBinaryOperator(com.southfreo.quota.smplmathparser.BinaryOperator) -> a
+    void addConstant(com.southfreo.quota.smplmathparser.Constant) -> a
+    void addUnaryOperator(com.southfreo.quota.smplmathparser.UnaryOperator) -> a
+    com.southfreo.quota.smplmathparser.EvaluationTree parse(java.lang.String) -> b
+com.southfreo.quota.smplmathparser.MathParserException -> com.southfreo.quota.smplmathparser.MathParserException:
+    java.lang.String expression -> expression
+com.southfreo.quota.smplmathparser.Operator -> com.southfreo.quota.smplmathparser.Operator:
+    long serialVersionUID -> serialVersionUID
+    int precedence -> precedence
+    int getPrecedence() -> b
+com.southfreo.quota.smplmathparser.UnaryNode -> com.southfreo.quota.smplmathparser.UnaryNode:
+    long serialVersionUID -> serialVersionUID
+    com.southfreo.quota.smplmathparser.UnaryOperator operator -> operator
+    com.southfreo.quota.smplmathparser.EvaluationNode parameter -> parameter
+    double evaluate() -> a
+com.southfreo.quota.smplmathparser.UnaryOperator -> com.southfreo.quota.smplmathparser.UnaryOperator:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String operatorString -> operatorString
+    int precedence -> precedence
+    double evaluate(double) -> a
+    java.lang.String getOperatorString() -> a
+    int getPrecedence() -> b
+com.southfreo.quota.smplmathparser.Variable -> com.southfreo.quota.smplmathparser.Variable:
+    long serialVersionUID -> serialVersionUID
+    double value -> value
+    double getValue() -> a
+com.southfreo.quota.smplmathparser.VariableNode -> com.southfreo.quota.smplmathparser.VariableNode:
+    long serialVersionUID -> serialVersionUID
+    com.southfreo.quota.smplmathparser.Variable value -> value
+    double evaluate() -> a
+com.southfreo.quota.utils.Base64 -> com.southfreo.quota.b.o:
+    byte[] _STANDARD_ALPHABET -> a
+    byte[] _STANDARD_DECODABET -> b
+    byte[] _URL_SAFE_ALPHABET -> c
+    byte[] _URL_SAFE_DECODABET -> d
+    byte[] _ORDERED_ALPHABET -> e
+    byte[] _ORDERED_DECODABET -> f
+    boolean $assertionsDisabled -> g
+    byte[] getDecodabet(int) -> a
+    byte[] encode3to4(byte[],int,int,byte[],int,int) -> a
+    java.lang.String encodeBytes(byte[]) -> a
+    java.lang.String encodeBytes$5fb0bea7(byte[],int) -> a
+    int decode4to3(byte[],int,byte[],int,int) -> a
+    byte[] decode$3bcfdf96(byte[],int,int) -> a
+    byte[] decode(java.lang.String) -> a
+    byte[] decode$44bd1c79(java.lang.String) -> b
+com.southfreo.quota.utils.DateUtils -> com.southfreo.quota.b.h:
+    long daysBetween(java.util.Date,java.util.Date) -> a
+    long secondsBetween(java.util.Date,java.util.Date) -> b
+    java.lang.String HHMM(int) -> a
+    java.lang.String getAgo(java.util.Date) -> a
+    java.util.Date getDateAfterDays(int) -> b
+    java.lang.String DateFormat(java.util.Date,java.lang.String) -> a
+    java.lang.String DateTime(java.util.Date) -> b
+    java.lang.String DateAbr(java.util.Date) -> c
+    java.lang.String agoDate(java.util.Date) -> d
+    java.lang.String DateLong(java.util.Date) -> e
+    java.lang.String DateMiddle(java.util.Date) -> f
+    java.lang.String DateInternal(java.util.Date) -> g
+    long DateMills() -> a
+    java.util.Date DateFromString(java.lang.String,java.lang.String) -> a
+    java.util.Date DateFromStringTZ(java.lang.String,java.lang.String,java.lang.String) -> a
+    java.util.Date MidnightToday() -> b
+com.southfreo.quota.utils.DownloadUtils -> com.southfreo.quota.b.g:
+    android.app.ProgressDialog myProgress -> a
+    android.os.Handler myHandler -> b
+    boolean ok -> c
+    java.lang.String errmsg -> d
+    java.lang.String dUrl -> e
+    java.lang.String dFileName -> f
+    boolean inprogress -> g
+    com.southfreo.quota.utils.DownloadUtils$DownloadEvent ev -> h
+    android.content.Context c -> i
+    void downloadFile(java.lang.String,java.lang.String) -> a
+    void run() -> run
+    android.content.Context access$0(com.southfreo.quota.utils.DownloadUtils) -> a
+    com.southfreo.quota.utils.DownloadUtils$DownloadEvent access$1(com.southfreo.quota.utils.DownloadUtils) -> b
+com.southfreo.quota.utils.DownloadUtils$1 -> com.southfreo.quota.b.c:
+    com.southfreo.quota.utils.DownloadUtils this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.southfreo.quota.utils.DownloadUtils$DownloadEvent -> com.southfreo.quota.b.q:
+    void downloadComplete(boolean,java.lang.String) -> a
+com.southfreo.quota.utils.GeoStore -> com.southfreo.quota.b.n:
+    android.content.Context context -> a
+    org.apache.http.conn.ClientConnectionManager createClientConnectionManager() -> createClientConnectionManager
+    org.apache.http.conn.ssl.SSLSocketFactory newSslSocketFactory() -> a
+com.southfreo.quota.utils.HttpHelper -> com.southfreo.quota.b.e:
+    org.apache.http.HttpResponse response -> a
+    org.apache.http.client.methods.HttpPost httpPost -> b
+    org.apache.http.client.methods.HttpGet httpGet -> c
+    org.apache.http.impl.client.DefaultHttpClient QuotaClient() -> a
+    org.apache.http.impl.client.DefaultHttpClient OpenClient(java.lang.String) -> a
+    void addHttpAuthentication(org.apache.http.client.methods.HttpRequestBase,java.lang.String,java.lang.String) -> a
+    java.lang.String HttpGetAuthenticated(org.apache.http.impl.client.DefaultHttpClient,java.lang.String,java.lang.String,java.lang.String) -> a
+    java.lang.String sendHttpGet(org.apache.http.impl.client.DefaultHttpClient,java.lang.String) -> a
+    java.lang.String sendHttpPost(org.apache.http.impl.client.DefaultHttpClient,java.lang.String,java.lang.String) -> a
+com.southfreo.quota.utils.NetworkUtils -> com.southfreo.quota.b.l:
+    long getMobileRx() -> a
+    long getMobileTx() -> b
+    long getWifiRx() -> c
+    long getWifiTx() -> d
+    long readLong(java.lang.String) -> a
+    boolean isOnline(android.content.Context) -> a
+    void putLong(java.util.Hashtable,java.lang.String,long) -> a
+    long getLong(java.util.Hashtable,java.lang.String) -> a
+    void ignoreCurrentTotals(java.util.Hashtable) -> a
+    java.util.Hashtable resetNetworkCounters() -> e
+    java.lang.String getLocalIpAddress() -> f
+    java.util.Date rebootTime() -> g
+com.southfreo.quota.utils.OpenSSLFactory -> com.southfreo.quota.b.p:
+    javax.net.ssl.SSLContext sslContext -> a
+    java.net.Socket createSocket(java.net.Socket,java.lang.String,int,boolean) -> createSocket
+    java.net.Socket createSocket() -> createSocket
+com.southfreo.quota.utils.OpenSSLFactory$1 -> com.southfreo.quota.b.m:
+    com.southfreo.quota.utils.OpenSSLFactory this$0 -> a
+    void checkClientTrusted(java.security.cert.X509Certificate[],java.lang.String) -> checkClientTrusted
+    void checkServerTrusted(java.security.cert.X509Certificate[],java.lang.String) -> checkServerTrusted
+    java.security.cert.X509Certificate[] getAcceptedIssuers() -> getAcceptedIssuers
+com.southfreo.quota.utils.Security -> com.southfreo.quota.b.b:
+    java.lang.String encrypt(java.lang.String,java.lang.String) -> a
+    java.lang.String decrypt(java.lang.String,java.lang.String) -> b
+    byte[] getRawKey(byte[]) -> a
+    byte[] iPhoneKey(java.lang.String) -> a
+    java.lang.String encryptBase64(java.lang.String,java.lang.String) -> c
+    java.lang.String decryptBase64(java.lang.String,java.lang.String) -> d
+    java.lang.String toHex(byte[]) -> b
+com.southfreo.quota.utils.UnZip -> com.southfreo.quota.b.k:
+    android.os.Handler myHandler -> b
+    android.app.ProgressDialog myProgress -> a
+    android.content.Context c -> c
+    com.southfreo.quota.utils.UnZip$UnZipEvent ue -> d
+    java.io.File archive -> e
+    java.lang.String outputDir -> f
+    void unzipFile(java.lang.String,java.lang.String) -> a
+    void run() -> run
+    void copy(java.io.BufferedInputStream,java.io.BufferedOutputStream) -> a
+    void createDir(java.io.File) -> a
+    android.content.Context access$0(com.southfreo.quota.utils.UnZip) -> a
+    com.southfreo.quota.utils.UnZip$UnZipEvent access$1(com.southfreo.quota.utils.UnZip) -> b
+com.southfreo.quota.utils.UnZip$1 -> com.southfreo.quota.b.i:
+    com.southfreo.quota.utils.UnZip this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.southfreo.quota.utils.UnZip$UnZipEvent -> com.southfreo.quota.b.f:
+    void unzipComplete(boolean) -> a
+com.southfreo.quota.utils.Utils -> com.southfreo.quota.b.j:
+    boolean isBlank(java.lang.String) -> a
+    java.lang.String BlankString(java.lang.String) -> b
+    void copyFile(java.io.File,java.io.File) -> a
+    java.lang.String ExtractString(java.lang.String,java.lang.String,int,java.lang.String,java.lang.String) -> a
+    java.lang.String RegEx(java.lang.String,java.lang.String,int) -> a
+    void removeDuplicateWithOrder(java.util.ArrayList) -> a
+    java.lang.String[] toStringArray(java.util.List) -> a
+    java.util.List RegExArray(java.lang.String,java.lang.String,int) -> b
+    java.lang.String ReplaceStringsFromString(java.lang.String,java.lang.String,java.lang.String) -> a
+    double evaluteExpression(java.lang.String) -> c
+    java.lang.String removeWhitespaceNewLine(java.lang.String) -> d
+    java.lang.String RemoveCrap(java.lang.String) -> e
+    java.lang.String RemoveHTML(java.lang.String) -> f
+    android.net.Uri ParseUrl(java.lang.String) -> g
+    java.lang.String currencyvalue(float,int) -> a
+    java.lang.String UnEscapeString(java.lang.String) -> h
+    java.lang.String getValFormat$305a324d(double,java.lang.String,boolean) -> a
+    java.lang.String DecimalTimetoHrsMins(double) -> a
+    java.lang.String DataFormat(double,double,boolean) -> a
+    java.lang.Double getDoubleFromString(java.lang.String) -> i
+    boolean isNumber(java.lang.String) -> j
+    int getIntegerFromString(java.lang.String) -> k
+    boolean deleteDirectory(java.io.File) -> a
+    boolean getBoolFromString(java.lang.String) -> l
+    java.lang.String FormatValueC(int,double) -> a
+    java.io.InputStream StringToInputStream(java.lang.String) -> m
+    java.lang.String readFileAsString(java.io.File) -> b
+    double DecMBtoBytes(double) -> b
+    java.util.ArrayList TableFromString(java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
+    java.lang.String getStackTrace(java.lang.Throwable) -> a
+    java.lang.String formatValue(java.lang.String,double,java.util.Date,int,java.lang.String,boolean) -> a
+com.southfreo.quota.utils.customRedirects -> com.southfreo.quota.b.a:
+    boolean isRedirectRequested(org.apache.http.HttpResponse,org.apache.http.protocol.HttpContext) -> isRedirectRequested
+    java.net.URI getLocationURI(org.apache.http.HttpResponse,org.apache.http.protocol.HttpContext) -> getLocationURI
+com.southfreo.quota.utils.xmlUtils -> com.southfreo.quota.b.d:
+    java.lang.String nodeValue(com.southfreo.quota.xml.TreeNode,java.lang.String) -> a
+    com.southfreo.quota.xml.TreeNode subNode(com.southfreo.quota.xml.TreeNode,java.lang.String) -> b
+    java.lang.String subNodeValue(com.southfreo.quota.xml.TreeNode,java.lang.String) -> c
+com.southfreo.quota.widgets.DatePreference -> com.southfreo.quota.widgets.DatePreference:
+    java.lang.String dateString -> b
+    java.lang.String changedValueCanBeNull -> c
+    android.widget.DatePicker datePicker -> d
+    android.widget.TextView mValueText -> e
+    com.southfreo.quota.model.parameter param -> a
+    void onBindView(android.view.View) -> onBindView
+    android.view.View onCreateDialogView() -> onCreateDialogView
+    java.util.Calendar getDate() -> a
+    void setDate(java.lang.String) -> a
+    java.text.SimpleDateFormat formatter() -> b
+    java.lang.Object onGetDefaultValue(android.content.res.TypedArray,int) -> onGetDefaultValue
+    void onSetInitialValue(boolean,java.lang.Object) -> onSetInitialValue
+    android.os.Parcelable onSaveInstanceState() -> onSaveInstanceState
+    void onRestoreInstanceState(android.os.Parcelable) -> onRestoreInstanceState
+    void onDateChanged(android.widget.DatePicker,int,int,int) -> onDateChanged
+    void onDialogClosed(boolean) -> onDialogClosed
+    void updateValue(java.util.Date) -> a
+    void setTheDate(java.lang.String) -> b
+    java.lang.String defaultValue() -> c
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.southfreo.quota.widgets.DatePreference$SavedState -> com.southfreo.quota.widgets.DatePreference$SavedState:
+    java.lang.String dateValue -> a
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+com.southfreo.quota.widgets.DatePreference$SavedState$1 -> com.southfreo.quota.widgets.a:
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+    java.lang.Object[] newArray(int) -> newArray
+com.southfreo.quota.widgets.IconPreference -> com.southfreo.quota.widgets.IconPreference:
+    int myImage -> a
+    java.lang.String myTitle -> b
+    android.graphics.Bitmap bm -> c
+    void setImage(int) -> a
+    void setBitMap(android.graphics.Bitmap) -> a
+    void setTitle(java.lang.String) -> a
+    void onBindView(android.view.View) -> onBindView
+com.southfreo.quota.widgets.ListPreferenceMultiSelect -> com.southfreo.quota.widgets.ListPreferenceMultiSelect:
+    boolean[] mClickedDialogEntryIndices -> c
+    void updateValue() -> a
+    void setEntries(java.lang.CharSequence[]) -> setEntries
+    void onPrepareDialogBuilder(android.app.AlertDialog$Builder) -> onPrepareDialogBuilder
+    void restoreCheckedEntries() -> b
+    void onDialogClosed(boolean) -> onDialogClosed
+    boolean[] access$0(com.southfreo.quota.widgets.ListPreferenceMultiSelect) -> a
+com.southfreo.quota.widgets.ListPreferenceMultiSelect$1 -> com.southfreo.quota.widgets.b:
+    com.southfreo.quota.widgets.ListPreferenceMultiSelect this$0 -> a
+    void onClick(android.content.DialogInterface,int,boolean) -> onClick
+com.southfreo.quota.widgets.ListPreferenceValue -> com.southfreo.quota.widgets.ListPreferenceValue:
+    android.widget.TextView mValueText -> a
+    java.lang.String currentValue -> c
+    com.southfreo.quota.model.parameter param -> b
+    void updateValue() -> a
+    void onBindView(android.view.View) -> onBindView
+    void setValue(java.lang.String) -> setValue
+com.southfreo.quota.widgets.ListPreferenceValueNoParam -> com.southfreo.quota.widgets.ListPreferenceValueNoParam:
+    android.widget.TextView mValueText -> a
+    java.lang.String currentValue -> b
+    void updateValue() -> a
+    void onBindView(android.view.View) -> onBindView
+    void setValue(java.lang.String) -> setValue
+com.southfreo.quota.widgets.PageControl -> com.southfreo.quota.widgets.PageControl:
+    int noPages -> a
+    int currentPage -> b
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void setNoPages$13462e() -> a
+    void setCurrentPage$13462e() -> b
+    void nextPage() -> c
+    void previousPage() -> d
+com.southfreo.quota.widgets.TextParamValidate -> com.southfreo.quota.widgets.TextParamValidate:
+    android.widget.TextView mValueText -> b
+    com.southfreo.quota.model.parameter param -> a
+    boolean updateValue(boolean,java.lang.String) -> a
+    void onBindView(android.view.View) -> onBindView
+    void setText(java.lang.String) -> setText
+com.southfreo.quota.widgets.TextProgressBar -> com.southfreo.quota.widgets.TextProgressBar:
+    java.lang.String text -> a
+    android.graphics.Paint textPaint -> b
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void setText(java.lang.String) -> a
+com.southfreo.quota.widgets.summarywidget -> com.southfreo.quota.widgets.summarywidget:
+    com.southfreo.quota.control.ProviderManager pm -> a
+    android.content.Context oContext -> b
+    android.appwidget.AppWidgetManager oWidgetManager -> c
+    int[] oIDs -> d
+    void onEnabled(android.content.Context) -> onEnabled
+    void onDeleted(android.content.Context,int[]) -> onDeleted
+    void update(java.util.Observable,java.lang.Object) -> update
+    void onUpdate(android.content.Context,android.appwidget.AppWidgetManager,int[]) -> onUpdate
+    android.widget.RemoteViews buildUpdate(android.content.Context,int) -> a
+com.southfreo.quota.widgets.summarywidget_small -> com.southfreo.quota.widgets.summarywidget_small:
+    android.widget.RemoteViews buildUpdate(android.content.Context,int) -> a
+com.southfreo.quota.xml.Attribute -> com.southfreo.quota.a.l:
+    java.lang.String mValue -> a
+    java.lang.String mType -> b
+    java.lang.String getValue() -> c
+    void setValue(java.lang.String) -> a
+    void setAttrType(java.lang.String) -> b
+    com.southfreo.quota.xml.TreeNode getChild() -> a
+    void setChild(com.southfreo.quota.xml.TreeNode) -> a
+com.southfreo.quota.xml.AttributeList -> com.southfreo.quota.a.j:
+    com.southfreo.quota.xml.Attribute mHead -> a
+    com.southfreo.quota.xml.Attribute mTail -> b
+    void append(com.southfreo.quota.xml.Attribute) -> a
+    java.util.Iterator getIterator() -> a
+com.southfreo.quota.xml.AttributeList$AttrListIter -> com.southfreo.quota.a.g:
+    com.southfreo.quota.xml.Attribute mCurrent -> a
+    boolean hasNext() -> hasNext
+    java.lang.Object next() -> next
+    void remove() -> remove
+com.southfreo.quota.xml.EndTag -> com.southfreo.quota.a.c:
+com.southfreo.quota.xml.NamedEntity -> com.southfreo.quota.a.k:
+    java.lang.String mNamespace -> a
+    java.lang.String mPrefix -> b
+    java.lang.String mName -> c
+    java.lang.String toString() -> toString
+com.southfreo.quota.xml.TagNode -> com.southfreo.quota.a.b:
+    com.southfreo.quota.xml.AttributeList mAttrList -> a
+    void setAttrList(com.southfreo.quota.xml.AttributeList) -> a
+    java.lang.String getAttribute(java.lang.String) -> a
+com.southfreo.quota.xml.TextNode -> com.southfreo.quota.a.i:
+    java.lang.String mText -> a
+    java.lang.String toString() -> toString
+com.southfreo.quota.xml.TreeBuilder -> com.southfreo.quota.a.d:
+    org.xmlpull.v1.XmlPullParser mParser -> a
+    com.southfreo.quota.xml.TreeNode mDocumentTag -> b
+    com.southfreo.quota.xml.TreeNode buildTree() -> a
+    com.southfreo.quota.xml.TreeNode parseXML(java.io.InputStream) -> a
+    com.southfreo.quota.xml.TreeNode parseXML(org.xmlpull.v1.XmlPullParser) -> a
+com.southfreo.quota.xml.TreeNode -> com.southfreo.quota.a.e:
+    com.southfreo.quota.xml.TreeNodeType mType -> a
+    com.southfreo.quota.xml.TreeNode mParent -> b
+    com.southfreo.quota.xml.TreeNode mChild -> c
+    com.southfreo.quota.xml.TreeNode mSibling -> d
+    com.southfreo.quota.xml.TreeNode mSibPred -> e
+    void setChild(com.southfreo.quota.xml.TreeNode) -> a
+    com.southfreo.quota.xml.TreeNode getChild() -> a
+    void setSibling(com.southfreo.quota.xml.TreeNode) -> b
+    com.southfreo.quota.xml.TreeNode getSibling() -> b
+    java.lang.String toString() -> toString
+com.southfreo.quota.xml.TreeNodeType -> com.southfreo.quota.a.f:
+    com.southfreo.quota.xml.TreeNodeType ATTRIBUTE -> a
+    com.southfreo.quota.xml.TreeNodeType COMMENT -> e
+    com.southfreo.quota.xml.TreeNodeType END_TAG -> b
+    com.southfreo.quota.xml.TreeNodeType TAG -> c
+    com.southfreo.quota.xml.TreeNodeType TEXT -> d
+com.southfreo.quota.xml.TypeSafeEnum -> com.southfreo.quota.a.h:
+    java.util.ArrayList infoVec -> a
+    java.lang.String mName -> b
+    int mValue -> c
+    java.lang.String toString() -> toString
+    com.southfreo.quota.xml.TypeSafeEnum$enumInfo findInfo$1975c9bb(java.lang.Class) -> a
+com.southfreo.quota.xml.TypeSafeEnum$enumInfo -> com.southfreo.quota.a.a:
+    int hashCode -> a
+    int count -> b
+    java.util.ArrayList values -> c
+kankan.wheel.widget.ItemsRange -> kankan.wheel.widget.ItemsRange:
+    int first -> a
+    int count -> b
+    int getFirst() -> a
+    int getLast() -> b
+    int getCount() -> c
+    boolean contains(int) -> a
+kankan.wheel.widget.OnWheelChangedListener -> kankan.wheel.widget.OnWheelChangedListener:
+    void onChanged$38d22c4c(int) -> a
+kankan.wheel.widget.OnWheelClickedListener -> kankan.wheel.widget.OnWheelClickedListener:
+kankan.wheel.widget.OnWheelScrollListener -> kankan.wheel.widget.OnWheelScrollListener:
+    void onScrollingStarted$16b3c7ac() -> a
+    void onScrollingFinished$16b3c7ac() -> b
+kankan.wheel.widget.WheelAdapter -> kankan.wheel.widget.WheelAdapter:
+kankan.wheel.widget.WheelRecycle -> kankan.wheel.widget.WheelRecycle:
+    java.util.List items -> a
+    java.util.List emptyItems -> b
+    kankan.wheel.widget.WheelView wheel -> c
+    int recycleItems(android.widget.LinearLayout,int,kankan.wheel.widget.ItemsRange) -> a
+    android.view.View getItem() -> a
+    android.view.View getEmptyItem() -> b
+    void clearAll() -> c
+    java.util.List addView(android.view.View,java.util.List) -> a
+    android.view.View getCachedView(java.util.List) -> a
+kankan.wheel.widget.WheelScroller -> kankan.wheel.widget.WheelScroller:
+    kankan.wheel.widget.WheelScroller$ScrollingListener listener -> a
+    android.content.Context context -> b
+    android.view.GestureDetector gestureDetector -> c
+    android.widget.Scroller scroller -> d
+    int lastScrollY -> e
+    float lastTouchedY -> f
+    boolean isScrollingPerformed -> g
+    android.view.GestureDetector$SimpleOnGestureListener gestureListener -> h
+    int MESSAGE_SCROLL -> i
+    int MESSAGE_JUSTIFY -> j
+    android.os.Handler animationHandler -> k
+    void scroll(int,int) -> a
+    void stopScrolling() -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> a
+    void setNextMessage(int) -> a
+    void clearMessages() -> c
+    void justify() -> d
+    void startScrolling() -> e
+    void finishScrolling() -> b
+    void access$0(kankan.wheel.widget.WheelScroller,int) -> a
+    android.widget.Scroller access$1(kankan.wheel.widget.WheelScroller) -> a
+    int access$2(kankan.wheel.widget.WheelScroller) -> b
+    void access$3$306a2cc4(kankan.wheel.widget.WheelScroller) -> c
+    kankan.wheel.widget.WheelScroller$ScrollingListener access$4(kankan.wheel.widget.WheelScroller) -> d
+    android.os.Handler access$5(kankan.wheel.widget.WheelScroller) -> e
+    void access$6(kankan.wheel.widget.WheelScroller) -> f
+kankan.wheel.widget.WheelScroller$1 -> kankan.wheel.widget.b:
+    kankan.wheel.widget.WheelScroller this$0 -> a
+    boolean onScroll(android.view.MotionEvent,android.view.MotionEvent,float,float) -> onScroll
+    boolean onFling(android.view.MotionEvent,android.view.MotionEvent,float,float) -> onFling
+kankan.wheel.widget.WheelScroller$2 -> kankan.wheel.widget.a:
+    kankan.wheel.widget.WheelScroller this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+kankan.wheel.widget.WheelScroller$ScrollingListener -> kankan.wheel.widget.WheelScroller$ScrollingListener:
+    void onScroll(int) -> a
+    void onStarted() -> a
+    void onFinished() -> b
+    void onJustify() -> c
+kankan.wheel.widget.WheelView -> kankan.wheel.widget.WheelView:
+    int[] SHADOWS_COLORS -> a
+    int currentItem -> b
+    int visibleItems -> c
+    int itemHeight -> d
+    android.graphics.drawable.Drawable centerDrawable -> e
+    android.graphics.drawable.GradientDrawable topShadow -> f
+    android.graphics.drawable.GradientDrawable bottomShadow -> g
+    kankan.wheel.widget.WheelScroller scroller -> h
+    boolean isScrollingPerformed -> i
+    int scrollingOffset -> j
+    boolean isCyclic -> k
+    android.widget.LinearLayout itemsLayout -> l
+    int firstItem -> m
+    kankan.wheel.widget.adapters.WheelViewAdapter viewAdapter -> n
+    kankan.wheel.widget.WheelRecycle recycle -> o
+    java.util.List changingListeners -> p
+    java.util.List scrollingListeners -> q
+    java.util.List clickingListeners -> r
+    kankan.wheel.widget.WheelScroller$ScrollingListener scrollingListener -> s
+    android.database.DataSetObserver dataObserver -> t
+    void initData$faab20d() -> g
+    void setVisibleItems$13462e() -> a
+    kankan.wheel.widget.adapters.WheelViewAdapter getViewAdapter() -> b
+    void setViewAdapter(kankan.wheel.widget.adapters.WheelViewAdapter) -> a
+    void addChangingListener(kankan.wheel.widget.OnWheelChangedListener) -> a
+    void addScrollingListener(kankan.wheel.widget.OnWheelScrollListener) -> a
+    void notifyScrollingListenersAboutStart() -> c
+    void notifyScrollingListenersAboutEnd() -> d
+    int getCurrentItem() -> e
+    void setCurrentItem$2563266(int) -> b
+    void setCurrentItem(int) -> a
+    boolean isCyclic() -> f
+    void invalidateWheel(boolean) -> a
+    int getItemHeight() -> h
+    int calculateLayoutWidth(int,int) -> a
+    void onMeasure(int,int) -> onMeasure
+    void onLayout(boolean,int,int,int,int) -> onLayout
+    void layout(int,int) -> b
+    void onDraw(android.graphics.Canvas) -> onDraw
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    void createItemsLayout() -> i
+    boolean addViewItem(int,boolean) -> a
+    boolean isValidItemIndex(int) -> c
+    void access$0(kankan.wheel.widget.WheelView,boolean) -> a
+    void access$1(kankan.wheel.widget.WheelView,int) -> a
+    int access$2(kankan.wheel.widget.WheelView) -> a
+    void access$3(kankan.wheel.widget.WheelView,int) -> b
+    kankan.wheel.widget.WheelScroller access$4(kankan.wheel.widget.WheelView) -> b
+    boolean access$5(kankan.wheel.widget.WheelView) -> c
+kankan.wheel.widget.WheelView$1 -> kankan.wheel.widget.c:
+    kankan.wheel.widget.WheelView this$0 -> a
+    void onStarted() -> a
+    void onScroll(int) -> a
+    void onFinished() -> b
+    void onJustify() -> c
+kankan.wheel.widget.WheelView$2 -> kankan.wheel.widget.d:
+    kankan.wheel.widget.WheelView this$0 -> a
+    void onChanged() -> onChanged
+    void onInvalidated() -> onInvalidated
+kankan.wheel.widget.adapters.AbstractWheelAdapter -> kankan.wheel.widget.a.a:
+    java.util.List datasetObservers -> a
+    android.view.View getEmptyItem(android.view.View,android.view.ViewGroup) -> a
+    void registerDataSetObserver(android.database.DataSetObserver) -> a
+    void unregisterDataSetObserver(android.database.DataSetObserver) -> b
+kankan.wheel.widget.adapters.AbstractWheelTextAdapter -> kankan.wheel.widget.a.c:
+    int textColor -> a
+    int textSize -> b
+    android.content.Context context -> c
+    android.view.LayoutInflater inflater -> d
+    int itemResourceId -> e
+    int itemTextResourceId -> f
+    int emptyItemResourceId -> g
+    void setTextSize$13462e() -> b
+    void setItemTextResource$13462e() -> c
+    java.lang.CharSequence getItemText(int) -> a
+    android.view.View getItem(int,android.view.View,android.view.ViewGroup) -> a
+    android.view.View getEmptyItem(android.view.View,android.view.ViewGroup) -> a
+    void configureTextView(android.widget.TextView) -> a
+    android.widget.TextView getTextView(android.view.View,int) -> a
+    android.view.View getView(int,android.view.ViewGroup) -> a
+kankan.wheel.widget.adapters.WheelViewAdapter -> kankan.wheel.widget.a.b:
+    int getItemsCount() -> a
+    android.view.View getItem(int,android.view.View,android.view.ViewGroup) -> a
+    android.view.View getEmptyItem(android.view.View,android.view.ViewGroup) -> a
+    void registerDataSetObserver(android.database.DataSetObserver) -> a
+    void unregisterDataSetObserver(android.database.DataSetObserver) -> b
+oauth.signpost.AbstractOAuthConsumer -> oauth.signpost.AbstractOAuthConsumer:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String consumerKey -> consumerKey
+    java.lang.String consumerSecret -> consumerSecret
+    java.lang.String token -> token
+    oauth.signpost.signature.OAuthMessageSigner messageSigner -> messageSigner
+    oauth.signpost.signature.SigningStrategy signingStrategy -> signingStrategy
+    oauth.signpost.http.HttpParameters additionalParameters -> additionalParameters
+    oauth.signpost.http.HttpParameters requestParameters -> requestParameters
+    boolean sendEmptyTokens -> sendEmptyTokens
+    oauth.signpost.http.HttpRequest sign(oauth.signpost.http.HttpRequest) -> a
+    oauth.signpost.http.HttpRequest sign(java.lang.Object) -> b
+    oauth.signpost.http.HttpRequest wrap(java.lang.Object) -> a
+    void setTokenWithSecret(java.lang.String,java.lang.String) -> a
+    java.lang.String getToken() -> a
+    java.lang.String getTokenSecret() -> b
+oauth.signpost.AbstractOAuthProvider -> oauth.signpost.AbstractOAuthProvider:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String requestTokenEndpointUrl -> requestTokenEndpointUrl
+    java.lang.String accessTokenEndpointUrl -> accessTokenEndpointUrl
+    java.lang.String authorizationWebsiteUrl -> authorizationWebsiteUrl
+    oauth.signpost.http.HttpParameters responseParameters -> responseParameters
+    java.util.Map defaultHeaders -> defaultHeaders
+    boolean isOAuth10a -> isOAuth10a
+oauth.signpost.OAuth -> oauth.signpost.a:
+    com.google.gdata.util.common.base.PercentEscaper percentEncoder -> a
+    java.lang.String percentEncode(java.lang.String) -> a
+    java.lang.String percentDecode(java.lang.String) -> d
+    oauth.signpost.http.HttpParameters decodeForm(java.lang.String) -> b
+    oauth.signpost.http.HttpParameters decodeForm(java.io.InputStream) -> a
+    oauth.signpost.http.HttpParameters oauthHeaderToParamsMap(java.lang.String) -> c
+    java.lang.String toHeaderElement(java.lang.String,java.lang.String) -> a
+    void debugOut(java.lang.String,java.lang.String) -> b
+oauth.signpost.OAuthConsumer -> oauth.signpost.OAuthConsumer:
+    oauth.signpost.http.HttpRequest sign(java.lang.Object) -> b
+    void setTokenWithSecret(java.lang.String,java.lang.String) -> a
+    java.lang.String getToken() -> a
+    java.lang.String getTokenSecret() -> b
+oauth.signpost.OAuthProvider -> oauth.signpost.OAuthProvider:
+oauth.signpost.basic.DefaultOAuthConsumer -> oauth.signpost.basic.DefaultOAuthConsumer:
+    long serialVersionUID -> serialVersionUID
+    oauth.signpost.http.HttpRequest wrap(java.lang.Object) -> a
+oauth.signpost.basic.DefaultOAuthProvider -> oauth.signpost.basic.DefaultOAuthProvider:
+    long serialVersionUID -> serialVersionUID
+oauth.signpost.basic.HttpURLConnectionRequestAdapter -> oauth.signpost.basic.a:
+    java.net.HttpURLConnection connection -> a
+    java.lang.String getMethod() -> a
+    java.lang.String getRequestUrl() -> b
+    void setHeader(java.lang.String,java.lang.String) -> a
+    java.lang.String getHeader(java.lang.String) -> a
+    java.io.InputStream getMessagePayload() -> c
+    java.lang.String getContentType() -> d
+oauth.signpost.commonshttp.CommonsHttpOAuthConsumer -> oauth.signpost.commonshttp.CommonsHttpOAuthConsumer:
+    long serialVersionUID -> serialVersionUID
+    oauth.signpost.http.HttpRequest wrap(java.lang.Object) -> a
+oauth.signpost.commonshttp.HttpRequestAdapter -> oauth.signpost.commonshttp.a:
+    org.apache.http.client.methods.HttpUriRequest request -> a
+    org.apache.http.HttpEntity entity -> b
+    java.lang.String getMethod() -> a
+    java.lang.String getRequestUrl() -> b
+    java.lang.String getHeader(java.lang.String) -> a
+    void setHeader(java.lang.String,java.lang.String) -> a
+    java.lang.String getContentType() -> d
+    java.io.InputStream getMessagePayload() -> c
+oauth.signpost.exception.OAuthCommunicationException -> oauth.signpost.exception.OAuthCommunicationException:
+    java.lang.String responseBody -> responseBody
+oauth.signpost.exception.OAuthException -> oauth.signpost.exception.OAuthException:
+oauth.signpost.exception.OAuthExpectationFailedException -> oauth.signpost.exception.OAuthExpectationFailedException:
+oauth.signpost.exception.OAuthMessageSignerException -> oauth.signpost.exception.OAuthMessageSignerException:
+oauth.signpost.http.HttpParameters -> oauth.signpost.http.HttpParameters:
+    java.util.TreeMap wrappedMap -> wrappedMap
+    java.lang.String put(java.lang.String,java.lang.String) -> a
+    java.lang.String put(java.lang.String,java.lang.String,boolean) -> a
+    void putAll(java.util.Map) -> putAll
+    void putAll(java.util.Map,boolean) -> a
+    java.util.SortedSet get(java.lang.Object) -> c
+    java.lang.String getAsQueryString(java.lang.Object) -> a
+    java.lang.String getAsHeaderElement(java.lang.String) -> a
+    boolean containsKey(java.lang.Object) -> containsKey
+    boolean containsValue(java.lang.Object) -> containsValue
+    int size() -> size
+    boolean isEmpty() -> isEmpty
+    void clear() -> clear
+    java.util.SortedSet remove(java.lang.Object) -> b
+    java.util.Set keySet() -> keySet
+    java.util.Collection values() -> values
+    java.util.Set entrySet() -> entrySet
+    java.lang.Object remove(java.lang.Object) -> remove
+    java.lang.Object put(java.lang.Object,java.lang.Object) -> put
+    java.lang.Object get(java.lang.Object) -> get
+oauth.signpost.http.HttpRequest -> oauth.signpost.http.a:
+    java.lang.String getMethod() -> a
+    java.lang.String getRequestUrl() -> b
+    void setHeader(java.lang.String,java.lang.String) -> a
+    java.lang.String getHeader(java.lang.String) -> a
+    java.io.InputStream getMessagePayload() -> c
+    java.lang.String getContentType() -> d
+oauth.signpost.signature.AuthorizationHeaderSigningStrategy -> oauth.signpost.signature.AuthorizationHeaderSigningStrategy:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String writeSignature(java.lang.String,oauth.signpost.http.HttpRequest,oauth.signpost.http.HttpParameters) -> a
+oauth.signpost.signature.HmacSha1MessageSigner -> oauth.signpost.signature.HmacSha1MessageSigner:
+    java.lang.String getSignatureMethod() -> a
+    java.lang.String sign(oauth.signpost.http.HttpRequest,oauth.signpost.http.HttpParameters) -> a
+oauth.signpost.signature.OAuthMessageSigner -> oauth.signpost.signature.OAuthMessageSigner:
+    long serialVersionUID -> serialVersionUID
+    org.apache.commons.codec.binary.Base64 base64 -> a
+    java.lang.String consumerSecret -> consumerSecret
+    java.lang.String tokenSecret -> tokenSecret
+    java.lang.String sign(oauth.signpost.http.HttpRequest,oauth.signpost.http.HttpParameters) -> a
+    java.lang.String getSignatureMethod() -> a
+    java.lang.String getConsumerSecret() -> b
+    java.lang.String getTokenSecret() -> c
+    void setConsumerSecret(java.lang.String) -> a
+    void setTokenSecret(java.lang.String) -> b
+    java.lang.String base64Encode(byte[]) -> a
+    void readObject(java.io.ObjectInputStream) -> readObject
+oauth.signpost.signature.SignatureBaseString -> oauth.signpost.signature.a:
+    oauth.signpost.http.HttpRequest request -> a
+    oauth.signpost.http.HttpParameters requestParameters -> b
+    java.lang.String generate() -> a
+    java.lang.String normalizeRequestParameters() -> b
+oauth.signpost.signature.SigningStrategy -> oauth.signpost.signature.SigningStrategy:
+    java.lang.String writeSignature(java.lang.String,oauth.signpost.http.HttpRequest,oauth.signpost.http.HttpParameters) -> a
+org.apache.http.entity.mime.FormBodyPart -> org.apache.http.entity.mime.a:
+    java.lang.String name -> a
+    void addField(java.lang.String,java.lang.String) -> a
+org.apache.http.entity.mime.HttpMultipart -> org.apache.http.entity.mime.d:
+    org.apache.james.mime4j.util.ByteArrayBuffer CR_LF -> a
+    org.apache.james.mime4j.util.ByteArrayBuffer TWO_DASHES -> b
+    org.apache.http.entity.mime.HttpMultipartMode mode -> c
+    org.apache.james.mime4j.util.ByteArrayBuffer encode(java.nio.charset.Charset,java.lang.String) -> a
+    void writeBytes(org.apache.james.mime4j.util.ByteArrayBuffer,java.io.OutputStream) -> a
+    void setMode(org.apache.http.entity.mime.HttpMultipartMode) -> a
+    void doWriteTo(org.apache.http.entity.mime.HttpMultipartMode,java.io.OutputStream,boolean) -> a
+    void writeTo(java.io.OutputStream) -> a
+    long getTotalLength() -> g
+org.apache.http.entity.mime.HttpMultipart$1 -> org.apache.http.entity.mime.f:
+    int[] $SwitchMap$org$apache$http$entity$mime$HttpMultipartMode -> a
+org.apache.http.entity.mime.HttpMultipartMode -> org.apache.http.entity.mime.HttpMultipartMode:
+    org.apache.http.entity.mime.HttpMultipartMode STRICT -> a
+    org.apache.http.entity.mime.HttpMultipartMode BROWSER_COMPATIBLE -> b
+    org.apache.http.entity.mime.HttpMultipartMode[] $VALUES -> c
+    org.apache.http.entity.mime.HttpMultipartMode[] values() -> values
+    org.apache.http.entity.mime.HttpMultipartMode valueOf(java.lang.String) -> valueOf
+org.apache.http.entity.mime.MIME -> org.apache.http.entity.mime.c:
+    java.nio.charset.Charset DEFAULT_CHARSET -> a
+org.apache.http.entity.mime.MinimalField -> org.apache.http.entity.mime.e:
+    java.lang.String name -> a
+    java.lang.String value -> b
+    org.apache.james.mime4j.util.ByteSequence raw -> c
+    java.lang.String getName() -> a
+    java.lang.String getBody() -> b
+    org.apache.james.mime4j.util.ByteSequence getRaw() -> c
+    java.lang.String toString() -> toString
+org.apache.http.entity.mime.MultipartEntity -> org.apache.http.entity.mime.b:
+    char[] MULTIPART_CHARS -> a
+    org.apache.james.mime4j.message.Message message -> b
+    org.apache.http.entity.mime.HttpMultipart multipart -> c
+    org.apache.http.Header contentType -> d
+    long length -> e
+    boolean dirty -> f
+    java.lang.String generateContentType(java.lang.String,java.nio.charset.Charset) -> a
+    void addPart(java.lang.String,org.apache.http.entity.mime.content.ContentBody) -> a
+    boolean isRepeatable() -> isRepeatable
+    boolean isChunked() -> isChunked
+    boolean isStreaming() -> isStreaming
+    long getContentLength() -> getContentLength
+    org.apache.http.Header getContentType() -> getContentType
+    org.apache.http.Header getContentEncoding() -> getContentEncoding
+    void consumeContent() -> consumeContent
+    java.io.InputStream getContent() -> getContent
+    void writeTo(java.io.OutputStream) -> writeTo
+org.apache.http.entity.mime.content.AbstractContentBody -> org.apache.http.entity.mime.a.a:
+    java.lang.String mimeType -> a
+    java.lang.String mediaType -> b
+    java.lang.String subType -> c
+    org.apache.james.mime4j.message.Entity parent -> d
+    void setParent(org.apache.james.mime4j.message.Entity) -> a
+    java.lang.String getMimeType() -> a
+org.apache.http.entity.mime.content.ContentBody -> org.apache.http.entity.mime.a.b:
+    java.lang.String getFilename() -> d
+org.apache.http.entity.mime.content.FileBody -> org.apache.http.entity.mime.a.c:
+    java.io.File file -> a
+    void writeTo(java.io.OutputStream) -> a
+    java.lang.String getTransferEncoding() -> b
+    long getContentLength() -> c
+    java.lang.String getFilename() -> d
+org.apache.james.mime4j.MimeException -> org.apache.james.mime4j.MimeException:
+    long serialVersionUID -> serialVersionUID
+org.apache.james.mime4j.codec.Base64OutputStream -> org.apache.james.mime4j.c.c:
+    byte[] CRLF_SEPARATOR -> a
+    byte[] BASE64_TABLE -> b
+    java.util.Set BASE64_CHARS -> c
+    byte[] singleByte -> d
+    int lineLength -> e
+    byte[] lineSeparator -> f
+    boolean closed -> g
+    byte[] encoded -> h
+    int position -> i
+    int data -> j
+    int modulus -> k
+    int linePosition -> l
+    boolean $assertionsDisabled -> m
+    void write(int) -> write
+    void write(byte[]) -> write
+    void write(byte[],int,int) -> write
+    void flush() -> flush
+    void close() -> close
+    void write0(byte[],int,int) -> a
+    void flush0() -> a
+    void writeLineSeparator() -> b
+    void checkLineSeparator(byte[]) -> a
+org.apache.james.mime4j.codec.QuotedPrintableEncoder -> org.apache.james.mime4j.c.b:
+    byte[] HEX_DIGITS -> a
+    byte[] inBuffer -> b
+    byte[] outBuffer -> c
+    boolean binary -> d
+    boolean pendingSpace -> e
+    boolean pendingTab -> f
+    boolean pendingCR -> g
+    int nextSoftBreak -> h
+    int outputIndex -> i
+    java.io.OutputStream out -> j
+    void initEncoding(java.io.OutputStream) -> a
+    void encodeChunk(byte[],int,int) -> a
+    void completeEncoding() -> a
+    void writePending() -> c
+    void clearPending() -> d
+    void plain(byte) -> a
+    void escape(byte) -> b
+    void write(byte) -> c
+    void softBreak() -> e
+    void lineBreak() -> f
+    void flushOutput() -> b
+org.apache.james.mime4j.codec.QuotedPrintableOutputStream -> org.apache.james.mime4j.c.a:
+    org.apache.james.mime4j.codec.QuotedPrintableEncoder encoder -> a
+    boolean closed -> b
+    void close() -> close
+    void flush() -> flush
+    void write(int) -> write
+    void write(byte[],int,int) -> write
+org.apache.james.mime4j.descriptor.ContentDescriptor -> org.apache.james.mime4j.a.a:
+    java.lang.String getMimeType() -> a
+    java.lang.String getTransferEncoding() -> b
+    long getContentLength() -> c
+org.apache.james.mime4j.field.AbstractField -> org.apache.james.mime4j.field.o:
+    java.util.regex.Pattern FIELD_NAME_PATTERN -> a
+    org.apache.james.mime4j.field.DefaultFieldParser parser -> b
+    java.lang.String name -> c
+    java.lang.String body -> d
+    org.apache.james.mime4j.util.ByteSequence raw -> e
+    java.lang.String getName() -> a
+    org.apache.james.mime4j.util.ByteSequence getRaw() -> c
+    java.lang.String getBody() -> b
+    java.lang.String toString() -> toString
+org.apache.james.mime4j.field.AddressListField -> org.apache.james.mime4j.field.s:
+    org.apache.commons.logging.Log log -> b
+    boolean parsed -> c
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+org.apache.james.mime4j.field.AddressListField$1 -> org.apache.james.mime4j.field.j:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.ContentDispositionField -> org.apache.james.mime4j.field.v:
+    org.apache.commons.logging.Log log -> b
+    boolean parsed -> c
+    java.lang.String dispositionType -> d
+    java.util.Map parameters -> e
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+org.apache.james.mime4j.field.ContentDispositionField$1 -> org.apache.james.mime4j.field.u:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.ContentTransferEncodingField -> org.apache.james.mime4j.field.q:
+    java.lang.String encoding -> b
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+    java.lang.String getEncoding(org.apache.james.mime4j.field.ContentTransferEncodingField) -> a
+org.apache.james.mime4j.field.ContentTransferEncodingField$1 -> org.apache.james.mime4j.field.r:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.ContentTypeField -> org.apache.james.mime4j.field.m:
+    org.apache.commons.logging.Log log -> b
+    boolean parsed -> c
+    java.lang.String mimeType -> d
+    java.util.Map parameters -> e
+    org.apache.james.mime4j.field.contenttype.parser.ParseException parseException -> f
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+    java.lang.String getParameter(java.lang.String) -> a
+    java.lang.String getBoundary() -> d
+    java.lang.String getCharset() -> e
+org.apache.james.mime4j.field.ContentTypeField$1 -> org.apache.james.mime4j.field.f:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.DateTimeField -> org.apache.james.mime4j.field.e:
+    org.apache.commons.logging.Log log -> b
+    boolean parsed -> c
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+org.apache.james.mime4j.field.DateTimeField$1 -> org.apache.james.mime4j.field.t:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.DefaultFieldParser -> org.apache.james.mime4j.field.c:
+org.apache.james.mime4j.field.DelegatingFieldParser -> org.apache.james.mime4j.field.k:
+    java.util.Map parsers -> a
+    org.apache.james.mime4j.field.FieldParser defaultParser -> b
+    void setFieldParser(java.lang.String,org.apache.james.mime4j.field.FieldParser) -> a
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.FieldParser -> org.apache.james.mime4j.field.n:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.Fields -> org.apache.james.mime4j.field.l:
+    java.util.regex.Pattern FIELD_NAME_PATTERN -> a
+    org.apache.james.mime4j.field.ContentTypeField contentType(java.lang.String) -> a
+org.apache.james.mime4j.field.MailboxField -> org.apache.james.mime4j.field.p:
+    org.apache.commons.logging.Log log -> b
+    boolean parsed -> c
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+org.apache.james.mime4j.field.MailboxField$1 -> org.apache.james.mime4j.field.i:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.MailboxListField -> org.apache.james.mime4j.field.a:
+    org.apache.commons.logging.Log log -> b
+    boolean parsed -> c
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+org.apache.james.mime4j.field.MailboxListField$1 -> org.apache.james.mime4j.field.g:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.ParseException -> org.apache.james.mime4j.field.ParseException:
+    long serialVersionUID -> serialVersionUID
+org.apache.james.mime4j.field.ParsedField -> org.apache.james.mime4j.field.h:
+org.apache.james.mime4j.field.UnstructuredField -> org.apache.james.mime4j.field.d:
+    boolean parsed -> b
+    org.apache.james.mime4j.field.FieldParser PARSER -> a
+org.apache.james.mime4j.field.UnstructuredField$1 -> org.apache.james.mime4j.field.b:
+    org.apache.james.mime4j.field.ParsedField parse(java.lang.String,java.lang.String,org.apache.james.mime4j.util.ByteSequence) -> a
+org.apache.james.mime4j.field.contenttype.parser.ContentTypeParser -> org.apache.james.mime4j.field.contenttype.parser.a:
+    java.lang.String type -> b
+    java.lang.String subtype -> c
+    java.util.List paramNames -> d
+    java.util.List paramValues -> e
+    org.apache.james.mime4j.field.contenttype.parser.ContentTypeParserTokenManager token_source -> f
+    org.apache.james.mime4j.field.contenttype.parser.SimpleCharStream jj_input_stream -> g
+    org.apache.james.mime4j.field.contenttype.parser.Token token -> h
+    org.apache.james.mime4j.field.contenttype.parser.Token jj_nt -> i
+    int jj_ntk -> j
+    int jj_gen -> k
+    int[] jj_la1 -> l
+    int[] jj_la1_0 -> m
+    java.util.Vector jj_expentries -> n
+    int[] jj_expentry -> o
+    int jj_kind -> p
+    java.lang.String getType() -> a
+    java.lang.String getSubType() -> b
+    java.util.List getParamNames() -> c
+    java.util.List getParamValues() -> d
+    void parseAll() -> e
+    org.apache.james.mime4j.field.contenttype.parser.Token jj_consume_token(int) -> a
+    int jj_ntk() -> f
+org.apache.james.mime4j.field.contenttype.parser.ContentTypeParserConstants -> org.apache.james.mime4j.field.contenttype.parser.b:
+    java.lang.String[] tokenImage -> a
+org.apache.james.mime4j.field.contenttype.parser.ContentTypeParserTokenManager -> org.apache.james.mime4j.field.contenttype.parser.d:
+    int commentNest -> b
+    java.io.PrintStream debugStream -> c
+    long[] jjbitVec0 -> d
+    int[] jjnextStates -> e
+    java.lang.String[] jjstrLiteralImages -> f
+    java.lang.String[] lexStateNames -> g
+    int[] jjnewLexState -> h
+    long[] jjtoToken -> i
+    long[] jjtoSkip -> j
+    long[] jjtoSpecial -> k
+    long[] jjtoMore -> l
+    org.apache.james.mime4j.field.contenttype.parser.SimpleCharStream input_stream -> m
+    int[] jjrounds -> n
+    int[] jjstateSet -> o
+    java.lang.StringBuffer image -> p
+    int jjimageLen -> q
+    int lengthOfMatch -> r
+    char curChar -> s
+    int curLexState -> t
+    int defaultLexState -> u
+    int jjnewStateCnt -> v
+    int jjround -> w
+    int jjmatchedPos -> x
+    int jjmatchedKind -> y
+    int jjStopAtPos$255f288(int) -> a
+    int jjStartNfaWithStates_0$4868d301(int) -> b
+    void jjCheckNAdd(int) -> c
+    int jjMoveNfa_0(int,int) -> a
+    int jjMoveNfa_1$255f288(int) -> d
+    int jjMoveNfa_3$255f288(int) -> e
+    int jjMoveNfa_2$255f288(int) -> f
+    void ReInitRounds() -> b
+    org.apache.james.mime4j.field.contenttype.parser.Token jjFillToken() -> c
+    org.apache.james.mime4j.field.contenttype.parser.Token getNextToken() -> a
+org.apache.james.mime4j.field.contenttype.parser.ParseException -> org.apache.james.mime4j.field.contenttype.parser.ParseException:
+    long serialVersionUID -> serialVersionUID
+    boolean specialConstructor -> specialConstructor
+    org.apache.james.mime4j.field.contenttype.parser.Token currentToken -> currentToken
+    int[][] expectedTokenSequences -> expectedTokenSequences
+    java.lang.String[] tokenImage -> tokenImage
+    java.lang.String eol -> eol
+    java.lang.String getMessage() -> getMessage
+    java.lang.String add_escapes(java.lang.String) -> a
+org.apache.james.mime4j.field.contenttype.parser.SimpleCharStream -> org.apache.james.mime4j.field.contenttype.parser.c:
+    int bufsize -> a
+    int available -> b
+    int tokenBegin -> c
+    int bufpos -> d
+    int[] bufline -> e
+    int[] bufcolumn -> f
+    int column -> g
+    int line -> h
+    boolean prevCharIsCR -> i
+    boolean prevCharIsLF -> j
+    java.io.Reader inputStream -> k
+    char[] buffer -> l
+    int maxNextCharInd -> m
+    int inBuf -> n
+    int tabSize -> o
+    void ExpandBuff(boolean) -> a
+    char BeginToken() -> a
+    char readChar() -> b
+    int getEndColumn() -> c
+    int getEndLine() -> d
+    int getBeginColumn() -> e
+    int getBeginLine() -> f
+    void backup(int) -> a
+    java.lang.String GetImage() -> g
+    char[] GetSuffix(int) -> b
+org.apache.james.mime4j.field.contenttype.parser.Token -> org.apache.james.mime4j.field.contenttype.parser.e:
+    int kind -> a
+    int beginLine -> b
+    int beginColumn -> c
+    int endLine -> d
+    int endColumn -> e
+    java.lang.String image -> f
+    org.apache.james.mime4j.field.contenttype.parser.Token next -> g
+    org.apache.james.mime4j.field.contenttype.parser.Token specialToken -> h
+    java.lang.String toString() -> toString
+org.apache.james.mime4j.field.contenttype.parser.TokenMgrError -> org.apache.james.mime4j.field.contenttype.parser.TokenMgrError:
+    int errorCode -> errorCode
+    java.lang.String addEscapes(java.lang.String) -> a
+    java.lang.String getMessage() -> getMessage
+org.apache.james.mime4j.message.BinaryBody -> org.apache.james.mime4j.b.i:
+org.apache.james.mime4j.message.Body -> org.apache.james.mime4j.b.h:
+    void setParent(org.apache.james.mime4j.message.Entity) -> a
+org.apache.james.mime4j.message.BodyPart -> org.apache.james.mime4j.b.b:
+org.apache.james.mime4j.message.Entity -> org.apache.james.mime4j.b.e:
+    org.apache.james.mime4j.message.Header header -> a
+    org.apache.james.mime4j.message.Body body -> b
+    org.apache.james.mime4j.message.Entity parent -> c
+    void setParent(org.apache.james.mime4j.message.Entity) -> a
+    org.apache.james.mime4j.message.Header getHeader() -> a
+    void setHeader(org.apache.james.mime4j.message.Header) -> a
+    org.apache.james.mime4j.message.Body getBody() -> b
+    void setBody(org.apache.james.mime4j.message.Body) -> a
+org.apache.james.mime4j.message.Header -> org.apache.james.mime4j.b.g:
+    java.util.List fields -> a
+    java.util.Map fieldMap -> b
+    void addField(org.apache.james.mime4j.parser.Field) -> a
+    java.util.List getFields() -> a
+    org.apache.james.mime4j.parser.Field getField(java.lang.String) -> a
+    java.util.Iterator iterator() -> iterator
+    java.lang.String toString() -> toString
+org.apache.james.mime4j.message.Message -> org.apache.james.mime4j.b.a:
+org.apache.james.mime4j.message.MessageWriter -> org.apache.james.mime4j.b.c:
+    byte[] CRLF -> b
+    byte[] DASHES -> c
+    org.apache.james.mime4j.message.MessageWriter DEFAULT -> a
+    void writeBody(org.apache.james.mime4j.message.Body,java.io.OutputStream) -> a
+    void writeEntity(org.apache.james.mime4j.message.Entity,java.io.OutputStream) -> a
+    void writeHeader(org.apache.james.mime4j.message.Header,java.io.OutputStream) -> a
+    void writeBytes(org.apache.james.mime4j.util.ByteSequence,java.io.OutputStream) -> a
+org.apache.james.mime4j.message.Multipart -> org.apache.james.mime4j.b.f:
+    java.util.List bodyParts -> a
+    org.apache.james.mime4j.message.Entity parent -> b
+    org.apache.james.mime4j.util.ByteSequence preamble -> c
+    java.lang.String preambleStrCache -> d
+    org.apache.james.mime4j.util.ByteSequence epilogue -> e
+    java.lang.String epilogueStrCache -> f
+    java.lang.String subType -> g
+    org.apache.james.mime4j.message.Entity getParent() -> a
+    void setParent(org.apache.james.mime4j.message.Entity) -> a
+    java.util.List getBodyParts() -> b
+    void addBodyPart(org.apache.james.mime4j.message.BodyPart) -> a
+    org.apache.james.mime4j.util.ByteSequence getPreambleRaw() -> c
+    java.lang.String getPreamble() -> d
+    org.apache.james.mime4j.util.ByteSequence getEpilogueRaw() -> e
+    java.lang.String getEpilogue() -> f
+org.apache.james.mime4j.message.SingleBody -> org.apache.james.mime4j.b.d:
+    org.apache.james.mime4j.message.Entity parent -> a
+    void setParent(org.apache.james.mime4j.message.Entity) -> a
+    void writeTo(java.io.OutputStream) -> a
+org.apache.james.mime4j.parser.Field -> org.apache.james.mime4j.d.a:
+    java.lang.String getName() -> a
+    java.lang.String getBody() -> b
+    org.apache.james.mime4j.util.ByteSequence getRaw() -> c
+org.apache.james.mime4j.util.ByteArrayBuffer -> org.apache.james.mime4j.util.d:
+    byte[] buffer -> b
+    int len -> c
+    void append(byte[],int,int) -> a
+    byte[] toByteArray() -> b
+    int length() -> a
+    byte[] buffer() -> c
+    java.lang.String toString() -> toString
+org.apache.james.mime4j.util.ByteSequence -> org.apache.james.mime4j.util.c:
+    org.apache.james.mime4j.util.ByteSequence EMPTY -> a
+    int length() -> a
+    byte[] toByteArray() -> b
+org.apache.james.mime4j.util.CharsetUtil -> org.apache.james.mime4j.util.f:
+    org.apache.commons.logging.Log log -> b
+    org.apache.james.mime4j.util.CharsetUtil$Charset[] JAVA_CHARSETS -> c
+    java.util.SortedSet decodingSupported -> d
+    java.util.SortedSet encodingSupported -> e
+    java.util.Map charsetMap -> f
+    java.nio.charset.Charset US_ASCII -> a
+    java.nio.charset.Charset ISO_8859_1 -> g
+    java.nio.charset.Charset UTF_8 -> h
+    java.nio.charset.Charset DEFAULT_CHARSET -> i
+    java.nio.charset.Charset getCharset(java.lang.String) -> a
+org.apache.james.mime4j.util.CharsetUtil$Charset -> org.apache.james.mime4j.util.g:
+    java.lang.String canonical -> a
+    java.lang.String mime -> b
+    java.lang.String[] aliases -> c
+    int compareTo(java.lang.Object) -> compareTo
+    java.lang.String access$100(org.apache.james.mime4j.util.CharsetUtil$Charset) -> a
+    java.lang.String access$200(org.apache.james.mime4j.util.CharsetUtil$Charset) -> b
+    java.lang.String[] access$300(org.apache.james.mime4j.util.CharsetUtil$Charset) -> c
+org.apache.james.mime4j.util.ContentUtil -> org.apache.james.mime4j.util.e:
+    org.apache.james.mime4j.util.ByteSequence encode(java.lang.String) -> a
+    java.lang.String decode(org.apache.james.mime4j.util.ByteSequence) -> a
+    java.lang.String decode(java.nio.charset.Charset,byte[],int,int) -> a
+org.apache.james.mime4j.util.EmptyByteSequence -> org.apache.james.mime4j.util.b:
+    byte[] EMPTY_BYTES -> b
+    int length() -> a
+    byte[] toByteArray() -> b
+org.apache.james.mime4j.util.MimeUtil -> org.apache.james.mime4j.util.MimeUtil:
+    org.apache.commons.logging.Log log -> a
+    java.util.Random random -> b
+    int counter -> c
+    java.lang.ThreadLocal RFC822_DATE_FORMAT -> d
+    boolean isBase64Encoding(java.lang.String) -> a
+    boolean isQuotedPrintableEncoded(java.lang.String) -> b
+    java.lang.String fold$7a1ba7c4(java.lang.String) -> c
+    int indexOfWsp(java.lang.String,int) -> a
+org.apache.james.mime4j.util.MimeUtil$1 -> org.apache.james.mime4j.util.a:
+    java.lang.Object initialValue() -> initialValue
+org.apache.james.mime4j.util.MimeUtil$Rfc822DateFormat -> org.apache.james.mime4j.util.MimeUtil$Rfc822DateFormat:
+    long serialVersionUID -> serialVersionUID
+    java.lang.StringBuffer format(java.util.Date,java.lang.StringBuffer,java.text.FieldPosition) -> format
+org.json.simple.JSONArray -> org.json.simple.JSONArray:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String toJSONString(java.util.List) -> a
+    java.lang.String toJSONString() -> a
+    java.lang.String toString() -> toString
+org.json.simple.JSONAware -> org.json.simple.b:
+    java.lang.String toJSONString() -> a
+org.json.simple.JSONObject -> org.json.simple.JSONObject:
+    long serialVersionUID -> serialVersionUID
+    java.lang.String toJSONString(java.util.Map) -> a
+    java.lang.String toJSONString() -> a
+    java.lang.String toString() -> toString
+org.json.simple.JSONValue -> org.json.simple.a:
+    java.lang.String toJSONString(java.lang.Object) -> a
+    void escape(java.lang.String,java.lang.StringBuffer) -> a
+org.json.simple.parser.ContainerFactory -> org.json.simple.parser.c:
+    java.util.Map createObjectContainer() -> a
+    java.util.List creatArrayContainer() -> b
+org.json.simple.parser.JSONParser -> org.json.simple.parser.d:
+    java.util.LinkedList handlerStatusStack -> a
+    org.json.simple.parser.Yylex lexer -> b
+    org.json.simple.parser.Yytoken token -> c
+    int status -> d
+    int peekStatus(java.util.LinkedList) -> a
+    java.lang.Object parse$3b9bc828(java.lang.String) -> a
+    java.lang.Object parse(java.io.Reader,org.json.simple.parser.ContainerFactory) -> a
+    java.util.Map createObjectContainer(org.json.simple.parser.ContainerFactory) -> a
+    java.util.List createArrayContainer(org.json.simple.parser.ContainerFactory) -> b
+org.json.simple.parser.ParseException -> org.json.simple.parser.ParseException:
+    long serialVersionUID -> serialVersionUID
+    int errorType -> errorType
+    java.lang.Object unexpectedObject -> unexpectedObject
+    int position -> position
+    java.lang.String toString() -> toString
+org.json.simple.parser.Yylex -> org.json.simple.parser.a:
+    int[] ZZ_LEXSTATE -> a
+    char[] ZZ_CMAP -> b
+    int[] ZZ_ACTION -> c
+    int[] ZZ_ROWMAP -> d
+    int[] ZZ_TRANS -> e
+    java.lang.String[] ZZ_ERROR_MSG -> f
+    int[] ZZ_ATTRIBUTE -> g
+    java.io.Reader zzReader -> h
+    int zzState -> i
+    int zzLexicalState -> j
+    char[] zzBuffer -> k
+    int zzMarkedPos -> l
+    int zzCurrentPos -> m
+    int zzStartRead -> n
+    int zzEndRead -> o
+    int yyline -> p
+    int yychar -> q
+    int yycolumn -> r
+    boolean zzAtBOL -> s
+    boolean zzAtEOF -> t
+    java.lang.StringBuffer sb -> u
+    int getPosition() -> a
+    void yyreset(java.io.Reader) -> a
+    java.lang.String yytext() -> c
+    org.json.simple.parser.Yytoken yylex() -> b
+org.json.simple.parser.Yytoken -> org.json.simple.parser.b:
+    int type -> a
+    java.lang.Object value -> b
+    java.lang.String toString() -> toString

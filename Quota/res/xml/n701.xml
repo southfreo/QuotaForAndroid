@@ -1,0 +1,59 @@
+<quotaxml version="1">
+	<provider id="701" dtype="2" pgid="1500" name="PennyTel" type="AUS Mobile" cookie="pennytel.com.au" parsemethod="xml" secure="false" icon="pt" providerurl="https://www.pennytel.com/login.jsp" version="1.1" description="Check your PennyTel balance">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.pennytel.com/validatelogin.jsp" headers="Referer||https://www.pennytel.com/notification.jsp" post="redirect=&amp;password=--DS_PARAM2--&amp;username=--DS_PARAM1--&amp;passwordform=--DS_PARAM2--" message="Logging in.."/>
+				<url id="10" http="https://www.pennytel.com/user.jsp" headers="Referer||https://www.pennytel.com/notification.jsp" message="Retrieving.."/>
+				<url id="20" http="https://www.pennytel.com/header.jsp" headers="Referer||https://www.pennytel.com/user.jsp" message="Retrieving..."/>
+				<url id="30" http="https://www.pennytel.com/notification.jsp" headers="Referer||https://www.pennytel.com/user.jsp" message="Retrieving..."/>
+				<url id="40" http="https://www.pennytel.com/ajax_account_info.jsp?date=--DK_DKEY--" headers="Referer||https://www.pennytel.com/notification.jsp" message="Retrieving..."/>
+			</datassource>
+			<datakeys>
+            
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="1" extract="regex" condition="1">
+					<find><![CDATA[(?i)Forgot Password]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="30" name="--DK_DKEY--" type="string" src="url" srcid="30" extract="regex">
+					<find><![CDATA[ajax_account_info\.jsp\?date=(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+                
+ 				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[Total Credit:.*?value="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="50" name="--DK_SMS--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[Free SMS:.*?value="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="60" name="--DK_ACRED--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[Available Credit:.*?value="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="60" name="--DK_CUR--" type="string" src="url" srcid="40" extract="regex">
+					<find><![CDATA[Currency:.*?value="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+			</datakeys>
+            
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1500" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Credit:" bal1value="--DK_BAL--" bal2name="Free SMS:" bal2value="--DK_SMS--" src="" date="" description="" amount=""/>
+			</accountbalance>
+		    <extrapanel>
+				<extra id="2" type="text" name="Available Credit" value="--DK_ACRED--" showonempty="false"/>
+				<extra id="3" type="text" name="Currency" value="--DK_CUR--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

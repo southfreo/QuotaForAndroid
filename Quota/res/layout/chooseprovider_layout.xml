@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical" 
+     android:layout_width="fill_parent" 
+     android:layout_height="fill_parent"
+     android:background="@drawable/layout_bg"
+>
+ 	
+	
+   <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:gravity="top"
+        android:layout_height="wrap_content" >
+
+	<TextView
+		android:id="@+id/providername"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="5dp"
+		android:gravity="center_vertical|center_horizontal"
+		android:textSize="20sp"
+		android:textColor="@drawable/white"
+		android:text="ProviderName"/>
+
+	<TextView
+		android:id="@+id/providerdescription"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:textColor="@drawable/white"
+		android:gravity="center_vertical|center_horizontal"
+		android:lines="4"
+		android:textSize="14sp"
+		android:text="This is the description of this provider, it may be on many lines and should always be read before setting up."/>
+		
+	<TextView
+		android:id="@+id/providerversion"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:textColor="@drawable/white"
+		android:layout_below="@id/providerdescription"
+		android:layout_marginTop="10dp"
+		android:gravity="center_vertical|center_horizontal"
+		android:textSize="12sp"
+		android:text="Version"/>
+		
+	</LinearLayout>
+			
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:layout_width="fill_parent"
+		android:paddingLeft="12dp"
+		android:paddingRight="12dp"
+		android:paddingTop="4dp"
+		android:layout_marginTop="8dp"
+		android:orientation="horizontal">
+	
+   <kankan.wheel.widget.WheelView android:id="@+id/providertype"
+        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"/>
+	
+	<kankan.wheel.widget.WheelView android:id="@+id/provider"
+		android:layout_height="200dp"
+		android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal"
+		android:layout_marginLeft="2dp"
+		android:layout_weight="1.5"/>
+		
+	</LinearLayout>
+	
+	<LinearLayout 
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="bottom"
+	android:layout_width="fill_parent">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_gravity="bottom" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent">
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_gravity="center_horizontal" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_marginTop="5dp">
+            <Button android:id="@+id/okbutt" android:layout_weight="1.0" android:text="OK" android:layout_marginLeft="20dp" android:layout_height="50dp" android:layout_marginRight="5dp" android:layout_width="0dp"></Button>
+            <Button android:id="@+id/cancelbutt" android:layout_weight="1.0" android:text="Cancel" android:layout_marginLeft="5dp" android:layout_height="50dp" android:layout_marginRight="20dp" android:layout_width="0dp"></Button>
+        </LinearLayout>
+    </LinearLayout>
+	</LinearLayout>
+	
+
+
+</LinearLayout>
+
+
+
+

@@ -1,0 +1,41 @@
+<quotaxml version="1">
+<provider id="1620" pgid="1620" dtype="2" name="Whirlpool Recent" icon="wp" type="AUS News" cookie="" parsemethod="xml" secure="false" providerurl="http://www.whirlpool.net.au/" version="1.0" description="Logins in and checks your watched threads">
+		<model>
+			<datassource>
+				<url id="10" http="http://www.whirlpool.net.au/" message="Connecting.."/>
+				<url id="20" http="http://forums.whirlpool.net.au/profile/ajax.cfm?_=1264078512725&amp;action=login&amp;user=--DS_PARAM1--&amp;pass=--DS_PARAM2--&amp;method=1" message="Logging In"/>
+				<url id="30" http="http://forums.whirlpool.net.au/user/?days=--DS_PARAM120--" message="Updating..."/>
+			</datassource>
+			<datakeys>
+	   		    <key id="6" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[Login failed]]></find>
+					<pos>0</pos>
+				</key>
+	
+				<key id="70" name="--DK_TITLES--" type="string" extract="regex-array-raw" src="url" srcid="30">
+					<find><![CDATA[(?s)class="title"><a class="title" href=".*?>(.*?)</a]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="72" name="--DK_DESCS--" type="string" extract="regex-array-raw" src="url" replacechars="" trimspace="true" srcid="30">
+					<find><![CDATA[(?s)<td class="newest"><a href=".*?<br>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="76" name="--DK_LINK--" type="string" extract="regex-array-raw" src="url" removechars="amp;" prefix="http://forums.whirlpool.net.au/forum-replies.cfm?t=" postfix="&amp;p=-1" srcid="30">
+					<find><![CDATA[(?s)class="title"><a class="title" href=".*?t=(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="76" name="--DK_NOALERTS--" type="string" extract="count" src="key" srcid="70"/>
+			</datakeys>
+		    <conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		
+	
+		<view>
+			<accountbalance>
+				<summary headings="--DK_NOALERTS-- Stories" hidesummary="true" rsstitle="--DK_TITLES--" rssdesc="--DK_DESCS--" rsstime="--DK_TIME--" rsslink="--DK_LINK--"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

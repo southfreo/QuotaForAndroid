@@ -1,0 +1,39 @@
+<quotaxml version="1">
+<provider id="1520" pgid="1502" dtype="2" name="NSW Roam Express" type="AUS Travel" cookie="roamexpress.com.au" parsemethod="xml" secure="false" icon="roam" providerurl="https://www.roamexpress.com.au/Secure/Default.htm" version="1.0" description="Check your Roam Express balance and account history">
+		<model>
+			<datassource>
+				<url id="1" http="http://www.roam.com.au/default.asp" message="Connecting.."/>
+				<url id="10" http="https://www.roamexpress.com.au/Secure/LogonValidate.asp" post="txtAccount=--DS_PARAM1--&amp;txtPIN=--DS_PARAM3--" message="Login"/>
+				<url id="25" http="https://www.roamexpress.com.au/Secure/AccountBalance.asp" message="Getting Balance"/>
+				<url id="30" http="https://www.roamexpress.com.au/Secure/UsageStatement.asp" message="Getting Usage"/>
+			</datassource>
+			<datakeys><!-- BadLogin -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="25" extract="regex" condition="1">
+					<find><![CDATA[Invalid Account Number]]></find>
+					<pos>0</pos>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="25" extract="regex">
+					<find><![CDATA[(?s)--DS_PARAM1--.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_SEC--" type="string" src="url" srcid="25" extract="regex">
+					<find><![CDATA[(?s)--DS_PARAM1--.*?<td.*?</td>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key><!-- Transactions -->
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="30" extract="htmltable">
+					<find><![CDATA[(?s)<table border=0 cellpadding=2 cellspacing=1>(.*?)</table>]]></find>
+					<start><![CDATA[(?i)<tr>(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td class=StatementCell.*>(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1502" displaytype="2">
+			<accountbalance>
+				<summary bal1name="" bal1value="--DK_BAL--" bal2name="Security" bal2value="--DK_SEC--" src="--DK_TT_TABLE--" date="" description="1" amount="4"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

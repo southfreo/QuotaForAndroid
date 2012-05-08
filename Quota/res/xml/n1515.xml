@@ -1,0 +1,55 @@
+<quotaxml version="1">
+	<provider id="1515" pgid="1515" dtype="2" name="VIC Myki" type="AUS Travel" cookie="mymyki.com.au" parsemethod="xml" secure="false" icon="myki" providerurl="https://www.mymyki.com.au/" version="1.1" description="Check your Myki Balance and see recent transactions">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.mymyki.com.au/NTSWebPortal/Login.aspx" message="Connecting.."/>
+				<XXurl id="10" http="http://192.168.0.22:8888/NTSWebPortal/Login.aspx" post="ctl00%24uxContentPlaceHolder%24uxUsername=--DS_PARAM1--&amp;__EVENTVALIDATION=--DK_EV--&amp;ctl00%24uxContentPlaceHolder%24uxPassword=--DS_PARAM2--&amp;ctl00%24uxContentPlaceHolder%24uxLogin=Login&amp;__VIEWSTATE=--DK_VS--" message="Login"/>
+				<url id="10" http="https://www.mymyki.com.au/NTSWebPortal/Login.aspx" post="ctl00%24uxContentPlaceHolder%24uxUsername=--DS_PARAM1--&amp;__EVENTVALIDATION=--DK_EV--&amp;ctl00%24uxContentPlaceHolder%24uxPassword=--DS_PARAM2--&amp;ctl00%24uxContentPlaceHolder%24uxLogin=Login&amp;__VIEWSTATE=--DK_VS--" message="Login"/>
+				<url id="15" http="https://www.mymyki.com.au/NTSWebPortal/Registered/MyMykiAccount.aspx?menu=My+myki+account" post="__EVENTTARGET=ctl00%24uxContentPlaceHolder%24uxTimer&amp;ctl00$uxContentPlaceHolder$uxScriptManager=ctl00$uxContentPlaceHolder$uxScriptManager&amp;__VIEWSTATE=--DK_VS1--&amp;__EVENTVALIDATION=--DK_EV1--&amp;=" message="Getting Balance"/>
+			</datassource>
+			<datakeys><!-- BadLogin -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[(?i)The username and password combination you have entered does not match]]></find>
+					<pos>0</pos>
+				</key><!-- Viewstate -->
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- EV -->
+				<key id="10" name="--DK_EV--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="15" name="--DK_VS1--" type="string" escape="true" src="url" srcid="10" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- EV -->
+				<key id="20" name="--DK_EV1--" type="string" escape="true" src="url" srcid="10" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="21" name="--DK_CARDARRAY--" type="string" src="url" srcid="15" extract="regex-array" condition="2">
+					<find><![CDATA[(?si)"ManageMyCard\.aspx.*?cno=.*?">(.*?)</a>]]></find>
+					<pos>1</pos>
+				</key><!-- CNO -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" trimspace="true" srcid="15" extract="regex">
+					<find><![CDATA[(?si)--DS_PARAM4--.*?<td.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key><!-- Status -->
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+				<condition id="2" when="after" operator="is_param_empty" p1="4" action="popup_picker" ap1="Choose Card" ap2="--DK_CARDARRAY--" ap3="4"/>
+			</conditions>
+		</model>
+		<view paramgroup="1515" displaytype="2">
+			<accountbalance>
+				<summary bal1name="" bal1value="--DK_BAL--" bal2name="" bal2value="" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

@@ -1,0 +1,33 @@
+<quotaxml version="1">
+<provider id="1501" name="NSW myE-Toll" pgid="1500" dtype="2" type="AUS Travel" cookie="rta.nsw.gov.au" parsemethod="xml" secure="false" icon="etoll" providerurl="https://ols2.rta.nsw.gov.au/myEToll/secure/requestLogin.do" version="1.0" description="Check your myE-Toll balance from RTA Authority, NSW">
+		<model>
+			<datassource>
+				<url id="10" http="https://ols2.rta.nsw.gov.au/myEToll" message="Connecting"/>
+				<url id="15" http="https://ols2.rta.nsw.gov.au/myEToll/secure/requestLogin.do" message="Logging In"/>
+				<url id="20" http="https://ols2.rta.nsw.gov.au/myEToll/secure/guiLogin.do" post="x=74&amp;y=12&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Logging In"/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[(?i)Invalid user ID/password.]]></find>
+					<pos>0</pos>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Toll balance:.*displayValue".*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key><!-- Security -->
+				<key id="50" name="--DK_SECURITY--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Tag security deposit:.*?displayValue".*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1500" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="--DK_BAL--" bal2name="Security:" bal2value="--DK_SECURITY--" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

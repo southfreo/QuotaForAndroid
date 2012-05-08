@@ -1,0 +1,73 @@
+<quotaxml version="1">
+
+    <provider id="1610" pgid="757" name="Virgin Mobile" icon="11" providerurl="https://www1.virginmobileusa.com/myaccount/home.do" parsemethod="xml" type="USA Mobile" cookie="virginmobileusa" version="1.1" description="Please ensure you can access your usage from the Providers website">
+		<model>
+			<datassource>
+				<url id="10" http="https://www1.virginmobileusa.com/login/login.do" post="loginRoutingInfo=https%3A%2F%2Fwww1.virginmobileusa.com%3A443%2Fmyaccount%2Fhome.do&amp;min=--DS_PARAM1--&amp;vkey=--DS_PARAM2--&amp;submit=submit" message="Logging In"/>
+				
+				<XXurl id="10" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/USA/mobile/Virgin/minutesonly.html" message="testing"/>
+				
+			</datassource>
+			<datakeys>
+				
+				<key id="10" name="--DK_CHECK--" type="string" src="url" srcid="10" condition="1" extract="regex">
+					<pos>0</pos>
+					<find><![CDATA[WELCOME BACK]]></find>
+                </key>
+                
+        		<key id="20" name="--DK_MINUSED--" type="number" src="url" srcid="10" removechars="," outputtype="1" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)remaining_minutes">.*?>(.*?)<]]></find>
+                </key>
+
+       		    <key id="20" name="--DK_MINMAX--" type="number" src="url" srcid="10" removechars="," outputtype="1" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)remaining_minutes">.*?</strong>.*?/(.*?)<]]></find>
+                </key>
+
+				<key id="111" name="--DK_DATA--" type="number" src="url" srcid="10" extract="regex" trimhtml="true" removechars="," parseformat="MB" default="0" outputtype="7">
+					<find><![CDATA[Messaging, Data &amp; Web</th><td>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+                
+				<key id="112" name="--DK_DATASTRING--" type="string" src="url" srcid="10" extract="regex" trimhtml="true" removechars=",">
+					<find><![CDATA[Messaging, Data &amp; Web</th><td>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="113" name="--DK_CURRBAL--" type="string" src="url" srcid="10" extract="regex" trimhtml="true" removechars=",">
+					<find><![CDATA[Current Balance</h3>.*?<p>(.*?)</p>]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="114" name="--DK_MNTHCHARGE--" type="string" src="url" srcid="10" extract="regex" trimhtml="true" removechars=",">
+					<find><![CDATA[Monthly Charge</h3>.*?<p>(.*?)</p>]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="114" name="--DK_DateDUE--" type="string" src="url" srcid="10" extract="regex" trimhtml="true" removechars=",">
+					<find><![CDATA[Date Due</h3>.*?<p>(.*?)</p>]]></find>
+					<pos>1</pos>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="1" when="after" operator="is_key_empty" p1="--DK_CHECK--" action="fail" ap1="Did not login, Check your username/password"/>
+			</conditions>
+		
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Minutes" value="--DK_MINUSED_I_--" used="true" maxvalue="--DK_MINMAX_I_--" outputtype="1"/>
+				<Progress id="2" name="Data" value="--DK_DATA_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="7" />
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+					<extra id="5" type="text" name="Data" value="--DK_DATASTRING--"/>
+					<extra id="6" type="text" name="Monthly Charge" value="--DK_MNTHCHARGE--"/>
+					<extra id="7" type="text" name="Current Balance" value="--DK_CURRBAL--"/>
+					<extra id="7" type="text" name="Date Due" value="--DK_DateDUE--"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

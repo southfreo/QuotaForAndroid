@@ -1,0 +1,151 @@
+<quotaxml version="1">
+<provider id="5" pgid="5" name="Vodafone Postpay" providerurl="http://myvodafone.com.au/" type="AUS Mobile" cookie="myvodafone" parsemethod="xml" version="2.3" description="Please ensure you can access your vodafone usage data via the vodafone website on your iPhone">
+		<model>
+			<datassource>
+			
+				<url id="2" http="https://www.myvodafone.com.au/auth/login" post="url=https%3A%2F%2Fselfserve.myvodafone.com.au%2FmyBill%2Fdo%2FloadSelfServiceLandingPage&amp;pcode=mybill&amp;txtUserID=--DS_PARAM1--&amp;txtPassword=--DS_PARAM2--" message="Logging In.."/><!-- Optional Pin -->
+				<url id="3" http="https://selfserve.myvodafone.com.au/myBill/do/services/checkPin" post="pin=--DS_PARAM3--&amp;pli=--DK_PLI--" message="Entering PIN"/><!-- Account Summary -->
+				<url id="4" http="https://selfserve.myvodafone.com.au/myBill/do/loadAccountSummary" message="Getting Account Summary"/>
+				<url id="5" http="https://selfserve.myvodafone.com.au/myBill/do/loadFreeBundleDetails" post="" alternate="https://selfserve.myvodafone.com.au/myBill/do/filterFreeBundleDetails" alternatepost="fromMSN=--DS_PARAM4--" message="Retrieving Usage info"/><!-- Optional Call History -->
+				
+                <XXurl id="5" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/Vodafone-Postpay/new-expirestoday.html" message="Double"/>
+ 	
+			</datassource>
+			<datakeys><!-- Control Keys -->
+				<key id="1" name="--DK_pin--" type="string" src="url" srcid="3" condition="1" extract="control"/>
+				<key id="2" name="--DK_extract--" type="string" src="url" srcid="5" condition="2" extract="control"/>
+				
+				<key id="100" name="--DK_auth--" type="string" src="url" srcid="2" extract="regex" condition="100">
+					<find><![CDATA[(?i)Sorry you have entered an incorrect username]]></find>
+					<pos>0</pos>
+				</key>
+				
+
+				<key id="99" name="--DK_retry--" type="string" src="url" srcid="5" extract="regex" condition="120">
+					<find><![CDATA[(?i)We are currently retrieving your information]]></find>
+					<pos>0</pos>
+				</key>
+
+				<key id="1" name="--DK_PLI--" type="string" src="url" srcid="2" extract="regex">
+					<find><![CDATA[(?si)\?pli=(.*?)&]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="10" name="--DK_PLAN--" type="string" trimhtml="true" src="url" srcid="5" extract="simple" condition="110">
+					<find><![CDATA[freeBundleFilterPlanName]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+
+				<!-- Data Keys -->
+				
+ 				<key id="15" name="--DK_FGPRS-REMAIN--" type="number" trimhtml="true" parseformat="MB" default="0" trimspace="true" src="url" srcid="5" outputtype="7" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)<div>.*?Free GPRS Bundle.*?</div>.*?colspan="2">(.*? MB) of]]></find>
+				</key>
+
+				<key id="20" name="--DK_FGPRS-TOTAL--" type="number" trimhtml="true" parseformat="MB" default="0" trimspace="true" src="url" srcid="5" outputtype="7" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)<div>.*?Free GPRS Bundle.*?</div>.*?colspan="2">.*?of(.*? MB) remain]]></find>
+				</key>
+
+
+				<key id="15" name="--DK_DDATA-REMAIN--" type="number" trimhtml="true" parseformat="MB" default="0" trimspace="true" src="url" srcid="5" outputtype="7" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)<div>.*?Domestic Data.*?</div>.*?colspan="2">(.*? MB) of]]></find>
+				</key>
+
+				<key id="20" name="--DK_DDATA-TOTAL--" type="number" trimhtml="true" parseformat="MB" default="0" trimspace="true" src="url" srcid="5" outputtype="7" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)<div>.*?Domestic Data.*?</div>.*?colspan="2">.*?of(.*? MB) remain]]></find>
+				</key>
+
+				<key id="3" name="--DK_ExpiryDate--" type="date" parseformat="dd/MM/yyyy" src="url" srcid="5" subkey="31" extract="regex">
+					<find><![CDATA[Expires:.*([0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]).*<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="31" name="--DK_ExpiryDate--" type="date" trimspace="true" parseformat="dd/MM/yyyy" src="url" srcid="5" extract="regex">
+					<find><![CDATA[Expires:(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="35" name="--DK_dtotal--" type="number" src="url" srcid="5" outputtype="7" default="0" extract="expression">
+					<find><![CDATA[(--DK_DDATA-TOTAL_I_-- + --DK_FGPRS-TOTAL_I_--)]]></find>
+				</key>
+
+				<key id="40" name="--DK_dused--" type="number" src="url" srcid="5" outputtype="7" default="0" extract="expression">
+					<find><![CDATA[(--DK_dtotal_I_--) - (--DK_FGPRS-REMAIN_I_-- + --DK_DDATA-REMAIN_I_--) ]]></find>
+				</key>
+
+
+				<key id="45" name="--DK_ANY-REMAIN--" type="number" trimhtml="true" default="0" trimspace="true" src="url" srcid="5" outputtype="8" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?s)Anytime Dollar bundles.*?</div>.*?<td colspan="2".*?\$(.*?) of]]></find>
+				</key>
+
+				<key id="45" name="--DK_ANY-TOTAL--" type="number" trimhtml="true" default="0" trimspace="true" src="url" srcid="5" outputtype="8" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?s)Anytime Dollar bundles.*?</div>.*?colspan="2".*?\$.*?of.*?\$(.*?) remain]]></find>
+				</key>
+
+				<key id="40" name="--DK_aused--" type="number" src="url" srcid="5" outputtype="8" default="0" extract="expression">
+					<find><![CDATA[--DK_ANY-TOTAL_I_--  - --DK_ANY-REMAIN_I_-- ]]></find>
+				</key>
+				
+				<key id="50" name="--DK_TOTALOWE--" type="string" trimhtml="true" trimspace="true" src="url" srcid="4" extract="simple">
+					<find><![CDATA[Total amount owing]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				
+				<key id="55" name="--DK_SINCELAST--" type="string" trimhtml="true" trimspace="true" src="url" srcid="4" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)Your spend since last bill.*?(\$.*?)<]]></find>
+				</key>
+					
+				<key id="60" name="--DK_TOTALDUE--" type="string" trimhtml="true" trimspace="true" src="url" srcid="4" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)Total amount owing:.*?(\$.*?)<]]></find>
+				</key>
+				<key id="70" name="--DK_SMSREMAIN--" type="string" trimhtml="true" trimspace="true" src="url" srcid="5" extract="regex">
+					<find><![CDATA[(?s)SMS\n.*?</div>.*?colspan="2">(.*?) of]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="120" name="--DK_extra--" type="string" src="url" srcid="5" extract="regex" >
+					<pos>1</pos>
+					<find><![CDATA[>Extra usage - (.*?)</]]></find>
+				</key>
+				
+			</datakeys>
+			<conditions><!-- Skip PIN if not entered -->
+				<condition id="1" when="before" operator="is_param_empty" p1="3" action="skip_url"/><!-- Mobile Entered -->
+				<condition id="2" when="before" operator="is_param_not_empty" p1="4" action="retry_alternate"/>
+				
+				<condition id="3" operator="if_param_not_checked" p1="11" p2="1" action="skip_url"/>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Invalid phone or password"/>
+				<condition id="110" operator="is_key_empty" p1="--DK_PLAN--" action="fail" ap1="No Billing Data found"/>
+				<condition id="120" operator="is_key_not_empty" p1="--DK_retry--" action="retry_alternate" ap2="5" ap3="3"/>
+				
+			</conditions>
+		</model>
+		<view paramgroup="5" displaytype="0">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Anytime" value="--DK_aused_I_--" used="true" maxvalue="--DK_ANY-TOTAL_I_--" outputtype="6"/>
+				<Progress id="2" name="Data" value="--DK_dused_I_--" maxvalue="--DK_dtotal_I_--"  used="true" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_ExpiryDate_I_--" includeend="true"/>
+			</summarypanel>
+			<extrapanel>
+			
+				<extra id="1" type="text" name="Extra Usage" value="--DK_extra--" showonempty="false"/>
+				<extra id="1" type="text" name="End Cycle" value="--DK_ExpiryDate--" showonempty="true"/>
+				<extra id="3" type="text" name="Remaining SMS" value="--DK_SMSREMAIN--" showonempty="false"/>
+				<XXextra id="4" type="text" name="Total Owing" value="--DK_TOTALOWE--" showonempty="true"/>
+				<XXextra id="5" type="text" name="Since Last" value="--DK_SINCELAST--" showonempty="true"/>
+				<extra id="6" type="text" name="Amount Due" value="--DK_TOTALDUE--" showonempty="true"/>
+				<extra id="7" type="text" name="Plan" value="--DK_PLAN--" showonempty="true"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

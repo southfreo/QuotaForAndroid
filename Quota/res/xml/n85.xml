@@ -1,0 +1,75 @@
+<quotaxml version="1">
+<provider id="85" name="iPrimus (NewPage)" pgid="12" icon="25" providerurl="http://iprimus.com.au/" parsemethod="xml" type="AUS ISP" cookie="iprimus" version="1.4" description="Please ensure you can access your usage from toolbox.iprimus.com.au">
+		<model>
+			<datassource>
+				<url id="1" http="https://toolbox.iprimus.com.au/" message="Connecting.."/>
+				<url id="10" http="https://toolbox.iprimus.com.au/login.aspx" post="__VIEWSTATE=--DK_VS--&amp;__EVENTVALIDATION=--DK_EV--&amp;ctl00%24hfursTkn=&amp;ctl00%24cphMainContent%24txtUsername=--DS_PARAM1--&amp;ctl00%24cphMainContent%24txtPassword=--DS_PARAM2--&amp;ctl00%24cphMainContent%24btnSubmit=Login" message="Logging In"/>
+				<url id="20" http="https://toolbox.iprimus.com.au/BroadBanddetails.aspx" message="Getting Usage"/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="10" name="--DK_EV--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="50" name="--DK_DATA_PLANNAME--" type="string" trimhtml="true" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[(?s)Plan:</b>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="52" name="--DK_DATA_SPEED--" type="string" trimhtml="true" src="url" srcid="20" extract="regex">
+					<find><![CDATA[(?s)Speed Limited.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="210" name="--DK_STARTDATE--" type="date" src="url" trimspace="true" parseformat="dd-MMM-yyyy" outputtype="2" outputformat="dd/MM/yy" srcid="10" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="200" name="--DK_PEAK_AVAIL--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?--DK_STARTDATE--.*?>Available Data.*?User_Statistic_Table_Body.*?>(.*?MB)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="200" name="--DK_PEAK_AVAIL_ST--" type="string" trimspace="true" src="url" srcid="20" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?--DK_STARTDATE--.*?>Available Data.*?User_Statistic_Table_Body.*?>(.*?MB)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="200" name="--DK_PEAK_REMAIN--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?--DK_STARTDATE--.*?>Available Data.*?User_Statistic_Table_Body.*?<td.*?>(.*?MB)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="250" name="--DK_OFFPEAK_AVAIL--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?--DK_STARTDATE--.*?MonthlyPeak.*?<tr>.*?User_Statistic_Table_Body">(.*?MB)<]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="250" name="--DK_OFFPEAK_REMAIN--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?--DK_STARTDATE--.*?MonthlyPeak.*?<tr>.*?<td.*?>.*?<td.*?>.*?<td.*?>(.*?)MB]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="260" name="--DK_LASTUPDATE--" type="string" trimhtml="true" src="url" srcid="20" extract="regex">
+					<find><![CDATA[(?s)Period Start Date:.*?--DK_STARTDATE--.*?--DK_PEAK_AVAIL_ST--.*?Month.*?<td.*?>(.*?)</td]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_empty" p1="--DK_DATA_PLANNAME--" action="fail" ap1="Could not locate usage, check userid/password and site is working"/>
+			</conditions>
+		</model>
+		<view paramgroup="12">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak Remaining" value="--DK_PEAK_REMAIN_I_--" used="false" maxvalue="--DK_PEAK_AVAIL_I_--" outputtype="6"/>
+				<Progress id="2" name="OffPeak Remaining" value="--DK_OFFPEAK_REMAIN_I_--" used="false" maxvalue="--DK_OFFPEAK_AVAIL_I_--" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Last Updated" value="--DK_LASTUPDATE--" showonempty="false"/>
+				<extra id="2" type="text" name="Plan" value="--DK_DATA_PLANNAME--" showonempty="false"/>
+				<extra id="3" type="text" name="Speed Status" value="--DK_DATA_SPEED--" showonempty="false"/>
+				<extra id="4" type="text" name="Plan Start" value="--DK_STARTDATE--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

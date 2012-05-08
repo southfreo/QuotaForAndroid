@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroller"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+
+<!--  ActionBar -->
+    <com.markupartist.android.widget.ActionBar
+    android:id="@+id/actionbar"
+    style="@style/ActionBar"
+    />
+
+<!--  Header -->
+       
+<include layout="@layout/detail_summary_item_header"/>
+    
+<!--  Start ISP View -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detail_container"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+              
+
+
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
+    	android:id="@+id/flipper"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="200dp">
+    	
+    	<!--  Page 1 -->
+    	<include layout="@layout/detail_summary_item_page1"/>
+
+	 	<!--  Page 2 -->
+    	<include layout="@layout/detail_summary_item_page2"/>
+
+</ViewFlipper>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/summary_footer"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+
+<!--  Page Control -->         
+<com.southfreo.quota.widgets.PageControl xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/pagecontrol"
+              android:layout_width="fill_parent" 
+              android:layout_height="15dp"
+              android:orientation="vertical"/>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/summary_footer"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+              
+<!--  Table -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@layout/roundlightgray"
+    android:padding="10dp"
+    android:layout_below="@id/summary_footer"
+    >
+              
+<GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/gridview"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:numColumns="2"
+    android:horizontalSpacing="10dp"
+    android:columnWidth="90dp"
+    android:stretchMode="columnWidth"
+    android:gravity="center"
+/>
+            
+
+</RelativeLayout>
+</LinearLayout>
+
+<include layout="@layout/detail_errorlayout"/>
+              
+</LinearLayout>
+
+</ScrollView>

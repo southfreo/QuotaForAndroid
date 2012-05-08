@@ -1,0 +1,71 @@
+<quotaxml version="1">
+    <provider id="762" pgid="762" dtype="0" name="Telstra CustData" providerurl="https://www.telstra.net/cgi-bin/custdata/index.pl" suppoerurl="http://www.southfreo.com/iiquota/Support/Entries/2009/6/26_Telstra_Mobile_Support.html" type="AUS ISP" cookie="telstra.net" icon="4" parsemethod="xml" version="2.5" description="Telstra CustData system reporting">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.telstra.net/cgi-bin/custdata/index.pl?page=pageLogin" post="username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;Login=Login " message="Logging In"/>
+				<url id="2" http="https://www.telstra.net/cgi-bin/custdata/index.pl?page=pageReports_DailyReports&amp;authentication_code=--DK_ac--" post="service=--DS_PARAM4--&amp;minpoll=&amp;data=daily&amp;start=--DK_smoth_I_--&amp;end=now" message="Getting Data Usage"/>
+			</datassource>
+
+            <datakeys>
+                <key id="10" name="--DK_ac--" type="string" src="url" srcid="1" extract="regex">
+                    <find>authentication_code=(.*)"</find>
+                    <pos>1</pos>
+                </key>
+
+                <key id="10" name="--DK_bad_login--" type="string" src="url" srcid="1" condition="1" extract="regex">
+                    <find>Custdata - Login</find>
+                    <pos>0</pos>
+                </key>
+                
+   				<key id="21" name="--DK_smoth--" type="string" src="url" srcid="1" extract="start_cycle" outputformat="d-MMM-yyyy">
+					<start>--DS_PARAM6--</start>
+				</key>
+				
+				<key id="11" name="--DK_SERARRAY--" type="string" src="url" srcid="2" extract="regex-array" condition="100">
+					<find><![CDATA[(?i)option value="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+ 				<key id="80" name="--DK_UPLOADS--" type="number" src="url" srcid="2" parseformat="MB" postfix=" MB" extract="regex" removechars=","  outputtype="7" condition="">
+					<find><![CDATA[Total Mbytes UPLOADED.*?: (.*)<]]></find>
+					<pos>1</pos>
+				</key>
+ 				<key id="80" name="--DK_DOWNLOADS--" type="number" src="url" srcid="2" parseformat="MB" postfix=" MB" extract="regex" removechars=","  outputtype="7" condition="">
+					<find><![CDATA[Total Mbytes DOWNLOADED.*?: (.*)<]]></find>
+					<pos>1</pos>
+				</key>
+
+                <key id="10" name="--DK_period--" type="string" src="url" srcid="2" trimspace="true" extract="regex">
+                    <find><![CDATA[(?si)Report Period:(.*?)<p>]]></find>
+                    <pos>1</pos>
+                </key>
+ 
+                <key id="10" name="--DK_sreport--" type="string" src="url" trimspace="true" srcid="2" extract="regex">
+                    <find><![CDATA[Data  report for(.*?)</]]></find>
+                    <pos>1</pos>
+                </key>
+ 				
+            </datakeys>
+			
+			<conditions>
+                <condition id="1" operator="is_key_not_empty" p1="--DK_bad_login--" action="fail" ap1="User details incorrect, Check your settings..."/>
+ 				<condition id="100" when="after" operator="is_param_empty" p1="4" action="popup_picker" ap1="Choose Service" ap2="--DK_SERARRAY--" ap3="4"/>
+			</conditions>
+		</model>
+		<view>
+            <summarypanel type="pbars">
+                <cycle id="1" type="2" startday="--DS_PARAM6--" enddate="" includeend="true"/>
+                <Progress id="1" name="Data Usage" value="--DK_DOWNLOADS_I_--" maxvalue="--DS_PARAM7--" used="true" outputtype="7"/>
+            </summarypanel>
+            
+			<extrapanel>
+             <extra id="1" type="text" name="Start Date" value="--DK_smoth_I_--"/>
+              <extra id="2" type="text" name="Report Period" value="--DK_period--"/>
+              <extra id="3" type="text" name="For Service" value="--DK_sreport--"/>
+              <extra id="4" type="text" name="Uploads" value="--DK_UPLOADS--"/>
+              
+ 			</extrapanel>
+			
+ 		</view>
+	</provider>
+</quotaxml>

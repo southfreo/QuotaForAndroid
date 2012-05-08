@@ -1,0 +1,85 @@
+<quotaxml version="1">
+<provider id="12" pgid="101" name="Virgin Prepay" providerurl="http://virginmobile.com.au" type="AUS Mobile" cookie="virgin" icon="11" parsemethod="xml" version="1.1" description="Please ensure you can access your virgin usage data via the web, should you have issues">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.virginmobile.com.au/selfcare/MyAccount/LogoutLoginPre.jsp" post="username=--DS_PARAM1--&amp;password=--DS_PARAM3--" message="Logging In.."/>
+				<url id="2" http="https://www.virginmobile.com.au/selfcare/dispatch/AccountHistory" headers="Accept-Language||en-us,en;q=0.5" message="Getting usage"/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="44" name="--DK_badlogin--" type="string" src="url" srcid="1" extract="regex" condition="1">
+					<find><![CDATA[(?i)Incorrect Phone Number]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="1" name="--DK_plandata--" type="string" src="url" srcid="2" extract="simple" condition="2">
+					<find><![CDATA[displayBalanceBreakDown('--DS_PARAM1--]]></find>
+					<start><![CDATA[Balance Breakdown:]]></start>
+					<end><![CDATA[</table>]]></end>
+				</key><!-- Create Keys from Data -->
+				<key id="10" name="--DK_BALANCE--" type="number" src="key" srcid="1" default="0" outputformat="$%.2f" outputtype="1" extract="regex">
+					<find><![CDATA[>\$([0-9]{1,}.[0-9]{1,})]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="15" name="--DK_BALANCE-EXPIRY--" type="date" src="key" srcid="1" parseformat="cccc dd MMM yyyy" outputformat="dd/MM/yy" outputtype="2" extract="simple">
+					<find><![CDATA[--DK_BALANCE--]]></find>
+					<start><![CDATA[middle">]]></start>
+					<end><![CDATA[</td>]]></end>
+				</key>
+				<key id="20" name="--DK_DATAREMAINS--" type="number" src="key" srcid="1" default="0" parseformat="MB" outputtype="7" extract="simple">
+					<find><![CDATA[Data Plan]]></find>
+					<start><![CDATA[middle">]]></start>
+					<end><![CDATA[</td>]]></end>
+				</key>
+				
+				<key id="23" name="--DK_DATAEXPIRES--" type="date" src="key" srcid="1" default="0" parseformat="cccc dd MMM yyyy" outputtype="2" extract="regex">
+					<find><![CDATA[(?si)Data Plan.*?middle".*?middle">(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="25" name="--DK_BONUSCREDIT--" type="string" src="key" srcid="1" outputtype="" outputformat="$%@" extract="simple">
+					<find><![CDATA[Bonus Credit]]></find>
+					<start><![CDATA[$]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				
+				<key id="25" name="--DK_ASOF--" type="string" src="key" srcid="1"  extract="regex">
+					<find><![CDATA[balanceRetrievedTimeStamp.*?>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="30" name="--DK_INCDATA--" type="number" src="key" default="0" parseformat="MB" outputtype="7" srcid="1" extract="simple">
+					<find><![CDATA[Included Data]]></find>
+					<start><![CDATA[middle">]]></start>
+					<end><![CDATA[</td>]]></end>
+				</key>
+				
+				<key id="40" name="--DK_used--" type="number" src="key" srcid="1" outputtype="7" default="0" extract="expression">
+					<find><![CDATA[--DS_PARAM7-- - (--DK_INCDATA_I_-- + --DK_DATAREMAINS_I_--)]]></find>
+				</key>
+
+				<key id="40" name="--DK_CREDUSED--" type="number" src="key" srcid="1" outputformat="$%.2f" outputtype="1" default="0" extract="expression">
+					<find><![CDATA[--DS_PARAM8-- - (--DK_BALANCE_I_--)]]></find>
+				</key>
+
+				
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Invalid phone or password"/>
+				<condition id="2" operator="is_key_empty" p1="--DK_plandata--" action="fail" ap1="Could not locate usage data"/>
+			</conditions>
+		</model>
+		<view paramgroup="101" graphhistory="1">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit Remaining" value="--DK_BALANCE_I_--" used="false" maxvalue="--DS_PARAM8--" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Data" value="--DK_USED_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="7"/>
+				<cycle id="1" type="1" startdate="" enddate="--DK_BALANCE-EXPIRY--" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="2" type="text" name="Bonus Credit" value="--DK_BONUSCREDIT--" showonempty="true"/>
+				<extra id="4" type="text" name="Included Data" value="--DK_INCDATA--" showonempty="false"/>
+				<extra id="5" type="text" name="Data Remaining" value="--DK_DATAREMAINS--" showonempty="false"/>
+				<extra id="6" type="text" name="Data Expires" value="--DK_DATAEXPIRES--" showonempty="false"/>
+				<extra id="7" type="text" name="Balance Retreived:" value="--DK_ASOF--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

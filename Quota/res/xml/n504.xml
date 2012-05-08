@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quotaxml version="1.0">
+	<provider id="504" dtype="2" pgid="504" name="American Express" type="AUS Bank" cookie="americanexpress.com" icon="amex" cache="900" author="aaron@moshpit.com.au" parsemethod="xml" secure="true" providerurl="https://home.americanexpress.com/home/au/home_c.shtml" version="1.1" description="Check your American Express Balance">
+		<model>
+			<datassource>
+				<url id="5" http="https://home.americanexpress.com/home/au/home_c.shtml" message="Connecting..." />
+				<url id="10" http="https://www99.americanexpress.com/myca/logon/japa/action?request_type=LogLogonHandler" post="request_type=LogLogonHandler&amp;DestPage=https%3A%2F%2Fwww99.americanexpress.com%2Fmyca%2Fintl%2Facctsumm%2Fjapa%2FaccountSummary.do%3Frequest_type%3D%26Face%3Den_AU&amp;Face=en_AU&amp;PWD=--DS_PARAM2--&amp;brandname=&amp;TARGET=https%3A%2F%2Fwww99.americanexpress.com%2Fmyca%2Fintl%2Facctsumm%2Fjapa%2FaccountSummary.do%3Frequest_type%3D%26Face%3Den_AU&amp;USERID=--DS_PARAM1--&amp;CHECKBOXSTATUS=&amp;Logon=Continue...&amp;devicePrint=&amp;UserID=--DS_PARAM1--&amp;Password=--DS_PARAM2--&amp;manage=option1" message="Logging in..."/>
+				<url id="15" http="https://www99.americanexpress.com/myca/intl/acctsumm/japa/accountSummary.do?request_type=&amp;Face=en_AU" message="Getting balances..." />
+				<url id="20" http="https://www99.americanexpress.com/myca/intl/estatement/japa/statement.do?request_type=&amp;Face=en_AU&amp;BPIndex=0&amp;sorted_index=--DK_SINDEX--" message="Getting history..." />
+			</datassource>
+			<datakeys>
+			
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[(?i)<title>American Express/Logon to Account Access</title>]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="5" name="--DK_ACCARRAY--" type="string" src="url" srcid="15" extract="regex-array" condition="20">
+					<find><![CDATA[/myca/intl/estatement/japa/statement.do.*?>(XXX-.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="15" extract="regex" trimspace="true" condition="1">
+					<find><![CDATA[(?si)--DS_PARAM6--.*?<td.*?id="colOSBalance".*?<div.*?class="summaryValues makeBold">.*?\$(.*?)</div]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_BALREMAIN--" type="string" src="url" srcid="15" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)--DS_PARAM6--.*?<td.*?id="colRecentActivity".*?Available to spend.*?<div.*?class="summaryValues makeBold">.*?\$(.*?)</div]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_SINDEX--" type="string" src="url" srcid="15" extract="regex" trimspace="true">
+					<find><![CDATA[/myca/intl/estatement/japa/statement.do.*?sorted_index=(.*?)'.*?--DS_PARAM6--]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<!-- Preprocess Table to remove unwanted characterd -->
+				<key id="55" name="--DK_TABLE--" type="string" src="url" srcid="20" extract="regex" removechars="&amp;nbsp;" >
+					<pos>0</pos>
+					<find><![CDATA[(?si)<table id="table-txnsCard0.*?</table>]]></find>
+				</key>
+				
+				<key id="60" name="--DK_TRANS--" type="string" src="key" srcid="55" extract="htmltable" trimspace="true">
+					<find><![CDATA[(?si)<tbody id="tableBody-txnsCard0"(.*?)</tbody>]]></find>
+					<start><![CDATA[(?si)<tr.*?class='tableStandardText'>(.*?)</tr>]]></start>
+					<end><![CDATA[(?si)<td.*?>(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+				<!-- Sometimes the balances are not available and the keys will not be populated -->
+				<condition id="2" operator="is_key_empty" p1="--DK_BAL--" action="fail" ap1="Balance unavailable at this time"/>
+				<condition id="20" when="after" operator="is_param_empty" p1="6" action="popup_picker" ap1="Choose Account" ap2="--DK_ACCARRAY--" ap3="6"/>
+			</conditions>
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="Balance:" noblank="true" bal1value="-$--DK_BAL--" bal2name="Available:" bal2value="$--DK_BALREMAIN--" src="--DK_TRANS--" date="1" description="2" amountformat="noblank" amount="(--COL3--)(---COL4--)"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

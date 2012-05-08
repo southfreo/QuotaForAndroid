@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quotaxml version="1.0">
+	<provider id="13" type="AUS Mobile" pgid="102" name="Optus Prepay" parsemethod="xml" version="1.1" icon="1" description="Optus Prepay (Account)" secure="no" cookie="optus.com.au" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl="">
+        <model>
+            <datassource>
+                <url id="2" http="https://my.optus.com.au/signon/Optus/login_ext.sec" post="SMENC=ISO-8859-1&amp;SMLOCALE=US-EN&amp;target=HTTPS%3A%2F%2Fmy.optus.com.au%2Fweb%2Foscportal.portal%3F_nfpb%3Dtrue%26_pageLabel%3Dmyaccount%26site%3Dpersonal&amp;smauthreason=0&amp;smagentname=Hp78kFUMHCYddNe1TJmGKxT57SuEDCMoLqqOzRBGImr20%2Btxe1ylGUCySYZ%2FCvHj&amp;postpreservationdata=&amp;USER=--DS_PARAM1--&amp;PASSWORD=--DS_PARAM2--" message="Logging in"/>
+                <url id="3" http="https://my.optus.com.au/web/oscportal.portal?_nfpb=true&amp;_pageLabel=redirectPage&amp;redirectTo=deeplink_prepaidservices_checkbalance&amp;site=personal&amp;_activeBA=Pre-Paid&amp;_activeSI=--DS_PARAM4--" message="Getting Usage"/>
+             </datassource>
+            <datakeys>
+			
+				<key id="2" name="--DK_CREDIT--" type="number" removechars="$||," outputtype="8" src="url" srcid="3" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)Your Pre-Paid account balance as of.*?<span.*?">(.*?)<]]></find>
+				</key>
+
+				<key id="5" name="--DK_MYCREDIT--" type="number" removechars="$||," outputtype="8" src="url" srcid="3" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)MyCredit.*?</td>.*?<span.*?">(.*?)<]]></find>
+				</key>
+				
+				<key id="20" name="--DK_BONUS--" type="number" removechars="$||," outputtype="8" src="url" srcid="3" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)MyBonus.*?</td>.*?<span.*?">(.*?)<]]></find>
+				</key>
+
+				<key id="70" name="--DK_REV--" type="string" trimspace="true" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?s)\sRevUp Credit\s.*?</td>.*?">(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>	
+				
+				<key id="75" name="--DK_OCREDIT--" type="string" trimspace="true" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?si)\sCredit.*?</td>.*?<span.*?">(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="3" name="--DK_BALANCE-EXPIRY--" type="date" src="url" trimspace="true" parseformat="dd MMM yyyy" outputtype="2" outputformat="dd/MM/yy" srcid="3" extract="regex">
+					<find><![CDATA[(?si)Your service will expire.*?<b>(.*?)00]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+				<key id="110" name="--DK_MYDATA--" type="number" src="url" removechars="," srcid="3" extract="regex" default="0" parseformat="MB" outputtype="7">
+					<pos>1</pos>
+					<find><![CDATA[(?s)\sMyData\s.*?</td>.*?">(.*?)</td>]]></find>
+				</key>
+				
+				<key id="115" name="--DK_REVDATA--" type="number" src="url" trimspace="true" removechars="," srcid="3" extract="regex" default="0" parseformat="MB" outputtype="7">
+					<pos>1</pos>
+					<find><![CDATA[(?s)\sRevUp Data\s.*?</td>.*?">(.*?)</td>]]></find>
+				</key>
+
+				<key id="120" name="--DK_USED--" type="number" src="key" srcid="115"  outputtype="7" extract="expression">
+				   <find><![CDATA[(--DK_MYDATA_I_-- + --DK_REVDATA_I_--) ]]></find>				
+				</key>
+				
+				<key id="71" name="--DK_TXT--" type="string" trimspace="true" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?s)\sFree Text\s.*?</td>.*?">(.*?)</]]></find>
+					<pos>1</pos>
+				</key>	
+		
+				<key id="74" name="--DK_PTXT--" type="string" trimspace="true" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?s)\sPromo Text\s.*?</td>.*?">(.*?)</]]></find>
+					<pos>1</pos>
+				</key>	
+					
+            </datakeys>
+            <conditions>
+                 <condition id="2" operator="is_key_empty" p1="--DK_UPAGE--" action="fail" ap1="Service not found, check settings."/>
+	        </conditions>
+        </model>
+        
+        <view>
+ 			<summarypanel type="pbars">
+				<Progress id="1" name="Credit Remaining" value="--DK_CREDIT_I_--" used="false" maxvalue="0" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Data Remaining" value="--DK_USED_I_--" used="false" maxvalue="--DS_PARAM7--" outputtype="7"/>
+				<cycle id="1" type="1" startdate="" enddate="--DK_BALANCE-EXPIRY--" includeend="false"/>
+			</summarypanel>
+			
+			<extrapanel>
+				<extra id="1" type="text" name="RevUp Credit" value="--DK_REV--" showonempty="false"/>
+				<extra id="1" type="text" name="My Credit" value="--DK_MYCREDIT--" showonempty="false"/>
+				<extra id="1" type="text" name="Bonus" value="--DK_BONUS--" showonempty="false"/>
+				<extra id="1" type="text" name="Credit" value="--DK_OCREDIT--" showonempty="false"/>
+				<extra id="2" type="text" name="Free Txt" value="--DK_TXT--" showonempty="false"/>
+				<extra id="3" type="text" name="Promo Txt" value="--DK_PTXT--" showonempty="false"/>
+			</extrapanel>
+			
+        </view>
+    </provider>
+</quotaxml>

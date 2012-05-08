@@ -1,0 +1,63 @@
+<quotaxml version="1">
+<provider id="1622" pgid="1500" name="OntheNet" type="AUS ISP" cookie="onthenet" icon="network_blue" parsemethod="xml" providerurl="http://www.onthenet.com.au/" version="1.0" description="Please ensure you can access your provider link">
+		<model>
+			<datassource>
+				<url id="10" http="https://broadbandusage.onthenet.com.au/cgi-bin/WebObjects/BroadbandUsageStats.woa/wa/usageData" username="--DS_PARAM1--" password="--DS_PARAM2--" message="Logging In.."/>
+				<XXurl id="10" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/ISP/onthenet/dave.xml" username="--DS_PARAM1--" password="--DS_PARAM2--" message="Test URL"/>
+ 			</datassource>
+            
+			<datakeys>
+            
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[Authorization Required]]></find>
+					<pos>0</pos>
+				</key>
+
+				<key id="20" name="--DK_PLAN--" type="string" src="url" srcid="10" extract="regex">
+					<find><![CDATA[<plan>(.*?)</plan>]]></find>
+					<pos>1</pos>
+				</key>
+
+                
+				<key id="20" name="--DK_EXPIRY--" type="date" parseformat="yyyyMMdd" outputtype="2" outputformat="dd/MM/yy" src="url" srcid="10" extract="regex">
+					<find><![CDATA[(?si)<quota_reset.*?<date>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+                
+ 				<key id="81" name="--DK_PEAKAVAIL--" type="number" src="url" srcid="10" postfix="000" extract="regex"  outputtype="6">
+					<find><![CDATA[(?si)<period.*?<quota>(.*?)</quota]]></find>
+					<pos>1</pos>
+				</key>
+                
+				<key id="91" name="--DK_PEAKUSED--" type="number" src="url" srcid="10" postfix="000" extract="regex"  outputtype="6">
+					<find><![CDATA[(?si)<period.*?<used>(.*?)</used]]></find>
+					<pos>1</pos>
+				</key>
+                
+                
+				<key id="95" name="--DK_OFFPEAKUSED--" type="number" src="url" srcid="10" postfix="000" extract="regex" parseformat="MB" outputtype="6">
+					<find><![CDATA[(?si)<period.*?<period.*?<used>(.*?)</used]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="100" name="--DK_OFFPEAKAVAIL--" type="number" src="url" srcid="10" postfix="000" extract="regex" parseformat="MB" outputtype="6">
+					<find><![CDATA[(?si)<period.*?<period.*?<quota>(.*?)</quota]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+            
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Incorrect user details"/>
+			</conditions>
+		</model>
+		<view paramgroup="1500">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak" value="--DK_PEAKUSED_I_--" used="true" maxvalue="--DK_PEAKAVAIL_I_--" outputtype="7"/>
+				<Progress id="2" name="Off-Peak" value="--DK_OFFPEAKUSED_I_--" used="true" maxvalue="--DK_OFFPEAKAVAIL_I_--" outputtype="7"/>
+				<cycle id="1" type="1" startday="" enddate="--DK_EXPIRY--"/>
+			</summarypanel>
+			<extrapanel>
+                <extra id="1" type="text" name="Plan" value="--DK_PLAN--" showonempty="true"/>            
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

@@ -1,0 +1,34 @@
+<quotaxml version="1">
+<provider id="56" pgid="12" icon="5" name="Vodafone Broadband" providerurl="https://www.vodafone.co.nz/" type="NZL Mobile" cookie="vodafone.co.nz" parsemethod="xml" version="1.1" description="Please ensure you can access your vodafone usage data via the vodafone website vodafone.co.nz">
+		<model>
+			<datassource>
+				<url id="10" http="https://the.vodafone.co.nz/acnts/myaccounts.pl/login" post="_action=login&amp;_pass=&amp;_user=&amp;username=&amp;realm=%40ihug.co.nz&amp;cmd=login&amp;force_connetion=true&amp;frames=true&amp;selected_tpl=true&amp;no_tcode=true&amp;login=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Logging In.."/>
+				<url id="20" http="https://the.vodafone.co.nz/acnts/myaccount-int.pl/usage" message="Getting usage"/>
+			</datassource>
+			<datakeys>
+				<key id="100" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)The login and password supplied is incorrect]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="35" name="--DK_DATA-REMAIN--" type="number" src="url" srcid="20" parseformat="MB" extract="regex" outputtype="7">
+					<find><![CDATA[(?s)Total.*?</div></div>(.*?)</b>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_DATA-QUOTA--" type="number" src="url" srcid="20" parseformat="MB" extract="regex" outputtype="7">
+					<find><![CDATA[(?s)Total.*?</div>.*?=bottom><b>(.*?)</b>]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+			</conditions>
+		</model>
+		<view paramgroup="12" displaytype="0">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Anytime" value="--DK_DATA-REMAIN_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_EXPIRY_I_--" includeend="true"/>
+			</summarypanel>
+			<extrapanel/>
+		</view>
+	</provider>
+</quotaxml>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quotaxml version="2.0">
+    
+	<provider id="99" type="AUS ISP" pgid="99" dtype="0" name="Optus Broadband" parsemethod="xml" version="1.3" icon="1" description="Please ensure you can access your optus usage data via the zoo website, should you have issues" secure="no" cookie="optus" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl="">
+        <model>
+            <datassource>
+            	 <url id="10" http="https://memberservices.optuszoo.com.au/login/?target=/myaccount/" message="Login"/>
+                 <url id="1" http="https://idp.optusnet.com.au/idp/optus/Authn/Service/ISP" post="spEntityID=https%3A%2F%2Fmemberservices.optuszoo.com.au%2Fshibboleth&amp;j_username=--DS_PARAM1--&amp;j_password=--DS_PARAM2--&amp;j_principal_type=ISP&amp;j_security_check=true" message="Logging in"/>
+	          
+	             <url id="2" http="https://memberservices.optuszoo.com.au/myusage/" message="Logging In"/>
+                <XXurl id="2" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/Optus/wireless.html" message="Logging In"/>
+            
+            </datassource>
+
+            <datakeys>
+                <key id="10" name="--DK_bad_login--" type="string" src="url" srcid="1" condition="1" extract="regex">
+                    <find>Incorrect username/password</find>
+                    <pos>0</pos>
+                </key>
+                
+				<key id="1" name="--DK_PLAN--" type="string" trimhtml="true" src="url" srcid="2" extract="regex" subkey="11">
+					<find><![CDATA[(?s)Current Plan:.*?<i>(.*?)</i>]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="11" name="--DK_PLAN--" type="string" trimhtml="true" src="url" srcid="2" extract="regex">
+					<find><![CDATA[(?s)Current Plan:(.*?)</li>]]></find>
+					<pos>1</pos>
+				</key>
+                
+                <key id="20" name="--DK_BALANCE-EXPIRY--" type="date" extract="regex" src="url" trimspace="true" parseformat="dd MMM yy" subkey="21" outputtype="2" outputformat="dd/MM/yy" srcid="2">
+					<find><![CDATA[(?s)Billing Period:.*?-(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+                <key id="21" name="--DK_BALANCE-EXPIRY--" type="date" extract="regex" src="url" trimspace="true" parseformat="dd MMM yy" subkey="21" outputtype="2" outputformat="dd/MM/yy" srcid="2">
+					<find><![CDATA[(?s)Usage Period:.*?-(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				
+                <key id="30" name="--DK_peak_quota--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" outputtype="7" subkey="31">
+                    <find><![CDATA[(?s)Plan Data Limit = (.*?)</b>]]></find>
+ 					<pos>1</pos>
+               </key>
+ 
+                <key id="31" name="--DK_peak_quota--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" subkey="32" outputtype="7">
+                    <find><![CDATA[(?s)headers='planDataAlwd'>(.*?)</td>]]></find>
+ 					<pos>1</pos>
+               </key>
+                
+                <key id="31" name="--DK_peak_quota--" type="number" src="url" srcid="2" parseformat="MB" extract="dstring" default="0" outputtype="7">
+                    <find><![CDATA[--DS_PARAM7--]]></find>
+ 					<pos>1</pos>
+               </key>
+
+                <key id="50" name="--DK_peak_used--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" outputtype="7" subkey="51">
+                    <find><![CDATA[(?s)Data Used.*?<span>\((.*?)\)]]></find>
+ 					<pos>1</pos>
+               </key>
+
+                <key id="51" name="--DK_peak_used--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" subkey="52" outputtype="7">
+                    <find><![CDATA[(?s)Data Used.*?\((.*?)\)]]></find>
+ 					<pos>1</pos>
+               </key>
+               
+                <key id="52" name="--DK_peak_used--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" outputtype="7">
+                    <find><![CDATA[(?s)Peak Used.*?\((.*?)\)]]></find>
+ 					<pos>1</pos>
+               </key>
+
+               <key id="60" name="--DK_offpeak--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" subkey="65" outputtype="7">
+                    <find><![CDATA[(?s)Off Peak Data Used.*?\((.*?)\)]]></find>
+ 					<pos>1</pos>
+               </key>
+               
+               <key id="65" name="--DK_offpeak--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" outputtype="7">
+                    <find><![CDATA[(?s)Off-Peak.*?Used.*?\((.*?)\)]]></find>
+ 					<pos>1</pos>
+               </key>
+               
+               <key id="61" name="--DK_offpeak_quota--" type="number" src="url" srcid="2" parseformat="MB" extract="regex" subkey="62" outputtype="7">
+                    <find><![CDATA[(?s)headers='yesdataAl'>(.*?)</td>]]></find>
+ 					<pos>1</pos>
+               </key>
+   
+                <key id="62" name="--DK_offpeak_quota--" type="number" src="url" srcid="2" parseformat="MB" extract="dstring" default="0" outputtype="7">
+                    <find><![CDATA[--DS_PARAM8--]]></find>
+ 					<pos>1</pos>
+                </key>
+  
+  
+               <key id="70" name="--DK_warning--" type="string" src="url" trimspace="true" trimhtml="true" srcid="2" extract="regex">
+                    <find><![CDATA[<strong>Warning!</strong>(.*?)<]]></find>
+ 					<pos>1</pos>
+               </key>
+                
+            </datakeys>
+            <conditions>
+                <condition id="1" operator="is_key_not_empty" p1="--DK_bad_login--" action="fail" ap1="User details incorrect, Check your settings..."/>
+            </conditions>
+        </model>
+        
+        <view paramgroup="1">
+            <summarypanel type="pbars">
+ 				<cycle id="1" type="2" startdate="" enddate="--DK_BALANCE-EXPIRY--" includeend="true"/>
+                <Progress id="1" name="Peak " value="--DK_peak_used_I_--" maxvalue="--DK_peak_quota_I_--" used="true" outputtype="7"/>
+                <Progress id="2" name="Off Peak" value="--DK_offpeak_I_--" maxvalue="--DK_offpeak_quota_I_--" used="true" outputtype="7"/>
+            </summarypanel>
+            
+   			<extrapanel>
+				<extra id="1" type="text" name="Plan" value="--DK_PLAN--" showonempty="true"/>
+				<extra id="1" type="text" name="Warning" value="--DK_warning--" showonempty="true"/>
+				<extra id="1" type="text" name="Off-Peak" value="--DK_offpeak--" showonempty="true"/>
+   			</extrapanel>
+        </view>
+    </provider>
+</quotaxml>

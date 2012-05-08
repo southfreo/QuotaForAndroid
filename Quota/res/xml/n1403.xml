@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quotaxml version="1.0">
+	<provider id="1403" type="AUS Mobile" pgid="92" name="Optus Wireless Bband" parsemethod="xml" version="1.0" icon="1" description="Mobile Broadband accounts on Postpay (e.g BYO)" secure="no" cookie="optus.com.au" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl="">
+        <model>
+            <datassource>
+                <url id="2" http="https://my.optus.com.au/signon/Optus/login_ext.sec" post="SMENC=ISO-8859-1&amp;SMLOCALE=US-EN&amp;target=HTTPS%3A%2F%2Fmy.optus.com.au%2Fweb%2Foscportal.portal%3F_nfpb%3Dtrue%26_pageLabel%3Dmyaccount%26site%3Dpersonal&amp;smauthreason=0&amp;smagentname=Hp78kFUMHCYddNe1TJmGKxT57SuEDCMoLqqOzRBGImr20%2Btxe1ylGUCySYZ%2FCvHj&amp;postpreservationdata=&amp;USER=--DS_PARAM1--&amp;PASSWORD=--DS_PARAM2--" message="Logging in"/>
+                <url id="3" http="https://my.optus.com.au--DK_UPAGE--" message="Getting Services"/>
+                <url id="4" http="https://my.optus.com.au--DK_DPAGE--" message="Getting Usage"/>
+            </datassource>
+
+            <datakeys>
+                <key id="10" name="--DK_bad_login--" type="string" src="url" srcid="2" condition="1" extract="regex">
+                    <find>Invalid username or password</find>
+                    <pos>0</pos>
+                </key>
+                
+                <key id="11" name="--DK_wrongip--" type="string" src="url" srcid="4" condition="2" extract="regex">
+                    <find>Not an Optus Mobile Broadband IP address</find>
+                    <pos>0</pos>
+                </key>
+                 
+                
+				<key id="20" name="--DK_UPAGE--" type="string" trimhtml="true" src="url" srcid="2" condition="3" extract="regex">
+					<find><![CDATA[(?si)--DS_PARAM4--.*?account_usage.*?<a href="(.*?)">View usage]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="30" name="--DK_DPAGE--" type="string" trimhtml="true" src="url" srcid="3" extract="regex" condition="2">
+					<find><![CDATA[(?si)bb_usage_owb_--DS_PARAM4--.*?a href="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+                <key id="40" name="--DK_peak_used--" type="number" src="url" srcid="4" parseformat="MB" extract="regex" outputtype="7">
+                    <find><![CDATA[(?si)>Data Used</.*?<span>\((.*?)\)</span]]></find>
+ 					<pos>1</pos>
+               </key>
+
+				<key id="50" name="--DK_plan--" type="string" src="url" srcid="4" extract="regex" trimspace="true" trimhtml="true" condition="5">
+					<find><![CDATA[(?si)Current Plan:</.*?">(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+            </datakeys>
+            <conditions>
+                <condition id="1" operator="is_key_not_empty" p1="--DK_bad_login--" action="fail" ap1="User details incorrect, Check your settings."/>
+                <condition id="2" operator="is_key_not_empty" p1="--DK_wrongip--" action="fail" ap1="You can only check this mobile when connected via the SIM card."/>
+                <condition id="3" operator="is_key_empty" p1="--DK_UPAGE--" action="fail" ap1="Mobile not found, check settings."/>
+            </conditions>
+        </model>
+        
+        <view paramgroup="92">
+            <summarypanel type="pbars">
+                <Progress id="1" name="Data" value="--DK_peak_used_I_--" maxvalue="--DS_PARAM7--" used="true" outputtype="7"/>
+ 				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_XXX--" includeend="true"/>
+            </summarypanel>
+   			<extrapanel>
+   				<extra id="2" type="text" name="Plan" value="--DK_Plan--" showonempty="false"/>
+			</extrapanel>
+        </view>
+    </provider>
+</quotaxml>

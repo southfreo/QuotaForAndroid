@@ -1,0 +1,30 @@
+<quotaxml version="1">
+<provider id="1597" pgid="60" dtype="2" name="FLOW" type="AUS Travel" cookie="https://secure.flowtoll.com.au/Login.aspx" parsemethod="xml" secure="false" icon="ft" providerurl="https://secure.flowtoll.com.au/Login.aspx" version="1.0" description="Check your FLOW toll balance">
+		<model>
+			<datassource>
+				<url id="1" http="https://secure.flowtoll.com.au/Login.aspx" message="Connecting.."/>
+				<url id="10" http="https://secure.flowtoll.com.au/Login.aspx" post="tbUsername=--DS_PARAM1--&amp;tbPin=--DS_PARAM2--" message="Login"/>
+				<TTurl id="10" http="file:///Users/kevinbruton/Documents/iPhone/Quota/providers/test/FlowToll/src.html" message="Login"/>
+			</datassource>
+			
+			<datakeys>
+				<key id="20" name="--DK_ACTYPE--" type="string" src="url" srcid="10" extract="regex">
+					<find><![CDATA[ctl00_lblAccountType.*?">(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[ctl00_lblAccountBalance.*?">(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_empty" p1="--DK_BAL--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="60" displaytype="2">
+			<accountbalance>
+				<summary bal2name="Type" bal2value="--DK_ACTYPE--" bal1name="Balance" bal1value="--DK_BAL--" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

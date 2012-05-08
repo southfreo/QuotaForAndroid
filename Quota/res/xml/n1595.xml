@@ -1,0 +1,63 @@
+<quotaxml version="1">
+	<provider id="1595" pgid="1591" name="Optus Prepay 3G" providerurl="https://memberservices.optuszoo.com.au/ms/ium/prepaid.htm" type="AUS Mobile" cookie="optuszoo.com.au" icon="1" parsemethod="xml" version="1.5" description="Optus 3G Prepaid usage, only works via 3G on a iPad.">
+		<model>
+			<datassource>
+				<url id="1" http="http://optuszoo.com.au/wirelessusage" post="" message="Getting Usage"/>
+				<XXurl id="1" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/OptusPrepay/3Gusage.html" post="" message="Test"/>
+				
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_MOBILE--" type="string" src="url" srcid="1" extract="regex" condition="200">
+					<pos>1</pos>
+					<find><![CDATA[Service Number.*?<b>(.*?)</b>]]></find>
+				</key>
+				
+				<key id="2" name="--DK_CREDIT--" type="string" src="url" srcid="1" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)MyCredit</th>.*?">(.*?)</]]></find>
+				</key>
+
+				<key id="110" name="--DK_DATASUM--" type="number" src="url" removechars="," srcid="1" extract="regex" default="0" parseformat="MB" outputtype="7">
+					<pos>1</pos>
+					<find><![CDATA[(?si)MyData</th>.*?">(.*?)</td>]]></find>
+				</key>
+				
+				<key id="111" name="--DK_REVDATA--" type="number" src="url" removechars="," srcid="1" extract="regex" default="0" parseformat="MB" outputtype="7">
+					<find><![CDATA[(?si)RevUp Data</th>.*?">(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="120" name="--DK_USED--" type="number" src="key" srcid="111"  outputtype="7" extract="expression">
+				   <find><![CDATA[--DS_PARAM7-- - (--DK_DATASUM_I_-- + --DK_REVDATA_I_--) ]]></find>				
+				</key>
+                               
+				<key id="15" name="--DK_EXPIRY--" type="date" src="url" srcid="1" parseformat="dd MMM yyyy hh:mma" outputformat="dd/MM/yy" outputtype="2" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)MyData</th>.*?">.*?">(.*?)</td>]]></find>
+				</key>
+				
+				<key id="1" name="--DK_extras--" type="string" src="url" srcid="1" extract="simple" condition="5">
+					<find><![CDATA[DOCTYPE]]></find>
+					<start><![CDATA[<html>]]></start>
+					<end><![CDATA[</html>]]></end>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="200" when="after" operator="is_key_empty" p1="--DK_MOBILE--" action="fail" ap1="Could not locate your usage check 3G connection is active"/>
+				<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+			</conditions>
+		</model>
+		<view paramgroup="1591">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Data Used" value="--DK_USED_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="7"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_EXPIRY_I_--" includeend="true"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Mobile" value="--DK_MOBILE--" showonempty="true"/>
+				<extra id="2" type="text" name="Data Balance" value="--DK_DATASUM-- (--DK_EXPIRY--)" showonempty="true"/>
+				<extra id="3" type="text" name="Credit" value="--DK_CREDIT--" showonempty="true"/>
+ 			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

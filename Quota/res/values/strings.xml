@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Quota</string>
+    <string name="app_version">.1</string>
+    <string name="app_namespace">com.southfreo</string>
+ 	<drawable name="green">#f0f0</drawable>
+	<drawable name="red">#ffff0000</drawable>
+	<drawable name="blue">#ff0000ff</drawable>
+	<drawable name="white">#ffffffff</drawable>
+	<drawable name="orange">#ffff8c00</drawable>
+	<drawable name="calm">#FFb1b6c3</drawable>
+	
+	<!--  Messages -->
+	
+	<string name="website">Website</string>
+	<string name="close">Close</string>
+	<string name="release_notes">
+		Version 2.4.2\n\n
+		- Telstra prepay (multiple) fix\n
+		- Myer One fix\n\n
+		
+		Version 2.4.1\n\n
+		- Telstra prepay fix\n
+		- Telstra Bigpond fix\n
+		- Everyday rewards update\n\n
+		Version 2.4\n\n
+		- Optus broadband fix\n
+		- Velocity rewards fix\n
+		- Vodafone broadband fix\n
+		- Adds Paypal, Amex, CBA to AUS Bank\n\n
+		
+		Version 2.3\n\n
+		- Canada User pack (Canada.zip) support
+		- Provider fixes\n
+		- Bug fixes\n\n
+
+		Version 2.2\n\n
+		- Added NZ Mobile providers\n
+		- Provider fixes\n
+		- Force refresh option on summary screen\n\n
+
+		Version 2.1\n\n
+		- Improved syncing across iOS/OSX\n
+		- Account improvements\n
+		- New providers\n\n
+
+		Version 2.0\n\n
+		- Dropbox syncing support\n
+		- PIN Support\n
+		- Bug Fixes\n\n
+		
+		Version 1.5.1\n\n
+		- LiveConnected Fixes\n
+		- BugFixes\n\n
+		
+		Version 1.4.91\n\n
+		- Expiry Date fixes\n\n
+		
+		Version 1.4.5\n\n
+		- Optus Prepay/Wireless fix\n\n
+		
+		Version 1.4.4\n
+		- Cycle info for widgets\n
+		- Bug fixes\n\n
+		
+		Version 1.4.3\n\n
+		- Added Ability to configure refresh time for each provider\n
+		- Updated FAQ with guides on Battery usage\n
+		- Added Optus Prepay (Account)\n
+		- Added Netspace\n
+		- Bug fixes\n\n
+		
+		Version 1.4.2\n\n
+		- Added Comcen/Spin (Single/Multiple accounts)\n
+		- Layout fixes for tablet devices\n
+	</string>
+	<string name="welcomemsg_lite">
+		- To change the Provider tap the Provider name then tap "i" to configure settings\n\n
+		- Tap "+" to upgrade to the full version\n\n
+		- Use Menu/Report Problem to submit a problem report (From the Detail screen)\n\n
+		- Please mention which Provider you have a problem with when reporting issues\n\n
+		- Please visit the website for latest support notes\n\n
+	</string>
+	<string name="welcomemsg_full">
+		- Tap + to setup a new Provider\n\n
+		- Use Menu/Report Problem to submit a problem report (From the Detail screen)\n\n
+		- Please visit the website for latest support notes\n\n
+	</string>
+	
+	<string name="support_site">http://www.southfreo.com/QuotaforAndroid/Home.html</string>
+	
+	<string name="disclaimer">
+	 - This application relies on the Provider data being returned in a known format.It is possible (and highly likely at some point) that the Provider will change this format and/or their web structure will may stop Quota being able to successfully retrieve the information.\n\n
+	 - The application and/or XML will be updated as soon as the information on reading the usage data is available.\n\n
+	 - The application is not affiliated with any of the providers used within the application.\n\n
+	 - This software is provided \'as is\' and any expressed or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. in no event shall SouthFreo software, or there heirs, or assigns be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.\n\n
+	</string>
+	
+	<!--  Billing Stuff -->
+	  <string name="billing_not_supported_title">Can\'t make purchases</string>
+    <string name="billing_not_supported_message">The Market billing
+     service is not available at this time.  You can continue to use this app but you
+     won\'t be able to make purchases.</string>
+    <string name="cannot_connect_title">Can\'t connect to Market</string>
+    <string name="cannot_connect_message">This app cannot connect to Market.
+     Your version of Market may be out of date.
+     You can continue to use this app but you
+     won\'t be able to make purchases.</string>
+    <string name="restoring_transactions">Restoring transactions</string>
+    <string name="learn_more">Learn more</string>
+    <string name="help_url" formatted="false">http://market.android.com/support/bin/answer.py?answer=1050566&amp;hl=%lang%&amp;dl=%region%</string>
+    <string name="buy">Buy</string>
+    <string name="select_item">Select an item</string>
+    <string name="items_for_sale">Items for sale</string>
+    <string name="items_you_own">Items you own</string>
+    <string name="recent_transactions">Recent activity</string>
+	<string name="quota_upgrade">Quota Upgrade</string>
+    <!-- The following are reserved skus defined by Market for testing. -->
+    <string name="android_test_canceled">android.test.canceled</string>
+    <string name="android_test_purchased">android.test.purchased</string>
+    <string name="android_test_item_unavailable">android.test.item unavailable</string>
+    <string name="android_test_refunded">android.test.refunded</string>
+    
+    <string name="upgradetxt">- Multiple account support.\n\n- Priority email responses.\n\n- A warm fuzzy feeling inside knowing your helping contribute to ongoing development and enhancements of this application.\n\n
+	</string>
+	
+	
+</resources>

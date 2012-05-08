@@ -1,0 +1,63 @@
+<quotaxml version="1">
+
+<provider id="1611" pgid="11" name="Adam" icon="16" providerurl="https://members.adam.com.au/usage/" parsemethod="xml" type="AUS ISP" cookie="members.adam.com.au" version="1.0" description="Please ensure you can access your usage from the Providers website">
+		<model>
+			<datassource>
+				<url id="10" http="https://members.adam.com.au/index.php" post="Username=--DS_PARAM1--&amp;Password=--DS_PARAM2--&amp;Login=Log+In&amp;ref=%2Fusage%2F" message="Login..."/>
+				<url id="20" http="https://members.adam.com.au/usage/" message="Getting Usage"/>
+				
+				<XXurl id="20" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/ISP/Adam/usagehtml.htm" message="testing"/>
+				
+			</datassource>
+			<datakeys>
+				
+				<key id="10" name="--DK_CHECK--" type="string" src="url" srcid="10" condition="1" extract="regex">
+					<pos>0</pos>
+					<find><![CDATA[Invalid username and/or password.]]></find>
+                </key>
+                
+        		<key id="20" name="--DK_USED--" type="number" src="url" srcid="20" parseformat="MB" removechars="," outputtype="7" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[Download.*?<span>(.*?)/]]></find>
+                </key>
+
+        		<key id="20" name="--DK_QUOTA--" type="number" src="url" srcid="20" parseformat="MB" removechars="," outputtype="7" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[Download.*?<span>.*?/(.*?) MB]]></find>
+                </key>
+
+
+        		<key id="20" name="--DK_NEWS--" type="string" src="url" srcid="20" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[Newsgroups.*?<td>(.*?)</td>]]></find>
+                </key>
+
+        		<key id="30" name="--DK_UPLOAD--" type="string" src="url" srcid="20" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[Upload.*?<span>(.*?)</span>]]></find>
+                </key>
+
+        		<key id="40" name="--DK_LUPDATE--" type="string" src="url" srcid="20" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[Last Update.*?<td>(.*?)</td>]]></find>
+                </key>
+                
+			</datakeys>
+			<conditions>
+				<condition id="1" when="after" operator="is_key_not_empty" p1="--DK_CHECK--" action="fail" ap1="Did not login, Check your username/password"/>
+			</conditions>
+		
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Downloads" value="--DK_USED_I_--" used="true" maxvalue="--DK_QUOTA_I_--" outputtype="7"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Newsgroups" value="--DK_NEWS--" showonempty="false"/>
+				<extra id="2" type="text" name="Uploads" value="--DK_UPLOAD--" showonempty="false"/>
+				<extra id="2" type="text" name="Last Update" value="--DK_LUPDATE--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

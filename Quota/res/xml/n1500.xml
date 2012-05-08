@@ -1,0 +1,42 @@
+<quotaxml version="1">
+<provider id="1500" pgid="1622" dtype="2" name="WA Smartrider" type="AUS Travel" cookie="gov.au" parsemethod="xml" secure="false" icon="sr" providerurl="https://www.transperth.wa.gov.au/" version="1.2" description="Check your smartrider balance and recent history from transperth">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.transperth.wa.gov.au/TravelEasy/tabid/69/Default.aspx" message="Connecting.."/>
+				<url id="10" headers="Content-Type||multipart/form-data; boundary=---------------------------10102754414578508781458777923||Referer||https://www.transperth.wa.gov.au/TravelEasy.aspx" 
+				http="https://www.transperth.wa.gov.au/TravelEasy/tabid/69/Default.aspx" 
+				post="-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;__EVENTTARGET&quot;&#10;&#10;&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;__EVENTARGUMENT&quot;&#10;&#10;&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;__VIEWSTATE&quot;&#10;&#10;--DK_VS--&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;__VIEWSTATEENCRYPTED&quot;&#10;&#10;&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$dnnSEARCH$Search&quot;&#10;&#10;optSite&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$dnnSEARCH$txtSearch&quot;&#10;&#10;&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$dnnRADTABSTRIP$TS&quot;&#10;&#10;{&quot;State&quot;:{},&quot;TabState&quot;:{&quot;dnn_dnnRADTABSTRIP_TS_TS_69&quot;:{&quot;Selected&quot;:true}}}&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$dnnRADPANELBAR$RadPanel1&quot;&#10;&#10;&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$ctr523$Login$Login_DNN$txtUsername&quot;&#10;&#10;--DS_PARAM1--&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$ctr523$Login$Login_DNN$txtPassword&quot;&#10;&#10;--DS_PARAM2--&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;dnn$ctr523$Login$Login_DNN$cmdLogin&quot;&#10;&#10;Login&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;ScrollTop&quot;&#10;&#10;&#10;-----------------------------10102754414578508781458777923&#10;Content-Disposition: form-data; name=&quot;__dnnVariable&quot;&#10;&#10;{&quot;dshReset_imgIcon:exp&quot;:&quot;-1&quot;,&quot;dshQuestionAnswer_imgIcon:exp&quot;:&quot;-1&quot;,&quot;__scdoff&quot;:&quot;1&quot;,&quot;__dnn_pageload&quot;:&quot;__dnn_SetInitialFocus(\u0027dnn_ctr523_Login_Login_DNN_txtUsername\u0027);&quot;_dnn_LoginValue(\u0027EFE2EFEFFECDDAF2F5\u0027);}&#10;-----------------------------10102754414578508781458777923--&#10;" message="Login..."/>
+				<url id="20" http="https://www.transperth.wa.gov.au/TravelEasy/MySmartRider/tabid/71/Default.aspx" message="Getting Usage"/>
+				<url id="30" http="http://www.transperth.wa.gov.au/Admin/Security/Logoff.aspx?tabid=70" message="Logoff"/>
+			</datassource>
+			<datakeys><!-- BadLogin -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[(?i)Login Failed]]></find>
+					<pos>0</pos>
+				</key><!-- Viewstate -->
+				<key id="1" name="--DK_VS--" type="string" escape="false" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[dnn_ctr889_SmartRiderTransactions_lblDisplayBalance.*?">(.*)</span>]]></find>
+					<pos>1</pos>
+				</key><!-- Transactions -->
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="20" extract="htmltable">
+					<find><![CDATA[(?m)<table class="MasterTable_Green".*?>(?s)(.*?)</table>]]></find>
+					<start><![CDATA[<tr.*class="GridRow_Green GridRow">(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td>(?s)(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model><!--Uses 11.5 functionality -->
+		<view paramgroup="1500" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="$--DK_BAL--" bal2name="" bal2value="" headings="" descriptionformat="" amountformat="nozero" dateformat="MMM dd yyyy h:ma|EEE kk:mm" src="--DK_TT_TABLE--" date="1" description="(--COL8--) (--COL2--)" amount="(--COL9--)"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

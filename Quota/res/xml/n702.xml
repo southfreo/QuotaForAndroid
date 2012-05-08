@@ -1,0 +1,62 @@
+<quotaxml version="1">
+		
+<provider id="702" type="AUS Mobile" pgid="8" dtype="0"  parsemethod="xml" name="Crazy John's Prepay" version="1.1" icon="18" description="Please ensure you can access your usage from crazyjohns.net.au" secure="no" cookie="crazy" cache="900" providerurl="http://crazyjohns.com.au/" supporturl="">
+	<model>
+		<datassource>
+			<url id="1" http="https://secure.crazyjohns.com.au/CRMWeb/?m=01" post="login=true&amp;phoneOrAccountNumber=--DS_PARAM1--&amp;accountPIN=--DS_PARAM2--" message="Logging In.."/>
+			<url id="2" http="https://secure.crazyjohns.com.au/CRMWeb/usage" headers="Accept-Language||en-us,en;q=0.5" post="usageType=0&amp;mobileNumber=--DS_PARAM4--&amp;billNumber=0&amp;buttonGo.x=10&amp;buttonGo.y=13&amp;submit=buttonGo" message="Getting Usage"/>
+		</datassource>
+
+			<datakeys>
+				<key id="110" name="--DK_auth--" type="string" src="url" srcid="1" extract="regex" condition="1">
+					<find><![CDATA[(?i)You could not be logged on]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="1" name="--DK_PLAN--" type="string" trimhtml="true" src="url" srcid="1" extract="regex">
+					<find><![CDATA[(?s)--DS_PARAM4--</td>.*?<td.*?<td.*?<td.*?<td.*?">(.*?)</td]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="2" name="--DK_BALANCE--" type="number" trimspace="true" removechars="$||," src="url" srcid="1" outputtype="8" extract="regex" subkey="20">
+					<find><![CDATA[(?s)Current Credit Balance.*?\$(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="20" name="--DK_BALANCE--" type="number" trimspace="true" removechars="$||," src="url" srcid="2" outputtype="8" extract="regex">
+					<find><![CDATA[(?s)>Total:.*?\$(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="3" name="--DK_BALANCE-EXPIRY--" type="date" src="url" trimspace="true" parseformat="EEE MMM dd HH:mm:ss zzz yyyy" outputtype="2" outputformat="dd/MM/yy" srcid="1" extract="regex">
+					<find><![CDATA[(?s)Credit Expiry Date.*?<label>(.*?)</label>]]></find>
+					<pos>1</pos>
+				</key>
+				
+                <key id="50" name="--DK_peak_used--" type="number" src="url" srcid="1"  parseformat="MB" extract="regex" outputtype="7">
+                    <find><![CDATA[(?s)Data</label>.*?<label>(.*?)</label>]]></find>
+ 					<pos>1</pos>
+               </key>
+                
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+			</conditions>
+		</model>
+		
+		<view paramgroup="18">
+
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit" value="--DK_BALANCE_I_--" used="false" maxvalue="--DS_PARAM8--" outputtype="1" outputformat="$%.2f"/>
+                <Progress id="2" name="Data" value="--DK_peak_used_I_--" maxvalue="--DS_PARAM7--" used="true" outputtype="7"/>
+ 				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_BALANCE-EXPIRY--" includeend="true"/>
+			</summarypanel>
+			
+			<extrapanel>
+				<extra id="1" type="text" name="Plan" value="--DK_PLAN--" showonempty="true"/>
+				<extra id="1" type="text" name="Expiry" value="--DK_BALANCE-EXPIRY--" showonempty="true"/>
+                <extra id="3" type="file" name="Detailed Usage" value="Tap to Display"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

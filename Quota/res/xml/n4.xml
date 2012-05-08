@@ -1,0 +1,98 @@
+<quotaxml version="1">
+	<provider id="4" pgid="7" dtype="0" name="Telstra Postpay" providerurl="https://es.telstra.com/MobileDataUsageMeter/index.jsp?theme=tb#Usage" suppoerurl="http://www.southfreo.com/iiquota/Support/Entries/2009/6/26_Telstra_Mobile_Support.html" type="AUS Mobile" cookie="telstra" icon="4" parsemethod="xml" version="2.6a" description="Telstra Post (Billing/Data combined) for non corporate plans - use corporate provider to see corporate billing information.">
+		<model>
+			<datassource>
+				<url id="1" http="https://telstra.com/siteminderagent/SMLogin/preLogin.do" post="user=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;smauthreason=0&amp;postpreservationdata=&amp;TARGET=&amp;error_target=https%3A%2F%2Ftelstra.com%2Fmyaccount%2F%3Floginfailure%3DXXX&amp;final_target=https%3A%2F%2Ftelstra.com%2Fmyaccount%2Findex.jsp%3FtR%3D1&amp;generallogondata=SMLogonVersion%3D1.1%3BDebug%3Dfalse%3BReferer%3Dhttps%253A%2F%2Ftelstra.com%2Fmyaccount%2F%3B" message="Logging In"/>
+				<url id="2" http="https://es.telstra.com/MobileDataUsageMeter/index.jsp?theme=tb#Usage" message="Getting Data Usage"/>
+				<url id="3" http="https://es.telstra.com/MobileDataUsageMeter/csvdownload.do" post="typeOfDownload=summary&amp;msisdn=&amp;dateRange=current&amp;fromDate=&amp;toDate=" message="Getting Data Usage"/>
+				<url id="31" http="https://es.telstra.com/MobileDataUsageMeter/csvdownload.do" post="typeOfDownload=selectdetail&amp;msisdn=--DS_PARAM4--&amp;dateRange=current&amp;fromDate=&amp;toDate=" message="Getting Detailed Usage"/>
+                
+                <url id="4" http="https://onlinebilling.telstra.com.au/billingpayment/action/cytbb/cytbbhome" message="Getting Billing Data"/>
+
+			</datassource>
+
+            <datakeys>
+				
+               <key id="10" name="--DK_bad_login--" type="string" src="url" srcid="2" condition="1" extract="regex">
+                    <find>Forgotten your password</find>
+                    <pos>0</pos>
+                </key>
+
+                <key id="30" name="--DK_peak_usage--" type="number" src="url" srcid="3" extract="regex" outputtype="7">
+                    <find><![CDATA[--DS_PARAM4--,.*?,(.*?),]]></find>
+ 					<pos>1</pos>
+                </key>
+                
+                
+               	<key id="5" name="--DK_loading--" type="string" src="url" srcid="4" extract="regex" condition="10">
+					<find>Please wait while we retrieve your recent unbilled</find>
+					<pos>0</pos>
+				</key>
+
+				 
+				<key id="1" name="--DK_extras--" type="string" src="url" srcid="4" extract="simple" condition="5">
+					<find><![CDATA[<h1>Calls Yet to be Billed</h1>]]></find>
+					<start><![CDATA[<div align="right"]]></start>
+					<end><![CDATA[</html>]]></end>
+				</key>
+				
+				<key id="40" name="--DK_charges--" type="number" src="url" srcid="4" extract="regex" outputtype="1" outputformat="$%.2f">
+                    <find><![CDATA[(?s)service.*?--DS_PARAM4--.*?([+\-]?(?:[0-9]*\.[0-9]+|[0-9]+\.)).?]]></find>
+ 					<pos>1</pos>
+                </key>
+                
+
+ 				<key id="100" name="--DK_CALLS--" type="string" src="url" srcid="4" extract="htmltable">
+					<find><![CDATA[(?si)<table.*?olb_table3.*?>(.*?)</table>]]></find>
+					<start><![CDATA[(?si)<tr.*?>(.*?)</tr>]]></start>
+					<end><![CDATA[(?si)<td.*?>(.*?)</td>]]></end>
+				</key>
+				
+				
+				<key id="110" name="--DK_SESS--" type="string" src="url" srcid="31" extract="regex"  replacechars="'||&lt;br/&gt;||,||&#160;&#160;&#160;" prefix="&lt;html&gt;&lt;font face='Courier New'&gt;" XXpostfix="&lt;/html&gt;&lt;/font&gt;" condition="6">
+					<find><![CDATA[(?si).*]]></find>
+					<pos>0</pos>
+				</key>
+				
+ 				<key id="111" name="--DK_MBSESSION--" type="string" src="url" srcid="31" extract="htmltable">
+					<find><![CDATA[(?si)(.*)]]></find>
+					<start><![CDATA['04.*?,.*?,../../..*?,(.*?),]]></start>
+					<end><![CDATA[(.*)]]></end>
+				</key>
+
+				<key id="121" name="--DK_STOTAL--" type="number" src="key" srcid="111"  extract="SUM_DATA" postfix=" KB" parseformat="MB" outputtype="7" >
+					<pos>1</pos>
+					<find><![CDATA[.*]]></find>
+					<start>1</start>
+				</key>
+				
+				<key id="5" name="--DK_LastSession--" type="string" src="url" srcid="31" extract="regex">
+					<find>(?si)Estimated Charge.*?,(../../.*?),</find>
+					<pos>1</pos>
+				</key>
+
+            </datakeys>
+			
+			<conditions>
+                <condition id="1" operator="is_key_not_empty" p1="--DK_bad_login--" action="fail" ap1="User details incorrect, Check your settings..."/>
+      			<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+     			<condition id="6" operator="TRUE" p1="" action="write_cache" ap1="sessdata" ap2="--DK_SESS--"/>
+	         	<condition id="10" operator="is_key_not_empty" p1="--DK_loading--" action="retry" ap1="Retrying, please wait" ap2="2" ap3="20"/>
+ 			</conditions>
+		</model>
+		<view>
+            <summarypanel type="pbars">
+                <cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_EXPIRY_I_--" includeend="true"/>
+                <Progress id="1" name="Peak Usage" value="--DK_peak_usage_I_--" maxvalue="--DS_PARAM7--" used="true" outputtype="7"/>
+                <Progress id="2" name="Charges" value="--DK_charges_I_--" maxvalue="--DS_PARAM8--" used="true" outputtype="1" outputformat="$%.2f"/>
+            </summarypanel>
+            
+			<extrapanel>
+              <extra id="1" type="file" name="Last Session"  nameformat="sessdata" value="--DK_LastSession--" />
+              <extra id="2" type="text" name="Session Total"  value="--DK_STOTAL--" />
+              <extra id="3" type="textarray" name="1" nameformat="%@" value="2,3" valueformat="%@ %@" src="--DK_CALLS--" showonempty="true"/>
+ 			</extrapanel>
+			
+ 		</view>
+	</provider>
+</quotaxml>

@@ -1,0 +1,34 @@
+<quotaxml version="1">
+<provider id="1505" pgid="1502" dtype="2" name="NSW Roam" type="AUS Travel" cookie="roam.com.au" parsemethod="xml" secure="false" icon="roam" providerurl="http://www.roam.com.au/default.asp" version="1.0" description="Check your Roam balance and account history">
+		<model>
+			<datassource>
+				<url id="1" http="http://www.roam.com.au/default.asp" message="Connecting.."/>
+				<url id="10" http="http://www.roam.com.au/default.asp?" post="frmLogon=--DS_PARAM1--&amp;frmPWord=--DS_PARAM3--&amp;logonaction=Login&amp;frmRefer=" message="Login"/>
+				<url id="20" http="https://www.roam.com.au/content/etag/tripHist.asp?CC=5&amp;SC=128&amp;CN=191" message="Getting Trip History"/>
+			</datassource>
+			<datakeys><!-- BadLogin -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="10" extract="regex" condition="1">
+					<find><![CDATA[LOGIN UNSUCCESSFUL]]></find>
+					<pos>0</pos>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[(?s)Account balance.*?<td>\$(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key><!-- Transactions -->
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="20" extract="htmltable">
+					<find><![CDATA[(?im)<table.*?cellpadding=4>(?s)(.*?)</table>]]></find>
+					<start><![CDATA[(?i)<tr.*>(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[(?i)<td>(?s)(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1502" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="$--DK_BAL--" bal2name="" bal2value="" src="--DK_TT_TABLE--" date="1" description="6" amount="7"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

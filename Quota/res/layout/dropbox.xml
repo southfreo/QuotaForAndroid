@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+     
+    <ImageView
+        android:id="@+id/logo"
+        
+        android:layout_marginTop="4dip"
+        android:layout_marginLeft="10dip"
+        android:layout_marginRight="10dip"
+        android:layout_gravity="center"
+        android:layout_width="280dip"
+        android:layout_height="95dip"
+       
+        android:src="@drawable/dropbox" />
+        
+     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/loginpanel"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+       >
+       
+    <TextView
+ 	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+      android:text="Login"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/login_email_prompt"
+      />
+    <EditText
+ 	  android:layout_margin="10dp"
+      android:scrollHorizontally="true"
+      android:inputType="textEmailAddress"
+      android:id="@+id/login_email"
+      android:maxLines="1"
+      android:imeOptions="actionNext|flagNoExtractUi"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      />
+    <TextView
+ 	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+      android:text="Password"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/login_password_prompt"
+      />
+    <EditText
+ 	  android:layout_margin="10dp"
+      android:scrollHorizontally="true"
+      android:inputType="textPassword"
+      android:id="@+id/login_password"
+      android:maxLines="1"
+      android:imeOptions="actionDone|flagNoExtractUi"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      />
+ </LinearLayout>
+ 
+	<Button 
+ 	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+	  android:text="Login" 
+	  android:id="@+id/login_submit" 
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+	  />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/loggedinpanel"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:orientation="vertical"
+       >	 
+       
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/loginpanel"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:gravity="center_horizontal"
+    	android:orientation="horizontal"
+       >
+  
+	<Button 
+	  android:layout_margin="10dp"
+	  android:text="Backup" 
+	  android:id="@+id/upload_submit" 
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+	  />
+	  
+	<Button 
+	  android:layout_margin="10dp"
+	  android:text="Restore" 
+	  android:id="@+id/download_submit" 
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+	  />
+	</LinearLayout>
+
+	</LinearLayout>
+  
+	<View android:layout_width="fill_parent" 
+	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+	  android:layout_height="1dip" 
+	  android:background="#FFb1b6c3" />
+  
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:gravity="top"
+   	    android:layout_marginTop="5dp"
+        android:layout_height="wrap_content" >
+        
+    <TextView
+ 	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+ 	  android:layout_marginBottom="10dp"
+      android:text="Last Backup"
+      android:layout_width="130dp"
+      android:layout_height="wrap_content"
+      />
+  
+	<TextView  
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content" 
+      android:text="N/A"
+      android:id="@+id/lastbackup" 
+	 />
+	</LinearLayout>
+	
+	<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:gravity="top"
+        android:layout_height="wrap_content" >
+        
+    <TextView
+ 	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+ 	  android:layout_marginBottom="10dp"
+      android:text="User"
+      android:layout_width="130dp"
+      android:layout_height="wrap_content"
+      />
+  
+	<TextView  
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content" 
+      android:text="N/A"
+      android:id="@+id/userbackup" 
+	 />
+	</LinearLayout>
+
+	<LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:gravity="top"
+        android:layout_height="wrap_content" >
+        
+    <TextView
+ 	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+ 	  android:layout_marginBottom="10dp"
+      android:text="Providers"
+      android:layout_width="130dp"
+      android:layout_height="wrap_content"
+      />
+  
+	<TextView  
+	  android:layout_width="wrap_content" 
+	  android:layout_height="wrap_content" 
+      android:text="N/A"
+      android:id="@+id/noproviders" 
+	 />
+	 
+	</LinearLayout>
+
+	<View android:layout_width="fill_parent" 
+	  android:layout_marginLeft="10dp"
+ 	  android:layout_marginRight="10dp"
+	  android:layout_height="1dip" 
+	  android:background="#FFb1b6c3" />
+	  	  
+</LinearLayout>

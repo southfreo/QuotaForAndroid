@@ -1,0 +1,40 @@
+<quotaxml version="1.0">
+	<provider id="1627" dtype="2" pgid="1500" name="TAS Greencard" type="AUS Travel" cookie="metrotas" icon="wallet" cache="18000" author="" parsemethod="xml" secure="false" providerurl="https://www.metrotas.com.au/greencard/login" version="1.0" description="Check your greencard balance">
+		<model>
+			<datassource>
+				<url id="2" http="https://www.metrotas.com.au/greencard/login" post="data%5BGreencard%5D%5Busername%5D=--DS_PARAM1--&amp;data%5BGreencard%5D%5Bpassword%5D=--DS_PARAM2--" message="Logging in..." />
+ 			</datassource>
+			<datakeys>
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="2" extract="regex" condition="100">
+					<find><![CDATA[There was an error logging in]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="20" name="--DK_BAL--" type="string" src="url" srcid="2" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)available-balance.*?<strong>(.*?)</strong]]></find>
+                    <pos>1</pos>
+				</key>
+ 
+				<key id="30" name="--DK_CTYPE--" type="string" src="url" srcid="2" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)Card type:.*?>(.*?)</]]></find>
+                    <pos>1</pos>
+				</key>
+                
+				<key id="40" name="--DK_TLENGTH--" type="string" src="url" srcid="2" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)Default trip length:.*?>(.*?)</]]></find>
+                    <pos>1</pos>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Invalid username or password"/>
+			</conditions>
+			
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="--DK_BAL--" bal2name="" bal2value="--DK_CTYPE--  --DK_TLENGTH--" amountformat="nozero" headings="" dateformat="" src="" date="" description="" amount="" />
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

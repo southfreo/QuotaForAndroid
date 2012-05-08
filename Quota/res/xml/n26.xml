@@ -1,0 +1,5 @@
+<quotaxml version="1">
+<provider id="26" name="Amnet" providerurl="http://amnet.com.au/" type="AUS ISP" cookie="amnet" version="1.0" description="Please ensure you can access your usage from Amnet">
+		<view paramgroup="1"/>
+	</provider>
+</quotaxml>

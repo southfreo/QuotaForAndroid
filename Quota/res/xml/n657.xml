@@ -1,0 +1,38 @@
+<quotaxml version="1.0">
+	<provider id="657" dtype="2" pgid="657" name="Everyday Rewards" type="AUS Leisure" cookie="www.everydayrewards.com.au" icon="657" cache="900" author="Chuppa" parsemethod="xml" secure="false" providerurl="https://www.everydayrewards.com.au/anon/auth/account/session?TAM_OP=login" version="1.2" description="Check your Everyday Rewards Balance">
+		<model>
+			<datassource>
+				<url id="2" http="https://www.everydayrewards.com.au/anon/auth/account/login" post="username=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Logging in..." />
+				<url id="3" http="https://www.everydayrewards.com.au/edr/wps/myportal/myaccount" message="Getting Points..." />
+				<url id="31" http="https://www.everydayrewards.com.au/edr/wps/myportal/myaccount/myeverydayrewards/currentvouchers" message="Current Vouchers"/>
+				<TTurl id="31" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Leisure/everyday/currentvoucher.html" message="Current Vouchers"/>
+				<url id="4"  http="https://www.everydayrewards.com.au/edr/wps/myportal/myaccount/myeverydayrewards/voucherhistory" message="Voucher History" />
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_BAL--" type="string" src="url" srcid="3" extract="regex" trimspace="true">
+					<find><![CDATA[Total.*?points earned.*?:(.*?)</]]></find>
+                    <pos>1</pos>
+				</key>
+				<key id="2" name="--DK_SAVED--" type="string" src="url" srcid="4" extract="regex" trimspace="true">
+					<find><![CDATA[>Total saved in the last.*?account is(.*?)</]]></find>
+                    <pos>1</pos>
+				</key>
+                
+   				<key id="20" name="--DK_TT_TABLE--" type="string" src="url" srcid="31" extract="htmltable">
+					<find><![CDATA[(?si)currentVouchers:tbody_element">(.*?)</table>]]></find>
+					<start><![CDATA[(?si)<tr.*?>(.*?)</tr>]]></start>
+					<end><![CDATA[(?si)<td.*?>(.*?)</td>]]></end>
+				</key>
+
+				<key id="76" name="--DK_NOVOUCHERS--" type="string" extract="count" src="key" srcid="20"/>
+
+			</datakeys>
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="Vouchers:" bal1value="--DK_NOVOUCHERS--" bal2name="Points: " bal2value="--DK_BAL--" amountformat="nozero" headings="Expiry|Where|Value" dateformat="" src="--DK_TT_TABLE--" date="5" description="3" amount="4" />
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>
+

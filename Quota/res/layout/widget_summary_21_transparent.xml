@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+ 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dip"
+    android:layout_height="100dip"
+    android:id="@+id/widget"
+    android:background="@drawable/widget_black_transparent"
+    android:padding="6dip"
+    android:orientation="horizontal"
+    >
+   <include layout="@layout/widget_summary_21_content"/>
+   
+</LinearLayout>
+

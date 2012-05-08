@@ -1,0 +1,115 @@
+<quotaxml version="1">
+	<provider id="1594" type="AUS Mobile" pgid="1594" dtype="0" parsemethod="xml" name="Live Connected" version="2.0" icon="lc" description="Please ensure you can access your usage Live Connected website" secure="no" cookie="liveconnected" cache="900" providerurl="http://www.liveconnected.com.au/" supporturl="">
+		<model>
+			<datassource>
+				<url id="1" http="http://liveconnected.com.au/index.php?option=com_user&amp;view=login" message="Connecting..."/>
+				<url id="2" http="http://liveconnected.com.au/index.php/component/user/" post="return=--DK_return--&amp;--DK_magic--=1&amp;username=--DS_PARAM1--&amp;passwd=--DS_PARAM2--&amp;Submit=Login&amp;option=com_user&amp;task=login" message="Logging In.."/>
+				<url id="3" http="http://liveconnected.com.au/index.php/my-account/usage-meter"  message="Usage Meter"/>
+			
+				<TTurl id="3" http="file:///Users/kevinbruton/Documents/iPhone/Quota/providers/test/lconnected/A.html"  message="Test Summary"/>
+				<TTurl id="4" http="file:///Users/kevinbruton/Documents/iPhone/Quota/providers/test/lconnected/B.html"  message="Test Detail"/>
+
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_return--" type="string" src="url" srcid="1" extract="regex">
+					<find><![CDATA["hidden".*?return.*?value="(.*)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="2" name="--DK_magic--" type="string" src="url" srcid="1" extract="regex">
+					<find><![CDATA[(?si)"hidden".*?return.*?value=.*?name="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="2" extract="regex" condition="1">
+					<find><![CDATA[Username and password do not match]]></find>
+					<pos>0</pos>
+				</key>
+				
+				
+				<key id="50" name="--DK_startday--" type="number" src="url" srcid="3" extract="regex" default="28">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaStartCycle="(.*?)/]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="30" name="--DK_billingperiod--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaBillingPeriod="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="31" name="--DK_actdate--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaActivationDate="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="32" name="--DK_disdate--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaDisconnectionDate="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="32" name="--DK_lastcall--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaLastCallRecord="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+				<key id="33" name="--DK_plan--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaPlanName="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="40" name="--DK_CALLS-TOTAL--" type="number" trimhtml="true" removechars="$||," default="0" trimspace="true" src="url" srcid="3" outputtype="8" extract="regex">
+					<find><![CDATA[(?si)QuotaNumber="--DS_PARAM4--".*?QuotaToAnyAllow="(.*?)GST]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="45" name="--DK_CALLS-USAGE--" type="number" trimhtml="true" removechars="$||," default="0" trimspace="true" src="url" srcid="3" outputtype="8" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaToAnyUsage="(.*?)"]]></find>
+				</key>
+
+				<key id="40" name="--DK_LC-TOTAL--" type="number" trimhtml="true" removechars="$||," default="0" trimspace="true" src="url" srcid="3" outputtype="8" extract="regex">
+					<find><![CDATA[(?si)QuotaNumber="--DS_PARAM4--".*?QuotaToLCAllow="(.*?)GST]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="45" name="--DK_LC-USAGE--" type="number" trimhtml="true" removechars="$||," default="0" trimspace="true" src="url" srcid="3" outputtype="8" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaToLCUsage="(.*?)"]]></find>
+				</key>
+				
+				
+				<key id="50" name="--DK_DATA-TOTAL--" type="number" src="url" parseformat="MB" srcid="3" outputtype="7" default="0" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaMBAllow="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+	
+				<key id="55" name="--DK_DATA-USAGE--" type="number" src="url" parseformat="MB" postfix=" MB" srcid="3" outputtype="7" default="0" extract="regex">
+					<find><![CDATA[(?si)<QuotaNumber="--DS_PARAM4--".*?QuotaMBUsage="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+				
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+			</conditions>
+		</model>
+		<view paramgroup="1594">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit" value="--DK_CALLS-USAGE_I_--" used="true" maxvalue="--DK_CALLS-TOTAL_I_--" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Data" value="--DK_DATA-USAGE_I_--" maxvalue="--DK_DATA-TOTAL_I_--" used="true" outputtype="7"/>
+				<cycle id="1" type="2" startday="--DK_startday_I_--" enddate="" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="4" type="text" name="Plan" value="--DK_plan--" showonempty="false"/>
+				<extra id="1" type="text" name="Billing Period" value="--DK_billingperiod--" showonempty="false"/>
+				<extra id="2" type="text" name="Activation" value="--DK_actdate--" showonempty="false"/>
+				<extra id="3" type="text" name="Disconnection" value="--DK_disdate--" showonempty="false"/>
+				<extra id="4" type="text" name="Live Connected" value="--DK_LC-USAGE-- / --DK_LC-TOTAL--" showonempty="false"/>
+				<extra id="4" type="text" name="Last Call Record" value="--DK_lastcall--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

@@ -1,0 +1,79 @@
+<quotaxml version="1">
+	<provider id="1625" type="AUS Mobile" pgid="1500" dtype="0" parsemethod="xml" name="Amaysim" version="2.0" icon="telephone" description="Please ensure you can access your usage from website" secure="no" cookie="amaysim" cache="900" providerurl="https://www.amaysim.com.au" supporturl="">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.amaysim.com.au/my-account/login" message="Connecting..."/>
+				<url id="2" http="https://www.amaysim.com.au/my-account/user_sessions" headers="Referer||https://www.amaysim.com.au/my-account/user_sessions/new" post="utf8=%E2%9C%93&amp;authenticity_token=--DK_auth--&amp;user_session%5Blogin%5D=--DS_PARAM1--&amp;user_session%5Bpassword%5D=--DS_PARAM2--" message="Logging In.."/>
+				<url id="3" http="https://www.amaysim.com.au/my-account/customer/get_balance?phoneid=--DK_mobileid--"  message="Getting Usage"/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_auth--" type="string" src="url" srcid="1" extract="regex">
+					<find><![CDATA[(?si)<form.*?authenticity_token.*?value="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="10" name="--DK_busy--" type="string" src="url" srcid="2" extract="regex" condition="2">
+					<find><![CDATA[We're very busy right now]]></find>
+					<pos>0</pos>
+				</key>
+	
+
+				<key id="20" name="--DK_mobileid--" type="string" src="url" srcid="2" extract="regex" condition="1">
+					<find><![CDATA[usage\?phoneid=(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+				
+				<key id="32" name="--DK_lastcall_date--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[lastcall_date".*?"(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="32" name="--DK_lastcall--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[lastcall".*?"(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="32" name="--DK_dataexpiry--" type="string" src="url" srcid="3" extract="regex">
+					<find><![CDATA[data_expiry".*?"(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="40" name="--DK_BALANCE-EXPIRY--" type="date" src="url" srcid="3" parseformat="dd MMM yyyy" outputformat="dd/MM/yy" outputtype="2" extract="regex">
+					<find><![CDATA[expiry".*?"(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="45" name="--DK_CREDIT_REMAIN--" type="number" trimhtml="true" removechars="$||," default="0" trimspace="true" src="url" srcid="3" outputtype="8" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[balance".*?"(.*?)"]]></find>
+				</key>
+
+				<key id="55" name="--DK_DATA-USAGE--" type="number" src="url" parseformat="MB" postfix=" MB" srcid="3" outputtype="7" default="0" extract="regex">
+					<find><![CDATA[data".*?"(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				
+				
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_empty" p1="--DK_mobileid--" action="fail" ap1="Did not login sucessfully, check your user details are correct and site is working."/>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_busy--" action="fail" ap1="Server is busy, Try again later"/>
+			</conditions>
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit Remaining" value="--DK_CREDIT_REMAIN_I_--" used="false" maxvalue="--" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Data Remaining" value="--DK_DATA-USAGE_I_--" maxvalue="--" used="false" outputtype="7"/>
+				<cycle id="1" type="1" startdate="" enddate="--DK_BALANCE-EXPIRY--" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="4" type="text" name="Last Call" value="--DK_lastcall--" showonempty="true"/>
+				<extra id="4" type="text" name="Last Call Date" value="--DK_lastcall_date--" showonempty="true"/>
+				<extra id="4" type="text" name="Data Expires" value="--DK_dataexpiry--" showonempty="true"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

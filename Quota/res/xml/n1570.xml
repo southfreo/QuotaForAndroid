@@ -1,0 +1,59 @@
+<quotaxml version="1">
+<provider id="1570" pgid="1500" dtype="2" name="Skywards" type="AUS Travel" cookie="skywards.com" parsemethod="xml" secure="false" icon="" cache="86400" providerurl="http://www.emirates.com/au/english/Skywards/skywards.aspx" version="1.1" description="Check your frequent flyer points">
+		<model>
+			<datassource>
+				<url id="10" http="http://www.emirates.com/au/english/Skywards/skywards.aspx" message="Connecting.." />
+				<url id="20" http="https://www.skywards.com/eklogin.aspx" headers="Referer||http://www.emirates.com/au/english/Skywards/skywards.aspx" post="__SEOVIEWSTATE=--DK_VS--&amp;ACTIVE_CARD_NO=--DS_PARAM1--&amp;PASSWORD=--DS_PARAM2--&amp;siteSelectorID=0&amp;__VIEWSTATE=&amp;__VIEWSTATEENCRYPTED&amp;&amp;ctl00%24MainContent%24ctl34%24ctl10.x=29&amp;ctl00%24MainContent%24ctl34%24ctl10.y=4" message="Logging In."/>
+				<url id="40" http="https://www.skywards.com/acc_detail.aspx" post="" message="Getting Balance"/>
+			</datassource>
+	
+			<datakeys>
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[(?i)Incorrect Login Credentials]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="10" extract="simple">
+					<find><![CDATA[name="__SEOVIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[Skywards Miles:(.*?)</li]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_TYPE--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[Tier: (.*?)</li]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_UPCOLOR--" type="string" src="url" srcid="40" removechars=":" extract="regex" trimspace="true">
+					<find><![CDATA[You require <B>(.*?)</B>.*?by.<B>(.*?)</B> to achieve(.*?)\.]]></find>
+					<pos>3</pos>
+				</key>
+				<key id="50" name="--DK_UPPOINTS--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[You require <B>(.*?)</B>.*?by.<B>(.*?)</B> to achieve(.*?)\.]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="50" name="--DK_UPBY--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[You require <B>(.*?)</B>.*?by.<B>(.*?)</B> to achieve(.*?)\.]]></find>
+					<pos>2</pos>
+				</key>
+				
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="40" extract="htmltable">
+					<find><![CDATA[(?s)<u>Activity Detail</u>.*?<table>(.*?)</table>]]></find>
+					<start><![CDATA[<tr class="datarow.">(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td.*?>(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1500" displaytype="2">
+			<accountbalance>
+				<summary bal1name="" bal1value="--DK_BAL--" bal2name="--DK_TYPE--" bal2value="" src="" date="" headings="" description="" descriptionformat="" amount="" amountformat="noblank"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

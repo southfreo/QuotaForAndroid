@@ -1,0 +1,48 @@
+<quotaxml version="1">
+	<provider id="31" type="AUS Mobile" pgid="110" dtype="0" name="Vodafone Broadband" version="1.0" icon="5" description="Please ensure you can access your vodafone usage data via the vodafone website." secure="no" cookie="" cache="900" providerurl="https://secure.broadband.vodafone.com.au" supporturl="">
+		<model>
+			<datassource>
+				<url id="3" http="https://secure.broadband.vodafone.com.au/CRMVOD/login" headers="Accept-Language||en-us,en;q=0.5" post="forgottenpin=&amp;login=true&amp;=&amp;phoneOrAccountNumber=--DS_PARAM1--&amp;accountPIN=--DS_PARAM3--" message="Logging In.."/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="110" name="--DK_auth--" type="string" src="url" srcid="3" extract="regex" condition="1">
+					<find><![CDATA[(?i)You could not be logged on]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="100" name="--DK_nousage--" type="string" src="url" srcid="3" extract="regex" condition="2">
+					<find><![CDATA[(?i)Data</label>]]></find>
+					<pos>0</pos>
+				</key><!-- Extract Usage Data -->
+				<key id="200" name="--DK_DATA_REMAINING--" type="number" trimspace="true" src="url" srcid="3" parseformat="MB" outputtype="7" extract="simple">
+					<find><![CDATA[Data</label>]]></find>
+					<start><![CDATA[<label>]]></start>
+					<end><![CDATA[</label>]]></end>
+				</key>
+				<key id="210" name="--DK_BALANCE-EXPIRY--" type="date" src="url" trimspace="true" parseformat="dd/MM/yyyy" outputtype="2" outputformat="dd/MM/yy" srcid="3" extract="simple">
+					<find><![CDATA[Credit Expiry Date</label>]]></find>
+					<start><![CDATA[<label>]]></start>
+					<end><![CDATA[</label>]]></end>
+				</key>
+				<key id="220" name="--DK_SMS--" type="string" trimspace="true" src="url" srcid="3" extract="simple">
+					<find><![CDATA[SMS</label>]]></find>
+					<start><![CDATA[<label>]]></start>
+					<end><![CDATA[</label>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+				<condition id="2" operator="is_key_empty" p1="--DK_nousage--" action="fail" ap1="Could not locate usage, check site is working via your browser."/>
+			</conditions>
+		</model>
+		<view paramgroup="110" displaytype="0" graphhistory="1">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Data Remaining" value="--DK_DATA_REMAINING_I_--" used="false" maxvalue="--DS_PARAM7--" outputtype="7"/>
+				<cycle id="1" type="1" startdate="" enddate="--DK_BALANCE-EXPIRY--" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="2" type="text" name="Credit Expiry" value="--DK_BALANCE-EXPIRY--" showonempty="true"/>
+				<extra id="3" type="text" name="SMS " value="--DK_SMS--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

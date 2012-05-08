@@ -1,0 +1,128 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="200dp"
+		      android:background="@layout/roundlightgray"
+		      android:padding="4dp"
+              android:orientation="vertical" >
+
+<!--  Peak -->              
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+	android:background="@layout/customshape"
+    android:padding="10dp"
+    
+    >
+    
+ 	<TextView android:id="@+id/plabel_p2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+			  android:singleLine="true"
+              android:ellipsize="marquee"
+              android:textSize="15dp"
+              android:gravity="center"
+              android:textColor="#FFFFFFFF"/>
+
+ 	<TextView android:id="@+id/pvalue_p2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+              android:textSize="15dp"
+			  android:singleLine="true"
+              android:ellipsize="marquee"
+              android:textColor="#FFFFFFFF"
+              android:gravity="center"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/plabel_p2"
+              />
+  
+
+</RelativeLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+              
+<!--  Off-Peak -->              
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+	android:background="@layout/customshape"
+    android:padding="10dp"
+    >
+    
+ 	<TextView android:id="@+id/plabel2_p2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+              android:textSize="15dp"
+              android:gravity="center"
+			  android:singleLine="true"
+              android:ellipsize="marquee"
+              android:textColor="#FFFFFFFF"/>
+
+ 	<TextView android:id="@+id/pvalue2_p2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text=""
+              android:textStyle="bold"
+              android:textSize="15dp"
+              android:textColor="#FFFFFFFF"
+              android:gravity="center"
+			  android:singleLine="true"
+              android:ellipsize="marquee"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/plabel2_p2"
+              />
+              
+</RelativeLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+
+<!--  Expiry -->     
+         
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+	android:background="@layout/customshape"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
+    >
+              
+ 	<TextView android:id="@+id/plabel3_p2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text="Today is day 18 of 28"
+              android:textStyle="bold"
+              android:textSize="13dp"
+              android:gravity="center"
+              android:textColor="#FFFFFFFF"/>
+
+ 	<TextView android:id="@+id/pvalue3_p2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text="1 Feb until 28 Feb 11"
+              android:textStyle="bold"
+              android:textSize="13dp"
+              android:textColor="#FFFFFFFF"
+              android:gravity="center"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/plabel3_p2"
+              />       
+
+
+</RelativeLayout>
+</LinearLayout>
+
+

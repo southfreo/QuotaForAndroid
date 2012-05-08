@@ -1,0 +1,31 @@
+<quotaxml version="1">
+<provider pgid="12" id="53" name="MyNetFone" type="AUS ISP" cookie="mynetfone.com.au" icon="mnf" parsemethod="xml" providerurl="https://www.mynetphone.com.au" version="1.3" description="Please ensure you can access your usage via the mynetfone.com.au site">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.mynetfone.com.au/portal/myaccount/HomePageAuthenticate!execute.action" post="username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;x=33&amp;y=15" message="Logging In.."/>
+				<url id="20" http="https://www.mynetfone.com.au/portal/myaccount/DataHistoryTable.action" post="_method=submit&amp;days=&amp;billingPeriod=1&amp;beginDate=&amp;endDate=" message="Getting Usage"/>
+                
+ 			</datassource>
+			<datakeys>
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)Your Username or Password is invalid]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="80" name="--DK_USAGE--" type="number" src="url" srcid="20" parseformat="MB" postfix=" MB" extract="regex" removechars=","  outputtype="7" condition="">
+					<find><![CDATA[(?s)<div class="totals">.*?Total</div>.*?total">(.*?)<.]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Invalid username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="12">
+			<summarypanel type="pbars">
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+				<Progress id="1" name="Usage" value="--DK_USAGE_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="7"/>
+			</summarypanel>
+			<extrapanel/>
+		</view>
+	</provider>
+</quotaxml>

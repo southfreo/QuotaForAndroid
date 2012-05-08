@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+ <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+     android:orientation="vertical" 
+     android:layout_width="fill_parent" 
+     android:layout_height="fill_parent"
+ >
+ 	
+   <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:gravity="top"
+        android:layout_height="wrap_content" >
+
+   <TextView
+		android:id="@+id/headertxt"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="15dp"
+		android:layout_marginBottom="10dp"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:gravity="center_vertical|center_horizontal"
+		android:textSize="20sp"
+		android:text="Enter PIN Code"/>
+
+ 
+            <!-- displays dots as user enters pin -->
+            <EditText android:id="@+id/pinDisplay"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center" 
+           	    android:layout_weight="1"
+                android:maxLines="1"
+                android:textAppearance="?android:attr/textAppearanceLargeInverse"
+                android:textStyle="bold"
+            />
+           
+<LinearLayout 
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+    android:layout_marginTop="5dp"
+	android:gravity="center"
+	android:layout_width="fill_parent">
+
+          <Button android:id="@+id/okbutt" 
+            android:text="OK" 
+            android:layout_alignParentRight="true"
+            android:layout_height="50dp" 
+            android:layout_width="100dp">
+           </Button>
+             
+
+ </LinearLayout>
+    
+ 
+	<TextView
+		android:id="@+id/providerdescription"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="10dp"
+		android:layout_marginRight="10dp"
+		android:gravity="center_horizontal"
+		android:lines="4"
+		android:textSize="14sp"
+		android:text="If you have forgotten your PIN you will need to delete the application and redownload to remove this screen"/>
+		
+		
+	</LinearLayout>
+			
+	<!-- 
+	<LinearLayout 
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:gravity="bottom"
+	android:layout_width="fill_parent">
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_gravity="bottom" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent">
+        <LinearLayout android:id="@+id/linearLayout2" android:layout_gravity="center_horizontal" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_marginTop="5dp">
+            <Button android:id="@+id/okbutt" android:layout_weight="1.0" android:text="OK" android:layout_marginLeft="20dp" android:layout_height="50dp" android:layout_marginRight="5dp" android:layout_width="0dp"></Button>
+            <Button android:id="@+id/cancelbutt" android:layout_weight="1.0" android:text="Cancel" android:layout_marginLeft="5dp" android:layout_height="50dp" android:layout_marginRight="20dp" android:layout_width="0dp"></Button>
+        </LinearLayout>
+    </LinearLayout>
+	</LinearLayout>
+	 -->
+
+
+</LinearLayout>
+
+
+
+

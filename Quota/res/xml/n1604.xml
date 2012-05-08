@@ -1,0 +1,34 @@
+<quotaxml version="1">
+<provider id="1604" pgid="1500" dtype="2" name="Skype Balance" type="ALL Statistics" cookie="skype" parsemethod="xml" secure="false" icon="telephone" providerurl="https://www.skype.com" version="1.0" description="">
+		<model>
+        
+			<datassource>
+				<url id="5" http="https://login.skype.com" message="Skype Connect..." />
+				<url id="10" http="https://login.skype.com/account/login-form" post="timezone_field=&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;blackbox=" message="Skype Login..." />
+			</datassource>
+            
+			<datakeys>
+
+			    <key id="40" name="--DK_BAL--" type="string" src="url" srcid="10" condition="1" extract="regex" trimspace="true">
+					<find><![CDATA[balanceAmount.*?</span>(.*?)</sp]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="50" name="--DK_CURRENCY--" type="string" src="url" srcid="10" extract="regex" trimspace="true">
+					<find><![CDATA[currency is set to.*?<strong>(.*?)</strong]]></find>
+					<pos>1</pos>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_empty" p1="--DK_BAL--" action="fail" ap1="Could not locate account balance, check username/password"/>
+			</conditions>
+			
+		</model>
+		<view  displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance" bal1value="--DK_BAL--" bal2name="--DK_CURRENCY--" bal2value="" src="" date="" headings="Date|Description|Amt" description="(--COL6--)      - Details:(--COL8--)" descriptionformat="" amount="(--COL10--)" amountformat="noblank"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

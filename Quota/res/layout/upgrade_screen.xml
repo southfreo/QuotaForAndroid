@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+android:id="@+id/linlayoutBase"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+android:paddingTop="30dip"
+android:background="@layout/upgrade_gradrect"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+
+<!--  Heading -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ 	android:orientation="horizontal"
+    android:layout_width="200dip"
+    android:layout_height="68dip"
+    android:padding="6dip"
+    android:layout_gravity="center"
+    android:layout_marginTop="4dip"
+    >
+    
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_marginRight="6dip"
+        android:layout_marginTop="4dip"
+        android:layout_width="47dip"
+        android:layout_height="46dip"
+       
+        android:src="@drawable/icon" />
+
+    <LinearLayout
+        android:orientation="vertical"
+    
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/headerlabel"
+            android:layout_width="150dip"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="16dip"
+     		android:textColor="#FFb1b6c3"
+            android:gravity="center|left"
+            android:text="Quota Upgrade" />
+            
+    </LinearLayout>
+    
+</LinearLayout>
+
+
+<!-- Text -->
+		<ScrollView
+		android:id="@+id/scrollview"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		>
+
+		<LinearLayout
+		android:id="@+id/bodymain"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		>
+		    <!--  your widgets go here -->
+			<TextView
+			android:id="@+id/txtExample"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="20dip"
+			android:textSize="18dip"
+			android:text="@string/upgradetxt"
+			>
+			</TextView>
+
+			<!--  end your widgets -->	
+
+		</LinearLayout>
+
+		</ScrollView>
+
+		<LinearLayout
+		android:id="@+id/linlayoutButtons"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:paddingBottom="10dip"
+		android:layout_weight="0"
+		>
+		<Button
+		android:id="@+id/buy_button"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="Upgrade"
+		android:layout_weight="1"
+		>
+		</Button>
+		<Button
+		android:id="@+id/btnCancel"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="No Thanks"
+		android:layout_weight="1"
+		>
+		</Button>
+	</LinearLayout>
+</LinearLayout>
+
+
+
+<!--  Old  
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:paddingLeft="4dip"
+    android:paddingRight="4dip"
+    android:background="@color/screen_background">
+
+    <TextView
+        android:id="@+id/billing_supported"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/error_message" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/buy_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/buy" />
+    </LinearLayout>
+   
+</LinearLayout>
+-->

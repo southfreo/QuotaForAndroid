@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<quotaxml version="1">
+	<paramgroups>
+		<paramgroup id="1" description="ISP1">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+		</paramgroup>
+	
+	
+	   <paramgroup id="99" description="ISP1">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="7" name="Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="If your peak limit is not displayed enter the value here."/>
+			<parameter id="8" name="Off Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="If your off peak limit is not displayed enter the value here."/>
+		</paramgroup>
+	
+		
+		<paramgroup id="2" description="3 Mobile">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="3" name="Pin" type="pin" novalue="Tap to setup" optional="true" description="If you use a pin number to access the mythree site, enter it here." validate=""/>
+			<parameter id="4" name="Mobile number" type="numberstr" novalue="Tap to setup" description="Enter the mobile to retreive details for" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter your billing period start day"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Enter your data limit"/>
+			<parameter id="8" name="Cap Limit" type="currency" optional="true" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="(auto)" description="Enter this value if the credit limit is not auto-detected."/>
+		</paramgroup>
+		
+		<paramgroup id="752" description="OH">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Service ID" type="numberstr" optional="true" novalue="(auto)" description="Enter the Service ID if you wish to override the automatic value" validate=".*?"/>
+		</paramgroup>
+		
+		<paramgroup id="4" description="Phone/Pin">
+			<parameter id="1" name="Phone/Account #" type="numberstr" novalue="Tap to setup" description="Enter your Phone/Account" validate="^[0-9]+$"/>
+			<parameter id="3" name="Pin number" type="pin" novalue="Tap to setup" description="Enter your 6 digit pin number" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" novalue="Tap to setup" optional="false" validate="1..31" description="Enter the start date of your billing period"/>
+			<parameter id="7" name="Credit Limit" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Credit limit in dollars for your plan"/>
+			<parameter id="8" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter your Data limit in MB for your plan"/>
+		</paramgroup>
+		
+		<paramgroup id="5" description="Voda Mobile">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="3" name="Pin number" type="pin" optional="true" novalue="(auto)" description="Enter your 6 digit pin number" validate="^[0-9]+$"/>
+			<parameter id="4" name="Mobile" type="numberstr" optional="true" novalue="(auto)" description="Enter the mobile to retreive details for" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="true" validate="1..31" novalue="(auto)" description="Only enter this value if you would like to override your billing period start day"/>
+			<parameter id="7" name="Peak Limit" type="number" format="%.2f" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Off Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Off Peak MB value, when this is blank Quota will automatically determine the value"/>
+		</paramgroup>
+		
+		<paramgroup id="6" description="TPG Mobile">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Plan ID" type="numberstr" novalue="Tap to setup" description="Enter the PLAN ID from the TPG site to retrieve details" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter the start day of your billing cycle"/>
+			<parameter id="7" name="Cap Limit" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Cap Value"/>
+			<parameter id="8" name="Data Limit" type="number" optional="false" format="datasimple"  validate="^[0-9]+$" novalue="Tap to setup" description="Enter your Data Limit"/>
+		</paramgroup>
+	
+	
+		<paramgroup id="7" description="TPP">
+			<parameter id="1" name="User Name" type="text" description="Enter your username, Business ID can be entered as name#businesid (e.g kevin#southfreo)" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Mobile" type="numberstr" optional="false" novalue="Tap to setup" description="Enter your mobile number" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter your start day of billing cycle"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Credit Limit" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Credit Limit for Mobile."/>
+		 </paramgroup>
+
+		<paramgroup id="8" description="Phone/Pin">
+			<parameter id="1" name="Phone/Account #" type="numberstr" novalue="Tap to setup" description="Enter your Phone/Account" validate="^[0-9]+$"/>
+			<parameter id="2" name="Pin number" type="pin" novalue="Tap to setup" description="Enter your 6 digit pin number" validate="^[0-9]+$"/>
+			<parameter id="4" name="Mobile number" type="numberstr" description="Enter the mobile number" novalue="Tap to setup" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" novalue="Tap to setup" optional="false" validate="1..31" description="Only enter this value if you would like to override your billing period start day"/>
+			<parameter id="8" name="Credit Limit" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Credit limit in dollars for your plan"/>
+		</paramgroup>
+
+		<paramgroup id="11" description="ISP3">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter the start of your billing date"/>
+			<parameter id="7" name="Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Off Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Off Peak MB value, when this is blank Quota will automatically determine the value"/>
+		</paramgroup>
+
+		<paramgroup id="12" description="ISP4">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter the start day of your billing cycle"/>
+			<parameter id="7" name="Peak Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter this value for your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Off Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Off Peak MB value, when this is blank Quota will automatically determine the value"/>
+		</paramgroup>
+		
+		
+		<paramgroup id="15" description="ISP2">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="10" name="Include Uploads" type="check_list_single" optional="true" defaultvalue="Yes" description="Are uploads counted in Quota?" validate="" value="Yes|No"/>
+		</paramgroup>
+		
+		<paramgroup id="18" description="Phone/Pin">
+			<parameter id="1" name="Phone/Account #" type="numberstr" novalue="Tap to setup" description="Enter your Phone/Account number" validate="^[0-9]+$"/>
+			<parameter id="2" name="Pin number" type="pin" novalue="Tap to setup" description="Enter your 6 digit pin number" validate="^[0-9]+$"/>
+			<parameter id="4" name="Mobile number" type="numberstr" description="Enter the mobile to retreive details for, enter 1234567 to autodetect" novalue="Tap to setup" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" novalue="Tap to setup" optional="false" validate="1..31" description="Only enter this value if you would like to override your billing period start day"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Enter your data limit"/>
+			<parameter id="8" name="Credit Limit" type="currency" optional="true" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Credit limit"/>
+		</paramgroup>
+		
+		<paramgroup id="50" description="Vodafone NZ">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+			<parameter id="4" name="Mobile number" type="numberstr" description="Enter the mobile number to retreive details for in international format i.e. 0421 becomes 6421.." novalue="Tap to setup" validate="^64[0-9]{3,}+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="true" validate="1..31" novalue="(auto)" description="Only enter this value if you would like to override your billing period start day"/>
+		</paramgroup>
+		
+	    <paramgroup id="60" description="UP">
+			<parameter id="1" name="ID" type="numberstr" description="Enter your ID" validate="^[0-9]+$" novalue="Tap to setup" escape="false"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+		</paramgroup>
+	
+	
+		<paramgroup id="64" description="UP">
+			<parameter id="1" name="Email" type="text" description="Enter your google email" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="5" name="WebSite" type="text" novalue="Tap to setup" optional="false" description="Enter website name (e.g. www.southfreo.com)"/>
+		</paramgroup>
+		<paramgroup id="65" description="GAD">
+			<parameter id="1" name="Email" type="text" description="Enter your google email" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="3" name="Period" type="check_list_single" optional="false" novalue="Tap to setup" description="Choose ReportingPeriod" value="today|yesterday|last7days|thismonth|lastmonth|alltime"/>
+		</paramgroup>
+			
+		<paramgroup id="92" description="TMU">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Mobile" type="numberstr" optional="true" novalue="(auto)" description="Enter the mobile to retreive data usage for (i.e. 04251112222), You may leave this blank and you will be prompted for your mobile number" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="(auto)" description="Only enter this value if you would like to override your billing period start day"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+			 
+		<paramgroup id="100" description="Prepay">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" novalue="Tap to setup" optional="true" validate="^[0-9]+$" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Credit Recharge" type="currency" optional="true" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" defaultvalue="100" description="Enter the Amount of Credit"/>
+		</paramgroup>
+		
+		<paramgroup id="102" description="PrepayOtherMobile">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Mobile" type="numberstr" optional="true" novalue="(auto)" description="Enter the mobile to retreive details for" validate="^[0-9]+$"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" novalue="Tap to setup" optional="true" validate="^[0-9]+$" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+	
+	    <paramgroup id="101" description="PrepayPinData">
+			<parameter id="1" name="Phone/Account #" type="numberstr" novalue="Tap to setup" description="Enter your Phone/Account" validate="^[0-9]+$"/>
+			<parameter id="3" name="Pin number" type="pin" novalue="Tap to setup" description="Enter your 6 digit pin number" validate="^[0-9]+$"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" novalue="Tap to setup" defaultvalue="0" optional="true" validate="^[0-9]+$" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Credit Recharge" type="currency" optional="true" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" defaultvalue="100" description="Enter the Amount of Credit"/>
+			<parameter id="15" name="Recharge Date" type="date" format="dd MMM yyyy" optional="true" validate=".*" novalue="Tap to setup" description="The date your Credit commenced"/>
+		</paramgroup>	
+
+		<paramgroup id="110" description="PrepayBroadband">
+			<parameter id="1" name="Phone/Account #" type="numberstr" novalue="Tap to setup" description="Enter your Phone/Account number" validate="^[0-9]+$"/>
+			<parameter id="3" name="Pin number" type="pin" novalue="Tap to setup" description="Enter your 6 digit pin number" validate="^[0-9]+$"/>
+			<parameter id="15" name="Recharge Date" type="date" format="dd MMM yyyy" optional="true" validate=".*" novalue="Tap to setup" description="The date your Credit commenced"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" novalue="Tap to setup" optional="true" validate="^[0-9]+$" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+
+		<paramgroup id="301" description="Card">
+			<parameter id="9" name="Card Part1" type="numberstr" description="Enter EEEE-XXXX-XXXX-XXXX of card number" optional="false" validate="^[0-9]+$" novalue="Tap to setup"/>
+			<parameter id="10" name="Card Part2" type="numberstr" description="Enter XXXX-EEEE-XXXX-XXXX of card number" optional="false" validate="^[0-9]+$" novalue="Tap to setup"/>
+			<parameter id="11" name="Card Part3" type="numberstr" description="Enter XXXX-XXXX-EEEE-XXXX of card number" optional="false" validate="^[0-9]+$" novalue="Tap to setup"/>
+			<parameter id="12" name="Card Part4" type="numberstr" description="Enter XXXX-XXXX-XXXX-EEEE of card number" optional="false" validate="^[0-9]+$" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+		</paramgroup>
+		
+		
+		<paramgroup id="501" description="UP">
+			<parameter id="1" name="ID" type="number" description="Enter your ID" validate="^[0-9]+$" novalue="Tap to setup" escape="false"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Account name" type="text" novalue="(auto)" optional="true" description="Enter your account name, leaving this blank will show all available accounts"/>
+		</paramgroup>
+		
+		<paramgroup id="504" description="amex">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Card" type="text" novalue="(auto)" optional="true" description="Enter your card name, leaving this blank will show all available cards"/>
+		</paramgroup>
+	
+	
+		<paramgroup id="722" description="X">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Plan ID" type="numberstr" novalue="Tap to setup" description="Enter the mobile to retreive details for" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Only enter this value if you would like to override your billing period start day"/>
+			<parameter id="7" name="Credit Recharge" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Last Recharge Value"/>
+			<parameter id="8" name="Data Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Enter the Data Limit for this plan"/>
+		</paramgroup>
+		
+		<paramgroup id="757" description="ISP4">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="false"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter the start of your billing date"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter this value for your Data value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+		
+		<paramgroup id="758" description="Optus Postpay">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+			<parameter id="4" name="Mobile number" type="numberstr" novalue="Tap to setup" optional="false" description="Enter the mobile to retreive usage for" validate="^[0-9]+$"/>
+			<parameter id="6" name="Start Billing" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter the day you billing period starts between 1-31"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter your Data limit in MB for your plan"/>
+			<parameter id="8" name="Credit Limit" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Credit limit in dollars for your plan"/>
+			
+			<parameter id="10" name="Add SMS" type="check_list_single" optional="false" defaultvalue="Yes" description="Choosing Yes will to add this value to  Charges" validate="" value="Yes|No"/>
+			<parameter id="11" name="Add Int-SMS" type="check_list_single" optional="false" defaultvalue="Yes" description="Choosing Yes will to add this value to  Charges" validate="" value="Yes|No"/>
+			<parameter id="12" name="Add Other" type="check_list_single" optional="false" defaultvalue="Yes" description="Choosing Yes will to add this value to  Charges" validate="" value="Yes|No"/>
+
+			<parameter id="13" name="Add Social" type="check_list_single" optional="false" defaultvalue="Yes" description="Choosing Yes will to add this value to Data Charges" validate="" value="Yes|No"/>
+		</paramgroup>
+		
+		<paramgroup id="657" description="everydayrewards">
+			<parameter id="1" name="Username" type="text" description="Enter your Username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your Password" validate=".*" novalue="Tap to setup" escape="true"/>
+		</paramgroup>
+		
+		<paramgroup id="700" description="Prepay">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" novalue="Tap to setup" optional="false" validate="1..31" description="Only enter this value if you would like to override your billing period start day"/>
+			<parameter id="8" name="Credit Recharge" type="currency" optional="true" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" defaultvalue="100" description="Enter the Amount of Credit"/>
+		</paramgroup>
+		
+		<paramgroup id="750" description="X">
+			<parameter id="100" name="Amount" type="currency" optional="false" defaultvalue="1" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Amount to convert"/>
+			<parameter id="110" name="From" type="check_list_single" optional="false" description="Choose Feed Type" novalue="Tap to setup" defaultvalue="1" value="USD|AUD|BHD|THB|BND|CLP|DKK|EUR|HUF|HKD|ISK|CAD|QAR|KWD|MYR|MTL|MUR|MXN|NPR|TWD|NZD|NOK|PKR|GBP|ZAR|BRL|CNY|OMR|IDR|RUB|SAR|ILS|SEK|CHF|SGD|SKK|LKR|KRW|KZT|CZK|AED|JPY|CYP|INR"/>
+			<parameter id="120" name="To" type="check_list_single" optional="false" description="Choose Feed Type" novalue="Tap to setup" defaultvalue="0" value="USD|AUD|BHD|THB|BND|CLP|DKK|EUR|HUF|HKD|ISK|CAD|QAR|KWD|MYR|MTL|MUR|MXN|NPR|TWD|NZD|NOK|PKR|GBP|ZAR|BRL|CNY|OMR|IDR|RUB|SAR|ILS|SEK|CHF|SGD|SKK|LKR|KRW|KZT|CZK|AED|JPY|CYP|INR"/>
+		</paramgroup>
+      
+      	<paramgroup id="751" description="X">
+			<parameter id="100" name="Stock ID" type="text" optional="false"  escape="true" validate=".*" novalue="Tap to setup" description="Enter Stock ID, e.g AAPL, ^AORD, CGF.AX "/>
+			<parameter id="101" name="Display" type="check_list_single" optional="false" description="How to display the value (either $10,000.00 or 10000.00)" novalue="Tap to setup" defaultvalue="0" value="Currency|Number"/>
+			<parameter id="105" name="Quantity" type="decimal" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" defaultvalue="1" novalue="Tap to setup" description="Enter the number of units"/>
+		</paramgroup>
+		
+		<paramgroup id="757" description="ISP4">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="false"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" optional="false" validate="1..31" novalue="Tap to setup" description="Enter the start of your billing date"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter this value for your Data value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+		
+		<paramgroup id="762" description="TCD">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+			<parameter id="4" name="Service" type="text" novalue="(auto)" optional="true"  description="Enter the service to retreive details for (Leave blank to be prompted)" validate=".*"/>
+			<parameter id="6" name="Start Billing" type="range" format="dayvalue" optional="false" defaultvalue="1" validate="1..31" novalue="Tap to setup" description="Enter the day you billing period starts between 1-31"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter your Data limit in MB for your plan"/>
+		</paramgroup>
+		
+		
+		<paramgroup id="800" description="IU">
+			<parameter id="6" name="Auto reset usage on" type="range" format="dayvalue" optional="false" validate="1..31" defaultvalue="1" novalue="Tap to setup" description="Enter the start of your billing cycle"/>
+			<parameter id="7" name="Cellular Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" defaultvalue="500" novalue="Tap to setup" description="Enter this value for your Cellular Data limit, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Wifi Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" defaultvalue="5000" novalue="Tap to setup" description="Enter this value for your Wifi data limit, Enter the Value in MB, i.e. 40000 is 40GB"/>
+
+			<parameter id="10" name="Cellular Total" type="number" format="datasimple" optional="false" defaultvalue="0" validate="^[0-9]+$" description="Override the current data value, Enter value in MB (e.g. 40000 is 40GB)" />
+			<parameter id="11" name="Wifi Total" type="number" format="datasimple" optional="false" defaultvalue="0" validate="^[0-9]+$" description="Override the current data value, Enter value in MB (e.g. 40000 is 40GB)" />
+		</paramgroup>
+		
+		<paramgroup id="1500" description="UserPassword">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+		</paramgroup>
+		
+		<paramgroup id="1501" description="Qantas">
+			<parameter id="1" name="Membership No" type="number" description="Enter Membership No" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Last Name" type="text" description="Enter Last Name" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="3" name="Pin" type="pin" novalue="Tap to setup" optional="true" description="Pin number" validate=""/>
+		</paramgroup>
+	
+		<paramgroup id="1502" description="CL">
+			<parameter id="1" name="Account No" type="number" description="Enter Account No" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="3" name="Pin" type="pin" novalue="Tap to setup" optional="false" description="Pin number" validate=""/>
+		</paramgroup>
+	
+		<paramgroup id="1515" description="Myki">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="CardNumber" type="numberstr" optional="true" novalue="(auto)" description="Enter your Myki Card Number, Leave blank to be prompted for CARD" validate="^[0-9]+$"/>
+		</paramgroup>
+
+		<paramgroup id="1530" description="Breeze">
+			<parameter id="1" name="Account ID" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="3" name="Pin" type="pin" description="Enter your pin" validate=".*" novalue="Tap to setup" escape="true"/>
+		</paramgroup>
+	
+		<paramgroup id="1591" description="tipad">
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter your data limit, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+		
+		<paramgroup id="1594" description="ISP1">
+			<parameter id="1" name="UserName" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="4" name="Mobile" type="numberstr" optional="false" novalue="Tap to setup" description="Enter the mobile to retreive details for" validate="^[0-9]+$"/>
+		</paramgroup>
+		
+		
+		<paramgroup id="1607" description="Prepay3G">
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" novalue="Tap to setup" optional="true" validate="^[0-9]+$" description="Only enter this value if you would like to override your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>	
+		
+  		<paramgroup id="1613" description="SP">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+			<parameter id="4" name="Service" type="text" novalue="(auto)" optional="false"  description="Service to retrieve" validate=".*"/>
+			<parameter id="6" name="Start Billing" type="range" format="dayvalue" optional="false" defaultvalue="1" validate="1..31" novalue="Tap to setup" description="Enter the day you billing period starts between 1-31"/>
+			<parameter id="7" name="Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="Tap to setup" description="Enter this value for your Peak Quota value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+			<parameter id="8" name="Off Peak Limit" type="number" format="datasimple" optional="true" validate="^[0-9]+$" novalue="(auto)" description="Only enter this value if you would like to override your Off Peak MB value, when this is blank Quota will automatically determine the value"/>
+		</paramgroup>
+		
+  
+		<paramgroup id="1614" description="IIM">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+			<parameter id="4" name="Mobile" type="text" novalue="Tap to setup" optional="false"  description="Mobile to retrieve" validate=".*"/>
+			<parameter id="6" name="Start Billing" type="range" format="dayvalue" optional="false" defaultvalue="1" validate="1..31" novalue="Tap to setup" description="Enter the day you billing period starts between 1-31"/>
+			<parameter id="7" name="Cap Value" type="currency" optional="false" validate="[-+]?([0-9]*\.[0-9]+|[0-9]+)" novalue="Tap to setup" description="Enter your Cap Value"/>
+		</paramgroup>
+		
+		<paramgroup id="1618" description="CB">
+			<parameter id="10" name="Card Part1" type="numberstr" description="Enter EEEE-XXXX-XXXX of card number" optional="false" validate="[0-9]{4}" novalue="Tap to setup"/>
+			<parameter id="11" name="Card Part2" type="numberstr" description="Enter XXXX-EEEE-XXXX of card number" optional="false" validate="[0-9]{4}" novalue="Tap to setup"/>
+			<parameter id="12" name="Card Part3" type="numberstr" description="Enter XXXX-XXXX-EEEE of card number" optional="false" validate="[0-9]{4}" novalue="Tap to setup"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup"/>
+		</paramgroup>
+		
+		<paramgroup id="1620" description="UserPasswordDays">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="120" name="Number Days" type="check_list_single" optional="false" description="Days" novalue="Tap to setup" defaultvalue="0" value="1|3|7|14|30|60|120"/>
+		</paramgroup>
+		
+		<paramgroup id="1621" description="ISP4">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="false"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="7" name="Data Limit" type="number" format="datasimple" optional="false" validate="^[0-9]+$" novalue="Tap to setup" description="Enter this value for your Data value, Enter the Value in MB, i.e. 40000 is 40GB"/>
+		</paramgroup>
+		
+		<paramgroup id="1622" description="UPNE">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="false"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="false"/>
+		</paramgroup>
+	
+		<paramgroup id="1623" description="UPSB">
+			<parameter id="1" name="User Name" type="text" description="Enter your username" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="2" name="Password" type="password" description="Enter your password" validate=".*" novalue="Tap to setup" escape="true"/>
+			<parameter id="6" name="Start Billing Day" type="range" format="dayvalue" novalue="Tap to setup" optional="false" validate="1..31" description="Only enter this value if you would like to override your billing period start day"/>
+		</paramgroup>
+	
+	
+	</paramgroups>
+
+	<provider id="0"  pgid="1" type="AUS ISP"  dtype="0" name="iiNet" version="1.0" icon="0" description="Please ensure you can access your usage from iinet.net.au" secure="no" cookie="" cache="900" providerurl="http://iinet.net.au" supporturl=""/>
+	<provider id="3"  pgid="752" type="AUS ISP"  dtype="0" name="Internode" version="1.0" icon="3" description="Please ensure you can access your internode usage data via the web, should you have issues" secure="no" cookie="" cache="900" providerurl="http://www.internode.on.net/" supporturl=""/>
+	<provider id="4"  pgid="7" dtype="0" name="Telstra Postpay" providerurl="https://es.telstra.com/MobileDataUsageMeter/index.jsp?theme=tb#Usage" suppoerurl="http://www.southfreo.com/iiquota/Support/Entries/2009/6/26_Telstra_Mobile_Support.html" type="AUS Mobile" cookie="telstra" icon="4" parsemethod="xml" version="2.6a" description="Telstra Post (Billing/Data combined) for non corporate plans - use corporate provider to see corporate billing information."/>
+	<provider id="5"  pgid="5" name="Vodafone Postpay" providerurl="http://myvodafone.com.au/" type="AUS Mobile" cookie="myvodafone" parsemethod="xml" version="2.2" description="Please ensure you can access your vodafone usage data via the vodafone website on your device"/>
+	<provider id="8"  pgid="100" name="Vodafone Prepay" providerurl="http://www.myvodafone.com.au" type="AUS Mobile" cookie="myvodafone" icon="5" parsemethod="xml" version="1.4" description="Please ensure you can access your vodafone usage data via the vodafone website."/>
+	<provider id="9" pgid="6" cache="18000" name="TPG Mobile" parsemethod="xml" providerurl="http://tpg.com.au" type="AUS Mobile" cookie="tpg" version="1.2" icon="7" description="Please ensure you can access your tpg usage data via the www.tpg.com.au"/>
+	<provider id="11" pgid="4" type="AUS Mobile"  dtype="0" name="Virgin Postpay" version="1.1" icon="11" description="Virgin Postpay provider" secure="no" cookie="virgin" cache="900" providerurl="http://virginmobile.com.au" supporturl="http://www.southfreo.com"/>
+	<provider id="12" pgid="101" type="AUS Mobile"  dtype="0" name="Virgin Prepay" version="1.0" icon="11" description="Please ensure you can access your virgin usage data via the web, should you have issues" secure="no" cookie="virgin" cache="900" providerurl="http://virginmobile.com.au" supporturl=""/>
+	<provider id="13" type="AUS Mobile" pgid="102" name="Optus Prepay" parsemethod="xml" version="1.1" icon="1" description="Optus Prepay (Account) provider" secure="no" cookie="optus.com.au" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl=""/>
+	<provider id="14" type="AUS Mobile" pgid="2" dtype="0" name="3 Mobile" version="1.0" icon="14" description="Please ensure you can access your usage from mythree.com.au" secure="no" cookie="three.com.au" cache="900" providerurl="https://www.my.three.com.au/My3/jfn" supporturl=""/>
+	<provider id="15" pgid="102" name="Telstra Prepay" providerurl="http://telstra.com.au" type="AUS Mobile" cookie="telstra" icon="4" parsemethod="xml" version="1.7" description="In order for Quota to obtain you mobile usage, Please ensure you can login to the Tesltra Website and Retreive you usage..."/>
+	<provider id="17" type="AUS ISP" pgid="15" dtype="0" name="Netspace" version="1.0" icon="17" description="Please ensure you can access your usage from netspace.net.au" secure="no" cookie="netspace" cache="900" providerurl="http://netspace.com.au/" supporturl=""/>
+	<provider id="18" type="AUS Mobile" pgid="18" dtype="0" parsemethod="xml" name="Crazy John's Postpay" version="1.7" icon="18" description="Please ensure you can access your usage from crazyjohns.net.au" secure="no" cookie="crazy" cache="900" providerurl="http://crazyjohns.com.au/" supporturl=""/>
+	<provider id="19" pgid="1" type="AUS ISP"  dtype="0" name="Westnet" version="1.0" icon="19" description="Please ensure you can access your usage from westnet.com.au" secure="no" cookie="westnet" cache="900" providerurl="http://westnet.com.au/" supporturl=""/>
+	<provider id="20" type="AUS ISP" pgid="12" dtype="0" name="AAPT" version="1.0" icon="20" description="Please ensure you can access your usage from aapt.com.au" secure="no" cookie="aapt" cache="900" providerurl="http://aapt.com.au/" supporturl=""/>
+	<provider id="21" pgid="1" type="AUS ISP"  dtype="0" name="aaNet" version="1.0" icon="21" description="Please ensure you can access your usage from aanet.net.au" secure="no" cookie="aanet" cache="900" providerurl="http://aanet.com.au/" supporturl=""/>
+	<provider id="24" pgid="1" type="AUS ISP"  dtype="0" name="Dodo" version="1.0" icon="24" description="Please ensure you can access your usage data via the Dodo website should you have any issues" secure="no" cookie="dodo" cache="900" providerurl="http://dodo.com.au/" supporturl=""/>
+	<provider id="25" pgid="12" name="iPrimus" providerurl="http://iprimus.com.au/" parsemethod="xml" type="AUS ISP" cookie="iprimus" version="1.4" description="Please ensure you can access your usage from toolbox.iprimus.com.au"/>
+	<provider id="26" type="AUS ISP" pgid="1" dtype="0" name="Amnet" version="1.0" icon="26" description="Please ensure you can access your usage from Amnet" secure="no" cookie="amnet" cache="900" providerurl="http://amnet.com.au/" supporturl=""/>
+	<provider id="31" type="AUS Mobile" pgid="110" dtype="0" name="Vodafone Broadband" version="1.0" icon="5" description="Please ensure you can access your vodafone usage data via the vodafone website." secure="no" cookie="" cache="900" providerurl="https://secure.broadband.vodafone.com.au" supporturl=""/>
+	<provider id="51" pgid="50" icon="5" name="Vodafone Account" providerurl="https://www.vodafone.co.nz/" type="NZL Mobile" cookie="vodafone.co.nz" parsemethod="xml" version="1.3" description="Please ensure you can access your vodafone usage data via the vodafone website vodafone.co.nz"/>
+	<provider id="53" pgid="12" name="MyNetFone" type="AUS ISP" cookie="mynetfone.com.au" icon="mnf" parsemethod="xml" providerurl="https://www.mynetfone.com.au" version="1.3" description="Please ensure you can access your usage via the mynetfone.com.au site"/>
+ 	<provider id="54" pgid="11" name="Comcen/Spin" type="AUS ISP" cookie="spin.net.au" icon="comcen" parsemethod="xml" providerurl="https://www.spin.net.au" version="1.6" description="Please ensure you can access your usage via the spin.net.au site"/>
+	<provider id="56" pgid="12" icon="5" name="Vodafone Broadband" providerurl="https://www.vodafone.co.nz/" type="NZL Mobile" cookie="vodafone.co.nz" parsemethod="xml" version="1.1" description="Please ensure you can access your vodafone usage data via the vodafone website vodafone.co.nz"/>
+	<provider id="57" type="AUS Travel" pgid="60" dtype="2" name="QLD Go Card" version="1.1" icon="go" description="Check your GoCard Balance" secure="no" cookie="seqits.com.au" cache="900" providerurl="https://www.seqits.com.au/webtix/" supporturl=""/>
+
+	<provider id="64" pgid="64" dtype="2" name="Google Analytics" type="ALL Statistics" cookie="google.com" parsemethod="xml" secure="false" icon="google" providerurl="https://www.google.com" version="1.0" description="Access your Google Analytics Account"/>
+	<provider id="65" dtype="2" pgid="65" name="Google AdSense" type="ALL Statistics" cookie="google.com" parsemethod="xml" secure="false" icon="google" providerurl="https://www.google.com" version="1.0" description="Access your Google Adsense Account"/>
+	<provider id="66" type="AUS Travel" pgid="1502" dtype="2" name="QLD Go via" version="1.1" icon="govia" description="Access your Balance and recent activity" secure="no" cookie="www.govia.com.au" cache="900" providerurl="https://www.govia.com.au" supporturl=""/>
+	<provider id="85" type="AUS ISP" pgid="12" dtype="0" name="iPrimus (NewPage)" version="1.4" icon="25" description="Please ensure you can access your usage from toolbox.iprimus.com.au" secure="no" cookie="iprimus" cache="900" providerurl="http://iprimus.com.au/" supporturl=""/>
+	<provider id="99" type="AUS ISP" pgid="99" dtype="0" name="Optus Broadband" parsemethod="xml" version="1.1" icon="1" description="Please ensure you can access your optus usage data via the zoo website, should you have issues" secure="no" cookie="optus" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl=""/>
+
+	<provider id="212" pgid="1500" dtype="2" name="Whirlpool Watched" icon="wp" type="AUS News" cookie="" parsemethod="xml" secure="false" providerurl="http://www.whirlpool.net.au/" version="1.1" description="Logins in and checks your watched threads"/>
+	<provider id="250" pgid="11" type="AUS ISP"  dtype="0" name="Westnet (Old)" version="1.0" icon="19" description="Please ensure you can access your usage from westnet.com.au" secure="no" cookie="westnet" cache="900" providerurl="http://westnet.com.au/" supporturl=""/>
+	<provider id="300" pgid="301" dtype="2" name="Myer one" type="AUS Leisure" version="1.2" cache="21600" icon="myer" parsemethod="xml" author="" cookie="myerone.com.au" providerurl="http://myerone.com.au" description="Displays Myer one Points Balance"/>
+	<XXprovider id="501" type="AUS Bank" pgid="501" dtype="2" name="Bankwest" version="1.2" icon="501" description="Bankwest Bank Provider." secure="yes" cookie="bankwest" cache="900" providerurl="http://bankwest.com.au" supporturl=""/>
+	<provider id="502" type="AUS Bank" pgid="501" dtype="2" name="CBA" version="1.4" icon="cba" description="CBA NetBank balance and available funds, works with main login only currently." secure="true" cookie="netbank.combank.com.au" cache="900" providerurl="https://www2.my.commbank.com.au/mobile/security/logon.aspx" supporturl=""/>
+	<provider id="504" dtype="2" pgid="504" name="American Express" type="AUS Bank" cookie="americanexpress.com" icon="amex" cache="900" author="aaron@moshpit.com.au" parsemethod="xml" secure="true" providerurl="https://home.americanexpress.com/home/au/home_c.shtml" version="1.1" description="Check your American Express Balance"/>
+	
+	<provider id="657" dtype="2" pgid="657" name="Everyday Rewards" type="AUS Leisure" cookie="www.everydayrewards.com.au" icon="657" cache="900" author="Chuppa" parsemethod="xml" secure="false" providerurl="https://www.everydayrewards.com.au/anon/auth/account/session?TAM_OP=login" version="1.1" description="Check your Everyday Rewards Balance"/>
+	<provider id="700" dtype="2" pgid="1500" name="MyNetFone VOIP" type="AUS Mobile" cookie="mynetfone.com.au" icon="mnf" parsemethod="xml" providerurl="https://www.mynetfone.com.au" version="1.1" description="Please ensure you can access your usage via the mynetfone.com.au site"/>
+	<provider id="701" dtype="2" pgid="1500" name="PennyTel" type="AUS Mobile" cookie="pennytel.com.au" parsemethod="xml" secure="false" icon="pt" providerurl="https://www.pennytel.com/login.jsp" version="1.0" description="Check your PennyTel balance"/>
+	<provider id="702" type="AUS Mobile" pgid="8" dtype="0" parsemethod="xml" name="Crazy John's Prepay" version="1.0" icon="18" description="Please ensure you can access your usage from crazyjohns.net.au" secure="no" cookie="crazy" cache="900" providerurl="http://crazyjohns.com.au/" supporturl=""/>
+	<provider id="720" pgid="1500" dtype="2" name="Paypal" type="AUS Bank" cookie="paypal.com.au" parsemethod="xml" secure="true" icon="pp" cache="86400" providerurl="https://www.paypal.com/au" version="1.0" description="PayPal Balance and Transactions"/>
+
+	<provider id="721" pgid="1623"  name="Exetel ADSL/HSPA" type="AUS ISP" cookie="exetel.com.au" icon="10" parsemethod="xml" providerurl="http://www.exetel.com.au/" version="1.0" description="Please ensure you can access your usage via the website"/>
+	<provider id="722" pgid="722" cache="18000" name="TPG Mobile PAYG" type="AUS Mobile" cookie="tpg.com.au" parsemethod="xml" icon="7" providerurl="http:/www.tpg.com.au/" version="1.1" description="Please ensure you can access your usage via the website"/>
+	<provider id="750" dtype="2" pgid="750" type="ALL Statistics" name="Currency" version="1.0" icon="currency" parsemethod="xml" description="" secure="false" cookie="" cache="" author="" providerurl="http://finance.yahoo.com/" supporturl=""/>
+	<provider id="751" dtype="2" pgid="751" type="ALL Statistics" name="Stocks" version="1.0" icon="stocks" parsemethod="xml" description="" secure="false" cookie="" cache="" author="" providerurl="http://finance.yahoo.com/" supporturl=""/>
+    <provider id="762" pgid="762" dtype="0" name="Telstra CustData" providerurl="https://www.telstra.net/cgi-bin/custdata/index.pl" suppoerurl="http://www.southfreo.com/iiquota/Support/Entries/2009/6/26_Telstra_Mobile_Support.html" type="AUS ISP" cookie="telstra.net" icon="4" parsemethod="xml" version="2.2" description="Telstra CustData system reporting"/>
+
+	<provider id="757" pgid="757" name="Virgin Broadband" type="AUS ISP" cookie="virginbroadband.com.au" icon="11" parsemethod="xml" providerurl="http://my.virginbroadband.com.au" version="1.3" author="SouthFreo" description="Please ensure you can access your usage via the website"/>
+	<provider id="758" pgid="758" type="AUS Mobile"  name="Optus Postpay" parsemethod="xml" version="1.1" icon="1" description="Optus Postpay provider which adds options to add Social Internet to Data charges" secure="no" cookie="optus.com.au" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl=""/>
+	<provider id="800"  pgid="800" name="Local Data Usage" type="ALL Statistics" icon="datausage" version="1.1" cache="10" parsemethod="xml" author="" description="Internal data usage provider."/>
+	<provider id="1403" type="AUS Mobile" pgid="92" name="Optus Wireless Bband" parsemethod="xml" version="1.0" icon="1" description="Mobile Broadband accounts on Postpay (e.g BYO)" secure="no" cookie="optus.com.au" cache="900" providerurl="http://www.optus.com.au/home/index.html" supporturl=""/>
+	<provider id="1500" pgid="1622" dtype="2" name="WA Smartrider" type="AUS Travel" cookie="gov.au" parsemethod="xml" secure="false" icon="sr" providerurl="https://www.transperth.wa.gov.au/" version="1.2" description="Check your smartrider balance and recent history from transperth"/>
+	<provider id="1501" type="AUS Travel" pgid="1500" dtype="2" name="NSW myE-Toll" version="1.0" icon="etoll" description="Check your myE-Toll balance from RTA Authority, NSW" secure="no" cookie="rta.nsw.gov.au" cache="900" providerurl="https://ols2.rta.nsw.gov.au/myEToll/secure/requestLogin.do" supporturl=""/>
+	<provider id="1502" pgid="1501" dtype="2" name="QANTAS FF" type="AUS Travel" cookie="qantas.com.au" parsemethod="xml" secure="false" icon="ff" cache="86400" providerurl="https://www.qantas.com.au/fflyer/dyns/LoginForm" version="1.3" description="Check your frequent flyer points from Qantas website"/>
+	<provider id="1503" pgid="1502" dtype="2" name="VIC CityLink" type="AUS Travel" cookie="citylink.com.au" parsemethod="xml" secure="false" icon="cl" providerurl="https://www.citylink.com.au/" version="1.0" description="Check your Citylink balance from Citylink Authority, VIC"/>
+	<provider id="1505" pgid="1502" dtype="2" name="NSW Roam" type="AUS Travel" cookie="roam.com.au" parsemethod="xml" secure="false" icon="roam" providerurl="http://www.roam.com.au/default.asp" version="1.0" description="Check your Roam balance and account history"/>
+	<provider id="1510" pgid="1500" dtype="2" name="FlyBuys" type="AUS Leisure" cookie="flybuys.com.au" parsemethod="xml" secure="false" icon="fb" providerurl="https://www.flybuys.com.au" version="1.0" description="Check your FlyBuys points Balance"/>
+	<provider id="1515" pgid="1515" dtype="2" name="VIC Myki" type="AUS Travel" cookie="mymyki.com.au" parsemethod="xml" secure="false" icon="myki" providerurl="https://www.mymyki.com.au/" version="1.1" description="Check your Myki Balance and see recent transactions"/>
+	<provider id="1520" type="AUS Travel" pgid="1502" dtype="2" name="NSW Roam Express" version="1.0" icon="roam" description="Check your Roam Express balance and account history" secure="no" cookie="roamexpress.com.au" cache="900" providerurl="https://www.roamexpress.com.au/Secure/Default.htm" supporturl=""/>
+	<provider id="1530" pgid="1530" dtype="2" name="VIC Breeze" type="AUS Travel" cookie="breeze.com.au" parsemethod="xml" secure="false" icon="breeze" providerurl="https://etolling2.breeze.com.au/Login-Services/Login.aspx" version="1.2" description="Check your Breeze balance"/>
+	<provider id="1540" pgid="1500" dtype="2" name="Velocity Rewards" type="AUS Travel" cookie="velocityrewards.com.au" parsemethod="xml" secure="false" icon="11" providerurl="https://www.velocityrewards.com.au/" version="1.0" description="Check your Velocity Rewards Points and recent Transactions"/>
+	<provider id="1560" pgid="1500" dtype="2" name="AIR NZ" type="AUS Travel" cookie="myairnz.com" parsemethod="xml" secure="false" icon="" cache="86400" providerurl="https://myairnz.com/myairnz/portal/get_flash.jsp" version="1.0" description="Check your frequent flyer points and transaction history"/>
+	<provider id="1570" pgid="1500" dtype="2" name="Skywards" type="AUS Travel" cookie="skywards.com" parsemethod="xml" secure="false" icon="" cache="86400" providerurl="http://www.emirates.com/au/english/Skywards/skywards.aspx" version="1.1" description="Check your frequent flyer points"/>
+	<provider id="1594" type="AUS Mobile" pgid="1594" dtype="0" parsemethod="xml" name="Live Connected" version="2.0" icon="lc" description="Please ensure you can access your usage via the Live Connected website" secure="no" cookie="crazy" cache="900" providerurl="http://www.liveconnected.com.au/" supporturl=""/>
+	<provider id="1595" pgid="1591" name="Optus Prepay 3G" providerurl="https://memberservices.optuszoo.com.au/ms/ium/prepaid.htm" type="AUS Mobile" cookie="optuszoo.com.au" icon="1" parsemethod="xml" version="1.5" description="Optus 3G Prepaid usage, only works via 3G on a iPad."/>
+	<provider id="1597" pgid="60" dtype="2" name="FLOW" type="AUS Travel" cookie="https://secure.flowtoll.com.au/Login.aspx" parsemethod="xml" secure="false" icon="ft" providerurl="https://secure.flowtoll.com.au/Login.aspx" version="1.0" description="Check your FLOW toll balance"/>
+	<provider id="1603" pgid="7" dtype="0" name="Telstra Postpay Corporate" providerurl="https://onlinebilling.telstra.com.au/corporatebill/hierarchy/main/dashboard/show.do" suppoerurl="http://www.southfreo.com/iiquota/Support/Entries/2009/6/26_Telstra_Mobile_Support.html" type="AUS Mobile" cookie="telstra" icon="4" parsemethod="xml" version="1.2" description="Telstra Postpay (Billing/Data combined) , Calls to be billed is parsed from Corporate site"/>
+	<provider id="1604" pgid="1500" dtype="2" name="Skype Balance" type="ALL Statistics" cookie="skype" parsemethod="xml" secure="false" icon="telephone" providerurl="https://www.skype.com" version="1.0" description=""/>
+	<provider id="1606" pgid="12" cache="18000" name="TPG Broadband" parsemethod="xml" providerurl="http://tpg.com.au" type="AUS ISP" cookie="tpg" version="1.1" icon="7" description="Displays uploads + downloads combined for newer TPG plans"/>
+	<provider id="1607" pgid="1607" name="Telstra Prepaid 3G" providerurl="https://m.telstra.com/wbb/accountDetails.html?a=view" type="AUS Mobile" cookie="" icon="4" parsemethod="xml" version="2.4" description="Telstra Prepay Usage, This only works when your connection via 3G (not Wifi)"/>
+	<provider id="1608" pgid="12" name="Bigpond" providerurl="http://www.bigpond.com/home/" type="AUS ISP" cookie="bigpond" icon="2" parsemethod="xml" version="1.3" description="Bigpond usage from Daily usage page"/>
+    <provider id="1610" pgid="757" name="Virgin Mobile" icon="11" providerurl="https://www1.virginmobileusa.com/myaccount/home.do" parsemethod="xml" type="USA Mobile" cookie="virginmobileusa" version="1.1" description="Please ensure you can access your usage from the Providers website"/>
+	<provider id="1611" pgid="11" name="Adam" icon="16" providerurl="https://members.adam.com.au/usage/" parsemethod="xml" type="AUS ISP" cookie="members.adam.com.au" version="1.0" description="Please ensure you can access your usage from the Providers website"/>
+    <provider id="1612" pgid="757" name="Virgin Broadband2Go" icon="11" providerurl="https://www1.virginmobileusa.com/myaccount/home.do" parsemethod="xml" type="USA Mobile" cookie="virginmobileusa" version="1.2" description="Please ensure you can access your usage from the Providers website"/>
+    <provider id="1613" pgid="1613" name="Comcen/Spin (Multiple)" type="AUS ISP" cookieclear="spin.net.au" icon="comcen" parsemethod="xml" providerurl="https://www.spin.net.au" version="1.6" description="Please ensure you can access your usage via the spin.net.au site"/>
+ 	<provider id="1614" pgid="1614" name="Westnet Mobile" type="AUS Mobile" cookieclear="westnet.com.au" icon="19" parsemethod="xml" providerurl="https://westnet.com.au" version="1.1" description="Please ensure you can access your usage via logging into the website"/>
+    <provider id="1615" pgid="1614" name="iiNet Mobile" type="AUS Mobile" cookieclear="iinet.net.au" icon="0" parsemethod="xml" providerurl="https://toolbox.iinet.net.au" version="1.1" description="Please ensure you can access your usage via logging into the website"/>
+	<provider id="1618" dtype="2" pgid="1618" name="CineBuzz" type="AUS Leisure" cookie="eventcinemas.com.au" icon="cb" cache="900" author="" parsemethod="xml" secure="false" providerurl="http://www.eventcinemas.com.au/" version="1.0" description="Check your Cinibuzz Points"/>
+	<provider id="1619" dtype="2" pgid="1500" name="NSW Tollpay" type="AUS Travel" cookie="roam.com.au" parsemethod="xml" secure="false" icon="nsw" providerurl="https://www.tollpay.com.au/selfserve/welcome.do" version="1.1" description="Check your Tollpay"/>
+	<provider id="1620" pgid="1620" dtype="2" name="Whirlpool Recent" icon="wp" type="AUS News" cookie="" parsemethod="xml" secure="false" providerurl="http://www.whirlpool.net.au/" version="1.1" description="Logins in and checks your recent activity"/>
+	<provider id="1621" pgid="1621" name="Virgin BB (Prepay)" type="AUS ISP" cookie="virginbroadband.com.au" icon="11" parsemethod="xml" providerurl="http://my.virginbroadband.com.au" version="1.3" author="Nick Wilton/SouthFreo" description="Please ensure you can access your usage via the website"/>
+	<provider id="1622" pgid="1500" name="OntheNet" type="AUS ISP" cookie="onthenet" icon="network_blue" parsemethod="xml" providerurl="http://www.onthenet.com.au/" version="1.0" description="Please ensure you can access your provider link"/>
+	<provider id="1623" pgid="12" name="Grapevine/Transact" icon="network_blue" providerurl="http://www.grapevine.com.au/" parsemethod="xml" type="AUS ISP" cookie="grapevine" version="1.0" description="Please ensure you can access your usage from provider link"/>
+	<provider id="1624" dtype="2" pgid="1500" name="Lotterywest" type="AUS Leisure" cookie="lotterywest" icon="disco_ball" cache="18000" author="" parsemethod="xml" secure="false" providerurl="https://www.lotterywest.wa.gov.au/play-online" version="1.0" description="Check your Lotterywest balance and games"/>
+	<provider id="1625" type="AUS Mobile" pgid="1500" dtype="0" parsemethod="xml" name="Amaysim" version="2.0" icon="telephone" description="Please ensure you can access your usage from website" secure="no" cookie="amaysim" cache="900" providerurl="https://www.amaysim.com.au" supporturl=""/>
+	<provider id="1626" type="NZL Mobile" pgid="7" dtype="0" parsemethod="xml" name="Telecom NZ" version="2.0" icon="telephone" description="Please ensure you can access your usage from website" secure="no" cookie="telecom.co.nz" cache="900" providerurl="https://www.telecom.co.nz" supporturl=""/>
+	<provider id="1627" dtype="2" pgid="1500" name="TAS Greencard" type="AUS Travel" cookie="metrotas" icon="wallet" cache="18000" author="" parsemethod="xml" secure="false" providerurl="https://www.metrotas.com.au/greencard/login" version="1.0" description="Check your greencard balance"/>
+
+</quotaxml>

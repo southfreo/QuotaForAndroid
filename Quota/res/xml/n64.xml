@@ -1,0 +1,54 @@
+<quotaxml version="1">
+<provider id="64" pgid="64" dtype="2" name="Google Analytics" type="ALL Statistics" cookie="google.com" parsemethod="xml" secure="false" icon="google" providerurl="https://www.google.com" version="1.0" description="Access your Google Analytics Account">
+		<model>
+			<datassource>
+				<url id="1" http="https://www.google.com/accounts/Login" message="Connect"/>
+				<url id="2" http="https://www.google.com/accounts/LoginAuth" post="dsh=--DK_DSH--&amp;GALX=--DK_GALX--&amp;Email=--DS_PARAM1--&amp;Passwd=--DS_PARAM2--&amp;signIn=Sign+in&amp;asts=" message="Login"/><!-- Analytics Page -->
+				<url id="3" http="https://www.google.com/analytics/settings/?hl=en" message="DashBoard"/>
+				<url id="4" http="https://www.google.com/analytics/reporting/top_content?id=--DK_ID--" message="Page Stats"/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_DSH--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="dsh"]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="1" name="--DK_GALX--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="GALX"]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- Login Issue -->
+				<key id="40" name="--DK_badlogin--" type="string" src="url" srcid="2" extract="regex" trimspace="true" condition="1">
+					<find><![CDATA[(?i)The username or password you entered is incorrect]]></find>
+					<pos>0</pos>
+				</key><!-- ID -->
+				<key id="50" name="--DK_ID--" type="string" src="url" srcid="3" extract="regex" trimspace="true" condition="2">
+					<find><![CDATA[(?i)value="([0-9]{1,15})">--DS_PARAM5--]]></find>
+					<pos>1</pos>
+				</key><!--Data-->
+				<key id="10" name="--DK_daterange--" type="string" src="url" srcid="4" extract="regex" trimspace="true">
+					<find><![CDATA[date_range_display">(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="10" name="--DK_pageviews--" type="string" src="url" srcid="4" extract="regex" trimspace="true">
+					<find><![CDATA[Pageviews.*?primary_value">(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="4" extract="htmltable">
+					<find><![CDATA[<table.*id="f_table_data.*?>(?s)(.*?)</table>]]></find>
+					<start><![CDATA[<tr.*?>(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td.*?>(?s)(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+				<condition id="2" when="after" operator="is_key_empty" p1="--DK_ID--" action="fail" ap1="Could not locate id for website"/>
+			</conditions>
+		</model>
+		<view paramgroup="64" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Pageviews:" bal1value="--DK_pageviews--" bal2name="" bal2value="--DK_daterange--" headings="No|Page|PageViews" src="--DK_TT_TABLE--" date="1" description="2" amount="3"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

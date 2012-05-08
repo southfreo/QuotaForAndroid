@@ -1,0 +1,700 @@
+kankan.wheel.widget.OnWheelChangedListener
+kankan.wheel.widget.WheelAdapter
+kankan.wheel.widget.OnWheelScrollListener
+kankan.wheel.widget.OnWheelClickedListener
+kankan.wheel.widget.WheelRecycle
+kankan.wheel.widget.WheelScroller$ScrollingListener
+kankan.wheel.widget.ItemsRange
+kankan.wheel.widget.WheelScroller
+kankan.wheel.widget.WheelView
+com.markupartist.android.widget.ActionBar$Action
+com.markupartist.android.widget.ActionBar$ActionList
+com.markupartist.android.widget.ActionBar$AbstractAction
+com.markupartist.android.widget.ActionBar
+com.markupartist.android.widget.ActionBar$ClickAction
+com.markupartist.android.widget.ActionBar$IntentBack
+com.markupartist.android.widget.ActionBar$IntentAction
+com.markupartist.android.widget.ScrollingTextView
+com.markupartist.android.widget.ActionBar$DialogAction
+com.southfreo.quota.widgets.ListPreferenceMultiSelect
+com.southfreo.quota.widgets.ListPreferenceMultiSelect: ListPreferenceMultiSelect(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.ListPreferenceValue: ListPreferenceValue(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.TextProgressBar
+com.southfreo.quota.widgets.TextProgressBar: TextProgressBar(android.content.Context,android.util.AttributeSet)
+com.markupartist.android.widget.ActionBar
+com.markupartist.android.widget.ActionBar: ActionBar(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.ListPreferenceValueNoParam
+com.southfreo.quota.widgets.ListPreferenceValueNoParam: ListPreferenceValueNoParam(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.TextParamValidate
+com.southfreo.quota.widgets.TextParamValidate: TextParamValidate(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.DatePreference
+com.southfreo.quota.widgets.DatePreference: DatePreference(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.ListPreferenceValue
+com.southfreo.quota.widgets.ListPreferenceValue: ListPreferenceValue(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.IconPreference
+com.southfreo.quota.widgets.IconPreference: IconPreference(android.content.Context,android.util.AttributeSet)
+kankan.wheel.widget.WheelView
+kankan.wheel.widget.WheelView: WheelView(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.PageControl
+com.southfreo.quota.widgets.PageControl: PageControl(android.content.Context,android.util.AttributeSet)
+com.markupartist.android.widget.ScrollingTextView
+com.markupartist.android.widget.ScrollingTextView: ScrollingTextView(android.content.Context,android.util.AttributeSet)
+com.southfreo.quota.widgets.DatePreference
+com.southfreo.quota.widgets.DatePreference: DatePreference(android.content.Context,android.util.AttributeSet,int)
+kankan.wheel.widget.WheelView
+kankan.wheel.widget.WheelView: WheelView(android.content.Context,android.util.AttributeSet,int)
+com.markupartist.android.widget.ScrollingTextView
+com.markupartist.android.widget.ScrollingTextView: ScrollingTextView(android.content.Context,android.util.AttributeSet,int)
+com.southfreo.quota.billing.Billing$Managed: com.southfreo.quota.billing.Billing$Managed[] values()
+com.southfreo.quota.billing.Billing$Managed: com.southfreo.quota.billing.Billing$Managed valueOf(java.lang.String)
+com.southfreo.quota.billing.Consts$ResponseCode: com.southfreo.quota.billing.Consts$ResponseCode[] values()
+com.southfreo.quota.billing.Consts$ResponseCode: com.southfreo.quota.billing.Consts$ResponseCode valueOf(java.lang.String)
+org.apache.james.mime4j.codec.EncoderUtil$Usage: org.apache.james.mime4j.codec.EncoderUtil$Usage[] values()
+org.apache.james.mime4j.codec.EncoderUtil$Usage: org.apache.james.mime4j.codec.EncoderUtil$Usage valueOf(java.lang.String)
+org.apache.james.mime4j.codec.EncoderUtil$Encoding: org.apache.james.mime4j.codec.EncoderUtil$Encoding[] values()
+org.apache.james.mime4j.codec.EncoderUtil$Encoding: org.apache.james.mime4j.codec.EncoderUtil$Encoding valueOf(java.lang.String)
+com.southfreo.quota.billing.Consts$PurchaseState: com.southfreo.quota.billing.Consts$PurchaseState[] values()
+com.southfreo.quota.billing.Consts$PurchaseState: com.southfreo.quota.billing.Consts$PurchaseState valueOf(java.lang.String)
+org.apache.http.entity.mime.HttpMultipartMode: org.apache.http.entity.mime.HttpMultipartMode[] values()
+org.apache.http.entity.mime.HttpMultipartMode: org.apache.http.entity.mime.HttpMultipartMode valueOf(java.lang.String)
+com.southfreo.quota.billing.Billing
+com.southfreo.quota.activities.PinEntry
+com.southfreo.quota.activities.DetailActivity
+com.southfreo.quota.activities.DetailActivity_ISP
+com.southfreo.quota.activities.DetailActivity_Account
+com.southfreo.quota.Dropbox.DropboxController
+com.southfreo.quota.activities.ChooseProviderActivity
+com.southfreo.quota.activities.SummaryActivity
+com.southfreo.quota.activities.ProviderSettings
+com.southfreo.quota.activities.AppSettingsConfigure
+com.southfreo.quota.activities.SummaryWidgetConfigure
+com.southfreo.quota.control.ApplictionObject
+com.southfreo.quota.control.QuotaService
+com.southfreo.quota.billing.BillingService
+com.southfreo.quota.billing.BillingReceiver
+com.southfreo.quota.widgets.summarywidget
+com.southfreo.quota.widgets.summarywidget_small
+com.southfreo.quota.widgets.IconPreference
+com.southfreo.quota.widgets.DatePreference
+com.southfreo.quota.widgets.ListPreferenceValueNoParam
+com.southfreo.quota.widgets.ListPreferenceValue
+com.southfreo.quota.widgets.ListPreferenceMultiSelect
+com.southfreo.quota.widgets.TextParamValidate
+org.apache.james.mime4j.field.address.DomainList
+com.southfreo.quota.model.Provider
+org.apache.james.mime4j.util.StringArrayMap
+oauth.signpost.OAuthProvider
+oauth.signpost.AbstractOAuthProvider
+oauth.signpost.basic.DefaultOAuthProvider
+oauth.signpost.commonshttp.CommonsHttpOAuthProvider
+com.southfreo.quota.model.paramgroup
+com.southfreo.quota.model.extradata
+com.southfreo.quota.model.kbProgressBar
+org.apache.james.mime4j.field.address.MailboxList
+com.southfreo.quota.smplmathparser.DataValue
+com.southfreo.quota.smplmathparser.Constant
+com.southfreo.quota.smplmathparser.Variable
+org.apache.james.mime4j.field.address.AddressList
+oauth.signpost.http.HttpParameters
+oauth.signpost.signature.OAuthMessageSigner
+oauth.signpost.signature.HmacSha1MessageSigner
+oauth.signpost.signature.PlainTextMessageSigner
+com.southfreo.quota.smplmathparser.MathParser
+com.southfreo.quota.smplmathparser.EvaluationTree
+com.southfreo.quota.model.cycle
+com.southfreo.quota.smplmathparser.Operator
+com.southfreo.quota.smplmathparser.UnaryOperator
+com.southfreo.quota.smplmathparser.DefaultOperators$21
+com.southfreo.quota.smplmathparser.DefaultOperators$22
+com.southfreo.quota.smplmathparser.DefaultOperators$23
+com.southfreo.quota.smplmathparser.DefaultOperators$20
+com.southfreo.quota.smplmathparser.DefaultOperators$18
+com.southfreo.quota.smplmathparser.DefaultOperators$19
+com.southfreo.quota.smplmathparser.DefaultOperators$16
+com.southfreo.quota.smplmathparser.DefaultOperators$17
+com.southfreo.quota.smplmathparser.DefaultOperators$14
+com.southfreo.quota.smplmathparser.DefaultOperators$15
+com.southfreo.quota.smplmathparser.DefaultOperators$12
+com.southfreo.quota.smplmathparser.DefaultOperators$13
+com.southfreo.quota.smplmathparser.DefaultOperators$10
+com.southfreo.quota.smplmathparser.DefaultOperators$11
+com.southfreo.quota.smplmathparser.DefaultOperators$9
+com.southfreo.quota.smplmathparser.DefaultOperators$8
+com.southfreo.quota.smplmathparser.DefaultOperators$7
+com.southfreo.quota.smplmathparser.BinaryOperator
+com.southfreo.quota.smplmathparser.DefaultOperators$3
+com.southfreo.quota.smplmathparser.DefaultOperators$4
+com.southfreo.quota.smplmathparser.DefaultOperators$1
+com.southfreo.quota.smplmathparser.DefaultOperators$2
+com.southfreo.quota.smplmathparser.DefaultOperators$6
+com.southfreo.quota.smplmathparser.DefaultOperators$5
+com.southfreo.quota.model.account
+org.apache.james.mime4j.field.address.Address
+org.apache.james.mime4j.field.address.Mailbox
+org.apache.james.mime4j.field.address.Group
+com.southfreo.quota.model.rssItem
+com.southfreo.quota.smplmathparser.EvaluationNode
+com.southfreo.quota.smplmathparser.BinaryNode
+com.southfreo.quota.smplmathparser.VariableNode
+com.southfreo.quota.smplmathparser.ConstantNode
+com.southfreo.quota.smplmathparser.UnaryNode
+com.southfreo.quota.model.parameter
+com.southfreo.quota.model.accountlines
+oauth.signpost.OAuthConsumer
+oauth.signpost.AbstractOAuthConsumer
+oauth.signpost.commonshttp.CommonsHttpOAuthConsumer
+oauth.signpost.basic.DefaultOAuthConsumer
+oauth.signpost.signature.SigningStrategy
+oauth.signpost.signature.AuthorizationHeaderSigningStrategy
+oauth.signpost.signature.QueryStringSigningStrategy
+org.json.simple.JSONObject
+com.southfreo.quota.billing.Billing$Managed
+com.southfreo.quota.billing.Consts$ResponseCode
+org.apache.james.mime4j.codec.EncoderUtil$Usage
+org.apache.james.mime4j.codec.EncoderUtil$Encoding
+com.southfreo.quota.billing.Consts$PurchaseState
+org.apache.http.entity.mime.HttpMultipartMode
+com.markupartist.android.widget.ActionBar$ActionList
+org.json.simple.JSONArray
+org.apache.james.mime4j.field.mimeversion.parser.TokenMgrError
+org.apache.james.mime4j.field.language.parser.TokenMgrError
+org.apache.james.mime4j.field.contenttype.parser.TokenMgrError
+org.apache.james.mime4j.field.address.parser.TokenMgrError
+org.apache.james.mime4j.field.address.parser.AddressListParser$LookaheadSuccess
+org.apache.james.mime4j.field.datetime.parser.TokenMgrError
+org.apache.james.mime4j.field.contentdisposition.parser.TokenMgrError
+org.apache.james.mime4j.field.structured.parser.TokenMgrError
+org.apache.james.mime4j.MimeException
+org.apache.james.mime4j.parser.MimeParseEventException
+org.apache.james.mime4j.field.ParseException
+org.apache.james.mime4j.field.datetime.parser.ParseException
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException
+org.apache.james.mime4j.field.contenttype.parser.ParseException
+org.apache.james.mime4j.field.address.parser.ParseException
+org.apache.james.mime4j.field.structured.parser.ParseException
+org.apache.james.mime4j.field.mimeversion.parser.ParseException
+org.apache.james.mime4j.field.language.parser.ParseException
+org.apache.james.mime4j.io.MaxHeaderLimitException
+com.dropbox.client.DropboxException
+oauth.signpost.exception.OAuthException
+oauth.signpost.exception.OAuthNotAuthorizedException
+oauth.signpost.exception.OAuthExpectationFailedException
+oauth.signpost.exception.OAuthCommunicationException
+oauth.signpost.exception.OAuthMessageSignerException
+com.southfreo.quota.billing.util.Base64DecoderException
+com.southfreo.quota.smplmathparser.MathParserException
+org.json.simple.parser.ParseException
+org.apache.http.entity.mime.UnexpectedMimeException
+org.apache.james.mime4j.MimeIOException
+org.apache.james.mime4j.io.MaxLineLimitException
+org.apache.james.mime4j.util.MimeUtil$Rfc822DateFormat
+org.apache.james.mime4j.field.address.DomainList: long serialVersionUID
+org.apache.james.mime4j.field.address.DomainList: java.util.List domains
+com.southfreo.quota.model.Provider: long serialVersionUID
+com.southfreo.quota.model.Provider: int disk_isp
+com.southfreo.quota.model.Provider: java.lang.String disk_planname
+com.southfreo.quota.model.Provider: boolean disk_manualrefresh
+com.southfreo.quota.model.Provider: com.southfreo.quota.model.paramgroup disk_parameters
+com.southfreo.quota.model.Provider: java.util.Hashtable disk_alerts
+com.southfreo.quota.model.Provider: java.lang.String supportUrl
+com.southfreo.quota.model.Provider: java.lang.String providerUrl
+com.southfreo.quota.model.Provider: boolean debugprovider
+com.southfreo.quota.model.Provider: int paramgroupid
+com.southfreo.quota.model.Provider: int disk_display_type
+com.southfreo.quota.model.Provider: int parse_method
+com.southfreo.quota.model.Provider: java.lang.String providerName
+com.southfreo.quota.model.Provider: java.lang.String providertype
+com.southfreo.quota.model.Provider: java.lang.String xmlVersion
+com.southfreo.quota.model.Provider: java.lang.String xmlAuthor
+com.southfreo.quota.model.Provider: java.lang.String xmlDescription
+com.southfreo.quota.model.Provider: int cacheseconds
+com.southfreo.quota.model.Provider: java.lang.String icon
+com.southfreo.quota.model.Provider: boolean secure
+com.southfreo.quota.model.Provider: com.southfreo.quota.model.Provider provider_definition
+com.southfreo.quota.model.Provider: double cacheage
+com.southfreo.quota.model.Provider: java.util.Date cacheFileDate
+com.southfreo.quota.model.Provider: int loadstatus
+com.southfreo.quota.model.Provider: boolean loadsuccess
+com.southfreo.quota.model.Provider: java.lang.String loadmsg
+com.southfreo.quota.model.Provider: int failurereason
+com.southfreo.quota.model.Provider: java.lang.String loaderrormsg
+com.southfreo.quota.model.Provider: int slotnumber
+com.southfreo.quota.model.Provider: boolean isvalid
+com.southfreo.quota.model.Provider: com.southfreo.quota.model.cycle current_cycle
+com.southfreo.quota.model.Provider: java.lang.String xmlCookie
+com.southfreo.quota.model.Provider: java.util.ArrayList progress
+com.southfreo.quota.model.Provider: java.util.ArrayList extras
+com.southfreo.quota.model.Provider: com.southfreo.quota.model.account accountdata
+com.southfreo.quota.model.Provider: int currentURL
+com.southfreo.quota.model.Provider: java.util.ArrayList urls
+com.southfreo.quota.model.Provider: java.util.ArrayList datakeys
+com.southfreo.quota.model.Provider: java.util.ArrayList conditions
+com.southfreo.quota.model.Provider: boolean questioninProgress
+com.southfreo.quota.model.Provider: boolean questionAnswered
+com.southfreo.quota.model.Provider: int questionanswer
+com.southfreo.quota.model.Provider: java.lang.String[] questionchoices
+com.southfreo.quota.model.Provider: int loadedFrom
+com.southfreo.quota.model.Provider: int widgetid
+com.southfreo.quota.model.Provider: void writeObject(java.io.ObjectOutputStream)
+com.southfreo.quota.model.Provider: void readObject(java.io.ObjectInputStream)
+org.apache.james.mime4j.util.StringArrayMap: long serialVersionUID
+org.apache.james.mime4j.util.StringArrayMap: java.util.Map map
+oauth.signpost.AbstractOAuthProvider: long serialVersionUID
+oauth.signpost.AbstractOAuthProvider: java.lang.String requestTokenEndpointUrl
+oauth.signpost.AbstractOAuthProvider: java.lang.String accessTokenEndpointUrl
+oauth.signpost.AbstractOAuthProvider: java.lang.String authorizationWebsiteUrl
+oauth.signpost.AbstractOAuthProvider: oauth.signpost.http.HttpParameters responseParameters
+oauth.signpost.AbstractOAuthProvider: java.util.Map defaultHeaders
+oauth.signpost.AbstractOAuthProvider: boolean isOAuth10a
+oauth.signpost.basic.DefaultOAuthProvider: long serialVersionUID
+oauth.signpost.AbstractOAuthProvider: long serialVersionUID
+oauth.signpost.AbstractOAuthProvider: java.lang.String requestTokenEndpointUrl
+oauth.signpost.AbstractOAuthProvider: java.lang.String accessTokenEndpointUrl
+oauth.signpost.AbstractOAuthProvider: java.lang.String authorizationWebsiteUrl
+oauth.signpost.AbstractOAuthProvider: oauth.signpost.http.HttpParameters responseParameters
+oauth.signpost.AbstractOAuthProvider: java.util.Map defaultHeaders
+oauth.signpost.AbstractOAuthProvider: boolean isOAuth10a
+oauth.signpost.commonshttp.CommonsHttpOAuthProvider: long serialVersionUID
+oauth.signpost.AbstractOAuthProvider: long serialVersionUID
+oauth.signpost.AbstractOAuthProvider: java.lang.String requestTokenEndpointUrl
+oauth.signpost.AbstractOAuthProvider: java.lang.String accessTokenEndpointUrl
+oauth.signpost.AbstractOAuthProvider: java.lang.String authorizationWebsiteUrl
+oauth.signpost.AbstractOAuthProvider: oauth.signpost.http.HttpParameters responseParameters
+oauth.signpost.AbstractOAuthProvider: java.util.Map defaultHeaders
+oauth.signpost.AbstractOAuthProvider: boolean isOAuth10a
+com.southfreo.quota.model.paramgroup: long serialVersionUID
+com.southfreo.quota.model.paramgroup: int pid
+com.southfreo.quota.model.paramgroup: java.lang.String name
+com.southfreo.quota.model.paramgroup: java.lang.String description
+com.southfreo.quota.model.paramgroup: java.util.ArrayList params
+com.southfreo.quota.model.paramgroup: java.lang.String invalidmsg
+com.southfreo.quota.model.extradata: long serialVersionUID
+com.southfreo.quota.model.extradata: int section
+com.southfreo.quota.model.extradata: int type
+com.southfreo.quota.model.extradata: java.lang.String name
+com.southfreo.quota.model.extradata: java.lang.String value
+com.southfreo.quota.model.extradata: java.lang.String nameFormat
+com.southfreo.quota.model.extradata: java.lang.String valueFormat
+com.southfreo.quota.model.extradata: java.lang.String src
+com.southfreo.quota.model.extradata: int order
+com.southfreo.quota.model.extradata: boolean showwhenempty
+com.southfreo.quota.model.kbProgressBar: long serialVersionUID
+com.southfreo.quota.model.kbProgressBar: int pid
+com.southfreo.quota.model.kbProgressBar: int type
+com.southfreo.quota.model.kbProgressBar: java.lang.String name
+com.southfreo.quota.model.kbProgressBar: java.lang.String percentage_msg
+com.southfreo.quota.model.kbProgressBar: java.lang.String val_msg
+com.southfreo.quota.model.kbProgressBar: double percentage
+com.southfreo.quota.model.kbProgressBar: double ideal
+com.southfreo.quota.model.kbProgressBar: boolean used
+com.southfreo.quota.model.kbProgressBar: double value_max
+com.southfreo.quota.model.kbProgressBar: double value_value
+com.southfreo.quota.model.kbProgressBar: double value_used
+com.southfreo.quota.model.kbProgressBar: double value_remains
+com.southfreo.quota.model.kbProgressBar: double value_pcent
+com.southfreo.quota.model.kbProgressBar: double value_used_perday
+com.southfreo.quota.model.kbProgressBar: double value_remain_perday
+com.southfreo.quota.model.kbProgressBar: java.lang.String srcValue
+com.southfreo.quota.model.kbProgressBar: java.lang.String srcMaxValue
+com.southfreo.quota.model.kbProgressBar: int outtype
+com.southfreo.quota.model.kbProgressBar: java.lang.String outformat
+com.southfreo.quota.model.kbProgressBar: com.southfreo.quota.model.cycle cycle_usage
+com.southfreo.quota.model.kbProgressBar: java.lang.String stat1
+com.southfreo.quota.model.kbProgressBar: java.lang.String stat2
+com.southfreo.quota.model.kbProgressBar: java.lang.String stat1long
+com.southfreo.quota.model.kbProgressBar: java.lang.String RemainTxt
+com.southfreo.quota.model.kbProgressBar: java.lang.String UsedTxt
+org.apache.james.mime4j.field.address.MailboxList: long serialVersionUID
+org.apache.james.mime4j.field.address.MailboxList: java.util.List mailboxes
+com.southfreo.quota.smplmathparser.DataValue: long serialVersionUID
+com.southfreo.quota.smplmathparser.DataValue: java.lang.String name
+com.southfreo.quota.smplmathparser.Constant: long serialVersionUID
+com.southfreo.quota.smplmathparser.Constant: double value
+com.southfreo.quota.smplmathparser.DataValue: long serialVersionUID
+com.southfreo.quota.smplmathparser.DataValue: java.lang.String name
+com.southfreo.quota.smplmathparser.Variable: long serialVersionUID
+com.southfreo.quota.smplmathparser.Variable: double value
+com.southfreo.quota.smplmathparser.DataValue: long serialVersionUID
+com.southfreo.quota.smplmathparser.DataValue: java.lang.String name
+org.apache.james.mime4j.field.address.AddressList: long serialVersionUID
+org.apache.james.mime4j.field.address.AddressList: java.util.List addresses
+oauth.signpost.http.HttpParameters: java.util.TreeMap wrappedMap
+oauth.signpost.signature.OAuthMessageSigner: long serialVersionUID
+oauth.signpost.signature.OAuthMessageSigner: java.lang.String consumerSecret
+oauth.signpost.signature.OAuthMessageSigner: java.lang.String tokenSecret
+oauth.signpost.signature.OAuthMessageSigner: void readObject(java.io.ObjectInputStream)
+oauth.signpost.signature.OAuthMessageSigner: long serialVersionUID
+oauth.signpost.signature.OAuthMessageSigner: java.lang.String consumerSecret
+oauth.signpost.signature.OAuthMessageSigner: java.lang.String tokenSecret
+oauth.signpost.signature.OAuthMessageSigner: void readObject(java.io.ObjectInputStream)
+oauth.signpost.signature.OAuthMessageSigner: long serialVersionUID
+oauth.signpost.signature.OAuthMessageSigner: java.lang.String consumerSecret
+oauth.signpost.signature.OAuthMessageSigner: java.lang.String tokenSecret
+oauth.signpost.signature.OAuthMessageSigner: void readObject(java.io.ObjectInputStream)
+com.southfreo.quota.smplmathparser.MathParser: long serialVersionUID
+com.southfreo.quota.smplmathparser.MathParser: java.util.Map defaultBinaryOperators
+com.southfreo.quota.smplmathparser.MathParser: java.util.Map defaultConstants
+com.southfreo.quota.smplmathparser.MathParser: java.util.Map defaultUnaryOperators
+com.southfreo.quota.smplmathparser.EvaluationTree: long serialVersionUID
+com.southfreo.quota.smplmathparser.EvaluationTree: java.util.Map binaryOperators
+com.southfreo.quota.smplmathparser.EvaluationTree: java.util.Map constants
+com.southfreo.quota.smplmathparser.EvaluationTree: double constantValue
+com.southfreo.quota.smplmathparser.EvaluationTree: com.southfreo.quota.smplmathparser.EvaluationNode root
+com.southfreo.quota.smplmathparser.EvaluationTree: java.util.Map unaryOperators
+com.southfreo.quota.smplmathparser.EvaluationTree: java.util.Map variables
+com.southfreo.quota.model.cycle: long serialVersionUID
+com.southfreo.quota.model.cycle: int typecycle
+com.southfreo.quota.model.cycle: boolean hasstart
+com.southfreo.quota.model.cycle: boolean includeend
+com.southfreo.quota.model.cycle: java.util.Date startDate
+com.southfreo.quota.model.cycle: java.util.Date endDate
+com.southfreo.quota.model.cycle: java.util.Date nextPeriodDate
+com.southfreo.quota.model.cycle: int startday
+com.southfreo.quota.model.cycle: int dayssofar
+com.southfreo.quota.model.cycle: int daysremaining
+com.southfreo.quota.model.cycle: int totaldays
+com.southfreo.quota.model.cycle: double dayspercentage
+com.southfreo.quota.model.cycle: int pid
+com.southfreo.quota.model.cycle: java.lang.String srcStartDate
+com.southfreo.quota.model.cycle: java.lang.String srcEndDate
+com.southfreo.quota.model.cycle: java.lang.String srcStartDay
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.UnaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryOperator: java.lang.String operatorString
+com.southfreo.quota.smplmathparser.UnaryOperator: int precedence
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.smplmathparser.BinaryOperator: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryOperator: boolean alsoUnary
+com.southfreo.quota.smplmathparser.BinaryOperator: char operatorChar
+com.southfreo.quota.smplmathparser.Operator: long serialVersionUID
+com.southfreo.quota.smplmathparser.Operator: int precedence
+com.southfreo.quota.model.account: long serialVersionUID
+com.southfreo.quota.model.account: java.lang.String bal1name
+com.southfreo.quota.model.account: java.lang.String bal1value
+com.southfreo.quota.model.account: java.lang.String showChange
+com.southfreo.quota.model.account: java.lang.String bal2name
+com.southfreo.quota.model.account: java.lang.String bal2value
+com.southfreo.quota.model.account: double changePercent
+com.southfreo.quota.model.account: double changeNumber
+com.southfreo.quota.model.account: boolean hidesummary
+com.southfreo.quota.model.account: java.util.ArrayList rssData
+com.southfreo.quota.model.account: java.util.ArrayList transactions
+com.southfreo.quota.model.account: java.lang.String rssTitleKey
+com.southfreo.quota.model.account: java.lang.String rssDescKey
+com.southfreo.quota.model.account: java.lang.String rssTimeKey
+com.southfreo.quota.model.account: java.lang.String rssLinkKey
+com.southfreo.quota.model.account: java.lang.String rssImageKey
+com.southfreo.quota.model.account: java.lang.String srcData
+com.southfreo.quota.model.account: java.lang.String dateColumn
+com.southfreo.quota.model.account: java.lang.String descriptionColumn
+com.southfreo.quota.model.account: java.lang.String amountColumn
+com.southfreo.quota.model.account: java.lang.String headings
+com.southfreo.quota.model.account: java.lang.String descriptionformat
+com.southfreo.quota.model.account: java.lang.String amountformat
+com.southfreo.quota.model.account: java.lang.String dateformat
+org.apache.james.mime4j.field.address.Address: long serialVersionUID
+org.apache.james.mime4j.field.address.Mailbox: long serialVersionUID
+org.apache.james.mime4j.field.address.Mailbox: java.lang.String name
+org.apache.james.mime4j.field.address.Mailbox: org.apache.james.mime4j.field.address.DomainList route
+org.apache.james.mime4j.field.address.Mailbox: java.lang.String localPart
+org.apache.james.mime4j.field.address.Mailbox: java.lang.String domain
+org.apache.james.mime4j.field.address.Address: long serialVersionUID
+org.apache.james.mime4j.field.address.Group: long serialVersionUID
+org.apache.james.mime4j.field.address.Group: java.lang.String name
+org.apache.james.mime4j.field.address.Group: org.apache.james.mime4j.field.address.MailboxList mailboxList
+org.apache.james.mime4j.field.address.Address: long serialVersionUID
+com.southfreo.quota.model.rssItem: long serialVersionUID
+com.southfreo.quota.model.rssItem: java.lang.String title
+com.southfreo.quota.model.rssItem: java.lang.String description
+com.southfreo.quota.model.rssItem: java.lang.String link
+com.southfreo.quota.model.rssItem: java.lang.String time
+com.southfreo.quota.model.rssItem: java.lang.String imageURL
+com.southfreo.quota.model.rssItem: java.util.Date internalTime
+com.southfreo.quota.smplmathparser.EvaluationNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.EvaluationNode: boolean constant
+com.southfreo.quota.smplmathparser.BinaryNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.BinaryNode: com.southfreo.quota.smplmathparser.BinaryOperator operator
+com.southfreo.quota.smplmathparser.BinaryNode: com.southfreo.quota.smplmathparser.EvaluationNode parameter1
+com.southfreo.quota.smplmathparser.BinaryNode: com.southfreo.quota.smplmathparser.EvaluationNode parameter2
+com.southfreo.quota.smplmathparser.EvaluationNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.EvaluationNode: boolean constant
+com.southfreo.quota.smplmathparser.VariableNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.VariableNode: com.southfreo.quota.smplmathparser.Variable value
+com.southfreo.quota.smplmathparser.EvaluationNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.EvaluationNode: boolean constant
+com.southfreo.quota.smplmathparser.ConstantNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.ConstantNode: com.southfreo.quota.smplmathparser.Constant value
+com.southfreo.quota.smplmathparser.EvaluationNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.EvaluationNode: boolean constant
+com.southfreo.quota.smplmathparser.UnaryNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.UnaryNode: com.southfreo.quota.smplmathparser.UnaryOperator operator
+com.southfreo.quota.smplmathparser.UnaryNode: com.southfreo.quota.smplmathparser.EvaluationNode parameter
+com.southfreo.quota.smplmathparser.EvaluationNode: long serialVersionUID
+com.southfreo.quota.smplmathparser.EvaluationNode: boolean constant
+com.southfreo.quota.model.parameter: long serialVersionUID
+com.southfreo.quota.model.parameter: java.lang.String TAG
+com.southfreo.quota.model.parameter: int pid
+com.southfreo.quota.model.parameter: java.lang.String Name
+com.southfreo.quota.model.parameter: java.lang.String ExtraInfo
+com.southfreo.quota.model.parameter: java.lang.String Value
+com.southfreo.quota.model.parameter: java.lang.String defaultvalue
+com.southfreo.quota.model.parameter: java.lang.Object refobject
+com.southfreo.quota.model.parameter: java.lang.String[] CurrentSelectedValues
+com.southfreo.quota.model.parameter: double numberval
+com.southfreo.quota.model.parameter: com.southfreo.quota.model.parameter currentparameter
+com.southfreo.quota.model.parameter: java.util.Date DateValue
+com.southfreo.quota.model.parameter: java.lang.String description
+com.southfreo.quota.model.parameter: java.lang.String valid
+com.southfreo.quota.model.parameter: java.lang.String[] ListValues
+com.southfreo.quota.model.parameter: java.lang.String icon
+com.southfreo.quota.model.parameter: java.lang.String formatString
+com.southfreo.quota.model.parameter: java.util.Hashtable DictValues
+com.southfreo.quota.model.parameter: java.lang.String blankmsg
+com.southfreo.quota.model.parameter: int type
+com.southfreo.quota.model.parameter: java.lang.Boolean optional
+com.southfreo.quota.model.parameter: int startrange
+com.southfreo.quota.model.parameter: int endrange
+com.southfreo.quota.model.parameter: boolean confirmexistingvalue
+com.southfreo.quota.model.parameter: boolean passesvalidation
+com.southfreo.quota.model.parameter: boolean escape
+com.southfreo.quota.model.accountlines: long serialVersionUID
+com.southfreo.quota.model.accountlines: java.lang.String date
+com.southfreo.quota.model.accountlines: java.lang.String description
+com.southfreo.quota.model.accountlines: java.lang.String amount
+oauth.signpost.AbstractOAuthConsumer: long serialVersionUID
+oauth.signpost.AbstractOAuthConsumer: java.lang.String consumerKey
+oauth.signpost.AbstractOAuthConsumer: java.lang.String consumerSecret
+oauth.signpost.AbstractOAuthConsumer: java.lang.String token
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.signature.OAuthMessageSigner messageSigner
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.signature.SigningStrategy signingStrategy
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.http.HttpParameters additionalParameters
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.http.HttpParameters requestParameters
+oauth.signpost.AbstractOAuthConsumer: boolean sendEmptyTokens
+oauth.signpost.commonshttp.CommonsHttpOAuthConsumer: long serialVersionUID
+oauth.signpost.AbstractOAuthConsumer: long serialVersionUID
+oauth.signpost.AbstractOAuthConsumer: java.lang.String consumerKey
+oauth.signpost.AbstractOAuthConsumer: java.lang.String consumerSecret
+oauth.signpost.AbstractOAuthConsumer: java.lang.String token
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.signature.OAuthMessageSigner messageSigner
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.signature.SigningStrategy signingStrategy
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.http.HttpParameters additionalParameters
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.http.HttpParameters requestParameters
+oauth.signpost.AbstractOAuthConsumer: boolean sendEmptyTokens
+oauth.signpost.basic.DefaultOAuthConsumer: long serialVersionUID
+oauth.signpost.AbstractOAuthConsumer: long serialVersionUID
+oauth.signpost.AbstractOAuthConsumer: java.lang.String consumerKey
+oauth.signpost.AbstractOAuthConsumer: java.lang.String consumerSecret
+oauth.signpost.AbstractOAuthConsumer: java.lang.String token
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.signature.OAuthMessageSigner messageSigner
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.signature.SigningStrategy signingStrategy
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.http.HttpParameters additionalParameters
+oauth.signpost.AbstractOAuthConsumer: oauth.signpost.http.HttpParameters requestParameters
+oauth.signpost.AbstractOAuthConsumer: boolean sendEmptyTokens
+oauth.signpost.signature.AuthorizationHeaderSigningStrategy: long serialVersionUID
+oauth.signpost.signature.QueryStringSigningStrategy: long serialVersionUID
+org.json.simple.JSONObject: long serialVersionUID
+org.json.simple.JSONArray: long serialVersionUID
+org.apache.james.mime4j.field.mimeversion.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.field.language.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.field.contenttype.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.field.address.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.field.datetime.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.field.contentdisposition.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.field.structured.parser.TokenMgrError: int errorCode
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.parser.MimeParseEventException: long serialVersionUID
+org.apache.james.mime4j.parser.MimeParseEventException: org.apache.james.mime4j.parser.Event event
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.datetime.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.datetime.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.datetime.parser.ParseException: org.apache.james.mime4j.field.datetime.parser.Token currentToken
+org.apache.james.mime4j.field.datetime.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.datetime.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.datetime.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException: org.apache.james.mime4j.field.contentdisposition.parser.Token currentToken
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.contentdisposition.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.contenttype.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.contenttype.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.contenttype.parser.ParseException: org.apache.james.mime4j.field.contenttype.parser.Token currentToken
+org.apache.james.mime4j.field.contenttype.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.contenttype.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.contenttype.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.address.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.address.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.address.parser.ParseException: org.apache.james.mime4j.field.address.parser.Token currentToken
+org.apache.james.mime4j.field.address.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.address.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.address.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.structured.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.structured.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.structured.parser.ParseException: org.apache.james.mime4j.field.structured.parser.Token currentToken
+org.apache.james.mime4j.field.structured.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.structured.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.structured.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.mimeversion.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.mimeversion.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.mimeversion.parser.ParseException: org.apache.james.mime4j.field.mimeversion.parser.Token currentToken
+org.apache.james.mime4j.field.mimeversion.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.mimeversion.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.mimeversion.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.field.language.parser.ParseException: long serialVersionUID
+org.apache.james.mime4j.field.language.parser.ParseException: boolean specialConstructor
+org.apache.james.mime4j.field.language.parser.ParseException: org.apache.james.mime4j.field.language.parser.Token currentToken
+org.apache.james.mime4j.field.language.parser.ParseException: int[][] expectedTokenSequences
+org.apache.james.mime4j.field.language.parser.ParseException: java.lang.String[] tokenImage
+org.apache.james.mime4j.field.language.parser.ParseException: java.lang.String eol
+org.apache.james.mime4j.field.ParseException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+org.apache.james.mime4j.io.MaxHeaderLimitException: long serialVersionUID
+org.apache.james.mime4j.MimeException: long serialVersionUID
+com.dropbox.client.DropboxException: long serialVersionUID
+oauth.signpost.exception.OAuthNotAuthorizedException: java.lang.String responseBody
+oauth.signpost.exception.OAuthCommunicationException: java.lang.String responseBody
+com.southfreo.quota.billing.util.Base64DecoderException: long serialVersionUID
+com.southfreo.quota.smplmathparser.MathParserException: java.lang.String expression
+org.json.simple.parser.ParseException: long serialVersionUID
+org.json.simple.parser.ParseException: int errorType
+org.json.simple.parser.ParseException: java.lang.Object unexpectedObject
+org.json.simple.parser.ParseException: int position
+org.apache.http.entity.mime.UnexpectedMimeException: long serialVersionUID
+org.apache.james.mime4j.MimeIOException: long serialVersionUID
+org.apache.james.mime4j.io.MaxLineLimitException: long serialVersionUID
+org.apache.james.mime4j.MimeIOException: long serialVersionUID
+org.apache.james.mime4j.util.MimeUtil$Rfc822DateFormat: long serialVersionUID
+com.southfreo.quota.widgets.DatePreference$SavedState
+com.southfreo.quota.widgets.DatePreference$SavedState: android.os.Parcelable$Creator CREATOR

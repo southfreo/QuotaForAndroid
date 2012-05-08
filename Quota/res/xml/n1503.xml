@@ -1,0 +1,29 @@
+<quotaxml version="1">
+<provider id="1503" pgid="1502" dtype="2" name="VIC CityLink" type="AUS Travel" cookie="citylink.com.au" parsemethod="xml" secure="false" icon="cl" providerurl="https://www.citylink.com.au/" version="1.0" description="Check your Citylink balance from Citylink Authority, VIC">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.citylink.com.au/" message="Connecting"/>
+				<url id="15" http="https://www.citylink.com.au/index.jsp" post="username=--DS_PARAM1--&amp;password=--DS_PARAM3--&amp;login.x=8&amp;login.y=10&amp;login=Submit" message="Logging In"/>
+				<url id="20" http="https://www.citylink.com.au/pages/secure/AccountDetailsView/Redirect.jsf" post="redirectForm_SUBMIT=1&amp;autoScroll=0%2C0&amp;redirectForm%3A_link_hidden_=redirectForm%3AgotoAccount"/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[(?i)Sorry, invalid details have been entered]]></find>
+					<pos>0</pos>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="number" src="url" srcid="20" extract="regex" trimspace="true" removechars="$||," outputtype="1" outputformat="$%.2f">
+					<find><![CDATA[(?s)Account balance.*?2">(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1502" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="--DK_BAL--" bal2name="" bal2value="" src="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

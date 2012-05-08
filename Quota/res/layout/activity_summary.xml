@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_height="fill_parent" 
+	android:layout_width="fill_parent"
+	>
+	
+	<!--  ActionBar -->
+    <com.markupartist.android.widget.ActionBar
+    android:id="@+id/actionbar"
+    style="@style/ActionBar"
+    />
+    
+	<ListView android:id="@android:id/list" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:layout_marginTop="2dip"
+		android:layout_below="@+id/actionbar" android:drawSelectorOnTop="true"
+		android:layout_marginBottom="5dip" android:cacheColorHint="#00000000"
+		android:divider="#FF000000"
+        android:dividerHeight="1dip"
+        android:listSelector="@drawable/noselector"
+        />
+
+	/>
+
+</RelativeLayout>

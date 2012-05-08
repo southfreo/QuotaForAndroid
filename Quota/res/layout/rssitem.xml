@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@layout/gradrect"
+    android:stretchColumns="1">
+  
+    <TableRow>
+    
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:padding="6dip"
+    android:layout_marginTop="2dip"
+    android:orientation="horizontal"
+    >
+    
+    <LinearLayout
+        android:orientation="vertical"
+    
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/headerlabel"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:singleLine="true"
+            android:layout_marginTop="2dip"
+            android:ellipsize="end"
+            android:textStyle="bold"
+            android:textSize="16dip"
+     		android:textColor="#FFFFFFFF"
+            android:text="Header Text" />
+            
+        <TextView  
+            android:id="@+id/bodytext"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_marginTop="2dip"
+            android:layout_weight="1" 
+            android:singleLine="false"
+            android:textStyle="bold"
+            android:textSize="11dp"
+            android:textColor="#FFb1b6c3"
+            android:ellipsize="end"
+            android:text="Body text line 1\nBody Text Line 2" />
+            
+    </LinearLayout>
+</LinearLayout>
+    
+    <!--  Col2 here -->
+ 
+ </TableRow>
+</TableLayout>
+

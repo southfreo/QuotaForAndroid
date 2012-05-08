@@ -1,0 +1,40 @@
+<quotaxml version="1">
+		
+<provider id="18" type="AUS Mobile" pgid="18" dtype="0"  parsemethod="xml" name="Crazy John's" version="2.0" icon="18" description="Please ensure you can access your usage from crazyjohns.net.au" secure="no" cookie="crazy" cache="900" providerurl="http://crazyjohns.com.au/" supporturl="">
+	<model>
+			<datassource>
+				<url id="1" http="https://secure.crazyjohns.com.au/CRMWeb/?m=01" post="login=true&amp;phoneOrAccountNumber=--DS_PARAM1--&amp;accountPIN=--DS_PARAM2--" message="Logging In.."/>
+				<url id="2" http="https://secure.crazyjohns.com.au/CRMWeb/accountsummary?viewsub=--DS_PARAM4--"  message="Account Summary"/>
+			</datassource>
+
+			<datakeys>
+				<key id="110" name="--DK_auth--" type="string" src="url" srcid="1" extract="regex" condition="1">
+					<find><![CDATA[(?i)You could not be logged on]]></find>
+					<pos>0</pos>
+				</key>
+			
+				<key id="25" name="--DK_TOTAL--" type="number" trimspace="true" default="0" removechars="$||," src="url" srcid="2" outputtype="1" outputformat="$%.2f" extract="regex">
+					<find><![CDATA[(?si)--DS_PARAM4--.*?billing cycle.*?spacedtable.*?textbold.*?\$.*?\$.*?\$(.*?)&nbsp;]]></find>
+					<pos>1</pos>
+				</key>
+
+              <key id="50" name="--DK_peak_used--" type="number" src="url" srcid="2" removechars="," trimspace="true" parseformat="MB" extract="regex" outputtype="7">
+                    <find><![CDATA[(?si)--DS_PARAM4--.*?billing cycle.*?spacedtable.*?textbold.*?MB.*?MB.*?textbold">(.*?)&nbsp;]]></find>
+ 					<pos>1</pos>
+               </key>
+               
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+			</conditions>
+		</model>
+		
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit" value="--DK_TOTAL_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="1" />
+                <Progress id="2" name="Data" value="--DK_peak_used_I_--" maxvalue="--DS_PARAM7--" used="true" outputtype="7"/>
+ 				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="" includeend="false"/>
+			</summarypanel>
+		</view>
+	</provider>
+</quotaxml>

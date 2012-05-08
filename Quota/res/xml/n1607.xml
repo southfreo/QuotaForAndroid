@@ -1,0 +1,80 @@
+<quotaxml version="1">
+
+	<provider id="1607" pgid="1607" name="Telstra Prepaid 3G" 
+		providerurl="https://m.telstra.com/wbb/accountDetails.html?a=view" type="AUS Mobile" cookie="" 
+		icon="4" parsemethod="xml" version="2.5" description="Telstra Prepay Usage, This only works when your connection via 3G (not Wifi)">
+		<model>
+			<datassource>
+				<url id="1" http="https://m.telstra.com/wbb/accountDetails.html?a=view" post="" message="Account Details"/>
+				<url id="2" http="https://m.telstra.com/wbb/viewBalanceAction.html?a=view" message="Getting Usage"/>
+				
+				<XXurl id="1" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/TelstraPrepay/x.html" message="Test Account"/>
+				<XXurl id="2" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/TelstraPrepay/x.html" message="Test Balance"/>
+			</datassource>
+			<datakeys>
+			
+			
+				<key id="1" name="--DK_MOBILE--" type="string" src="url" srcid="1" extract="regex" >
+					<pos>1</pos>
+					<find><![CDATA[My mobile number.*?(04.*?)<]]></find>
+				</key>
+				<key id="1" name="--DK_OFFER--" type="string" src="url" srcid="1" extract="regex" >
+					<pos>1</pos>
+					<find><![CDATA[My offer: (.*?)<]]></find>
+				</key>
+				
+				
+				<key id="2" name="--DK_CREDIT--" type="string" src="url" srcid="2" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[You have (.*?) credit remaining.]]></find>
+				</key>
+				
+				<key id="150" name="--DK_REMAINING--" type="number" src="url" srcid="2"  parseformat="MB"  extract="regex" replacechars=",||" subkey="151" outputtype="7">
+					<find><![CDATA[(?s).*?you have(.*?) of data]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="150" name="--DK_REMAINING--" type="number" src="url" srcid="2"  parseformat="MB"  extract="regex" replacechars=",||" outputtype="7" default="0">
+					<find><![CDATA[(?si)BonusData</h.*?<p>(.*?)\(]]></find>
+					<pos>1</pos>
+				</key>
+
+
+				<!-- Expiry -->				
+  				<key id="15" name="--DK_EXPIRY--" type="date" src="url" srcid="2" parseformat="dd/MM/yyyy" outputformat="dd/MM/yy" outputtype="2" extract="regex" subkey="16">
+					<pos>1</pos>
+					<find><![CDATA[(?s)BonusData.*?Expires (.*?) ]]></find>
+				</key>
+				<key id="16" name="--DK_EXPIRY--" type="date" src="url" srcid="2" trimhtml="true" parseformat="dd MMM yyyy" outputformat="dd/MM/yy" outputtype="2" extract="regex" condition="200">
+					<pos>1</pos>
+					<find><![CDATA[(?s)Credit expires on(.*?)\(]]></find>
+				</key>
+				
+				<key id="1" name="--DK_extras--" type="string" src="url" srcid="2" extract="simple" condition="5">
+					<find><![CDATA[<h1>My Balance</h1>]]></find>
+					<start><![CDATA[<p>]]></start>
+					<end><![CDATA[</html>]]></end>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="200" when="after" operator="is_key_empty" p1="--DK_EXPIRY--" action="fail" ap1="Could not locate your usage check 3G connection is active"/>
+				<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+			</conditions>
+		</model>
+		<view graphhistory="1">
+			<summarypanel type="pbars" >
+				<Progress id="1" name="Data Remaining" value="--DK_REMAINING_I_--" used="false" maxvalue="--DS_PARAM7--" outputtype="7"/>
+				<cycle id="1" type="1" startday="--DS_PARAM15--" enddate="--DK_EXPIRY_I_--" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Mobile" value="--DK_MOBILE--" showonempty="true"/>
+				<extra id="2" type="text" name="Offer" value="--DK_OFFER--" showonempty="true"/>
+				<extra id="3" type="text" name="Expires" value="--DK_EXPIRY--" showonempty="true"/>
+				<extra id="4" type="text" name="Credit" value="--DK_CREDIT--" showonempty="true"/>
+                <extra id="5" type="file" name="Detailed Usage" value="Tap to Display"/>
+			</extrapanel>
+		</view>
+		
+	</provider>
+</quotaxml>

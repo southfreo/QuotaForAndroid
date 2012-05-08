@@ -1,0 +1,36 @@
+<quotaxml version="1">
+<provider id="300" pgid="301" dtype="2" name="Myer one" type="AUS Leisure" version="1.3" cache="21600" icon="myer" parsemethod="xml" author="" cookie="myerone.com.au" providerurl="http://myerone.com.au" description="Displays Myer one Points Balance">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.myerone.com.au/Login_s.aspx" message="Connecting"/>
+				<url id="20" http="https://www.myerone.com.au/Login_s.aspx" post="__VIEWSTATE=--DK_VS--&amp;ctl00%24ContentPlaceMyerOneContent%24txtMembershipNo=--DS_PARAM9--&amp;ctl00%24ContentPlaceMyerOneContent%24txtMembershipNo2=--DS_PARAM10--&amp;ctl00%24ContentPlaceMyerOneContent%24txtMembershipNo3=--DS_PARAM11--&amp;ctl00%24ContentPlaceMyerOneContent%24txtMembershipNo4=--DS_PARAM12--&amp;ctl00%24ContentPlaceMyerOneContent%24txtPassword=--DS_PARAM2--&amp;ctl00%24ContentPlaceMyerOneContent%24txtSurname=&amp;ctl00%24ContentPlaceMyerOneContent%24ddlYOBd=Day&amp;ctl00%24ContentPlaceMyerOneContent%24ddlYOBm=Month&amp;ctl00%24ContentPlaceMyerOneContent%24ddlYOBy=Year&amp;ctl00%24ContentPlaceMyerOneContent%24txtStreetPostcode=&amp;ctl00%24ContentPlaceMyerOneContent%24btnJoinSubmit=" message="Logging In"/>
+				<XXurl id="30" http="https://www.myerone.com.au/summary.aspx" message="Getting Balance"/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="2">
+					<find><![CDATA[(?i)Login Failed]]></find>
+					<pos>0</pos>
+				</key>
+                
+                <key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="10" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+                
+				<key id="10" name="--DK_Balance--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[lblPointTotal.*?">(.*?)<]]></find>
+                    <pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions><!-- Show Available Accounts -->
+				<condition id="2" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view displaytype="2">
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="--DK_Balance--" bal2name="" bal2value="" descriptionformat="" amountformat="" dateformat="" src="" headings="" date="" description="" amount=""/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

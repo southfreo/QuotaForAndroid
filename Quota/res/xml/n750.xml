@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<quotaxml version="1.0">
+	<paramgroups>
+	</paramgroups>
+
+	<provider id="750" dtype="2" pgid="750" type="ALL Statistics" name="Currency" version="1.0" icon="currency" parsemethod="xml" description="" secure="false" cookie="" cache="" author="" providerurl="http://finance.yahoo.com/" supporturl="">
+	
+		<model>
+			<datassource>
+				<url id="10" http="http://download.finance.yahoo.com/d/quotes.csv?s=--DS_PARAM110----DS_PARAM120--=X&amp;f=nl1" message="Getting Rate"/>
+				<XXurl id="20" http="http://chartapi.finance.yahoo.com/instrument/1.0/--DS_PARAM110----DS_PARAM120--=X/chartdata;type=close;ys=2010;yz=1/csv/" message="Year"/>
+				<XXurl id="20" http="http://chartapi.finance.yahoo.com/instrument/1.0/--DS_PARAM110----DS_PARAM120--=X/chartdata;type=close;range=7d/csv/" message="7 Day"/>
+			</datassource>
+			
+			<datakeys>
+				<key id="5" name="--DK_txt--" type="string" src="url" srcid="10" extract="regex">
+					<find><![CDATA["(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="10" name="--DK_rate--" type="number" src="url" outputformat="%.4f" default="0" srcid="10" extract="regex">
+					<find><![CDATA[([0-9]*\.[0-9]+|[0-9]+)]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="100" name="--DK_CAMT--" type="number" src="key" outputtype="1" outputformat="%.2f" srcid="10"  extract="expression">
+				   <find><![CDATA[(--DS_PARAM100-- + 0) ]]></find>				
+				</key>
+
+				<key id="120" name="--DK_CONVERT--" type="number" src="key" outputtype="1" outputformat="%.4f" srcid="10"  extract="expression">
+				   <find><![CDATA[--DK_CAMT-- * --DK_rate_I_-- ]]></find>				
+				</key>
+
+				<key id="120" name="--DK_FEE--" type="number" src="key" outputtype="1" outputformat="%.2f" srcid="10"  extract="expression">
+				   <find><![CDATA[--DK_CONVERT-- * --DS_PARAM105-- ]]></find>				
+				</key>
+				
+				<key id="120" name="--DK_ACOST--" type="number" src="key" outputtype="1" outputformat="%.2f" srcid="10"  extract="expression">
+				   <find><![CDATA[--DK_CONVERT-- + --DK_FEE-- ]]></find>				
+				</key>
+
+				<key id="15" name="--DK_rate--" type="string" src="url" srcid="10" extract="regex">
+					<find><![CDATA[([0-9]*\.[0-9]+|[0-9]+)]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="15" name="--DK_DATES--" type="date" src="url" srcid="20" outputformat="MMM" parseformat="yyyyMMdd" extract="regex-array-raw">
+					<find><![CDATA[([0-9]{8}),([0-9]+\.[0-9]+)]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="15" name="--DK_VALUES--" type="number" src="url" srcid="20" extract="regex-array-raw">
+					<find><![CDATA[([0-9]{8}),([0-9]+\.[0-9]+)]]></find>
+					<pos>2</pos>
+				</key>
+
+				<key id="15" name="--DK_7DATES--" type="date" src="url" srcid="20" outputformat="dd" parseformat="unix" extract="regex-array-raw">
+					<find><![CDATA[([0-9]{10}),([0-9]+\.[0-9]+)]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="15" name="--DK_7VALUES--" type="number" src="url" srcid="20" extract="regex-array-raw">
+					<find><![CDATA[([0-9]{10}),([0-9]+\.[0-9]+)]]></find>
+					<pos>2</pos>
+				</key>
+
+			</datakeys>
+
+			<conditions>
+			</conditions>
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="--DS_PARAM120--" bal1value="--DK_CONVERT--" bal2name="--DS_PARAM110--" bal2value="--DK_CAMT--"/>
+			</accountbalance>
+			
+			<scrollview name="Currency History">
+			    <graph id="1" title="Year" yunits="" ytick="auto" miny="999999" maxy="-999999" >
+			       <axis id="1"  xname="Date" yname="Rate" type="curve" xsrc="--DK_DATES[0]--" ysrc="--DK_VALUES[0]--" sort="" marker="False"/>
+			    </graph>
+			    <graph id="1" title="7 Days" yunits="" ytick="auto" miny="999999" maxy="-999999" >
+			       <axis id="1"  xname="Date" yname="Rate" type="curve" xsrc="--DK_7DATES[0]--" ysrc="--DK_7VALUES[0]--" sort="" marker="False"/>
+			    </graph>
+			</scrollview>
+
+			<extrapanel>
+				<extra id="1" name="Conversion" value="--DK_txt--" showonempty="true" type="text"/>
+				<extra id="1" name="Rate" value="--DK_rate--" showonempty="true" type="text"/>
+				<extra id="1" name="Amount" value="--DS_PARAM100--" showonempty="true" type="text"/>
+			</extrapanel>
+		</view>
+		
+	</provider>
+</quotaxml>

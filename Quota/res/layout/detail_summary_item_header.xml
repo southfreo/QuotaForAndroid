@@ -1,0 +1,72 @@
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+<!-- Buffer Header -->
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/summary_footer"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+                        
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="68dip"
+    android:padding="6dip"
+    android:layout_marginTop="4dip"
+    android:background="@layout/gradrect"
+    >
+    
+    <ImageView
+        android:id="@+id/logo"
+        
+        android:layout_marginRight="6dip"
+        android:layout_marginTop="4dip"
+        android:layout_width="47dip"
+        android:layout_height="46dip"
+       
+        android:src="@drawable/iinet" />
+
+    <LinearLayout
+        android:orientation="vertical"
+    
+        android:layout_width="0dip"
+        android:layout_weight="1"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/headerlabel"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="16dip"
+     		android:textColor="#FFb1b6c3"
+            android:gravity="bottom"
+            android:text="Optus Postpay reallly long name" />
+            
+        <TextView  
+            android:id="@+id/headersublabel"
+            android:layout_width="fill_parent"
+            android:layout_height="0dip"
+            android:layout_weight="1" 
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:textSize="11dp"
+            android:textColor="#FFFFFFFF"
+            android:singleLine="true"
+            android:text="Updated moments ago" />
+            
+    </LinearLayout>
+</LinearLayout>
+
+<!-- Buffer Footer -->
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/summary_footer"
+              android:layout_width="fill_parent" 
+              android:layout_height="2dp"
+              android:orientation="vertical"/>
+              
+</merge>

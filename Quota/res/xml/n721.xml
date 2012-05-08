@@ -1,0 +1,43 @@
+<quotaxml version="1">
+<provider id="721" pgid="1623"  name="Exetel ADSL/HSPA" type="AUS ISP" cookie="exetel.com.au" icon="10" parsemethod="xml" providerurl="http://www.exetel.com.au/" version="1.0" description="Please ensure you can access your usage via the website">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.exetel.com.au/login/redirect.php" post="login_name=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;doLogin=1&amp;submit=Login" message="Logging In.."/>
+			</datassource>
+			<datakeys>
+			
+				<key id="80" name="--DK_USAGE--" type="number" src="url" parseformat="MB" srcid="10" extract="regex" removechars=","  outputtype="7" condition="100">
+					<find><![CDATA[usage_content">(.*?)/]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="90" name="--DK_LIMIT--" type="number" src="url" parseformat="MB" srcid="10" extract="regex" removechars=","  outputtype="7" condition="100">
+					<find><![CDATA[usage_content">(.*?)/(.*?)\(]]></find>
+					<pos>2</pos>
+				</key>
+	
+				<key id="95" name="--DK_OFFUSAGE--" type="number" src="url" parseformat="MB" srcid="10" extract="regex" removechars=","  outputtype="7" condition="100">
+					<find><![CDATA[(?si)Off-Peak.*?usage_content">(.*?)/]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="100" name="--DK_OFFLIMIT--" type="number" src="url" parseformat="MB" srcid="10" extract="regex" removechars=","  outputtype="7" condition="100">
+					<find><![CDATA[(?si)Off-Peak.*?usage_content">(.*?)/(.*?)\(]]></find>
+					<pos>2</pos>
+				</key>
+				
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_empty" p1="--DK_USAGE--" action="fail" ap1="Did not login, Check username/password"/>
+			</conditions>
+		</model>
+		<view paramgroup="12">
+			<summarypanel type="pbars">
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+				<Progress id="1" name="Peak" value="--DK_USAGE_I_--" used="true" maxvalue="--DK_LIMIT_I_--" outputtype="7"/>
+				<Progress id="1" name="Off-Peak" value="--DK_OFFUSAGE_I_--" used="true" maxvalue="--DK_OFFLIMIT_I_--" outputtype="7"/>
+			</summarypanel>
+			<extrapanel/>
+		</view>
+	</provider>
+</quotaxml>

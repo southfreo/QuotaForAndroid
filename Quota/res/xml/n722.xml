@@ -1,0 +1,83 @@
+<quotaxml version="1">
+		
+	<provider id="722" pgid="722" cache="18000" name="TPG Mobile PAYG" type="AUS Mobile" cookie="tpg.com.au" parsemethod="xml" icon="7" providerurl="http:/www.tpg.com.au/" version="1.1" description="Please ensure you can access your usage via the website">
+		<model>
+			<datassource>
+				<url id="10" http="https://cyberstore.tpg.com.au/your_account/index.php" post="check_username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;Submit=GO%21" message="Logging In.."/>
+				<url id="20" http="https://cyberstore.tpg.com.au/your_account/index.php?function=view_all_mobile" post="viewdetails%7C--DS_PARAM4--=Mobile+Usage" message="Getting Plan"/>
+				<url id="30" http="https://cyberstore.tpg.com.au/your_account/--DK_USAGE--" message="Usage Data"/>
+			</datassource>
+			<datakeys>
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)Invalid username]]></find>
+					<pos>0</pos>
+				</key>
+				
+				<key id="15" name="--DK_limitcheck--" type="string" src="url" srcid="10" extract="regex" condition="120">
+					<find><![CDATA[(?i)There have been too many login attempts]]></find>
+					<pos>0</pos>
+				</key>
+
+				<key id="15" name="--DK_plancheck--" type="string" src="url" srcid="20" extract="regex" condition="110">
+					<find><![CDATA[(?i)Invalid Plan ID]]></find>
+					<pos>0</pos>
+				</key>
+
+				
+				<key id="20" name="--DK_DATE_ARRAY--" type="string" extract="htmltable" src="url" srcid="20">
+					<find><![CDATA[(?si)Plan:(.*?)</html>]]></find>
+					<start><![CDATA[(?i)<a href.*?<P>(.*?)/A>]]></start>
+					<end><![CDATA[(?si)period(.*?)to]]></end>
+				</key>
+				<key id="30" name="--DK_LATEST-DATE--" type="string" extract="latest_date" src="key" srcid="20">
+					<find><![CDATA[yyyy-MM-dd HH:mm:ss]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="40" name="--DK_USAGE--" type="string" extract="regex" src="url" srcid="20" subkey="41">
+					<find><![CDATA[(?i)<a href="(.*?)".*?--DK_LATEST-DATE--]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="41" name="--DK_USAGE--" type="string" extract="regex" src="url" srcid="20">
+					<find><![CDATA[(?i)<a href="(.*?)".*?Display charges]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="100" name="--DK_CREDIT--" type="number" src="url" srcid="20" extract="regex" removechars="$||," outputtype="1" outputformat="$%.2f">
+					<find><![CDATA[balance:(.*?)<br>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="110" name="--DK_DATAR--" type="number" src="url" srcid="30" extract="regex" trimhtml="true" parseformat="MB" default="0" outputtype="7">
+					<find><![CDATA[(?i)Data.*remaining:(.*?)<BR>]]></find>
+					<pos>1</pos>
+				</key>
+				
+            	<key id="99" name="--DK_DATAU--" type="number" src="key" srcid="110" condition="10" outputtype="7" extract="copy"/>
+				
+				<key id="120" name="--DK_extras--" type="string" src="url" srcid="30" extract="simple" prefix="&lt;table" postfix="&lt;/table&gt;" condition="5">
+					<find><![CDATA[Charges for the period]]></find>
+					<start><![CDATA[<TABLE]]></start>
+					<end><![CDATA[</TABLE>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+				<condition id="10" operator="true" action="expr" ap1="--DS_PARAM8-- - --DK_DATAR_I_--" />
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Invalid username or password"/>
+				<condition id="110" operator="is_key_not_empty" p1="--DK_plancheck--" action="fail" ap1="Your Plan ID is not correct"/>
+				<condition id="120" operator="is_key_not_empty" p1="--DK_limitcheck--" action="fail" ap1="Too many login attempts, wait awhile"/>
+			</conditions>
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit Balance" value="--DK_CREDIT_I_--" used="false" maxvalue="--DS_PARAM7--" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Data Used" value="--DK_DATAU_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="7"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

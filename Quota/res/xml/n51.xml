@@ -1,0 +1,82 @@
+<quotaxml version="1">
+<provider id="51" pgid="50" icon="5" name="Vodafone Account" providerurl="https://www.vodafone.co.nz/" type="NZL Mobile" cookie="vodafone.co.nz" parsemethod="xml" version="1.3" description="Please ensure you can access your vodafone usage data via the vodafone website vodafone.co.nz">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.vodafone.co.nz/knox/loginHandler.do" post="loginState=1&amp;url=&amp;pcode=mvf&amp;template=myvodafone&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Logging In.."/>
+				<url id="15" http="https://www.vodafone.co.nz/manage_account/viewconnectionsummary.do?msisdn=--DS_PARAM4--" message="Getting Mobile Summary"/>
+				<url id="20" http="https://www.vodafone.co.nz/manage_account/viewconnectionsummary.do?msisdn=--DS_PARAM4--&amp;customerId=--DK_cid--" message="Getting Mobile Summary"/>
+			</datassource>
+			<datakeys>
+				<key id="100" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)Sorry you must enter a valid username and password.]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="90" name="--DK_cid--" type="string" src="url" srcid="15" extract="regex" condition="110">
+					<find><![CDATA[\?customerId=(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="30" name="--DK_UNBILLED--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[(?s)Total amount of unbilled calls:.*?<td.*?align="right">(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="35" name="--DK_DATA-REMAIN--" type="number" src="url" srcid="20" parseformat="MB" extract="regex" outputtype="7">
+					<find><![CDATA[(?si)Free Anytime.*?Free Anytime MBs.*?</td>.*?</td>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_DATA-QUOTA--" type="number" src="url" srcid="20" parseformat="MB" extract="regex" outputtype="7">
+					<find><![CDATA[(?si)Free Anytime.*?Free Anytime MBs.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_EXPIRY--" type="string" src="url" srcid="20" trimspace="true" parseformat="dd/MM/yy" outputformat="dd/MM/yy" outputtype="2" extract="regex">
+					<find><![CDATA[(?si)Anytime\r.*?Anytime\r.*?</td>.*?</td>.*?</td>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="45" name="--DK_ANY-REMAIN--" type="number" src="url" srcid="20" extract="regex" outputtype="1">
+					<find><![CDATA[(?si)Anytime\r.*?Anytime\r.*?</td>.*?</td>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_ANY-QUOTA--" type="number" src="url" srcid="20" extract="regex" outputtype="1">
+					<find><![CDATA[(?si)Anytime\r.*?Anytime\r.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="45" name="--DK_PXT-REMAIN--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)PXT\r.*?PXT\r.*?</td>.*?</td>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_PXT-QUOTA--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)PXT\r.*?PXT\r.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="45" name="--DK_SMS-REMAIN--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)SMS\r.*?SMS\r.*?</td>.*?</td>.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_SMS-QUOTA--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)SMS\r.*?SMS\r.*?<td.*?>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_LAST_UPDATE--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[>These figures were calculated on (.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+				<condition id="110" operator="is_key_is_empty" p1="--DK_cid--" action="fail" ap1="Could not locate customer key, please contact Quota support"/>
+			</conditions>
+		</model>
+		<view paramgroup="50" displaytype="0">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Anytime remaining" value="--DK_ANY-REMAIN_I_--" used="false" maxvalue="--DK_ANY-QUOTA_I_--" outputtype="6"/>
+				<Progress id="2" name="Data remaining" value="--DK_DATA-REMAIN_I_--" used="false" maxvalue="--DK_DATA-QUOTA_I_--" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="--DK_EXPIRY_I_--" includeend="true"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Unbilled Calls" value="--DK_UNBILLED--" showonempty="true"/>
+				<extra id="2" type="text" name="PXT" value="--DK_PXT-REMAIN-- / --DK_PXT-QUOTA--" showonempty="false"/>
+				<extra id="2" type="text" name="SMS" value="--DK_SMS-REMAIN-- / --DK_SMS-QUOTA--" showonempty="false"/>
+				<extra id="2" type="text" name="Calculated" value="--DK_LAST_UPDATE--" showonempty="true"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

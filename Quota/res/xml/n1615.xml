@@ -1,0 +1,64 @@
+<quotaxml version="1">
+   <provider id="1615" pgid="1614" name="iiNet Mobile" type="AUS Mobile" cookieclear="iinet.net.au" icon="0" parsemethod="xml" providerurl="https://toolbox.iinet.net.au" version="1.1" description="Please ensure you can access your usage via logging into the website">
+		<model>
+			<datassource>
+				<url id="10" http="https://toolbox.iinet.net.au/cgi-bin/new/volumeusage.cgi?action=login&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Logging In.."/>
+				<url id="25" http="https://toolbox.iinet.net.au/cgi-bin/new/volumeusage.cgi?username=--DS_PARAM4--" message="Data Usage"/>
+				<url id="30" http="https://toolbox.iinet.net.au/cgi-bin/new/showcalls.cgi?username=--DS_PARAM4--" message="Call History"/>
+			</datassource>
+			
+			<datakeys><!-- Invalid Login -->
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)forgotten your password?]]></find>
+					<pos>0</pos>
+				</key>
+	
+   				<key id="80" name="--DK_PEAKUSED--" type="number" src="url" removechars="," srcid="25" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[(?si)usage_text">(.*?) used]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="90" name="--DK_PEAKAVAIL--" type="number" src="url" removechars="," srcid="25" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[(?si)usage_text">.*?of(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="90" name="--DK_FREE--" type="number" src="url" removechars="," srcid="25" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[(?si)<b>freezone</b>.*?usage_text">(.*?)</d]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="90" name="--DK_ROAM--" type="number" src="url" removechars="," srcid="25" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[(?si)<b>roaming</b>.*?usage_text">(.*?)</d]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="110" name="--DK_CALLS-TOTAL--" type="number" trimhtml="true" default="0" trimspace="true" src="url" srcid="30" outputtype="8" extract="regex">
+					<pos>1</pos>
+					<find><![CDATA[(?si)other calls</h2>.*?<strong>total.*?</strong>.*?\$(.*?)</]]></find>
+				</key>
+				
+				<key id="150" name="--DK_extras--" type="string" src="url" srcid="30" extract="regex" condition="5">
+					<pos>0</pos>
+					<find><![CDATA[(?s).*]]></find>
+				</key>
+
+			</datakeys>
+			<conditions>
+			    <condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Invalid username or password"/>
+			</conditions>
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak" value="--DK_PEAKUSED_I_--" used="true" maxvalue="--DK_PEAKAVAIL_I_--" outputtype="7"/>
+				<Progress id="2" name="Cap" value="--DK_CALLS-TOTAL_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="8"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Freezone" value="--DK_FREE--" showonempty="true"/>
+				<extra id="2" type="text" name="Roaming" value="--DK_ROAM--" showonempty="true"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

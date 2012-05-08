@@ -1,0 +1,69 @@
+<quotaxml version="1">
+<provider id="502" pgid="501" dtype="2" name="CBA" icon="cba" type="AUS Bank" cookie="netbank.combank.com.au" parsemethod="xml" secure="true" providerurl="https://www2.my.commbank.com.au/mobile/security/logon.aspx" version="1.4" description="CBA NetBank balance and available funds, works with main login only currently.">
+		<model>
+			<datassource>
+				<url id="1" http="https://www2.my.commbank.com.au/mobile/security/logon.aspx" message="Connect"/>
+				<url id="2" http="https://www2.my.commbank.com.au/mobile/security/Logon.aspx" post="__LASTFOCUS=&amp;__EVENTTARGET=&amp;__EVENTARGUMENT=&amp;__VIEWSTATE=--DK_VS--&amp;ctl00%24DefaultContent%24txtUserId=--DS_PARAM1--&amp;ctl00%24DefaultContent%24txtPassword=--DS_PARAM2--&amp;ctl00%24DefaultContent%24btnLogon=LOG+ON&amp;ctl00%24DefaultContent%24hLastRendered=--DK_LR--&amp;__PREVIOUSPAGE=--DK_PP--&amp;__EVENTVALIDATION=--DK_EV--" message="Login"/>
+				<url id="3" http="https://www2.my.commbank.com.au/Mobile/Account/ViewAccounts.aspx?SID=--DK_VA--" alternate="https://www2.my.commbank.com.au/Mobile/UserMessage/--DK_BUT_ACK--" message="Getting Balances"/>
+			</datassource>
+			
+			<datakeys>
+				<key id="10" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="11" name="--DK_PP--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__PREVIOUSPAGE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="12" name="--DK_EV--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="12" name="--DK_LR--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="ctl00$DefaultContent$hLastRendered]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				
+				<key id="55" name="--DK_BUT_ACK--" type="string" src="url" srcid="3" extract="regex" trimhtml="true" condition="2">
+					<find><![CDATA[<a.*?_btnNext.*?href="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="12" name="--DK_VA--" type="string" escape="true" src="url" srcid="2" extract="simple" condition="3">
+					<find><![CDATA[.aspx?]]></find>
+					<start><![CDATA[SID=]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="30" name="--DK_ACCARRAY--" type="string" src="url" srcid="3" extract="regex-array" condition="1">
+					<find><![CDATA[(?s)<a href='/Mobile/Account/ViewAccountTransactionHistory\.aspx.*?<b>(.*?)<br/>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_ACC_BAL--" type="string" src="url" srcid="3" extract="regex" trimhtml="true">
+					<find><![CDATA[(?s)<a href='/Mobile/Account/ViewAccountTransactionHistory\.aspx.*?--DS_PARAM6--.*?Balance.*?nt'>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_ACC_AVAIL--" type="string" src="url" srcid="3" extract="regex" trimhtml="true">
+					<find><![CDATA[(?s)<a href='/Mobile/Account/ViewAccountTransactionHistory\.aspx.*?--DS_PARAM6--.*?Available funds.*?nt'>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+ 
+			</datakeys>
+			<conditions>
+				<condition id="1" when="after" operator="is_param_empty" p1="6" action="popup_picker" ap1="Choose Account" ap2="--DK_ACCARRAY--" ap3="6"/>
+				<condition id="2" operator="is_key_not_empty" p1="--DK_BUT_ACK--" action="retry_alternate" ap2="0" ap3="1" />
+				<condition id="3" operator="is_key_empty" p1="--DK_VA--" action="fail" ap1="Did not login sucessfully, check details are correct"/>
+
+			</conditions>
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="--DK_ACC_BAL--" bal2name="Available:" bal2value="--DK_ACC_AVAIL--" src="--DK_TT_TABLE--" date="1" description="2" amount="3,4"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

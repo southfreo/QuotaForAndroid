@@ -1,0 +1,51 @@
+<quotaxml version="1">
+<provider id="1502" pgid="1501" dtype="2" name="QANTAS FF" type="AUS Travel" cookie="qantas.com.au" parsemethod="xml" secure="false" icon="ff" cache="86400" providerurl="https://www.qantas.com.au/fflyer/dyns/LoginForm" version="1.3" description="Check your frequent flyer points from Qantas website">
+		<model>
+			<datassource>
+				<url id="10" http="https://www.qantas.com.au/fflyer/dyns/LoginForm" message="Connecting"/>
+				<url id="20" http="https://www.qantas.com.au/fflyer/dyns/dologin?action=login&amp;origin=homepage" post="login_ffNumber=--DS_PARAM1--&amp;login_surname=--DS_PARAM2--&amp;login_pin=--DS_PARAM3--" message="Logging In."/>
+				<url id="30" http="https://www.qantas.com.au/fflyer/do/dyns/auth/youractivity/yourActivity" post="" message="Getting Usage"/>
+				<url id="40" http="https://www.qantas.com.au/fflyer/do/dyns/auth/yoursummary/yourSummary" post="" message="Getting Summary"/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[(?i)The details do not match our records]]></find>
+					<pos>0</pos>
+				</key><!-- Balance -->
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="30" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Total Points:.*?<strong>(.*?)</strong>]]></find>
+					<pos>1</pos>
+				</key><!-- Color -->
+				<key id="50" name="--DK_TYPE--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Current Status:.*?<strong.*?>(.*?)</strong>]]></find>
+					<pos>1</pos>
+				</key><!-- LA -->
+				<key id="50" name="--DK_KEEPDATE--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[<strong>(.*?)</strong> to attain]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_KEEPCOLOR--" type="string" src="url" srcid="40" removechars=":" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)>Additional Status credits required by.*? to attain(.*?)</span]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_KEEPPOINTS--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)>Additional Status credits required by.*? to attain.*?left">(.*?)</strong>]]></find>
+					<pos>1</pos>
+				</key><!-- Activity -->
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="30" extract="htmltable">
+					<find><![CDATA[<table class="basic".*?>(?s)(.*?)</table>]]></find>
+					<start><![CDATA[<tr.*class="underline1">(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td.*?>(?s)(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1501" displaytype="2">
+			<accountbalance>
+				<summary bal1name="Points:" bal1value="--DK_BAL-- (--DK_TYPE--)" bal2name="--DK_KEEPPOINTS-- pts by --DK_KEEPDATE-- obtains --DK_KEEPCOLOR--" bal2value="" src="--DK_TT_TABLE--" date="1" headings="Date|Description|Points" description="(--COL2--)(  Status Credits:--COL7--)" descriptionformat="" amount="(--COL6--)" amountformat="noblank"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

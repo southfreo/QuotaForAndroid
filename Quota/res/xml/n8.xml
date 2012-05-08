@@ -1,0 +1,108 @@
+<quotaxml version="1">
+
+    <provider id="8" pgid="100" name="Vodafone Prepay" providerurl="http://www.myvodafone.com.au" type="AUS Mobile" cookie="myvodafone" icon="5" parsemethod="xml" version="1.4" description="Please ensure you can access your vodafone usage data via the vodafone website.">
+		<model>
+			<datassource>
+				<url id="2" http="https://www.myvodafone.com.au/knox/login_handler.jsp" post="txtKeyCode=&amp;url=https%3A%2F%2Fselfserve.myvodafone.com.au%2FmyBill%2Fdo%2FloadSelfServiceLandingPage%3Fhd%3Dmyvodafone%26se%3Dmy_vodafone%26pcode%3Dmybill&amp;pcode=sol&amp;txtUserID=--DS_PARAM1--&amp;txtPassword=--DS_PARAM2--" message="Logging In.."/>
+				<XXurl id="2" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/Mobile/Vodafone-Prepay/Simon.html" message="Test URL"/>
+			</datassource>
+			<datakeys><!-- Check Login -->
+				<key id="110" name="--DK_auth--" type="string" src="url" srcid="2" extract="regex" condition="1">
+					<find><![CDATA[(?i)Sorry you have entered an incorrect username]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="100" name="--DK_nousage--" type="string" src="url" srcid="2" extract="regex" condition="2">
+					<find><![CDATA[(?i)Balance]]></find>
+					<pos>0</pos>
+				</key><!-- Extract Usage Data -->
+				<key id="1" name="--DK_PLAN--" type="string" trimhtml="true" src="url" srcid="2" extract="simple">
+					<find><![CDATA[Plan:]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				
+				<key id="2" name="--DK_BALANCE--" type="number" trimspace="true" removechars="$||," src="url" srcid="2" subkey="21" outputtype="1" outputformat="$%.2f" extract="simple">
+					<find><![CDATA[Main Balance]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+
+				<key id="21" name="--DK_BALANCE--" type="number" trimspace="true" removechars="$||," src="url" srcid="2" outputtype="1" outputformat="$%.2f" extract="regex">
+					<find><![CDATA[(?s)Flexi Credit.*?\$(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="25" name="--EXTRA_BALANCE--" type="number" trimspace="true" removechars="$||," src="url" srcid="2" outputtype="1" outputformat="$%.2f" extract="simple">
+					<find><![CDATA[Extras Balance]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				
+				<key id="3" name="--DK_BALANCE-EXPIRY--" type="date" src="url" trimspace="true" parseformat="dd/MM/yyyy" outputtype="2" outputformat="dd/MM/yy" subkey="31" srcid="2" extract="regex">
+					<find><![CDATA[(?s)Main Balance.*?\$.*?<td>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="3" name="--DK_BALANCE-EXPIRY--" type="date" src="url" trimspace="true" parseformat="dd/MM/yyyy" outputtype="2" outputformat="dd/MM/yy" srcid="2" extract="regex">
+					<find><![CDATA[(?s)Flexi Credit.*?\$.*?<td>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="4" name="--DK_FREE-TEXT--" type="string" trimspace="true" src="url" srcid="2" extract="simple" subkey="41">
+					<find><![CDATA[Free TXT]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[</td>]]></end>
+				</key>
+				<key id="41" name="--DK_FREE-TEXT--" type="string" trimspace="true" src="subkey" srcid="2" extract="simple">
+					<find><![CDATA[TXT and PXT]]></find>
+					<start><![CDATA[<td>]]></start>
+					<end><![CDATA[</td>]]></end>
+				</key>
+				<key id="6" name="--DK_VODA-VODA--" type="string" trimspace="true" src="url" srcid="2" extract="simple">
+					<find><![CDATA[V2V minutes]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[</]]></end>
+				</key>
+				
+				<key id="211" name="--DK_DATA--" type="number" src="url" srcid="2" extract="simple"  default="0" parseformat="MB" outputtype="7">
+					<find><![CDATA[Data</strong>]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[</]]></end>
+				</key>
+				
+				<key id="70" name="--DK_V2VCREDIT--" type="string" trimspace="true" src="url" srcid="2" extract="regex">
+					<find><![CDATA[(?s)V2V Credit.*?(\$.*?)</]]></find>
+					<pos>1</pos>
+				</key>	
+				
+				<key id="1" name="--DK_extras--" type="string" src="url" srcid="2" prefix="&lt;table" extract="simple" condition="5">
+					<find><![CDATA[idHeading1]]></find>
+					<start><![CDATA[<table]]></start>
+					<end><![CDATA[</html>]]></end>
+				</key>
+							
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/>
+				<condition id="2" operator="is_key_empty" p1="--DK_nousage--" action="fail" ap1="Could not locate usage, check site is working via your browser."/>
+				<condition id="5" operator="TRUE" p1="" action="write_cache" ap1="dyncache" ap2="--DK_extras--"/>
+			</conditions>
+		</model>
+		<view paramgroup="100" displaytype="0" graphhistory="1">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit" value="--DK_BALANCE_I_--" used="false" maxvalue="--DS_PARAM8--" outputtype="1" outputformat="$%.2f"/>
+				<Progress id="2" name="Data Remaining" value="--DK_DATA_I_--" used="false" maxvalue="--DS_PARAM7--" outputtype="7"/>
+				<cycle id="1" type="1" startdate="" enddate="--DK_BALANCE-EXPIRY--" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Plan" value="--DK_PLAN--" showonempty="true"/>
+				<extra id="2" type="text" name="Credit Expiry" value="--DK_BALANCE-EXPIRY--" showonempty="true"/>
+				<extra id="3" type="text" name="TXT Remaining" value="--DK_FREE-TEXT--" showonempty="false"/>
+				<extra id="5" type="text" name="V2V" value="--DK_VODA-VODA--" showonempty="false"/>
+				<extra id="5" type="text" name="V2V Credit" value="--DK_V2VCREDIT--" showonempty="false"/>
+                <extra id="10" type="file" name="Vodafone page" value="Tap to Display"/>
+
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

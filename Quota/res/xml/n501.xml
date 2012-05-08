@@ -1,0 +1,58 @@
+<quotaxml version="1">
+<provider id="501" pgid="501" dtype="2" name="Bankwest" type="AUS Bank" cookie="bankwest" parsemethod="xml" secure="true" providerurl="http://bankwest.com.au" version="1.3" description="Bankwest Bank Provider.">
+		<model>
+			<datassource>
+				<url id="1" http="https://ibs.bankwest.com.au/BWLogin/rib.aspx" message="Connect"/>
+				<url id="20" http="https://ibs.bankwest.com.au/BWLogin/rib.aspx" post="AuthUC%3AtxtUserID=--DS_PARAM1--&amp;AuthUC%3AtxtData=--DS_PARAM2--&amp;__EVENTTARGET=AuthUC%3AbtnLogin&amp;__VIEWSTATE=--DK_VS--" message="Login"/>
+				<url id="30" http="https://ibs.bankwest.com.au/CmWeb/AccountInformation/AI/--DK_TXLIST--" message="Getting Usage"/>
+			</datassource>
+			
+			<datakeys><!-- ViewState -->
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- Check Login -->
+				<key id="110" name="--DK_auth--" type="string" src="url" srcid="20" extract="regex" condition="10">
+					<find><![CDATA[(?i)Your logon attempt was unsuccessful]]></find>
+					<pos>0</pos>
+				</key><!-- Show Accounts -->
+				<key id="5" name="--DK_ACCARRAY--" type="string" src="url" srcid="20" extract="regex-array" condition="20">
+					<find><![CDATA[<td><span>(.*)</span>]]></find>
+					<pos>1</pos>
+				</key><!-- Account List -->
+				
+				<key id="20" name="--DK_ACCKEY--" type="string" src="url" srcid="20" extract="dstring" replacechars="(||\\(||)||\\)">
+					<find><![CDATA[--DS_PARAM6--]]></find>
+				</key>
+
+				<key id="10" name="--DK_TXLIST--" type="string" src="url" srcid="20" extract="regex">
+					<find><![CDATA[<span>--DK_ACCKEY--</span>.*?href="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_ACC_BAL--" type="string" src="url" srcid="30" extract="regex" trimspace="true">
+					<find><![CDATA[_ctl0_ContentMain_lblCurrentBalance">(.*)</span>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_ACC_AVAIL--" type="string" src="url" srcid="30" extract="regex" trimspace="true">
+					<find><![CDATA[ContentMain_lblAvailableBalance">(.*)</span>]]></find>
+					<pos>1</pos>
+				</key><!-- Transaction List -->
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="30" extract="htmltable">
+					<find><![CDATA[(?si)<table.*?id="_ctl0_ContentMain_grdTransactionList".*?<tbody>(.*?)</tbody>]]></find>
+					<start><![CDATA[<tr.*?>(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td.*?>(?s)(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="10" operator="is_key_not_empty" p1="--DK_auth--" action="fail" ap1="Did not login sucessfully, check your user details are correct."/><!-- Show Available Accounts -->
+				<condition id="20" when="after" operator="is_param_empty" p1="6" action="popup_picker" ap1="Choose Account" ap2="--DK_ACCARRAY--" ap3="6"/>
+			</conditions>
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="Balance:" bal1value="--DK_ACC_BAL--" bal2name="Available:" bal2value="--DK_ACC_AVAIL--" src="--DK_TT_TABLE--" date="1" description="2" amountformat="noblank" amount="(---COL4--)(--COL5--)"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

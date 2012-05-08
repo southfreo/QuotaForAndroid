@@ -1,0 +1,68 @@
+<quotaxml version="1">
+	<provider id="1626" type="NZL Mobile" pgid="7" dtype="0" parsemethod="xml" name="Telecom NZ" version="2.0" icon="telephone" description="Please ensure you can access your usage from website" secure="no" cookie="telecom.co.nz" cache="900" providerurl="https://www.telecom.co.nz" supporturl="">
+		<model>
+			<datassource>
+				<url id="1" http="https://login1.telecom.co.nz/distauth/ZeroPageLogin.jsp" post="realm=YourTelecom&amp;goto=https%3A%2F%2Focds.yourtelecom.co.nz%2Fapp%2Focds%2Fgateway&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Login."/>
+				<url id="10" http="https://ocds.yourtelecom.co.nz/app/ocds/gateway" post="LARES=--DK_lares--" message="Login..."/>
+				<url id="15" http="https://www.telecom.co.nz/ebill/requesthandler" message="Home page"/>
+				<url id="20" http="https://www.telecom.co.nz/ebill/requesthandler?pageID=unbilledchargespage&amp;accountSelectList=--DK_account--" message="Unbilled Calls"/>
+				<url id="25" http="https://www.telecom.co.nz/ebill/requesthandler?pageID=mbbum&amp;accountSelectList=--DK_account--" message="Mobile Broadband."/>
+				<url id="30" http="--DK_MPAGE--"  message="Mobile Broadband..."/>
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_lares--" type="string" src="url" srcid="1" extract="regex">
+					<find><![CDATA[LARES.*?VALUE="(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="10" name="--DK_account--" type="string" src="url" srcid="15" extract="regex" condition="1">
+					<find><![CDATA[(?i)<a.*?accountSelectList=(.*?)">Unbilled calls]]></find>
+					<pos>1</pos>
+				</key>
+
+                <!-- Calls -->
+				<key id="25" name="--DK_CALLS--" type="number" trimspace="true" default="0" removechars="$||," src="url" srcid="20" outputtype="1" outputformat="$%.2f" extract="regex">
+					<find><![CDATA[(?si)Total cost of calls.*?<b>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+                
+                <key id="10" name="--DK_MPAGE--" type="string" escape="false" src="url" srcid="25" extract="regex">
+					<find><![CDATA[IFrame.*?"(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+                
+                <!-- Data -->
+				<key id="55" name="--DK_DATA-USAGE--" type="number" src="url" parseformat="MB" srcid="30" outputtype="7" default="0" extract="regex">
+					<find><![CDATA[(?i)'usage'>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+                <key id="10" name="--DK_PLAN--" type="string" escape="false" src="url" srcid="30" extract="regex">
+					<find><![CDATA[(?i)Plan name.*?<b>(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				
+                <key id="10" name="--DK_LASTACT--" type="string" escape="false" src="url" srcid="30" extract="regex">
+					<find><![CDATA[(?i)Last recorded activity:.*?<td>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+ 				
+				
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_empty" p1="--DK_account--" action="fail" ap1="Did not login sucessfully, check your user details are correct and site is working."/>
+			</conditions>
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Credit" value="--DK_CALLS_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="1" />
+                <Progress id="2" name="Data" value="--DK_DATA-USAGE_I_--" maxvalue="--DS_PARAM7--" used="true" outputtype="7"/>
+ 				<cycle id="1" type="2" startday="--DS_PARAM6--" enddate="" includeend="false"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="4" type="text" name="Data Plan" value="--DK_PLAN--" showonempty="true"/>
+				<extra id="4" type="text" name="Data Updated" value="--DK_LASTACT--" showonempty="true"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

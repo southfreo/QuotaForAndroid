@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+
+<!--  ActionBar -->
+    <com.markupartist.android.widget.ActionBar
+    android:id="@+id/actionbar"
+    style="@style/ActionBar"
+    />
+
+<!--  Header -->
+             
+<include layout="@layout/detail_summary_item_header"/>
+    
+<!--  Start Account View -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/detail_container"
+              android:layout_width="fill_parent" 
+              android:layout_height="fill_parent"
+              android:orientation="vertical">
+              
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/accsummary"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="100dp"
+	android:background="@layout/customshape"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="5dp"
+    android:gravity="center"
+    android:paddingBottom="5dp"
+    >
+              
+ 	<TextView android:id="@+id/header1" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text="Today is day 18 of 28"
+              android:textStyle="bold"
+              android:textSize="25dp"
+              android:gravity="center"
+              android:textColor="#FFFFFFFF"/>
+
+ 	<TextView android:id="@+id/header2" 
+              android:layout_width="fill_parent" 
+              android:layout_height="wrap_content" 
+              android:text="1 Feb until 28 Feb 11"
+              android:textStyle="bold"
+              android:textSize="20dp"
+              android:textColor="#FFFFFFFF"
+              android:gravity="center"
+              android:layout_alignParentRight="true"
+              android:layout_below="@+id/header1"
+              />       
+
+
+</RelativeLayout>
+
+<!--  Table RSS/Transactions -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rssTable" 
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+	android:background="@layout/roundlightgray"
+    android:padding="1dp"
+    android:visibility="gone"
+    android:layout_below="@id/accsummary"
+    >
+              
+	<ListView android:id="@+id/rssTableList" android:layout_width="fill_parent"
+		android:layout_height="fill_parent" android:layout_marginTop="2dip"
+		android:layout_below="@+id/actionbar" android:drawSelectorOnTop="true"
+		android:layout_marginBottom="5dip" android:cacheColorHint="#00000000"
+		android:divider="#FF000000"
+        android:dividerHeight="1dip"
+        android:listSelector="@drawable/noselector"
+      />
+ 
+</RelativeLayout>
+
+<!--  Table Extras -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/extratable" 
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+  	android:background="@layout/gradrect"
+    android:padding="10dp"
+    android:visibility="gone"
+    >
+              
+<GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:id="@+id/gridview"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent"
+    android:numColumns="2"
+    android:horizontalSpacing="10dp"
+    android:columnWidth="90dp"
+    android:stretchMode="columnWidth"
+    android:gravity="center"
+/>
+            
+
+</RelativeLayout>
+
+ 
+
+</LinearLayout>
+
+<include layout="@layout/detail_errorlayout"/>
+
+</LinearLayout>
+

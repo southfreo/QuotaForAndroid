@@ -1,0 +1,74 @@
+<quotaxml version="1">
+<provider id="25" pgid="12" name="iPrimus" providerurl="http://iprimus.com.au/" parsemethod="xml" type="AUS ISP" cookie="iprimus" version="1.4" description="Please ensure you can access your usage from toolbox.iprimus.com.au">
+		<model>
+			<datassource>
+				<url id="1" http="https://toolbox.iprimus.com.au/" message="Connecting.."/>
+				<url id="10" http="https://toolbox.iprimus.com.au/login.aspx" post="__VIEWSTATE=--DK_VS--&amp;__EVENTVALIDATION=--DK_EV--&amp;ctl00%24hfursTkn=&amp;ctl00%24cphMainContent%24txtUsername=--DS_PARAM1--&amp;ctl00%24cphMainContent%24txtPassword=--DS_PARAM2--&amp;ctl00%24cphMainContent%24btnSubmit=Login" message="Logging In"/>
+				<url id="20" http="https://toolbox.iprimus.com.au/UserStatsSummary.aspx" message="Getting Usage"/>
+				<url id="30" http="https://toolbox.iprimus.com.au/BroadBanddetails.aspx" message="Getting Usage"/>
+			</datassource>
+			<datakeys><!-- Viewstate -->
+				<key id="1" name="--DK_VS--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__VIEWSTATE]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key><!-- EV -->
+				<key id="10" name="--DK_EV--" type="string" escape="true" src="url" srcid="1" extract="simple">
+					<find><![CDATA[name="__EVENTVALIDATION]]></find>
+					<start><![CDATA[value="]]></start>
+					<end><![CDATA["]]></end>
+				</key>
+				<key id="50" name="--DK_DATA_PLANNAME--" type="string" trimhtml="true" src="url" srcid="20" extract="simple" condition="1">
+					<find><![CDATA[Plan name :]]></find>
+					<start><![CDATA[</b>]]></start>
+					<end><![CDATA[</td]]></end>
+				</key>
+				<key id="52" name="--DK_DATA_SPEED--" type="string" trimhtml="true" src="url" srcid="20" extract="simple">
+					<find><![CDATA[Speed Limited :]]></find>
+					<start><![CDATA[>]]></start>
+					<end><![CDATA[</td]]></end>
+				</key>
+				<key id="200" name="--DK_PEAK_USED--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="simple" subkey="201">
+					<find><![CDATA[Peak :]]></find>
+					<start><![CDATA[nowrap>]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				<key id="201" name="--DK_PEAK_USED--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="simple" subkey="202">
+					<find><![CDATA[Usage :]]></find>
+					<start><![CDATA[nowrap>]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				<key id="202" name="--DK_PEAK_USED--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="regex">
+					<find><![CDATA[(?si)ctl00_cphMainContent_pnlusagefooter.*?<td.*?<td.*?<td.*?"><b>(.*?)</b]]></find>
+					<pos>1</pos>
+				</key>
+				
+				<key id="250" name="--DK_OFFPEAK_USED--" type="number" trimspace="true" src="url" srcid="20" parseformat="MB" outputtype="7" extract="simple">
+					<find><![CDATA[>Off Peak :]]></find>
+					<start><![CDATA[nowrap>]]></start>
+					<end><![CDATA[<]]></end>
+				</key>
+				<key id="210" name="--DK_STARTDATE--" type="date" src="url" trimspace="true" parseformat="dd/MM/yy" outputtype="2" outputformat="dd/MM/yy" srcid="10" extract="simple">
+					<find><![CDATA[lblPlanPeriod]]></find>
+					<start><![CDATA[">]]></start>
+					<end><![CDATA[</]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_empty" p1="--DK_DATA_PLANNAME--" action="fail" ap1="Could not locate usage, check userid/password and site is working"/>
+			</conditions>
+		</model>
+		<view paramgroup="12">
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak" value="--DK_PEAK_USED_I_--" used="true" maxvalue="--DS_PARAM7--" outputtype="6"/>
+				<Progress id="2" name="OffPeak" value="--DK_OFFPEAK_USED_I_--" used="true" maxvalue="--DS_PARAM8--" outputtype="6"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="1" type="text" name="Plan" value="--DK_DATA_PLANNAME--" showonempty="false"/>
+				<extra id="2" type="text" name="Speed Status" value="--DK_DATA_SPEED--" showonempty="false"/>
+				<extra id="3" type="text" name="Plan Start" value="--DK_STARTDATE--" showonempty="false"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

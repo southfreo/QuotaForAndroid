@@ -1,0 +1,20 @@
+<quotaxml version="1.0">
+	<provider id="1618" dtype="2" pgid="1618" name="CineBuzz" type="AUS Leisure" cookie="eventcinemas.com.au" icon="cb" cache="900" author="" parsemethod="xml" secure="true" providerurl="http://www.eventcinemas.com.au/" version="1.0" description="Check your Cinibuzz Points">
+		<model>
+			<datassource>
+				<url id="2" http="https://www.eventcinemas.com.au/Cinebuzz/LogOnWithCardNumber?ReturnUrl=~%2Fcinebuzz" post="Card1=--DS_PARAM10--&amp;Card2=--DS_PARAM11--&amp;Card3=--DS_PARAM12--&amp;CardNumber=--DS_PARAM10----DS_PARAM11----DS_PARAM12--&amp;Club=Cinebuzz&amp;Password=--DS_PARAM2--&amp;x=36&amp;y=14" message="Logging in..." />
+			</datassource>
+			<datakeys>
+				<key id="1" name="--DK_BAL--" type="string" src="url" srcid="2" extract="regex" trimspace="true">
+					<find><![CDATA[(?si)Points: (.*?)<]]></find>
+                    <pos>1</pos>
+				</key>
+			</datakeys>
+		</model>
+		<view>
+			<accountbalance>
+				<summary bal1name="Points:" bal1value="--DK_BAL--"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>

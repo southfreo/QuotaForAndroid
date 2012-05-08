@@ -1,0 +1,78 @@
+<quotaxml version="1">
+	<paramgroups>
+	
+	</paramgroups>
+
+   <provider id="1613" pgid="1613" name="Comcen/Spin (Multiple)" type="AUS ISP" cookieclear="spin.net.au" icon="comcen" parsemethod="xml" providerurl="https://www.spin.net.au" version="1.6" description="Please ensure you can access your usage via the spin.net.au site">
+		<model>
+			<datassource>
+				<url id="10" http="https://my.spin.net.au/" post="formName=login&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--&amp;x=86&amp;y=21" message="Logging In.."/>
+				<url id="25" http="https://my.spin.net.au/services/broadband/usage" message="Service List"/>
+				<url id="30" http="https://my.spin.net.au/services/broadband/--DK_SERVICEID--/usage" message="Getting Usage"/>
+                
+				<XXurl id="30" http="file:///Users/kevinbruton/Documents/iPhone/Projects/Quota/example/AUS/ISP/comcen/comcennew.html" message="Testing Usage..."/>
+			</datassource>
+			<datakeys><!-- Invalid Login -->
+				<key id="10" name="--DK_auth--" type="string" src="url" srcid="10" extract="regex" condition="100">
+					<find><![CDATA[(?i)Invalid Details]]></find>
+					<pos>0</pos>
+				</key>
+	
+   				<key id="20" name="--DK_SERVICEID--" type="string" src="url" srcid="25" extract="regex" >
+					<find><![CDATA[/broadband/(.*?)/usage.*?--DS_PARAM4--]]></find>
+					<pos>1</pos>
+				</key>
+
+   				<key id="80" name="--DK_PEAKUSED--" type="number" src="url" srcid="30" extract="regex" subkey="81" parseformat="MB" outputtype="7" >
+					<find><![CDATA[usageCounted.*?>(.*?)of(.*?) \(]]></find>
+					<pos>1</pos>
+				</key>
+				
+  				<key id="81" name="--DK_PEAKUSED--" type="number" src="url" srcid="30" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[usagePeak.*?>(.*?)of(.*?) \(]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="90" name="--DK_PEAKAVAIL--" type="number" src="url" srcid="30" extract="regex" subkey="91" parseformat="MB" outputtype="7" >
+					<find><![CDATA[usageCounted.*?>(.*?)of(.*?) \(]]></find>
+					<pos>2</pos>
+				</key>
+
+				<key id="91" name="--DK_PEAKAVAIL--" type="number" src="url" srcid="30" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[usagePeak.*?>(.*?)of(.*?) \(]]></find>
+					<pos>2</pos>
+				</key>
+
+   				<key id="95" name="--DK_OFFPEAKUSED--" type="number" src="url" srcid="30" extract="regex"  parseformat="MB" outputtype="7" >
+					<find><![CDATA[usageOffPeak.*?>(.*?)of(.*?) \(]]></find>
+					<pos>1</pos>
+				</key>
+
+				<key id="100" name="--DK_OFFPEAKAVAIL--" type="number" src="url" srcid="30" extract="regex"  default="0" parseformat="MB" outputtype="7" >
+					<find><![CDATA[usageOffPeak.*?>(.*?)of(.*?) \(]]></find>
+					<pos>2</pos>
+				</key>
+
+
+				<key id="88" name="--DK_FREE--" type="number" src="url" srcid="30" extract="regex" parseformat="MB" outputtype="7" >
+					<find><![CDATA[usageFreeData.*?>(.*?)<]]></find>
+					<pos>1</pos>
+				</key>
+
+			</datakeys>
+			<conditions>
+				<condition id="100" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Invalid username or password"/>
+			</conditions>
+		</model>
+		<view>
+			<summarypanel type="pbars">
+				<Progress id="1" name="Peak" value="--DK_PEAKUSED_I_--" used="true" maxvalue="--DK_PEAKAVAIL_I_--" outputtype="7"/>
+				<Progress id="2" name="Off-Peak" value="--DK_OFFPEAKUSED_I_--" used="true" maxvalue="--DK_OFFPEAKAVAIL_I_--" outputtype="7"/>
+				<cycle id="1" type="2" startday="--DS_PARAM6--"/>
+			</summarypanel>
+			<extrapanel>
+				<extra id="2" type="text" name="Free" value="--DK_FREE--" showonempty="true"/>
+			</extrapanel>
+		</view>
+	</provider>
+</quotaxml>

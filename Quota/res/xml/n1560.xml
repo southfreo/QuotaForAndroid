@@ -1,0 +1,51 @@
+<quotaxml version="1">
+<provider id="1560" pgid="1500" dtype="2" name="AIR NZ" type="AUS Travel" cookie="myairnz.com" parsemethod="xml" secure="false" icon="" cache="86400" providerurl="https://myairnz.com/myairnz/portal/get_flash.jsp" version="1.0" description="Check your frequent flyer points and transaction history">
+		<model>
+			<datassource>
+				<url id="10" http="https://myairnz.com/myairnz/portal/get_flash.jsp" message="Connecting.." />
+				<url id="20" http="https://myairnz.com/myairnz/login.do" post="redirectUrl=%2Fmyairnz%2Fportal%2FinitAccessibleViewMyKoru.do&amp;username=--DS_PARAM1--&amp;password=--DS_PARAM2--" message="Logging In."/>
+				<url id="30" http="--DK_TOKEN--" post="" message="Loading Menu"/>
+				<url id="40" http="https://myairnz.com/myairnz/portal/initLastTransactions.do?view=accessible" post="" message="Getting Transactions"/>
+			</datassource>
+			<datakeys>
+				<key id="6" name="--DK_badlogin--" type="string" src="url" srcid="20" extract="regex" condition="1">
+					<find><![CDATA[(?i) Please check your details and try again]]></find>
+					<pos>0</pos>
+				</key>
+				<key id="40" name="--DK_TOKEN--" type="string" src="url" srcid="20" extract="regex" trimspace="true">
+					<find><![CDATA[location\.replace\("(.*?)"]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="40" name="--DK_BAL--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Dollars Balance.*?/>(.*?)</td>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_TYPE--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[(?s)Tier Status.*?">(.*?)</]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_UPCOLOR--" type="string" src="url" srcid="40" removechars=":" extract="regex" trimspace="true">
+					<find><![CDATA[To be upgraded to <b>(.*?)</b>.*?you need to earn.*?<b>(.*?)</b>]]></find>
+					<pos>1</pos>
+				</key>
+				<key id="50" name="--DK_UPPOINTS--" type="string" src="url" srcid="40" extract="regex" trimspace="true">
+					<find><![CDATA[To be upgraded to <b>(.*?)</b>.*?you need to earn.*?<b>(.*?)</b>]]></find>
+					<pos>2</pos>
+				</key>
+				<key id="100" name="--DK_TT_TABLE--" type="string" src="url" srcid="40" extract="htmltable">
+					<find><![CDATA[(?s)<u>Activity Detail</u>.*?<table>(.*?)</table>]]></find>
+					<start><![CDATA[<tr class="datarow.">(?s)(.*?)</tr>]]></start>
+					<end><![CDATA[<td.*?>(.*?)</td>]]></end>
+				</key>
+			</datakeys>
+			<conditions>
+				<condition id="1" operator="is_key_not_empty" p1="--DK_badlogin--" action="fail" ap1="Incorrect Username or password"/>
+			</conditions>
+		</model>
+		<view paramgroup="1500" displaytype="2">
+			<accountbalance>
+				<summary bal1name="" bal1value="--DK_BAL-- (--DK_TYPE--)" bal2name="--DK_UPPOINTS-- pts to attain --DK_UPCOLOR--" bal2value="" src="--DK_TT_TABLE--" date="1" headings="Date|Description|Dollars" description="(--COL2--)      Status:--COL4--" descriptionformat="" amount="(--COL4--)" amountformat="noblank"/>
+			</accountbalance>
+		</view>
+	</provider>
+</quotaxml>
