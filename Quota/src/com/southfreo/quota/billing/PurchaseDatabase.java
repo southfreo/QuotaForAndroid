@@ -214,11 +214,12 @@ public class PurchaseDatabase {
     }
     
     public boolean up001() {
-        if (peDateOfToday(uk())) {
-        	return true;
-        } else {
-           	return false;
-        }
+    	return true;
+//        if (peDateOfToday(uk())) {
+//        	return true;
+//        } else {
+//           	return false;
+//        }
     }
  
     
