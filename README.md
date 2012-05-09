@@ -13,8 +13,8 @@ Quota allows you to monitor your Mobile Phone & ISP usage, News sites, Account B
 
 Quota is powered by [QuotaXML](http://www.southfreo.com/iiquota/QuotaXML.html)  which is a dynamic open XML standard which describes how to extract the information from websites.
 
-[Screen1](http://www.southfreo.com/QuotaforAndroid/Home_files/ss-0-320-480-160-1-6684f552167f1e656dafad062e224c3ba61d7dfa.jpg)
-[Screen2](http://www.southfreo.com/QuotaforAndroid/Home_files/ss-1-320-480-160-1-c42d120dc3da4bf2890a8be5d11b8395fdc9e014.jpg)
+![Screen1](http://www.southfreo.com/QuotaforAndroid/Home_files/ss-0-320-480-160-1-6684f552167f1e656dafad062e224c3ba61d7dfa.jpg)
+![Screen2](http://www.southfreo.com/QuotaforAndroid/Home_files/ss-1-320-480-160-1-c42d120dc3da4bf2890a8be5d11b8395fdc9e014.jpg)
 
 
 ## Compiling 
